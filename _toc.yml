@@ -1,0 +1,37 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: Preface
+    chapters:
+    # - file: intro
+    - file: preface/README
+      sections:
+      - file: preface/Cookiecutter
+      - file: preface/CONDUCT
+      - file: preface/CONTRIBUTING
+      - file: preface/samples/markdown-notebooks
+      - file: preface/samples/markdown
+      - file: preface/samples/notebooks
+    - file: preface/samples/matplotlib_samples
+
+  - caption: Mathematics
+    chapters:
+    - file: math/linear_algebra/linear_algebra
+  #   - file: path/to/part1/chapter2
+      sections:
+      - file: math/linear_algebra/complex_matrix_multiplication
+
+  - caption: Physics
+    chapters:
+    - file: physics/brownian_motion
+  #   - file: path/to/part2/chapter2
+  #     sections:
+  #     - file: path/to/part2/chapter2/section1
+
+  - caption: Quantum Information and Computation
+    chapters:
+    - file: qic/polynomial_method
+    - file: qic/grover
