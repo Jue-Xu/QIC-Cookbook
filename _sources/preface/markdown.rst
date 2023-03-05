@@ -1,2 +1,0 @@
-Heading: preface/markdown.rst
-=============================
