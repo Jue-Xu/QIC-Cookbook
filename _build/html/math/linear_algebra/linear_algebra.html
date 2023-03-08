@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -158,6 +159,25 @@ const thebe_selector_output = ".output, .cell_output"
                 
 
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="decompositions.html">
+                        Decomposition
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../cs/algorithms/algorithms.html">
+                        Algorithms
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../physics/brownian_motion.html">
                         Brownian motion
                       </a>
@@ -170,15 +190,17 @@ const thebe_selector_output = ".output, .cell_output"
                       </a>
                     </li>
                 
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
+
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../qic/grover.html">
                         Grover algorithm
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../appendix/ref.html">
+                        Reference
                       </a>
                     </li>
                 
@@ -277,6 +299,25 @@ const thebe_selector_output = ".output, .cell_output"
                 
 
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="decompositions.html">
+                        Decomposition
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../cs/algorithms/algorithms.html">
+                        Algorithms
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../physics/brownian_motion.html">
                         Brownian motion
                       </a>
@@ -289,15 +330,17 @@ const thebe_selector_output = ".output, .cell_output"
                       </a>
                     </li>
                 
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
+
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../qic/grover.html">
                         Grover algorithm
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../appendix/ref.html">
+                        Reference
                       </a>
                     </li>
                 
@@ -391,6 +434,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="complex_matrix_multiplication.html">Complex matrix multiplication</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="decompositions.html">Decomposition</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="decompositions/cholesky_decomposition.html">Cholesky decomposition</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../cs/algorithms/algorithms.html">Algorithms</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Physics</span></p>
 <ul class="nav bd-sidenav">
@@ -400,6 +451,10 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../qic/polynomial_method.html">Polynomial Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../qic/grover.html">Grover algorithm</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference and Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/ref.html">Reference</a></li>
 </ul>
 
     </div>
@@ -706,32 +761,32 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
-A= [[-0.09817149  0.33201712 -0.2904607 ]
- [ 0.06313421  2.06871144  0.78344587]
- [-1.21548836  1.01727506 -2.0225844 ]
- [ 1.14484675  1.22248659 -0.90393535]]
-C= [[ 0.98670536 -1.4890267 ]
- [-0.68922908 -1.0879725 ]
- [ 0.66926732 -0.96574028]
- [-0.01190626  0.46536899]]
-AT_A= [[ 2.8017096   0.26108565  1.50153755]
- [ 0.26108565  6.91912438 -1.63828801]
- [ 1.50153755 -1.63828801  5.60610161]]
+A= [[ 1.70951333  0.02669562  0.56647952]
+ [-1.50150471  0.22502004 -0.38519427]
+ [ 0.2466312   1.08770668 -0.61499135]
+ [-1.34633434 -0.88231908 -1.49497462]]
+C= [[-0.99894252 -0.50938036]
+ [-0.02750832  0.39120279]
+ [ 0.29892499  1.94723709]
+ [-0.11906095  0.94543227]]
+AT_A= [[7.05039533 1.16392677 3.40783492]
+ [1.16392677 2.01293945 0.57856054]
+ [3.40783492 0.57856054 3.08243715]]
 rank of AT_A: 3
-[[ 1.00000000e+00  5.55111512e-17 -1.11022302e-16]
- [ 0.00000000e+00  1.00000000e+00  0.00000000e+00]
- [ 0.00000000e+00  0.00000000e+00  1.00000000e+00]]
-[[ 0.02549258  0.05563398  0.13578556  0.05753129]
- [ 0.05563398  0.99682389 -0.00775191 -0.00328442]
- [ 0.13578556 -0.00775191  0.98107996 -0.00801627]
- [ 0.05753129 -0.00328442 -0.00801627  0.99660357]]
-B= [[-0.11646058  0.7721102 ]
- [-0.15285136 -0.5238527 ]
- [-0.40045735 -0.16139739]]
-A*B= [[ 0.07700096 -0.20284767]
- [-0.63729466 -1.16139961]
- [ 0.79602338 -1.14495342]
- [ 0.0417993   0.38943776]]
+[[1.00000000e+00 0.00000000e+00 0.00000000e+00]
+ [8.67361738e-17 1.00000000e+00 4.16333634e-17]
+ [0.00000000e+00 0.00000000e+00 1.00000000e+00]]
+[[ 0.49659685 -0.49081649  0.04629611 -0.08333223]
+ [-0.49081649  0.52145546  0.04513856 -0.08124867]
+ [ 0.04629611  0.04513856  0.99574232  0.00766375]
+ [-0.08333223 -0.08124867  0.00766375  0.98620537]]
+B= [[-0.30282484  0.18792367]
+ [ 0.34732375  0.96214569]
+ [ 0.08756111 -1.37788575]]
+A*B= [[-0.4588095  -0.43360095]
+ [ 0.49911968  0.46508748]
+ [ 0.24925098  1.94026795]
+ [-0.02964853  0.95797663]]
 </pre></div>
 </div>
 </div>

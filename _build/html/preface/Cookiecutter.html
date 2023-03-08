@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -158,6 +159,25 @@ const thebe_selector_output = ".output, .cell_output"
                 
 
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../math/linear_algebra/decompositions.html">
+                        Decomposition
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cs/algorithms/algorithms.html">
+                        Algorithms
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../physics/brownian_motion.html">
                         Brownian motion
                       </a>
@@ -170,15 +190,17 @@ const thebe_selector_output = ".output, .cell_output"
                       </a>
                     </li>
                 
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
+
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../qic/grover.html">
                         Grover algorithm
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../appendix/ref.html">
+                        Reference
                       </a>
                     </li>
                 
@@ -277,6 +299,25 @@ const thebe_selector_output = ".output, .cell_output"
                 
 
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../math/linear_algebra/decompositions.html">
+                        Decomposition
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cs/algorithms/algorithms.html">
+                        Algorithms
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../physics/brownian_motion.html">
                         Brownian motion
                       </a>
@@ -289,15 +330,17 @@ const thebe_selector_output = ".output, .cell_output"
                       </a>
                     </li>
                 
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
+
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../qic/grover.html">
                         Grover algorithm
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../appendix/ref.html">
+                        Reference
                       </a>
                     </li>
                 
@@ -391,6 +434,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra/complex_matrix_multiplication.html">Complex matrix multiplication</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/linear_algebra/decompositions.html">Decomposition</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra/decompositions/cholesky_decomposition.html">Cholesky decomposition</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../cs/algorithms/algorithms.html">Algorithms</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Physics</span></p>
 <ul class="nav bd-sidenav">
@@ -400,6 +451,10 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../qic/polynomial_method.html">Polynomial Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../qic/grover.html">Grover algorithm</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference and Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendix/ref.html">Reference</a></li>
 </ul>
 
     </div>
@@ -623,51 +678,51 @@ title="Print to PDF"
 <ol class="arabic simple">
 <li><p>Install <a class="reference external" href="https://github.com/cookiecutter/cookiecutter/tree/1.7.2">Cookiecutter</a> if you haven’t installed it yet:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>cookiecutter<span class="w"> </span>jupyter-book
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install -U cookiecutter jupyter-book
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">cookiecutter-jupyter-book</span></code> to generate a Jupyter Book template and fill out the requested information (default templating values are shown in square brackets <code class="docutils literal notranslate"><span class="pre">[]</span></code> and will be used if no other information is entered):</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cookiecutter<span class="w"> </span>git@github.com:executablebooks/cookiecutter-jupyter-book.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cookiecutter git@github.com:executablebooks/cookiecutter-jupyter-book.git
 
-author_name<span class="w"> </span><span class="o">[</span>Captain<span class="w"> </span>Jupyter<span class="o">]</span>:<span class="w"> </span>Tomas<span class="w"> </span>Beuzen
-github_username<span class="w"> </span><span class="o">[</span>tomasbeuzen<span class="o">]</span>:
-book_name<span class="w"> </span><span class="o">[</span>My<span class="w"> </span>Book<span class="o">]</span>:
-book_slug<span class="w"> </span><span class="o">[</span>my_book<span class="o">]</span>:
-book_short_description<span class="w"> </span><span class="o">[</span>This<span class="w"> </span>cookiecutter<span class="w"> </span>creates<span class="w"> </span>a<span class="w"> </span>simple<span class="w"> </span>boilerplate<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>Jupyter<span class="w"> </span>Book.<span class="o">]</span>:<span class="w"> </span>My<span class="w"> </span>first<span class="w"> </span>Jupyter<span class="w"> </span>Book!
-version<span class="w"> </span><span class="o">[</span><span class="s1">&#39;0.1.0&#39;</span><span class="o">]</span>:
-Select<span class="w"> </span>open_source_license:
-<span class="m">1</span><span class="w"> </span>-<span class="w"> </span>MIT<span class="w"> </span>license
-<span class="m">2</span><span class="w"> </span>-<span class="w"> </span>BSD<span class="w"> </span>license
-<span class="m">3</span><span class="w"> </span>-<span class="w"> </span>Apache<span class="w"> </span>Software<span class="w"> </span>License<span class="w"> </span><span class="m">2</span>.0
-<span class="m">4</span><span class="w"> </span>-<span class="w"> </span>CC<span class="w"> </span>BY<span class="w"> </span><span class="m">4</span>.0
-<span class="m">5</span><span class="w"> </span>-<span class="w"> </span>CC<span class="w"> </span>BY-SA<span class="w"> </span><span class="m">4</span>.0
-<span class="m">6</span><span class="w"> </span>-<span class="w"> </span>None
-Choose<span class="w"> </span>from<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">4</span>,<span class="w"> </span><span class="m">5</span>,<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>:
-Select<span class="w"> </span>include_ci:
-<span class="m">1</span><span class="w"> </span>-<span class="w"> </span>github
-<span class="m">2</span><span class="w"> </span>-<span class="w"> </span>gitlab
-<span class="m">3</span><span class="w"> </span>-<span class="w"> </span>no
-Choose<span class="w"> </span>from<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>:
+author_name <span class="o">[</span>Captain Jupyter<span class="o">]</span>: Tomas Beuzen
+github_username <span class="o">[</span>tomasbeuzen<span class="o">]</span>:
+book_name <span class="o">[</span>My Book<span class="o">]</span>:
+book_slug <span class="o">[</span>my_book<span class="o">]</span>:
+book_short_description <span class="o">[</span>This cookiecutter creates a simple boilerplate <span class="k">for</span> a Jupyter Book.<span class="o">]</span>: My first Jupyter Book!
+version <span class="o">[</span><span class="s1">&#39;0.1.0&#39;</span><span class="o">]</span>:
+Select open_source_license:
+<span class="m">1</span> - MIT license
+<span class="m">2</span> - BSD license
+<span class="m">3</span> - Apache Software License <span class="m">2</span>.0
+<span class="m">4</span> - CC BY <span class="m">4</span>.0
+<span class="m">5</span> - CC BY-SA <span class="m">4</span>.0
+<span class="m">6</span> - None
+Choose from <span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span>, <span class="m">5</span>, <span class="m">6</span> <span class="o">[</span><span class="m">1</span><span class="o">]</span>:
+Select include_ci:
+<span class="m">1</span> - github
+<span class="m">2</span> - gitlab
+<span class="m">3</span> - no
+Choose from <span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span> <span class="o">[</span><span class="m">1</span><span class="o">]</span>:
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
 <li><p>Install the Jupyter Book package requirements from the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file (it is recommended to do this in a virtual environment, e.g., using <a class="reference external" href="https://docs.conda.io/en/latest/">conda</a>):</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Optional steps to create and activate virtual environment</span>
-$<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>mybook<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.8<span class="w"> </span>-y
-$<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>mybook
+$ conda create --name mybook <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.8 -y
+$ conda activate mybook
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>my_book
-$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> my_book
+$ pip install -r requirements.txt
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
 <li><p>Build the HTML render of your Jupyter Book:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>jupyter-book<span class="w"> </span>build<span class="w"> </span>my_book/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ jupyter-book build my_book/
 </pre></div>
 </div>
 <ol class="arabic" start="5">
@@ -678,11 +733,11 @@ $<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </sp
 <li><p>Make sure your book builds locally as expected (<code class="docutils literal notranslate"><span class="pre">jupyter-book</span> <span class="pre">build</span> <span class="pre">my_book/</span></code>) and that you have updated the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file to include any additional packages required to build your book;</p></li>
 <li><p>Create a new public <a class="reference external" href="https://github.com/new">GitHub repository</a> to host your book;</p></li>
 <li><p>Push your local book (including the <code class="docutils literal notranslate"><span class="pre">.github</span></code> hidden directory) to your GitHub repository. There are many ways to do this, for example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>init
-$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>.
-$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;first commit&quot;</span>
-$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:&lt;user&gt;/&lt;repository-name&gt;.git
-$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git init
+$ git add .
+$ git commit -m <span class="s2">&quot;first commit&quot;</span>
+$ git remote add origin git@github.com:&lt;user&gt;/&lt;repository-name&gt;.git
+$ git push -u origin main
 </pre></div>
 </div>
 </li>
