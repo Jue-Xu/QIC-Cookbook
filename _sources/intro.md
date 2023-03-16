@@ -1,5 +1,5 @@
 <!-- # Welcome to my Jupyter Book - QIC Cookbook -->
-# Quantum Information and Computation Cookbook: Recipes
+# Quantum Information and Computation Cookbook: Recipes for Novice
 
 <!-- This is a small sample book to give you a feel for how book content is structured. -->
 <!-- It shows off a few of the major file types, as well as some sample content. -->
