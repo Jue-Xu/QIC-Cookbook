@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,8 +39,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -193,6 +193,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../qic/polynomial_method.html">Polynomial Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../qic/grover.html">Grover algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qic/qaoa.html">Quantum Approximate Optimization Algorithm (QAOA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qic/quantum_simulation.html">Quantum Simulation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference and Appendix</span></p>
 <ul class="nav bd-sidenav">
@@ -523,32 +525,32 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
-A= [[-0.99667346  0.59626387  1.01325429]
- [-2.70526648 -0.81039331 -2.35910485]
- [ 0.72135592  0.84810451 -2.11551647]
- [ 0.56758028 -1.24664716  0.17635244]]
-C= [[-0.15842194  0.64868079]
- [ 1.05661889  1.25102528]
- [ 0.71294934 -0.58137723]
- [-0.36730105  0.73658995]]
-AT_A= [[ 9.15432645  1.50226234  3.94617747]
- [ 1.50226234  3.28567831  0.50194138]
- [ 3.94617747  0.50194138 11.09857008]]
+A= [[-0.99141099  0.08332989 -0.60683607]
+ [-1.66772413 -0.19735607  0.49555872]
+ [ 0.79747552  0.52109155  0.81869503]
+ [ 2.40652308 -0.81723092 -0.73808989]]
+C= [[-0.53146542 -0.23294283]
+ [ 0.27872499 -1.06975197]
+ [-1.58449528  0.29331509]
+ [-0.72524096  0.95788397]]
+AT_A= [[10.19152006 -1.30460601 -1.34817239]
+ [-1.30460601  0.98529607  0.88143583]
+ [-1.34817239  0.88143583  1.8288667 ]]
 rank of AT_A: 3
-[[ 1.00000000e+00 -4.38668291e-18 -5.08965428e-17]
- [ 1.26596720e-18  1.00000000e+00 -3.79295811e-17]
- [ 2.20404133e-17 -2.79674144e-19  1.00000000e+00]]
-[[ 0.53151442  0.01222606 -0.27283566 -0.41763389]
- [ 0.01222606  0.99968094  0.00712019  0.01089899]
- [-0.27283566  0.00712019  0.84110653 -0.24322076]
- [-0.41763389  0.01089899 -0.24322076  0.62769811]]
-B= [[-0.14069024 -0.40062703]
- [ 0.14992177 -0.44921432]
- [-0.33754711  0.07858814]]
-A*B= [[-0.1124059   0.21107383]
- [ 1.05541801  1.2624455 ]
- [ 0.73974807 -0.83622986]
- [-0.32627981  0.34648296]]
+[[ 1.00000000e+00  1.64072444e-17 -4.63519814e-18]
+ [-2.03656433e-16  1.00000000e+00 -2.39306066e-17]
+ [ 1.14619453e-16  6.69878056e-17  1.00000000e+00]]
+[[ 0.57183617 -0.24207942 -0.37043286 -0.22139696]
+ [-0.24207942  0.86313079 -0.20943893 -0.12517556]
+ [-0.37043286 -0.20943893  0.67951402 -0.19154516]
+ [-0.22139696 -0.12517556 -0.19154516  0.88551903]]
+B= [[-0.40171443  0.4616721 ]
+ [-0.80310411  0.4932292 ]
+ [-0.07380744 -0.3652382 ]]
+A*B= [[ 0.37613053 -0.19496634]
+ [ 0.79187039 -1.04828045]
+ [-0.79927397  0.32617107]
+ [-0.255937    0.97752103]]
 </pre></div>
 </div>
 </div>
@@ -613,7 +615,10 @@ rank: 2
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../../preface/samples/matplotlib_samples.html"
@@ -633,7 +638,10 @@ rank: 2
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -659,7 +667,7 @@ rank: 2
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -689,7 +697,7 @@ By Jue Xu
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -698,8 +706,8 @@ By Jue Xu
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>
