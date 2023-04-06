@@ -199,6 +199,20 @@ const thebe_selector_output = ".output, .cell_output"
                 
 
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../qic/qaoa.html">
+                        Quantum Approximate Optimization Algorithm (QAOA)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../qic/quantum_simulation.html">
+                        Quantum Simulation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../appendix/ref.html">
                         Reference
                       </a>
@@ -339,6 +353,20 @@ const thebe_selector_output = ".output, .cell_output"
                 
 
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../qic/qaoa.html">
+                        Quantum Approximate Optimization Algorithm (QAOA)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../qic/quantum_simulation.html">
+                        Quantum Simulation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../appendix/ref.html">
                         Reference
                       </a>
@@ -411,7 +439,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    Quantum Information and Computation Cookbook: Recipes
+                    Quantum Information and Computation Cookbook: Recipes for Novice
                 </a>
             </li>
         </ul>
@@ -451,6 +479,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../qic/polynomial_method.html">Polynomial Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../qic/grover.html">Grover algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qic/qaoa.html">Quantum Approximate Optimization Algorithm (QAOA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qic/quantum_simulation.html">Quantum Simulation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference and Appendix</span></p>
 <ul class="nav bd-sidenav">
@@ -761,32 +791,32 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
-A= [[ 1.70951333  0.02669562  0.56647952]
- [-1.50150471  0.22502004 -0.38519427]
- [ 0.2466312   1.08770668 -0.61499135]
- [-1.34633434 -0.88231908 -1.49497462]]
-C= [[-0.99894252 -0.50938036]
- [-0.02750832  0.39120279]
- [ 0.29892499  1.94723709]
- [-0.11906095  0.94543227]]
-AT_A= [[7.05039533 1.16392677 3.40783492]
- [1.16392677 2.01293945 0.57856054]
- [3.40783492 0.57856054 3.08243715]]
+A= [[ 0.89941201 -1.4702078   0.45367738]
+ [-0.69002566  1.05551738  0.42235396]
+ [-0.2899375   0.80970676 -1.70848919]
+ [-0.66554943  0.83117547  0.90421768]]
+C= [[ 0.65688558  0.12538482]
+ [-0.57521043 -0.61011514]
+ [ 1.80976455  0.40600328]
+ [-0.71828868  2.94003704]]
+AT_A= [[ 1.81209718 -2.83860935  0.01016134]
+ [-2.83860935  4.62210563 -0.85300977]
+ [ 0.01016134 -0.85300977  4.12075095]]
 rank of AT_A: 3
-[[1.00000000e+00 0.00000000e+00 0.00000000e+00]
- [8.67361738e-17 1.00000000e+00 4.16333634e-17]
- [0.00000000e+00 0.00000000e+00 1.00000000e+00]]
-[[ 0.49659685 -0.49081649  0.04629611 -0.08333223]
- [-0.49081649  0.52145546  0.04513856 -0.08124867]
- [ 0.04629611  0.04513856  0.99574232  0.00766375]
- [-0.08333223 -0.08124867  0.00766375  0.98620537]]
-B= [[-0.30282484  0.18792367]
- [ 0.34732375  0.96214569]
- [ 0.08756111 -1.37788575]]
-A*B= [[-0.4588095  -0.43360095]
- [ 0.49911968  0.46508748]
- [ 0.24925098  1.94026795]
- [-0.02964853  0.95797663]]
+[[ 1.00000000e+00 -1.91846539e-13  5.68434189e-14]
+ [ 2.41473508e-13  1.00000000e+00  0.00000000e+00]
+ [ 9.49240686e-15  2.66453526e-15  1.00000000e+00]]
+[[ 0.65896721  0.03966072 -0.28152208 -0.37934387]
+ [ 0.03966072  0.99538762  0.03273987  0.04411614]
+ [-0.28152208  0.03273987  0.76760392 -0.31314782]
+ [-0.37934387  0.04411614 -0.31314782  0.57804125]]
+B= [[  6.18403603 -32.3004668 ]
+ [  3.61563508 -20.09011768]
+ [ -0.16138971  -3.65100197]]
+A*B= [[ 0.17304252 -1.17115703]
+ [-0.51894146 -0.45933262]
+ [ 1.4103528  -0.66429018]
+ [-1.2564859   1.49784376]]
 </pre></div>
 </div>
 </div>

@@ -62,7 +62,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'qic/grover';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Reference" href="../appendix/ref.html" />
+    <link rel="next" title="Quantum Approximate Optimization Algorithm (QAOA)" href="qaoa.html" />
     <link rel="prev" title="Polynomial Method" href="polynomial_method.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
@@ -194,6 +194,20 @@ const thebe_selector_output = ".output, .cell_output"
                     <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="#">
                         Grover algorithm
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="qaoa.html">
+                        Quantum Approximate Optimization Algorithm (QAOA)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="quantum_simulation.html">
+                        Quantum Simulation
                       </a>
                     </li>
                 
@@ -339,6 +353,20 @@ const thebe_selector_output = ".output, .cell_output"
                 
 
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="qaoa.html">
+                        Quantum Approximate Optimization Algorithm (QAOA)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="quantum_simulation.html">
+                        Quantum Simulation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../appendix/ref.html">
                         Reference
                       </a>
@@ -411,7 +439,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Quantum Information and Computation Cookbook: Recipes
+                    Quantum Information and Computation Cookbook: Recipes for Novice
                 </a>
             </li>
         </ul>
@@ -451,6 +479,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="polynomial_method.html">Polynomial Method</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Grover algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qaoa.html">Quantum Approximate Optimization Algorithm (QAOA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantum_simulation.html">Quantum Simulation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference and Appendix</span></p>
 <ul class="nav bd-sidenav">
@@ -619,6 +649,28 @@ title="Print to PDF"
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-algorithm">
+   The algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quantum-quadratic-speedup">
+   Quantum quadratic speedup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#upper-bound">
+     Upper bound
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lower-bound">
+     Lower bound
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#spectral-gap">
    Spectral gap
   </a>
@@ -626,6 +678,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#grover-algorithm-in-different-framework">
    Grover algorithm in different framework
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#black-box-oracle-model">
+   Black-box (Oracle) model
   </a>
  </li>
 </ul>
@@ -638,7 +695,19 @@ title="Print to PDF"
             <article class="bd-article" role="main">
               
   <section class="tex2jax_ignore mathjax_ignore" id="grover-algorithm">
-<h1>Grover algorithm<a class="headerlink" href="#grover-algorithm" title="Permalink to this heading">#</a></h1>
+<span id="chapter-grover"></span><h1>Grover algorithm<a class="headerlink" href="#grover-algorithm" title="Permalink to this heading">#</a></h1>
+<section id="the-algorithm">
+<h2>The algorithm<a class="headerlink" href="#the-algorithm" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="quantum-quadratic-speedup">
+<h2>Quantum quadratic speedup<a class="headerlink" href="#quantum-quadratic-speedup" title="Permalink to this heading">#</a></h2>
+<section id="upper-bound">
+<h3>Upper bound<a class="headerlink" href="#upper-bound" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="lower-bound">
+<h3>Lower bound<a class="headerlink" href="#lower-bound" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
 <section id="spectral-gap">
 <h2>Spectral gap<a class="headerlink" href="#spectral-gap" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -753,12 +822,24 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe993cbf5e0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f79f97dcb50&gt;]
 </pre></div>
 </div>
 <img alt="../_images/c25251157794d4fc039231ad6cdfbc9d7bb1325cec7923d0646acbe6618ca808.png" src="../_images/c25251157794d4fc039231ad6cdfbc9d7bb1325cec7923d0646acbe6618ca808.png" />
 </div>
 </div>
+</section>
+<section id="black-box-oracle-model">
+<h2>Black-box (Oracle) model<a class="headerlink" href="#black-box-oracle-model" title="Permalink to this heading">#</a></h2>
+<!-- ```{epigraph} -->
+<!-- Here is a cool quotation. -->
+<blockquote>
+<div><p>dichotomy between physicst and computer scientist</p>
+</div></blockquote>
+<!-- From me, Jo the Jovyan -->
+<!-- ``` --><p><a class="reference external" href="https://scottaaronson.blog/?p=7143">Xavier Waintal responds (tl;dr Grover is still quadratically faster)</a></p>
+<p><a class="reference external" href="https://scottaaronson.blog/?p=7157">Of course Grover’s algorithm offers a quantum advantage!</a></p>
+<p>tensor network</p>
 </section>
 </section>
 
@@ -797,10 +878,10 @@ title="Print to PDF"
           <p class="prev-next-title">Polynomial Method</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="../appendix/ref.html" title="next page">
+  <a class='right-next' id="next-link" href="qaoa.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Reference</p>
+      <p class="prev-next-title">Quantum Approximate Optimization Algorithm (QAOA)</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>
@@ -821,6 +902,28 @@ title="Print to PDF"
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-algorithm">
+   The algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quantum-quadratic-speedup">
+   Quantum quadratic speedup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#upper-bound">
+     Upper bound
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lower-bound">
+     Lower bound
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#spectral-gap">
    Spectral gap
   </a>
@@ -828,6 +931,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#grover-algorithm-in-different-framework">
    Grover algorithm in different framework
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#black-box-oracle-model">
+   Black-box (Oracle) model
   </a>
  </li>
 </ul>

@@ -40,7 +40,7 @@ plt.show()
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mTypeError[0m                                 Traceback (most recent call last)
-[0;32m/var/folders/42/sqzr5z253691rgf7c44d8wgh0000gn/T/ipykernel_33167/2287503612.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/42/sqzr5z253691rgf7c44d8wgh0000gn/T/ipykernel_19825/2287503612.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      5[0m [0;34m[0m[0m
 [1;32m      6[0m [0mfig[0m [0;34m=[0m [0mplt[0m[0;34m.[0m[0mfigure[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 7[0;31m [0max[0m [0;34m=[0m [0mfig[0m[0;34m.[0m[0mgca[0m[0;34m([0m[0mprojection[0m[0;34m=[0m[0;34m'3d'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
