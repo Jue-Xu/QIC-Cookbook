@@ -392,6 +392,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perronfrobenius-theorem">Perron–Frobenius theorem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-dot-product">Matrix dot product</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-exponentiation">Matrix exponentiation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-matrix-inverse">Solve matrix inverse</a></li>
@@ -408,6 +409,15 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="linear-algebra">
 <h1>Linear Algebra<a class="headerlink" href="#linear-algebra" title="Permalink to this heading">#</a></h1>
+<section id="perronfrobenius-theorem">
+<h2>Perron–Frobenius theorem<a class="headerlink" href="#perronfrobenius-theorem" title="Permalink to this heading">#</a></h2>
+<div class="proof theorem admonition" id="perron_frobenius_theorem">
+<p class="admonition-title"><span class="caption-number">Theorem 1 </span> (Perron–Frobenius theorem)</p>
+<section class="theorem-content" id="proof-content">
+<!-- :class: dropdown -->
+<p>a real square matrix with positive entries has a unique largest real eigenvalue and that the corresponding eigenvector can be chosen to have strictly positive components, and also asserts a similar statement for certain classes of nonnegative matrices.</p>
+</section>
+</div></section>
 <section id="matrix-dot-product">
 <h2>Matrix dot product<a class="headerlink" href="#matrix-dot-product" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -525,32 +535,32 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
-A= [[-0.99141099  0.08332989 -0.60683607]
- [-1.66772413 -0.19735607  0.49555872]
- [ 0.79747552  0.52109155  0.81869503]
- [ 2.40652308 -0.81723092 -0.73808989]]
-C= [[-0.53146542 -0.23294283]
- [ 0.27872499 -1.06975197]
- [-1.58449528  0.29331509]
- [-0.72524096  0.95788397]]
-AT_A= [[10.19152006 -1.30460601 -1.34817239]
- [-1.30460601  0.98529607  0.88143583]
- [-1.34817239  0.88143583  1.8288667 ]]
+A= [[ 0.17963027  0.79071141  0.15464106]
+ [-0.12157945  0.72874566  2.86189785]
+ [-0.1003787  -0.52088447  1.07288321]
+ [-0.32344922 -0.7735106   0.76703831]]
+C= [[ 0.58575326  0.11883152]
+ [ 1.46093192 -0.4874261 ]
+ [-1.11408787  1.491442  ]
+ [-0.82418277  0.50714729]]
+AT_A= [[ 0.16174388  0.35591231 -0.67596233]
+ [ 0.35591231  2.02593404  1.05571162]
+ [-0.67596233  1.05571162  9.95379933]]
 rank of AT_A: 3
-[[ 1.00000000e+00  1.64072444e-17 -4.63519814e-18]
- [-2.03656433e-16  1.00000000e+00 -2.39306066e-17]
- [ 1.14619453e-16  6.69878056e-17  1.00000000e+00]]
-[[ 0.57183617 -0.24207942 -0.37043286 -0.22139696]
- [-0.24207942  0.86313079 -0.20943893 -0.12517556]
- [-0.37043286 -0.20943893  0.67951402 -0.19154516]
- [-0.22139696 -0.12517556 -0.19154516  0.88551903]]
-B= [[-0.40171443  0.4616721 ]
- [-0.80310411  0.4932292 ]
- [-0.07380744 -0.3652382 ]]
-A*B= [[ 0.37613053 -0.19496634]
- [ 0.79187039 -1.04828045]
- [-0.79927397  0.32617107]
- [-0.255937    0.97752103]]
+[[ 1.00000000e+00  3.24558841e-15  6.18161530e-15]
+ [-8.23358376e-18  1.00000000e+00 -1.26900423e-15]
+ [-1.17902988e-16  1.37688161e-16  1.00000000e+00]]
+[[ 0.33012427  0.19772354 -0.14363515 -0.40176682]
+ [ 0.19772354  0.94163903  0.042396    0.11858731]
+ [-0.14363515  0.042396    0.96920167 -0.08614708]
+ [-0.40176682  0.11858731 -0.08614708  0.75903504]]
+B= [[-4.11214585  7.01977415]
+ [ 2.21779604 -2.34960776]
+ [-0.26892799  0.78745491]]
+A*B= [[ 0.97338347 -0.4751249 ]
+ [ 1.34651724 -0.31211124]
+ [-1.03097197  1.36408551]
+ [-0.59169643  0.15091408]]
 </pre></div>
 </div>
 </div>
@@ -656,6 +666,7 @@ rank: 2
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perronfrobenius-theorem">Perron–Frobenius theorem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-dot-product">Matrix dot product</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-exponentiation">Matrix exponentiation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-matrix-inverse">Solve matrix inverse</a></li>
