@@ -649,6 +649,11 @@ title="Print to PDF"
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perronfrobenius-theorem">
+   Perron–Frobenius theorem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matrix-dot-product">
    Matrix dot product
   </a>
@@ -674,6 +679,15 @@ title="Print to PDF"
               
   <section class="tex2jax_ignore mathjax_ignore" id="linear-algebra">
 <h1>Linear Algebra<a class="headerlink" href="#linear-algebra" title="Permalink to this heading">#</a></h1>
+<section id="perronfrobenius-theorem">
+<h2>Perron–Frobenius theorem<a class="headerlink" href="#perronfrobenius-theorem" title="Permalink to this heading">#</a></h2>
+<div class="proof theorem admonition" id="perron_frobenius_theorem">
+<p class="admonition-title"><span class="caption-number">Theorem 1 </span> (Perron–Frobenius theorem)</p>
+<section class="theorem-content" id="proof-content">
+<!-- :class: dropdown -->
+<p>a real square matrix with positive entries has a unique largest real eigenvalue and that the corresponding eigenvector can be chosen to have strictly positive components, and also asserts a similar statement for certain classes of nonnegative matrices.</p>
+</section>
+</div></section>
 <section id="matrix-dot-product">
 <h2>Matrix dot product<a class="headerlink" href="#matrix-dot-product" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -791,32 +805,32 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
-A= [[ 0.89941201 -1.4702078   0.45367738]
- [-0.69002566  1.05551738  0.42235396]
- [-0.2899375   0.80970676 -1.70848919]
- [-0.66554943  0.83117547  0.90421768]]
-C= [[ 0.65688558  0.12538482]
- [-0.57521043 -0.61011514]
- [ 1.80976455  0.40600328]
- [-0.71828868  2.94003704]]
-AT_A= [[ 1.81209718 -2.83860935  0.01016134]
- [-2.83860935  4.62210563 -0.85300977]
- [ 0.01016134 -0.85300977  4.12075095]]
+A= [[ 0.43166776  0.0581599  -0.28352453]
+ [-1.1103126   0.39609683 -0.77133235]
+ [ 0.33932321 -0.40806154 -0.31301203]
+ [ 0.09002919  0.56446735  0.81392403]]
+C= [[ 1.50660669  0.60454638]
+ [ 0.55401181  1.31789622]
+ [-0.88931193 -0.90421449]
+ [-0.10227877 -0.55975846]]
+AT_A= [[ 1.54237661 -0.50233177  0.7010963 ]
+ [-0.50233177  0.64541289  0.26514966]
+ [ 0.7010963   0.26514966  1.43578861]]
 rank of AT_A: 3
-[[ 1.00000000e+00 -1.91846539e-13  5.68434189e-14]
- [ 2.41473508e-13  1.00000000e+00  0.00000000e+00]
- [ 9.49240686e-15  2.66453526e-15  1.00000000e+00]]
-[[ 0.65896721  0.03966072 -0.28152208 -0.37934387]
- [ 0.03966072  0.99538762  0.03273987  0.04411614]
- [-0.28152208  0.03273987  0.76760392 -0.31314782]
- [-0.37934387  0.04411614 -0.31314782  0.57804125]]
-B= [[  6.18403603 -32.3004668 ]
- [  3.61563508 -20.09011768]
- [ -0.16138971  -3.65100197]]
-A*B= [[ 0.17304252 -1.17115703]
- [-0.51894146 -0.45933262]
- [ 1.4103528  -0.66429018]
- [-1.2564859   1.49784376]]
+[[ 1.00000000e+00 -2.77555756e-16 -2.22044605e-16]
+ [-4.44089210e-16  1.00000000e+00 -4.44089210e-16]
+ [ 2.22044605e-16  1.11022302e-16  1.00000000e+00]]
+[[ 0.966151    0.0408036   0.15375629  0.08600764]
+ [ 0.0408036   0.9508129  -0.185347   -0.10367874]
+ [ 0.15375629 -0.185347    0.30157473 -0.39068261]
+ [ 0.08600764 -0.10367874 -0.39068261  0.78146136]]
+B= [[ 1.55194417  0.03260702]
+ [ 2.87455358  1.47881288]
+ [-1.7479023  -1.23658729]]
+A*B= [[ 1.33268117  0.45068583]
+ [ 0.76367199  1.50336889]
+ [-0.09926964 -0.20531565]
+ [ 0.33965225 -0.16881094]]
 </pre></div>
 </div>
 </div>
@@ -913,6 +927,11 @@ rank: 2
 </div>
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perronfrobenius-theorem">
+   Perron–Frobenius theorem
+  </a>
+ </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matrix-dot-product">
    Matrix dot product
