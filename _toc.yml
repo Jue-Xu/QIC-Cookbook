@@ -40,10 +40,15 @@ parts:
 
   - caption: Quantum Information and Computation
     chapters:
-    - file: qic/polynomial_method
-    - file: qic/grover
-    - file: qic/qaoa
-    - file: qic/quantum_simulation
+    - file: qic/quantum_algorithms
+      sections:
+      - file: qic/grover
+      - file: qic/qaoa
+      - file: qic/quantum_monte_carlo
+      - file: qic/quantum_simulation
+    - file: qic/quantum_complexity_class
+      sections:
+      - file: qic/polynomial_method
 
   - caption: Reference and Appendix
     chapters:

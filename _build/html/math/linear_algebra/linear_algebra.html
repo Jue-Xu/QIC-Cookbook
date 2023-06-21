@@ -213,6 +213,20 @@ const thebe_selector_output = ".output, .cell_output"
                 
 
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../qic/quantum_monte_carlo.html">
+                        Quantum Monte Carlo (QMC)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../qic/quantum_complexity_class.html">
+                        Quantum Complexity Class
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../appendix/ref.html">
                         Reference
                       </a>
@@ -367,6 +381,20 @@ const thebe_selector_output = ".output, .cell_output"
                 
 
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../qic/quantum_monte_carlo.html">
+                        Quantum Monte Carlo (QMC)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../qic/quantum_complexity_class.html">
+                        Quantum Complexity Class
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../appendix/ref.html">
                         Reference
                       </a>
@@ -481,6 +509,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../qic/grover.html">Grover algorithm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../qic/qaoa.html">Quantum Approximate Optimization Algorithm (QAOA)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../qic/quantum_simulation.html">Quantum Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qic/quantum_monte_carlo.html">Quantum Monte Carlo (QMC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qic/quantum_complexity_class.html">Quantum Complexity Class</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference and Appendix</span></p>
 <ul class="nav bd-sidenav">
@@ -712,7 +742,9 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.        -0.5j        0.70710678+0.5j       ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+[[0.        -0.5j        0.70710678+0.5j       ]
  [0.5       +0.70710678j 0.5       +0.j        ]]
 [[-0.5       +0.j   0.70710678-0.5j]
  [ 0.70710678+0.5j  0.5       +0.j ]]
@@ -805,32 +837,33 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
-A= [[ 0.43166776  0.0581599  -0.28352453]
- [-1.1103126   0.39609683 -0.77133235]
- [ 0.33932321 -0.40806154 -0.31301203]
- [ 0.09002919  0.56446735  0.81392403]]
-C= [[ 1.50660669  0.60454638]
- [ 0.55401181  1.31789622]
- [-0.88931193 -0.90421449]
- [-0.10227877 -0.55975846]]
-AT_A= [[ 1.54237661 -0.50233177  0.7010963 ]
- [-0.50233177  0.64541289  0.26514966]
- [ 0.7010963   0.26514966  1.43578861]]
+A= [[-0.68129692 -0.99922093 -0.47646494]
+ [-0.55903663 -0.6383643   0.62250578]
+ [-2.12013997  1.90664474 -0.34581816]
+ [-0.62224987 -1.06248357  1.03824521]]
+C= [[ 1.56645531 -0.34909474]
+ [ 0.27111445 -0.22094755]
+ [-1.41784026 -0.06245292]
+ [-1.52926092  1.37821331]]
+AT_A= [[ 5.65887584 -2.34358829  0.06374552]
+ [-2.34358829  6.17011696 -1.68376257]
+ [ 0.06374552 -1.68376257  1.81207561]]
 rank of AT_A: 3
-[[ 1.00000000e+00 -2.77555756e-16 -2.22044605e-16]
- [-4.44089210e-16  1.00000000e+00 -4.44089210e-16]
- [ 2.22044605e-16  1.11022302e-16  1.00000000e+00]]
-[[ 0.966151    0.0408036   0.15375629  0.08600764]
- [ 0.0408036   0.9508129  -0.185347   -0.10367874]
- [ 0.15375629 -0.185347    0.30157473 -0.39068261]
- [ 0.08600764 -0.10367874 -0.39068261  0.78146136]]
-B= [[ 1.55194417  0.03260702]
- [ 2.87455358  1.47881288]
- [-1.7479023  -1.23658729]]
-A*B= [[ 1.33268117  0.45068583]
- [ 0.76367199  1.50336889]
- [-0.09926964 -0.20531565]
- [ 0.33965225 -0.16881094]]
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+[[ 1.00000000e+00  5.55111512e-17 -2.77555756e-17]
+ [-6.93889390e-18  1.00000000e+00 -1.11022302e-16]
+ [ 8.32667268e-17  0.00000000e+00  1.00000000e+00]]
+[[ 0.99756841  0.04134304 -0.00229303 -0.0266679 ]
+ [ 0.04134304  0.29706745  0.03898705  0.45341939]
+ [-0.00229303  0.03898705  0.99783764 -0.02514819]
+ [-0.0266679   0.45341939 -0.02514819  0.7075265 ]]
+B= [[ 0.13896792 -0.06093156]
+ [-0.88062077  0.03119981]
+ [-1.74752009  0.84860045]]
+A*B= [[ 1.61788835 -0.39399138]
+ [-0.60337265  0.54240482]
+ [-1.36933821 -0.10479105]
+ [-0.96518203  0.88582073]]
 </pre></div>
 </div>
 </div>
@@ -849,14 +882,15 @@ A*B= [[ 1.33268117  0.45068583]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[10. 17. 12.]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+[[10. 17. 12.]
  [17. 29. 21.]
  [12. 21. 18.]]
--3.197442310920468e-14
+-2.498001805406606e-14
 rank: 2
-[[-2.53327479e+15  1.68884986e+15 -2.81474977e+14]
- [ 1.68884986e+15 -1.12589991e+15  1.87649984e+14]
- [-2.81474977e+14  1.87649984e+14 -3.12749974e+13]]
+[[-3.24259173e+15  2.16172782e+15 -3.60287970e+14]
+ [ 2.16172782e+15 -1.44115188e+15  2.40191980e+14]
+ [-3.60287970e+14  2.40191980e+14 -4.00319967e+13]]
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False

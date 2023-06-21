@@ -213,6 +213,20 @@ const thebe_selector_output = ".output, .cell_output"
                 
 
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../qic/quantum_monte_carlo.html">
+                        Quantum Monte Carlo (QMC)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../qic/quantum_complexity_class.html">
+                        Quantum Complexity Class
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../appendix/ref.html">
                         Reference
                       </a>
@@ -367,6 +381,20 @@ const thebe_selector_output = ".output, .cell_output"
                 
 
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../qic/quantum_monte_carlo.html">
+                        Quantum Monte Carlo (QMC)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../qic/quantum_complexity_class.html">
+                        Quantum Complexity Class
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../appendix/ref.html">
                         Reference
                       </a>
@@ -481,6 +509,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../qic/grover.html">Grover algorithm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../qic/qaoa.html">Quantum Approximate Optimization Algorithm (QAOA)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../qic/quantum_simulation.html">Quantum Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../qic/quantum_monte_carlo.html">Quantum Monte Carlo (QMC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../qic/quantum_complexity_class.html">Quantum Complexity Class</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference and Appendix</span></p>
 <ul class="nav bd-sidenav">
@@ -688,26 +718,30 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.006935205058984738
-0.0037618508103285575
-0.012561549457854638
-0.01495956755740259
-0.022012821251642067
-0.022087240948042763
-0.021698941120706756
-0.022294700116438255
-0.03318956930791305
-0.027624511917592562
-0.02041500492643562
-0.0136273094687713
-0.01709030690615418
-0.010784601519835776
--7.829862483563557e-05
-0.002303459824700991
-0.006806289782380161
-0.016698843282472002
-0.010760630536358624
--0.002163212181954862
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.005939390316157391
+-0.005188557263071257
+-0.011653593088086691
+-0.026205008963296604
+-0.02874023800759825
+-0.03209791330542013
+-0.029573221637183126
+-0.029717094908688332
+-0.032282252517172406
+-0.03459822990092224
+-0.04505656612274281
+-0.04869278276845432
+-0.051066905278388794
+-0.0499828563249072
+-0.05097948170412543
+-0.05590874622016215
+-0.05880511450367746
+-0.05895004529969195
+-0.06610536684980943
+-0.07152261683249679
 </pre></div>
 </div>
 </div>
@@ -726,7 +760,7 @@ title="Print to PDF"
 
 
 <span class="k">def</span> <span class="nf">brownian</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate an instance of Brownian motion (i.e. the Wiener process):</span>
 
 <span class="sd">        X(t) = X(0) + N(0, delta**2 * t; 0, t)</span>
@@ -834,7 +868,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/311bb4d2999cc44ab031e182c60678e57f710f4cd98e5dad7e640653a07c9310.png" src="../_images/311bb4d2999cc44ab031e182c60678e57f710f4cd98e5dad7e640653a07c9310.png" />
+<img alt="../_images/dd4796caee4cbc91fb41c2b897a7f1728fa4a41756d235b4c891791e74d8dc8f.png" src="../_images/dd4796caee4cbc91fb41c2b897a7f1728fa4a41756d235b4c891791e74d8dc8f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -876,7 +910,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/01de68ed2f656ec77f919ef7161aacad54ce06616dc222b0a9b3e5e48c60ff73.png" src="../_images/01de68ed2f656ec77f919ef7161aacad54ce06616dc222b0a9b3e5e48c60ff73.png" />
+<img alt="../_images/7c0b691ea13f6b3a3efbb65bd94a93f0752cb2a32ec898ab8dae96d089910fdb.png" src="../_images/7c0b691ea13f6b3a3efbb65bd94a93f0752cb2a32ec898ab8dae96d089910fdb.png" />
 </div>
 </div>
 </section>
