@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'physics/brownian_motion';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Polynomial Method" href="../qic/polynomial_method.html" />
+    <link rel="next" title="Quantum Algorithms" href="../qic/quantum_algorithms.html" />
     <link rel="prev" title="Algorithms" href="../cs/algorithms/algorithms.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -191,10 +191,17 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum Information and Computation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../qic/polynomial_method.html">Polynomial Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../qic/grover.html">Grover algorithm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../qic/qaoa.html">Quantum Approximate Optimization Algorithm (QAOA)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../qic/quantum_simulation.html">Quantum Simulation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../qic/quantum_algorithms.html">Quantum Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../qic/grover.html">Grover algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qic/qaoa.html">Quantum Approximate Optimization Algorithm (QAOA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qic/quantum_monte_carlo.html">Quantum Monte Carlo (QMC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qic/quantum_simulation.html">Quantum Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../qic/quantum_complexity_class.html">Quantum Complexity Class</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../qic/polynomial_method.html">Polynomial Method</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference and Appendix</span></p>
 <ul class="nav bd-sidenav">
@@ -430,26 +437,26 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.004270029051872294
-0.0025329809531158135
-0.005387811129065358
--0.001483395218683378
--0.01039328618116456
--0.012944579985153542
--0.01630523586399696
--0.019072815898684026
--0.01981138111345589
--0.021554777772920985
--0.01785339171833769
--0.020723686287076843
--0.021313396263394825
--0.021752641902103912
--0.018284758393482183
--0.006740224681057606
--0.013494991855520989
--0.02331259897416093
--0.02076810305518053
--0.02327050118997504
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.004091738569028288
+-0.007120805115349039
+-0.011413192924095372
+-0.019259279386729458
+-0.027188257594651356
+-0.030735770190525098
+-0.02932982056573735
+-0.03399097341414911
+-0.02993953183871912
+-0.029014102453332007
+-0.0339295492152264
+-0.02891640032457813
+-0.02785519724564004
+-0.02722987174849456
+-0.02289747948723094
+-0.02633541544615076
+-0.01373858549743214
+-0.011742637825565295
+-0.015252138098438088
+-0.011855772364278065
 </pre></div>
 </div>
 </div>
@@ -576,7 +583,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8841437b618d719e36e85ce9b832e6a1c9e0f21e279e49fced9c136e017eea21.png" src="../_images/8841437b618d719e36e85ce9b832e6a1c9e0f21e279e49fced9c136e017eea21.png" />
+<img alt="../_images/ff6f11309d8ed69826d67f80d7ed61b784e1bb893bf4455d1d9770c2b51faf6a.png" src="../_images/ff6f11309d8ed69826d67f80d7ed61b784e1bb893bf4455d1d9770c2b51faf6a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -618,7 +625,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7e973bbb776e018882033cf8a7175632f7e8b4da1f3d6d1cb4c52ea620852cbb.png" src="../_images/7e973bbb776e018882033cf8a7175632f7e8b4da1f3d6d1cb4c52ea620852cbb.png" />
+<img alt="../_images/a2f0c7754fd2edde092abcc1867199ca5630654bd824bfa2e8769b8bbf6fe2f9.png" src="../_images/a2f0c7754fd2edde092abcc1867199ca5630654bd824bfa2e8769b8bbf6fe2f9.png" />
 </div>
 </div>
 </section>
@@ -665,11 +672,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../qic/polynomial_method.html"
+       href="../qic/quantum_algorithms.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Polynomial Method</p>
+        <p class="prev-next-title">Quantum Algorithms</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

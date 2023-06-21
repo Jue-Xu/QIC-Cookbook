@@ -191,10 +191,17 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum Information and Computation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../qic/polynomial_method.html">Polynomial Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../qic/grover.html">Grover algorithm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../qic/qaoa.html">Quantum Approximate Optimization Algorithm (QAOA)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../qic/quantum_simulation.html">Quantum Simulation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../qic/quantum_algorithms.html">Quantum Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../qic/grover.html">Grover algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../qic/qaoa.html">Quantum Approximate Optimization Algorithm (QAOA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../qic/quantum_monte_carlo.html">Quantum Monte Carlo (QMC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../qic/quantum_simulation.html">Quantum Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../qic/quantum_complexity_class.html">Quantum Complexity Class</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../qic/polynomial_method.html">Polynomial Method</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference and Appendix</span></p>
 <ul class="nav bd-sidenav">
@@ -535,32 +542,32 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
-A= [[ 0.17963027  0.79071141  0.15464106]
- [-0.12157945  0.72874566  2.86189785]
- [-0.1003787  -0.52088447  1.07288321]
- [-0.32344922 -0.7735106   0.76703831]]
-C= [[ 0.58575326  0.11883152]
- [ 1.46093192 -0.4874261 ]
- [-1.11408787  1.491442  ]
- [-0.82418277  0.50714729]]
-AT_A= [[ 0.16174388  0.35591231 -0.67596233]
- [ 0.35591231  2.02593404  1.05571162]
- [-0.67596233  1.05571162  9.95379933]]
+A= [[-0.28621373 -0.95191772 -0.54569412]
+ [-0.29127259 -0.2500307  -0.60239817]
+ [ 0.12181885  1.5862513  -1.5888499 ]
+ [-1.23128131  0.08962485 -0.67344624]]
+C= [[-0.12853862  0.67586134]
+ [-0.11264507 -0.26474948]
+ [-1.18279004  1.66085257]
+ [-0.63771504 -0.43719908]]
+AT_A= [[ 1.69765152  0.42816093  0.96729712]
+ [ 0.42816093  3.49288848 -1.91059879]
+ [ 0.96729712 -1.91059879  3.63863946]]
 rank of AT_A: 3
-[[ 1.00000000e+00  3.24558841e-15  6.18161530e-15]
- [-8.23358376e-18  1.00000000e+00 -1.26900423e-15]
- [-1.17902988e-16  1.37688161e-16  1.00000000e+00]]
-[[ 0.33012427  0.19772354 -0.14363515 -0.40176682]
- [ 0.19772354  0.94163903  0.042396    0.11858731]
- [-0.14363515  0.042396    0.96920167 -0.08614708]
- [-0.40176682  0.11858731 -0.08614708  0.75903504]]
-B= [[-4.11214585  7.01977415]
- [ 2.21779604 -2.34960776]
- [-0.26892799  0.78745491]]
-A*B= [[ 0.97338347 -0.4751249 ]
- [ 1.34651724 -0.31211124]
- [-1.03097197  1.36408551]
- [-0.59169643  0.15091408]]
+[[ 1.00000000e+00  3.09644382e-17  1.05920449e-18]
+ [-9.89015328e-18  1.00000000e+00  1.56065498e-16]
+ [ 3.02452869e-17  1.78447647e-16  1.00000000e+00]]
+[[ 0.79462486  0.39644913 -0.05783211 -0.05176609]
+ [ 0.39644913  0.2347082   0.11163712  0.09992749]
+ [-0.05783211  0.11163712  0.98371491 -0.01457695]
+ [-0.05176609  0.09992749 -0.01457695  0.98695203]]
+B= [[ 0.22741146  0.96326568]
+ [-0.28556444 -0.090152  ]
+ [ 0.46203233 -1.00525287]]
+A*B= [[-0.04538276  0.358678  ]
+ [-0.27316628  0.34753036]
+ [-1.15937397  1.5715361 ]
+ [-0.61675509 -0.51714713]]
 </pre></div>
 </div>
 </div>
