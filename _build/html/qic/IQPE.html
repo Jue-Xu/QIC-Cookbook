@@ -1,0 +1,1220 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Iterative Quantum Phase Estimation Algorithm &#8212; Recipe of Quantum Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'qic/IQPE';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Quantum Information and Computation Cookbook: Recipes for Novice
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preface/README.html">About Jupyter-Book</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preface/Cookiecutter.html">Cookiecutter Jupyter Book</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preface/CONDUCT.html">Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preface/CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preface/samples/markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preface/samples/markdown.html">Markdown Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preface/samples/notebooks.html">Content with notebooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../preface/samples/matplotlib_samples.html">Matplotlib Samples</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/linear_algebra/linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra/complex_matrix_multiplication.html">Complex matrix multiplication</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/linear_algebra/decompositions.html">Decomposition</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra/decompositions/cholesky_decomposition.html">Cholesky decomposition</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../cs/algorithms/algorithms.html">Algorithms</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Physics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../physics/brownian_motion.html">Brownian motion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum Information and Computation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="quantum_algorithms.html">Quantum Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="grover.html">Grover algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qaoa.html">Quantum Approximate Optimization Algorithm (QAOA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantum_monte_carlo.html">Quantum Monte Carlo (QMC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantum_simulation.html">Quantum Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="quantum_complexity_class.html">Quantum Complexity Class</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="polynomial_method.html">Polynomial Method</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference and Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendix/ref.html">Reference</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fqic/IQPE.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/qic/IQPE.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Iterative Quantum Phase Estimation Algorithm</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditioned-gates-the-c-if-method">Conditioned gates: the c_if method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ipe">IPE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipe-example-with-a-1-qubit-gate-for-u">IPE example with a 1-qubit gate for <span class="math notranslate nohighlight">\(U\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#first-step">First step</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#initialization">Initialization</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#application-of-the-controlled-u-gates">Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-in-x-basis">Measure in x-basis</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsequent-steps-2nd-step">Subsequent steps (2nd step)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#initialization-with-reset">Initialization with reset</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-correction-for-step-2">Phase correction (for step 2)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#application-of-the-controlled-u-gates-and-x-measurement-for-step-2">Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates and x-measurement (for step 2)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ipe-example-with-a-2-qubit-gate">IPE example with a 2-qubit gate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">First step</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Initialization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Measure in x-basis</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsequent-steps-2nd-3rd">Subsequent steps (2nd, 3rd)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Initialization with reset</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Phase correction (for step 2)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates and x-measurement (for step 2)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#all-substeps-of-the-3rd-step">All substeps of the 3rd step</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="iterative-quantum-phase-estimation-algorithm">
+<h1>Iterative Quantum Phase Estimation Algorithm<a class="headerlink" href="#iterative-quantum-phase-estimation-algorithm" title="Permalink to this heading">#</a></h1>
+<p>The goal of this tutorial is to understand how the Iterative Phase Estimation (IPE) algorithm works, why would we use the IPE algorithm instead of the QPE (Quantum Phase Estimation) algorithm and how to build it with Qiskit using the same circuit exploiting reset gate and the <code class="docutils literal notranslate"><span class="pre">c_if</span></code> method that allows to apply gates conditioned by the values stored in a classical register, resulting from previous measurements.</p>
+<p><strong>References</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://qiskit.org/textbook/ch-labs/Lab04_IterativePhaseEstimation.html#2-iterative-phase-estimation-ipe-algorithm">Section 2 of Lab 4: Iterative Phase Estimation (IPE) Algorithm</a></p></li>
+<li><p><a class="reference external" href="https://qiskit.org/textbook/ch-algorithms/quantum-phase-estimation.html">Ch.3.6 Quantum Phase Estimation</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">ClassicalRegister</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">execute</span><span class="p">,</span> <span class="n">assemble</span><span class="p">,</span> <span class="n">Aer</span>
+<span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="conditioned-gates-the-c-if-method">
+<h2>Conditioned gates: the c_if method<a class="headerlink" href="#conditioned-gates-the-c-if-method" title="Permalink to this heading">#</a></h2>
+<p>Before starting the IPE algorithm, we will give a brief tutorial about the Qiskit conditional method, c_if, as it goes into building the IPE circuit.</p>
+<p><code class="docutils literal notranslate"><span class="pre">c_if</span></code> is a function (actually a method of the gate class) to perform conditioned operations based on the value stored previously in a classical register. With this feature you can apply gates after a measurement in the same circuit conditioned by the measurement outcome.</p>
+<p>For example, the following code will execute the <span class="math notranslate nohighlight">\(X\)</span> gate if the value of the classical register is <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">c_if</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">MissingOptionalLibraryError</span><span class="g g-Whitespace">               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">c_if</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py:1922,</span> in <span class="ni">QuantumCircuit.draw</span><span class="nt">(self, output, scale, filename, style, interactive, plot_barriers, reverse_bits, justify, vertical_compression, idle_wires, with_layout, fold, ax, initial_state, cregbundle, wire_order)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1919</span> <span class="c1"># pylint: disable=cyclic-import</span>
+<span class="g g-Whitespace">   </span><span class="mi">1920</span> <span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">circuit_drawer</span>
+<span class="ne">-&gt; </span><span class="mi">1922</span> <span class="k">return</span> <span class="n">circuit_drawer</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1923</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1924</span>     <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1925</span>     <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1926</span>     <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1927</span>     <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1928</span>     <span class="n">interactive</span><span class="o">=</span><span class="n">interactive</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1929</span>     <span class="n">plot_barriers</span><span class="o">=</span><span class="n">plot_barriers</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1930</span>     <span class="n">reverse_bits</span><span class="o">=</span><span class="n">reverse_bits</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1931</span>     <span class="n">justify</span><span class="o">=</span><span class="n">justify</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1932</span>     <span class="n">vertical_compression</span><span class="o">=</span><span class="n">vertical_compression</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1933</span>     <span class="n">idle_wires</span><span class="o">=</span><span class="n">idle_wires</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1934</span>     <span class="n">with_layout</span><span class="o">=</span><span class="n">with_layout</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1935</span>     <span class="n">fold</span><span class="o">=</span><span class="n">fold</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1936</span>     <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1937</span>     <span class="n">initial_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1938</span>     <span class="n">cregbundle</span><span class="o">=</span><span class="n">cregbundle</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1939</span>     <span class="n">wire_order</span><span class="o">=</span><span class="n">wire_order</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1940</span> <span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py:274,</span> in <span class="ni">circuit_drawer</span><span class="nt">(circuit, scale, filename, style, output, interactive, plot_barriers, reverse_bits, justify, vertical_compression, idle_wires, with_layout, fold, ax, initial_state, cregbundle, wire_order)</span>
+<span class="g g-Whitespace">    </span><span class="mi">259</span>     <span class="k">return</span> <span class="n">_generate_latex_source</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">260</span>         <span class="n">circuit</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">261</span>         <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">271</span>         <span class="n">wire_order</span><span class="o">=</span><span class="n">wire_order</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">272</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">273</span> <span class="k">elif</span> <span class="n">output</span> <span class="o">==</span> <span class="s2">&quot;mpl&quot;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">274</span>     <span class="n">image</span> <span class="o">=</span> <span class="n">_matplotlib_circuit_drawer</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">275</span>         <span class="n">circuit</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">276</span>         <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">277</span>         <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">278</span>         <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">279</span>         <span class="n">plot_barriers</span><span class="o">=</span><span class="n">plot_barriers</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">280</span>         <span class="n">reverse_bits</span><span class="o">=</span><span class="n">reverse_bits</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">281</span>         <span class="n">justify</span><span class="o">=</span><span class="n">justify</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span>         <span class="n">idle_wires</span><span class="o">=</span><span class="n">idle_wires</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span>         <span class="n">with_layout</span><span class="o">=</span><span class="n">with_layout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span>         <span class="n">fold</span><span class="o">=</span><span class="n">fold</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">285</span>         <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">286</span>         <span class="n">initial_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">287</span>         <span class="n">cregbundle</span><span class="o">=</span><span class="n">cregbundle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">288</span>         <span class="n">wire_order</span><span class="o">=</span><span class="n">wire_order</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">289</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">290</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">291</span>     <span class="k">raise</span> <span class="n">VisualizationError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">292</span>         <span class="s2">&quot;Invalid output type </span><span class="si">%s</span><span class="s2"> selected. The only valid choices &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">293</span>         <span class="s2">&quot;are text, latex, latex_source, and mpl&quot;</span> <span class="o">%</span> <span class="n">output</span>
+<span class="g g-Whitespace">    </span><span class="mi">294</span>     <span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py:644,</span> in <span class="ni">_matplotlib_circuit_drawer</span><span class="nt">(circuit, scale, filename, style, plot_barriers, reverse_bits, justify, idle_wires, with_layout, fold, ax, initial_state, cregbundle, wire_order)</span>
+<span class="g g-Whitespace">    </span><span class="mi">641</span> <span class="k">if</span> <span class="n">fold</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">642</span>     <span class="n">fold</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="ne">--&gt; </span><span class="mi">644</span> <span class="n">qcd</span> <span class="o">=</span> <span class="n">_matplotlib</span><span class="o">.</span><span class="n">MatplotlibDrawer</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">645</span>     <span class="n">qubits</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">646</span>     <span class="n">clbits</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">647</span>     <span class="n">nodes</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">648</span>     <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">649</span>     <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">650</span>     <span class="n">reverse_bits</span><span class="o">=</span><span class="n">reverse_bits</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">651</span>     <span class="n">plot_barriers</span><span class="o">=</span><span class="n">plot_barriers</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">652</span>     <span class="n">layout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">653</span>     <span class="n">fold</span><span class="o">=</span><span class="n">fold</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">654</span>     <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">655</span>     <span class="n">initial_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">656</span>     <span class="n">cregbundle</span><span class="o">=</span><span class="n">cregbundle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">657</span>     <span class="n">global_phase</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">658</span>     <span class="n">calibrations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">659</span>     <span class="n">qregs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">660</span>     <span class="n">cregs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">661</span>     <span class="n">with_layout</span><span class="o">=</span><span class="n">with_layout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">662</span>     <span class="n">circuit</span><span class="o">=</span><span class="n">circuit</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">663</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">664</span> <span class="k">return</span> <span class="n">qcd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/qiskit/utils/classtools.py:111,</span> in <span class="ni">_WrappedMethod.__get__.&lt;locals&gt;.out</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">109</span> <span class="k">def</span> <span class="nf">out</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span>     <span class="k">for</span> <span class="n">callback</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_before</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">111</span>         <span class="n">callback</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">objtype</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span>     <span class="n">retval</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">113</span>     <span class="k">for</span> <span class="n">callback</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_after</span><span class="p">:</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py:39,</span> in <span class="ni">_RequireNow.__call__</span><span class="nt">(self, *_args, **_kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">_args</span><span class="p">,</span> <span class="o">**</span><span class="n">_kwargs</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">39</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_tester</span><span class="o">.</span><span class="n">require_now</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_feature</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniforge/base/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py:223,</span> in <span class="ni">LazyDependencyManager.require_now</span><span class="nt">(self, feature)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span> <span class="k">if</span> <span class="bp">self</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>     <span class="k">return</span>
+<span class="ne">--&gt; </span><span class="mi">223</span> <span class="k">raise</span> <span class="n">MissingOptionalLibraryError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="n">libname</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">pip_install</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_install</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span> <span class="p">)</span>
+
+<span class="ne">MissingOptionalLibraryError</span>: &quot;The &#39;pylatexenc&#39; library is required to use &#39;MatplotlibDrawer&#39;. You can install it with &#39;pip install pylatexenc&#39;.&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We highlight that the method c_if expects as the first argument a whole classical register, not a single classical bit (or a list of classical bits), and as the second argument a value in decimal representation (a non-negative integer), not the value of a single bit, 0, or 1 (or a list/string of binary digits).</p>
+<p>Let’s make another example. Consider that we want to perform a bit flip on the third qubit after the measurements in the following circuit, when the results of the measurement of <span class="math notranslate nohighlight">\(q_0\)</span> and <span class="math notranslate nohighlight">\(q_1\)</span> are both <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1cebc432e4857688efafb22479574fc7c632669e8e76bd658cb1ea0fe15dda8e.png" src="../_images/1cebc432e4857688efafb22479574fc7c632669e8e76bd658cb1ea0fe15dda8e.png" />
+</div>
+</div>
+<p>We want to apply the <span class="math notranslate nohighlight">\(X\)</span> gate, only if both the results of the measurement of <span class="math notranslate nohighlight">\(q_0\)</span> and <span class="math notranslate nohighlight">\(q_1\)</span> are <span class="math notranslate nohighlight">\(1\)</span>. We can do this using the c_if method, conditioning the application of <span class="math notranslate nohighlight">\(X\)</span> depending on the value passed as argument to c_if.</p>
+<p>We will have to encode the value to pass to the c_if method such that it will check the values 011 and 111 (in binary representation), since it does not matter what <span class="math notranslate nohighlight">\(q_2\)</span> is measured as.</p>
+<p>The 2 integer values in decimal representation:</p>
+<img src="../../images/binary.png" width="50%" >
+<p>We can check the solutions using the bin() method in python (the prefix <code class="docutils literal notranslate"><span class="pre">0b</span></code> indicates the binary format).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0b11
+0b111
+</pre></div>
+</div>
+</div>
+</div>
+<p>So we have to apply <span class="math notranslate nohighlight">\(X\)</span> to <span class="math notranslate nohighlight">\(q_2\)</span> using c_if  two times, one for each value corresponding to 011 and 111.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">c_if</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># for the 011 case</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">c_if</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="c1"># for the 111 case</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02c617cf15fee29d1d27a83f05234e8eebf8c7b988df7f949ff737da40f7a17e.png" src="../_images/02c617cf15fee29d1d27a83f05234e8eebf8c7b988df7f949ff737da40f7a17e.png" />
+</div>
+</div>
+</section>
+<section id="ipe">
+<h2>IPE<a class="headerlink" href="#ipe" title="Permalink to this heading">#</a></h2>
+<p>The motivation for using the IPE algorithm is that QPE algorithm works fine for short depth circuits but when the circuit starts to grow, it doesn’t work properly due to gate noise and decoherence times.</p>
+<p>The detailed explanation of how the algorithm works can be found in <a class="reference external" href="https://qiskit.org/textbook/ch-labs/Lab04_IterativePhaseEstimation.html#2-iterative-phase-estimation-ipe-algorithm">Iterative Phase Estimation (IPE) Algorithm</a>. To understand QPE in depth, you can see also <a class="reference external" href="https://qiskit.org/textbook/ch-algorithms/quantum-phase-estimation.html">Ch.3.6 Quantum Phase Estimation</a>.</p>
+<section id="ipe-example-with-a-1-qubit-gate-for-u">
+<h3>IPE example with a 1-qubit gate for <span class="math notranslate nohighlight">\(U\)</span><a class="headerlink" href="#ipe-example-with-a-1-qubit-gate-for-u" title="Permalink to this heading">#</a></h3>
+<p>We want to apply the IPE algorithm to estimate the phase for a 1-qubit operator <span class="math notranslate nohighlight">\(U\)</span>.  For example, here we use the <span class="math notranslate nohighlight">\(S\)</span>-gate.</p>
+<p>Let’s apply the IPE algorithm to estimate the phase for <span class="math notranslate nohighlight">\(S\)</span>-gate.
+Its matrix is
+$<span class="math notranslate nohighlight">\( S = 
+\begin{bmatrix}
+1 &amp; 0\\
+0 &amp; e^\frac{i\pi}{2}\\ 
+\end{bmatrix}\)</span>$</p>
+<p>That is, the <span class="math notranslate nohighlight">\(S\)</span>-gate adds a phase <span class="math notranslate nohighlight">\(\pi/2\)</span> to the state <span class="math notranslate nohighlight">\(|1\rangle\)</span>, leaving unchanged the phase of the state <span class="math notranslate nohighlight">\(|0\rangle\)</span></p>
+<div class="math notranslate nohighlight">
+\[ S|1\rangle = e^\frac{i\pi}{2}|1\rangle \]</div>
+<p>In the following, we will use the notation and terms used in <a class="reference external" href="https://qiskit.org/textbook/ch-labs/Lab04_IterativePhaseEstimation.html#2-iterative-phase-estimation-ipe-algorithm">Section 2 of lab 4</a>.</p>
+<p>Let’s consider to estimate the phase <span class="math notranslate nohighlight">\(\phi=\frac{\pi}{2}\)</span> for the eigenstate <span class="math notranslate nohighlight">\(|1\rangle\)</span>, we should find <span class="math notranslate nohighlight">\(\varphi=\frac{1}{4}\)</span> (where <span class="math notranslate nohighlight">\(\phi = 2 \pi \varphi\)</span>). Therefore to estimate the phase we need exactly 2 phase bits, i.e. <span class="math notranslate nohighlight">\(m=2\)</span>, since <span class="math notranslate nohighlight">\(1/2^2=1/4\)</span>. So <span class="math notranslate nohighlight">\(\varphi=0.\varphi_1\varphi_2\)</span>.</p>
+<p>Remember from the theory that for the IPE algorithm, <span class="math notranslate nohighlight">\(m\)</span> is also the number of iterations, so we need only <span class="math notranslate nohighlight">\(2\)</span> iterations or steps.</p>
+<p>First, we initialize the circuit. IPE works with only 1 auxiliary qubit, instead of <span class="math notranslate nohighlight">\(m\)</span> counting qubits of the QPE algorithm. Therefore, we need 2 qubits, 1 auxiliary qubit and 1 for the eigenstate of <span class="math notranslate nohighlight">\(U\)</span>-gate, and a classical register of 2 bits, for the phase bits <span class="math notranslate nohighlight">\(\varphi_1\)</span>, <span class="math notranslate nohighlight">\(\varphi_2\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nq</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">nq</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+
+<span class="n">qc_S</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="first-step">
+<h4>First step<a class="headerlink" href="#first-step" title="Permalink to this heading">#</a></h4>
+<p>Now we build the quantum circuit for the first step, that is, the first iteration of the algorithm, to estimate the least significant phase bit <span class="math notranslate nohighlight">\(\varphi_m\)</span>, in this case <span class="math notranslate nohighlight">\(\varphi_2\)</span>. For the first step we have 3 sub-steps:</p>
+<ul class="simple">
+<li><p>initialization</p></li>
+<li><p>application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates</p></li>
+<li><p>measure of the auxiliary qubit in x-basis</p></li>
+</ul>
+<section id="initialization">
+<h5>Initialization<a class="headerlink" href="#initialization" title="Permalink to this heading">#</a></h5>
+<p>The initialization consists of application the Hadamard gate to the auxiliary qubit and the preparation of the eigenstate <span class="math notranslate nohighlight">\(|1\rangle\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qc_S</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc_S</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc_S</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/72ada89bd2cca353d8b020e5df61c9f8c2e64efb859513e6e16e0b36c23e9683.png" src="../_images/72ada89bd2cca353d8b020e5df61c9f8c2e64efb859513e6e16e0b36c23e9683.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="application-of-the-controlled-u-gates">
+<h4>Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates<a class="headerlink" href="#application-of-the-controlled-u-gates" title="Permalink to this heading">#</a></h4>
+<p>Then we have to apply <span class="math notranslate nohighlight">\(2^t\)</span> times the Controlled-<span class="math notranslate nohighlight">\(U\)</span> operators (see also in the docs <a class="reference external" href="https://qiskit.org/documentation/tutorials/circuits/3_summary_of_quantum_operations.html#Two-qubit-gates">Two qubit gates</a>), that, in this example, is the Controlled-<span class="math notranslate nohighlight">\(S\)</span> gate (<span class="math notranslate nohighlight">\(CS\)</span> for short).</p>
+<p>To implement <span class="math notranslate nohighlight">\(CS\)</span> in the circuit, since <span class="math notranslate nohighlight">\(S\)</span> is a phase gate, we can use the controlled phase gate <span class="math notranslate nohighlight">\(\text{CP}(\theta)\)</span>, with <span class="math notranslate nohighlight">\(\theta=\pi/2\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cu_circ</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">cu_circ</span><span class="o">.</span><span class="n">cp</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cu_circ</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a57d99d3b521dc87d3a8ff0964e2cf33c4a43731b2598055075fbb2a76e60ff7.png" src="../_images/a57d99d3b521dc87d3a8ff0964e2cf33c4a43731b2598055075fbb2a76e60ff7.png" />
+</div>
+</div>
+<p>Let’s apply <span class="math notranslate nohighlight">\(2^t\)</span> times <span class="math notranslate nohighlight">\(\text{CP}(\pi/2)\)</span>. Since for the first step <span class="math notranslate nohighlight">\(t=m-1\)</span>, and <span class="math notranslate nohighlight">\(m=2\)</span>, we have <span class="math notranslate nohighlight">\(2^t=2\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="p">)):</span>
+    <span class="n">qc_S</span><span class="o">.</span><span class="n">cp</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc_S</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/066c45ea4ebc4af549d533e1e70ac9d75de2c954d0d64ffae6c1ac60abc32fc8.png" src="../_images/066c45ea4ebc4af549d533e1e70ac9d75de2c954d0d64ffae6c1ac60abc32fc8.png" />
+</div>
+</div>
+</section>
+<section id="measure-in-x-basis">
+<h4>Measure in x-basis<a class="headerlink" href="#measure-in-x-basis" title="Permalink to this heading">#</a></h4>
+<p>Finally, we perform the measurement of the auxiliary qubit in x-basis. So we will define a function to perform the x_measure and then apply it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">x_measurement</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">qubit</span><span class="p">,</span> <span class="n">cbit</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Measure &#39;qubit&#39; in the X-basis, and store the result in &#39;cbit&#39;&quot;&quot;&quot;</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qubit</span><span class="p">)</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qubit</span><span class="p">,</span> <span class="n">cbit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this way we obtain the phase bit <span class="math notranslate nohighlight">\(\varphi_2\)</span> and store it in the classical bit <span class="math notranslate nohighlight">\(c_0\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_measurement</span><span class="p">(</span><span class="n">qc_S</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">qc_S</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/33de941c1fca7608ea26de00cc2145d361dcf6366bd205ea00d86c3ce63ccf30.png" src="../_images/33de941c1fca7608ea26de00cc2145d361dcf6366bd205ea00d86c3ce63ccf30.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="subsequent-steps-2nd-step">
+<h3>Subsequent steps (2nd step)<a class="headerlink" href="#subsequent-steps-2nd-step" title="Permalink to this heading">#</a></h3>
+<p>Now we build the quantum circuit for the other remaining steps, in this example, only the second one.
+In these steps we have 4 sub-steps: the 3 sub-steps as in the first step and, in the middle, the additional step of the phase correction</p>
+<ul class="simple">
+<li><p>initialization with reset</p></li>
+<li><p>phase correction</p></li>
+<li><p>application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates</p></li>
+<li><p>measure of the auxiliary qubit in x-basis</p></li>
+</ul>
+<section id="initialization-with-reset">
+<h4>Initialization with reset<a class="headerlink" href="#initialization-with-reset" title="Permalink to this heading">#</a></h4>
+<p>As we want to perform an iterative algorithm in the same circuit, we need to reset the auxiliary qubit <span class="math notranslate nohighlight">\(q0\)</span> after the measument gate and initialize it again as before to recycle the qubit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qc_S</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc_S</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc_S</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/aa28a093a1260480886efa2a5685d8c5a1d63d0289257899644d9235937f5f81.png" src="../_images/aa28a093a1260480886efa2a5685d8c5a1d63d0289257899644d9235937f5f81.png" />
+</div>
+</div>
+</section>
+<section id="phase-correction-for-step-2">
+<h4>Phase correction (for step 2)<a class="headerlink" href="#phase-correction-for-step-2" title="Permalink to this heading">#</a></h4>
+<p>As seen in the theory, in order to extract the phase bit <span class="math notranslate nohighlight">\(\varphi_{1}\)</span>, we perform a phase correction of <span class="math notranslate nohighlight">\(-\pi\varphi_2/2\)</span>.
+Of course, we need to apply the phase correction in the circuit only if the phase bit <span class="math notranslate nohighlight">\(\varphi_2=1\)</span>, i.e. we have to apply the phase correction of <span class="math notranslate nohighlight">\(-\pi/2\)</span> only if the classical bit <span class="math notranslate nohighlight">\(c_0\)</span> is 1.</p>
+<p>So, after the reset we apply the phase gate <span class="math notranslate nohighlight">\(P(\theta)\)</span> with phase <span class="math notranslate nohighlight">\(\theta=-\pi/2\)</span> conditioned by the classical bit <span class="math notranslate nohighlight">\(c_0\)</span> (<span class="math notranslate nohighlight">\(=\varphi_2\)</span>) using the <code class="docutils literal notranslate"><span class="pre">c_if</span></code> method.
+So as we saw in the first part of this tutorial, we have to use the <code class="docutils literal notranslate"><span class="pre">c_if</span></code> method with a value of 1, as <span class="math notranslate nohighlight">\(1_{10} = 001_{2}\)</span> (the subscripts <span class="math notranslate nohighlight">\(_{10}\)</span> and <span class="math notranslate nohighlight">\(_2\)</span> indicate the decimal and binary representations).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qc_S</span><span class="o">.</span><span class="n">p</span><span class="p">(</span><span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">c_if</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc_S</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f654f5308e382e7ff6d241df2c99628161909ad69771a390db82324305750c4d.png" src="../_images/f654f5308e382e7ff6d241df2c99628161909ad69771a390db82324305750c4d.png" />
+</div>
+</div>
+</section>
+<section id="application-of-the-controlled-u-gates-and-x-measurement-for-step-2">
+<h4>Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates and x-measurement (for step 2)<a class="headerlink" href="#application-of-the-controlled-u-gates-and-x-measurement-for-step-2" title="Permalink to this heading">#</a></h4>
+<p>We apply the <span class="math notranslate nohighlight">\(CU\)</span> operations as we did in the first step. For the second step we have <span class="math notranslate nohighlight">\(t=m-2\)</span>, hence <span class="math notranslate nohighlight">\(2^t=1\)</span>. So we apply <span class="math notranslate nohighlight">\(\text{CP}(\pi/2)\)</span> once. And then we perform the x-measurement of the qubit <span class="math notranslate nohighlight">\(q_0\)</span>, storing the result, the phase bit <span class="math notranslate nohighlight">\(\varphi_1\)</span>, in the bit <span class="math notranslate nohighlight">\(c_1\)</span> of classical register.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## 2^t c-U operations (with t=m-2)</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="mi">2</span><span class="p">)):</span>
+    <span class="n">qc_S</span><span class="o">.</span><span class="n">cp</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">x_measurement</span><span class="p">(</span><span class="n">qc_S</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Et voilà, we have our final circuit</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qc_S</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9281618e5d744fc31e2fba4e0d06530c28f578fbf6fe329f7b854a627038fc01.png" src="../_images/9281618e5d744fc31e2fba4e0d06530c28f578fbf6fe329f7b854a627038fc01.png" />
+</div>
+</div>
+<p>Let’s execute the circuit with the <code class="docutils literal notranslate"><span class="pre">qasm_simulator</span></code>, the simulator without noise that run locally.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+<span class="n">count0</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc_S</span><span class="p">,</span> <span class="n">sim</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+
+<span class="n">key_new</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">**</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">count0</span><span class="o">.</span><span class="n">keys</span><span class="p">())]</span>
+<span class="n">count1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">key_new</span><span class="p">,</span> <span class="n">count0</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">count0</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">count1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6a8f855d0321f9614c3e9a4890431ea5dedd183cfa9ab99547e2b1bc2d093e6a.png" src="../_images/6a8f855d0321f9614c3e9a4890431ea5dedd183cfa9ab99547e2b1bc2d093e6a.png" />
+</div>
+</div>
+<p>In the picture we have the same histograms but on the left we have on the x-axis the string with phase bits <span class="math notranslate nohighlight">\(\varphi_1\)</span>, <span class="math notranslate nohighlight">\(\varphi_2\)</span> and on the right the actual phase <span class="math notranslate nohighlight">\(\varphi\)</span> in decimal representation.</p>
+<p>As we expected we have found <span class="math notranslate nohighlight">\(\varphi=\frac{1}{4}=0.25\)</span> with a <span class="math notranslate nohighlight">\(100\%\)</span> probability.</p>
+</section>
+</section>
+</section>
+<section id="ipe-example-with-a-2-qubit-gate">
+<h2>IPE example with a 2-qubit gate<a class="headerlink" href="#ipe-example-with-a-2-qubit-gate" title="Permalink to this heading">#</a></h2>
+<p>Now, we want to apply the IPE algorithm to estimate the phase for a 2-qubit gate <span class="math notranslate nohighlight">\(U\)</span>. For this example, let’s consider the controlled version of the <span class="math notranslate nohighlight">\(T\)</span> gate, i.e. the gate <span class="math notranslate nohighlight">\(U=\textrm{Controlled-}T\)</span> (that from now we will express more compactly with <span class="math notranslate nohighlight">\(CT\)</span>). Its matrix is
+$<span class="math notranslate nohighlight">\( CT = 
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 0 &amp; e^\frac{i\pi}{4}\\ 
+\end{bmatrix} \)</span><span class="math notranslate nohighlight">\(
+That is, the \)</span>CT<span class="math notranslate nohighlight">\( gate adds a phase \)</span>\pi/4<span class="math notranslate nohighlight">\( to the state \)</span>|11\rangle<span class="math notranslate nohighlight">\(, leaving unchanged the phase of the other computational basis states \)</span>|00\rangle<span class="math notranslate nohighlight">\(, \)</span>|01\rangle<span class="math notranslate nohighlight">\(, \)</span>|10\rangle$.</p>
+<p>Let’s consider to estimate the phase <span class="math notranslate nohighlight">\(\phi=\pi/4\)</span> for the eigenstate <span class="math notranslate nohighlight">\(|11\rangle\)</span>, we should find <span class="math notranslate nohighlight">\(\varphi=1/8\)</span>, since <span class="math notranslate nohighlight">\(\phi = 2 \pi \varphi\)</span>. Therefore to estimate the phase we need exactly 3 classical bits, i.e. <span class="math notranslate nohighlight">\(m=3\)</span>, since <span class="math notranslate nohighlight">\(1/2^3=1/8\)</span>. So <span class="math notranslate nohighlight">\(\varphi=0.\varphi_1\varphi_2\varphi_3\)</span>.</p>
+<p>As done with the example for the 1-qubit <span class="math notranslate nohighlight">\(U\)</span> operator we will go through the same steps but this time we will have <span class="math notranslate nohighlight">\(3\)</span> steps since <span class="math notranslate nohighlight">\(m=3\)</span>, and we will not repeat all the explanations. So for details see the above example for 1-qubit <span class="math notranslate nohighlight">\(U\)</span> gate.</p>
+<p>First, we initialize the circuit with 3 qubits, 1 for the auxiliary qubit and 2 for the 2-qubit gate, and 3 classical bits to store the phase bits <span class="math notranslate nohighlight">\(\varphi_1\)</span>, <span class="math notranslate nohighlight">\(\varphi_2\)</span>, <span class="math notranslate nohighlight">\(\varphi_3\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nq</span> <span class="o">=</span> <span class="mi">3</span>    <span class="c1"># number of qubits</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">3</span>    <span class="c1"># number of classical bits</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">nq</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h3>First step<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>Now we build the quantum circuit for the first step, to estimate the least significant phase bit <span class="math notranslate nohighlight">\(\varphi_m=\varphi_3\)</span>.</p>
+<section id="id2">
+<h4>Initialization<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<p>We initialize the auxiliary qubit and the other qubits with the eigenstate <span class="math notranslate nohighlight">\(|11\rangle\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/eaeefdefa162a2950598e3f2a88a7fdd6c8fadb223c47131b6a8dfa054da4e7f.png" src="../_images/eaeefdefa162a2950598e3f2a88a7fdd6c8fadb223c47131b6a8dfa054da4e7f.png" />
+</div>
+</div>
+</section>
+<section id="id3">
+<h4>Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<p>Then we have to apply multiple times the <span class="math notranslate nohighlight">\(CU\)</span> operator, that, in this example, is the Controlled-<span class="math notranslate nohighlight">\(CT\)</span> gate (<span class="math notranslate nohighlight">\(CCT\)</span> for short).</p>
+<p>To implement <span class="math notranslate nohighlight">\(CCT\)</span> in the circuit, since <span class="math notranslate nohighlight">\(T\)</span> is a phase gate, we can use the multi-controlled phase gate <span class="math notranslate nohighlight">\(\text{MCP}(\theta)\)</span>, with <span class="math notranslate nohighlight">\(\theta=\pi/4\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cu_circ</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">nq</span><span class="p">)</span>
+<span class="n">cu_circ</span><span class="o">.</span><span class="n">mcp</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">cu_circ</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0415bfc4a175bd07f9222b25522aeae7e79a6baa73dd8ae4c9ec36eacc4f85c1.png" src="../_images/0415bfc4a175bd07f9222b25522aeae7e79a6baa73dd8ae4c9ec36eacc4f85c1.png" />
+</div>
+</div>
+<p>Let’s apply <span class="math notranslate nohighlight">\(2^t\)</span> times <span class="math notranslate nohighlight">\(\text{MCP}(\pi/4)\)</span>. Since for the first step <span class="math notranslate nohighlight">\(t=m-1\)</span> and <span class="math notranslate nohighlight">\(m=3\)</span>, we have <span class="math notranslate nohighlight">\(2^t=4\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="p">)):</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">mcp</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0e1bb7249c0d69de4b7bd2ce62bd1f39a4698b7310b8102ddb29c555cc85c683.png" src="../_images/0e1bb7249c0d69de4b7bd2ce62bd1f39a4698b7310b8102ddb29c555cc85c683.png" />
+</div>
+</div>
+</section>
+<section id="id4">
+<h4>Measure in x-basis<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
+<p>Finally, we perform the measurement of the auxiliary qubit in x-basis.
+We can use the <code class="docutils literal notranslate"><span class="pre">x_measurement</span></code> function defined above in the example for 1-qubit gate. In this way we have obtained the phase bit <span class="math notranslate nohighlight">\(\varphi_3\)</span> and stored it in the classical bit <span class="math notranslate nohighlight">\(c_0\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_measurement</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/439046fb3ebdc9a41e29204d86d579f8af3f4a38a9bc7cc73f6902acaa3c63e4.png" src="../_images/439046fb3ebdc9a41e29204d86d579f8af3f4a38a9bc7cc73f6902acaa3c63e4.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="subsequent-steps-2nd-3rd">
+<h3>Subsequent steps (2nd, 3rd)<a class="headerlink" href="#subsequent-steps-2nd-3rd" title="Permalink to this heading">#</a></h3>
+<p>Now we build the quantum circuit for the other remaining steps, the second and the third ones.
+As said in the first example, in these steps we have the additional sub-step of the phase correction.</p>
+<section id="id5">
+<h4>Initialization with reset<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a787999fa4f3131dad726d587ab12b66f77795dccf814e42abf1116d9e411c82.png" src="../_images/a787999fa4f3131dad726d587ab12b66f77795dccf814e42abf1116d9e411c82.png" />
+</div>
+</div>
+</section>
+<section id="id6">
+<h4>Phase correction (for step 2)<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
+<p>In order to extract the phase bit <span class="math notranslate nohighlight">\(\varphi_{2}\)</span>, we perform a phase correction of <span class="math notranslate nohighlight">\(-\pi\varphi_3/2\)</span>.</p>
+<p>So, after the reset we apply the phase gate <span class="math notranslate nohighlight">\(P(\theta)\)</span> with phase <span class="math notranslate nohighlight">\(\theta=-\pi/2\)</span> conditioned by the classical bit <span class="math notranslate nohighlight">\(c_0\)</span> (<span class="math notranslate nohighlight">\(=\varphi_3\)</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span><span class="o">.</span><span class="n">p</span><span class="p">(</span><span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">c_if</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/dc1d6a7fa71fde9dba4a133690cb86eac71f1578d682cc84b066201fc7306790.png" src="../_images/dc1d6a7fa71fde9dba4a133690cb86eac71f1578d682cc84b066201fc7306790.png" />
+</div>
+</div>
+</section>
+<section id="id7">
+<h4>Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates and x-measurement (for step 2)<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
+<p>We apply the <span class="math notranslate nohighlight">\(CU\)</span> operations as we did in the first step. For the second step we have <span class="math notranslate nohighlight">\(t=m-2\)</span>, hence <span class="math notranslate nohighlight">\(2^t=2\)</span>. So we apply <span class="math notranslate nohighlight">\(\text{MCP}(\pi/4)\)</span> <span class="math notranslate nohighlight">\(2\)</span> times. And then we perform the x-measurement of the qubit <span class="math notranslate nohighlight">\(q_0\)</span>, storing the phase bit <span class="math notranslate nohighlight">\(\varphi_2\)</span> in the bit <span class="math notranslate nohighlight">\(c_1\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="mi">2</span><span class="p">)):</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">mcp</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">x_measurement</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c56e59ba2957ac94d87cdc8582dd0766cf85302d6e660f9f399682e2dd0f29d6.png" src="../_images/c56e59ba2957ac94d87cdc8582dd0766cf85302d6e660f9f399682e2dd0f29d6.png" />
+</div>
+</div>
+</section>
+<section id="all-substeps-of-the-3rd-step">
+<h4>All substeps of the 3rd step<a class="headerlink" href="#all-substeps-of-the-3rd-step" title="Permalink to this heading">#</a></h4>
+<p>For the 3rd and last step, we perform the reset and initialization of the auxiliary qubit as done in the second step.</p>
+<p>Then at the 3rd step we have to perform the phase correction of <span class="math notranslate nohighlight">\(-2\pi 0.0\varphi_{2}\varphi_{3}= -2\pi \left(\frac{\varphi_2}{4}+\frac{\varphi_3}{8}\right)=-\frac{\varphi_2\pi}{2}-\frac{ \varphi_3\pi}{4}\)</span>, thus we have to apply 2 conditioned  phase corrections, one conditioned by <span class="math notranslate nohighlight">\(\varphi_3\)</span> (<span class="math notranslate nohighlight">\(=c_0\)</span>) and the other by <span class="math notranslate nohighlight">\(\varphi_2\)</span>(<span class="math notranslate nohighlight">\(=c_1\)</span>). To do this we have to apply the following:</p>
+<ul class="simple">
+<li><p>gate <span class="math notranslate nohighlight">\(P(-\pi/4)\)</span> conditioned by <span class="math notranslate nohighlight">\(c_0=1\)</span>, that is, by <span class="math notranslate nohighlight">\(c=001\)</span> (c_if with value <span class="math notranslate nohighlight">\(1\)</span>)</p></li>
+<li><p>gate <span class="math notranslate nohighlight">\(P(-\pi/2)\)</span> conditioned by <span class="math notranslate nohighlight">\(c_1=1\)</span>, that is, the gate is applied when <span class="math notranslate nohighlight">\(c=010\)</span> (c_if with values <span class="math notranslate nohighlight">\(2\)</span>)</p></li>
+<li><p>gate <span class="math notranslate nohighlight">\(P(-3\pi/4)\)</span> conditioned by <span class="math notranslate nohighlight">\(c_1=1\)</span> and <span class="math notranslate nohighlight">\(c_0=1\)</span> that is, the gate is applied when <span class="math notranslate nohighlight">\(c=011\)</span> (c_if with values <span class="math notranslate nohighlight">\(3\)</span>)</p></li>
+</ul>
+<p>Next, the <span class="math notranslate nohighlight">\(CU\)</span> operations: we apply <span class="math notranslate nohighlight">\(2^t\)</span> times the <span class="math notranslate nohighlight">\(\text{MCP}(\pi/4)\)</span> gate and since at the 3rd step <span class="math notranslate nohighlight">\(t=m-3=0\)</span>, we apply the gate only once.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialization of qubit q0</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># phase correction</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">p</span><span class="p">(</span><span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">c_if</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">p</span><span class="p">(</span><span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">c_if</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">p</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">c_if</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># c-U operations</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="mi">3</span><span class="p">)):</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">mcp</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># X measurement  </span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ac5b29fd9005616c3f93d21255c2bf59bfae13370ec97e9e260e974aeeaa2ca6.png" src="../_images/ac5b29fd9005616c3f93d21255c2bf59bfae13370ec97e9e260e974aeeaa2ca6.png" />
+</div>
+</div>
+<p>Now, we execute the circuit with the simulator without noise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count0</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">sim</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+
+<span class="n">key_new</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">**</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">count0</span><span class="o">.</span><span class="n">keys</span><span class="p">())]</span>
+<span class="n">count1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">key_new</span><span class="p">,</span> <span class="n">count0</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">count0</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">count1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/92ca76e0599cbd7c9615a4da95947e55dfb2364631be51b45bf7b9efc83d8122.png" src="../_images/92ca76e0599cbd7c9615a4da95947e55dfb2364631be51b45bf7b9efc83d8122.png" />
+</div>
+</div>
+<p>We have obtained <span class="math notranslate nohighlight">\(100\%\)</span> probability to find <span class="math notranslate nohighlight">\(\varphi=0.125\)</span>, that is, <span class="math notranslate nohighlight">\(1/8\)</span>, as expected.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiskit.tools.jupyter</span>
+<span class="o">%</span><span class="k">qiskit_version_table</span>
+<span class="o">%</span><span class="k">qiskit_copyright</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h3>Version Information</h3><table><tr><th>Qiskit Software</th><th>Version</th></tr><tr><td><code>qiskit-terra</code></td><td>0.24.1</td></tr><tr><td><code>qiskit-aer</code></td><td>0.12.0</td></tr><tr><td><code>qiskit-ibmq-provider</code></td><td>0.20.2</td></tr><tr><td><code>qiskit</code></td><td>0.43.1</td></tr><tr><th>System information</th></tr><tr><td>Python version</td><td>3.10.11</td></tr><tr><td>Python compiler</td><td>Clang 14.0.6 </td></tr><tr><td>Python build</td><td>main, May 15 2023 19:29:30</td></tr><tr><td>OS</td><td>Darwin</td></tr><tr><td>CPUs</td><td>8</td></tr><tr><td>Memory (Gb)</td><td>8.0</td></tr><tr><td colspan='2'>Sat Jun 24 00:11:35 2023 CST</td></tr></table></div><div class="output text_html"><div style='width: 100%; background-color:#d5d9e0;padding-left: 10px; padding-bottom: 10px; padding-right: 10px; padding-top: 5px'><h3>This code is a part of Qiskit</h3><p>&copy; Copyright IBM 2017, 2023.</p><p>This code is licensed under the Apache License, Version 2.0. You may<br>obtain a copy of this license in the LICENSE.txt file in the root directory<br> of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.<p>Any modifications or derivative works of this code must retain this<br>copyright notice, and modified files need to carry a notice indicating<br>that they have been altered from the originals.</p></div></div></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./qic"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditioned-gates-the-c-if-method">Conditioned gates: the c_if method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ipe">IPE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipe-example-with-a-1-qubit-gate-for-u">IPE example with a 1-qubit gate for <span class="math notranslate nohighlight">\(U\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#first-step">First step</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#initialization">Initialization</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#application-of-the-controlled-u-gates">Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-in-x-basis">Measure in x-basis</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsequent-steps-2nd-step">Subsequent steps (2nd step)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#initialization-with-reset">Initialization with reset</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-correction-for-step-2">Phase correction (for step 2)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#application-of-the-controlled-u-gates-and-x-measurement-for-step-2">Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates and x-measurement (for step 2)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ipe-example-with-a-2-qubit-gate">IPE example with a 2-qubit gate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">First step</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Initialization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Measure in x-basis</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsequent-steps-2nd-3rd">Subsequent steps (2nd, 3rd)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Initialization with reset</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Phase correction (for step 2)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates and x-measurement (for step 2)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#all-substeps-of-the-3rd-step">All substeps of the 3rd step</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jue Xu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
