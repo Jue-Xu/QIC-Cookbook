@@ -46,6 +46,8 @@ parts:
       - file: qic/qaoa
       - file: qic/quantum_monte_carlo
       - file: qic/quantum_simulation
+      - file: qic/qiskit/IQPE
+      - file: qic/qiskit/SolovayKitaev
     - file: qic/quantum_complexity_class
       sections:
       - file: qic/polynomial_method
