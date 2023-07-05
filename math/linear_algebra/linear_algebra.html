@@ -196,6 +196,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../qic/qaoa.html">Quantum Approximate Optimization Algorithm (QAOA)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../qic/quantum_monte_carlo.html">Quantum Monte Carlo (QMC)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../qic/quantum_simulation.html">Quantum Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../qic/qiskit/IQPE.html">Iterative Quantum Phase Estimation Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../qic/qiskit/SolovayKitaev.html">Solovay-Kitaev algorithm</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../qic/quantum_complexity_class.html">Quantum Complexity Class</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -457,8 +459,8 @@ document.write(`
  [ 0.70710678+0.5j  0.5       +0.j ]]
 [[-0.5       +0.j   0.70710678-0.5j]
  [ 0.70710678+0.5j  0.5       +0.j ]]
-[[ 7.07106781e-01+0.j          8.32667268e-17-0.70710678j]
- [ 8.32667268e-17+0.70710678j -7.07106781e-01+0.j        ]]
+[[ 7.07106781e-01+0.j          8.86511593e-17-0.70710678j]
+ [ 1.11022302e-16+0.70710678j -7.07106781e-01+0.j        ]]
 [[ 0.5       +0.j   0.70710678+0.5j]
  [ 0.70710678-0.5j -0.5       +0.j ]]
 </pre></div>
@@ -472,8 +474,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.+0.j -0.+0.j]
- [-0.+0.j  1.+0.j]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.+0.j 0.+0.j]
+ [0.+0.j 1.+0.j]]
 </pre></div>
 </div>
 </div>
@@ -485,8 +487,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.+0.j -0.+0.j]
- [-0.+0.j  1.+0.j]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.+0.j 0.+0.j]
+ [0.+0.j 1.+0.j]]
 </pre></div>
 </div>
 </div>
@@ -542,32 +544,32 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
-A= [[-1.90097975  0.5287649  -0.9792093 ]
- [-0.96737381  0.3619594  -0.21661845]
- [ 1.1945402   0.48907659 -1.09508701]
- [-1.95840548 -0.3328019   0.8936471 ]]
-C= [[-0.33425751  0.27985754]
- [ 0.97190546 -0.2513737 ]
- [-0.31892675 -0.48270388]
- [-0.55461475 -0.50104735]]
-AT_A= [[ 9.81181445 -0.11933869 -0.98724078]
- [-0.11933869  0.76055994 -1.42916747]
- [-0.98724078 -1.42916747  3.00359512]]
+A= [[-0.58467778  0.82158951  0.10574808]
+ [-0.50681406  0.4223986   0.42152069]
+ [-0.04623778  0.53622639 -0.99689905]
+ [ 0.44557443  0.77302169 -0.43747922]]
+C= [[-0.7486619  -0.82060587]
+ [-0.72422963  0.28541297]
+ [-1.23958652  0.95226842]
+ [ 0.66498058 -0.7678366 ]]
+AT_A= [[ 0.7993831  -0.3747979  -0.42429632]
+ [-0.3747979   1.73853117 -0.60781324]
+ [-0.42429632 -0.60781324  1.37405814]]
 rank of AT_A: 3
-[[ 1.00000000e+00 -1.97625548e-16  3.90537593e-16]
- [ 1.38919739e-15  1.00000000e+00  5.83038699e-15]
- [-5.93666212e-16 -1.00615423e-15  1.00000000e+00]]
-[[ 0.96861785 -0.01853631  0.12754431  0.11741449]
- [-0.01853631  0.98905126  0.07533587  0.06935255]
- [ 0.12754431  0.07533587  0.48163041 -0.47719966]
- [ 0.11741449  0.06935255 -0.47719966  0.56070048]]
-B= [[ 0.34320586 -0.09712141]
- [ 4.8641809  -1.6833391 ]
- [ 2.41742103 -0.87907966]]
-A*B= [[-0.44758044  0.15533819]
- [ 0.90496965 -0.32492283]
- [ 0.14164385  0.02337154]
- [-0.13062358 -0.03516544]]
+[[ 1.00000000e+00  1.60143113e-16 -2.82515649e-16]
+ [ 7.02571532e-17  1.00000000e+00 -1.73973845e-16]
+ [ 1.17481372e-16  7.45963956e-18  1.00000000e+00]]
+[[ 0.62772876  0.46182522  0.13355035  0.05066688]
+ [ 0.46182522  0.42707759 -0.16567737 -0.06285536]
+ [ 0.13355035 -0.16567737  0.95208952 -0.01817648]
+ [ 0.05066688 -0.06285536 -0.01817648  0.99310413]]
+B= [[ 2.24272868 -1.26220417]
+ [ 0.29783903 -1.09075364]
+ [ 1.232111   -1.29426549]]
+A*B= [[-0.93627883 -0.2950351 ]
+ [-0.49147935 -0.36658968]
+ [-1.17227993  0.76372268]
+ [ 0.69051563 -0.83936786]]
 </pre></div>
 </div>
 </div>
@@ -589,11 +591,11 @@ A*B= [[-0.44758044  0.15533819]
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[10. 17. 12.]
  [17. 29. 21.]
  [12. 21. 18.]]
--3.197442310920468e-14
+1.6710489201527266e-14
 rank: 2
-[[-2.53327479e+15  1.68884986e+15 -2.81474977e+14]
- [ 1.68884986e+15 -1.12589991e+15  1.87649984e+14]
- [-2.81474977e+14  1.87649984e+14 -3.12749974e+13]]
+[[ 4.84725486e+15 -3.23150324e+15  5.38583873e+14]
+ [-3.23150324e+15  2.15433549e+15 -3.59055916e+14]
+ [ 5.38583873e+14 -3.59055916e+14  5.98426526e+13]]
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
