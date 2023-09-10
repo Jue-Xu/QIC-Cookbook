@@ -1,6 +1,11 @@
 # About Jupyter-Book
 
 ## Usage
+### theorem, definition environments
+```
+pip install sphinx-proof
+```
+https://sphinx-proof.readthedocs.io/en/latest/syntax.html
 
 ### Building the book
 
