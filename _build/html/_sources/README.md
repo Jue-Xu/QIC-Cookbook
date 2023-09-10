@@ -1,6 +1,9 @@
 # About Jupyter-Book
 
 ## Usage
+```
+pip install sphinx-proof
+```
 
 ### Building the book
 
