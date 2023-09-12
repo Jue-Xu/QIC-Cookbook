@@ -184,7 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="math/linear_algebra/decompositions/cholesky_decomposition.html">Cholesky decomposition</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="math/optimization/convex_optimization.html">Convex Optimization</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="math/optimization/optimization.html">Optimization</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="math/optimization/convex_optimization.html">Convex Optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="math/optimization/semidefinite_programming.html">Semi-definite Programming (SDP)</a></li>
 </ul>
 </li>
@@ -367,20 +368,50 @@ document.write(`
    <h1>Proof Index</h1>
 
    <div class="modindex-jumpbox">
+   <a href="#cap-1st_order_condition"><strong>1st_order_condition</strong></a> | 
+   <a href="#cap-affine_function"><strong>affine_function</strong></a> | 
    <a href="#cap-bqp"><strong>bqp</strong></a> | 
    <a href="#cap-convex_combination"><strong>convex_combination</strong></a> | 
+   <a href="#cap-convex_function"><strong>convex_function</strong></a> | 
+   <a href="#cap-definition-7"><strong>definition-7</strong></a> | 
+   <a href="#cap-differentiable_function"><strong>differentiable_function</strong></a> | 
+   <a href="#cap-epigraph_convex"><strong>epigraph_convex</strong></a> | 
+   <a href="#cap-epigraph_function"><strong>epigraph_function</strong></a> | 
+   <a href="#cap-example-11"><strong>example-11</strong></a> | 
+   <a href="#cap-example-2"><strong>example-2</strong></a> | 
+   <a href="#cap-example-9"><strong>example-9</strong></a> | 
    <a href="#cap-max-3k-lin2"><strong>max-3k-lin2</strong></a> | 
    <a href="#cap-my-algorithm"><strong>my-algorithm</strong></a> | 
    <a href="#cap-my-example"><strong>my-example</strong></a> | 
    <a href="#cap-my-theorem"><strong>my-theorem</strong></a> | 
+   <a href="#cap-optimization_problem"><strong>optimization_problem</strong></a> | 
    <a href="#cap-perron_frobenius_theorem"><strong>perron_frobenius_theorem</strong></a> | 
    <a href="#cap-quantum_simulation"><strong>quantum_simulation</strong></a> | 
    <a href="#cap-quantum_simulation_example"><strong>quantum_simulation_example</strong></a> | 
    <a href="#cap-sdp"><strong>sdp</strong></a> | 
-   <a href="#cap-sharp_bqp_complete"><strong>sharp_bqp_complete</strong></a>
+   <a href="#cap-separating_hyperplane_theorem"><strong>separating_hyperplane_theorem</strong></a> | 
+   <a href="#cap-sharp_bqp_complete"><strong>sharp_bqp_complete</strong></a> | 
+   <a href="#cap-supporting_hyperplane_theorem"><strong>supporting_hyperplane_theorem</strong></a> | 
+   <a href="#cap-theorem-8"><strong>theorem-8</strong></a>
    </div>
 
    <table class="indextable modindextable">
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-1st_order_condition"><td></td><td>
+       <strong>1st_order_condition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="math/optimization/convex_optimization.html#1st_order_condition"><code class="xref">1st_order_condition</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-affine_function"><td></td><td>
+       <strong>affine_function</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="math/optimization/convex_optimization.html#affine_function"><code class="xref">affine_function</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
+       <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-bqp"><td></td><td>
        <strong>bqp</strong></td><td></td></tr>
@@ -397,6 +428,70 @@ document.write(`
        <td>
        <a href="math/optimization/convex_optimization.html#convex_combination"><code class="xref">convex_combination</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
        <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-convex_function"><td></td><td>
+       <strong>convex_function</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="math/optimization/convex_optimization.html#convex_function"><code class="xref">convex_function</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-7"><td></td><td>
+       <strong>definition-7</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="math/optimization/convex_optimization.html#definition-7"><code class="xref">definition-7</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-differentiable_function"><td></td><td>
+       <strong>differentiable_function</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="math/optimization/convex_optimization.html#differentiable_function"><code class="xref">differentiable_function</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-epigraph_convex"><td></td><td>
+       <strong>epigraph_convex</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="math/optimization/convex_optimization.html#epigraph_convex"><code class="xref">epigraph_convex</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-epigraph_function"><td></td><td>
+       <strong>epigraph_function</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="math/optimization/convex_optimization.html#epigraph_function"><code class="xref">epigraph_function</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-11"><td></td><td>
+       <strong>example-11</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="math/optimization/convex_optimization.html#example-11"><code class="xref">example-11</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-2"><td></td><td>
+       <strong>example-2</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="math/optimization/convex_optimization.html#example-2"><code class="xref">example-2</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-9"><td></td><td>
+       <strong>example-9</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="math/optimization/convex_optimization.html#example-9"><code class="xref">example-9</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
+       <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-max-3k-lin2"><td></td><td>
        <strong>max-3k-lin2</strong></td><td></td></tr>
@@ -430,6 +525,14 @@ document.write(`
        <a href="math/linear_algebra/decompositions/cholesky_decomposition.html#my-theorem"><code class="xref">my-theorem</code></a> <em>(math/linear_algebra/decompositions/cholesky_decomposition)</em></td><td>
        <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-optimization_problem"><td></td><td>
+       <strong>optimization_problem</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="math/optimization/optimization.html#optimization_problem"><code class="xref">optimization_problem</code></a> <em>(math/optimization/optimization)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-perron_frobenius_theorem"><td></td><td>
        <strong>perron_frobenius_theorem</strong></td><td></td></tr>
      <tr>
@@ -460,7 +563,15 @@ document.write(`
        <td></td>
        <td>
        <a href="math/optimization/semidefinite_programming.html#sdp"><code class="xref">sdp</code></a> <em>(math/optimization/semidefinite_programming)</em></td><td>
-       <em>definition</em></td></tr>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-separating_hyperplane_theorem"><td></td><td>
+       <strong>separating_hyperplane_theorem</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="math/optimization/convex_optimization.html#separating_hyperplane_theorem"><code class="xref">separating_hyperplane_theorem</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
+       <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-sharp_bqp_complete"><td></td><td>
        <strong>sharp_bqp_complete</strong></td><td></td></tr>
@@ -468,6 +579,22 @@ document.write(`
        <td></td>
        <td>
        <a href="qic/quantum_complexity_class.html#sharp_bqp_complete"><code class="xref">sharp_bqp_complete</code></a> <em>(qic/quantum_complexity_class)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-supporting_hyperplane_theorem"><td></td><td>
+       <strong>supporting_hyperplane_theorem</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="math/optimization/convex_optimization.html#supporting_hyperplane_theorem"><code class="xref">supporting_hyperplane_theorem</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-theorem-8"><td></td><td>
+       <strong>theorem-8</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="math/optimization/convex_optimization.html#theorem-8"><code class="xref">theorem-8</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
        <em>theorem</em></td></tr>
    </table>
 

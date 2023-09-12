@@ -39,3 +39,8 @@ sphinx:
     - sphinx_proof
   config:
     bibtex_reference_style: author_year
+  mathjax_config:
+      tex:
+        macros:
+          "realnumber": "\\mathbb{R}"
+          "floor": ["\\lfloor#1\\rfloor", 1]

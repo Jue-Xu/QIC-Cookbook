@@ -26,8 +26,9 @@ parts:
     - file: math/linear_algebra/decompositions
       sections:
       - file: math/linear_algebra/decompositions/cholesky_decomposition
-    - file: math/optimization/convex_optimization
+    - file: math/optimization/optimization
       sections:
+      - file: math/optimization/convex_optimization
       - file: math/optimization/semidefinite_programming
 
   - caption: Computer Science
