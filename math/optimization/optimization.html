@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Semi-definite Programming (SDP) &#8212; Recipe of Quantum Computing</title>
+    <title>Optimization &#8212; Recipe of Quantum Computing</title>
   
   
   
@@ -64,11 +64,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'math/optimization/semidefinite_programming';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'math/optimization/optimization';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Algorithms" href="../../cs/algorithms/algorithms.html" />
-    <link rel="prev" title="Convex Optimization" href="convex_optimization.html" />
+    <link rel="next" title="Convex Optimization" href="convex_optimization.html" />
+    <link rel="prev" title="Cholesky decomposition" href="../linear_algebra/decompositions/cholesky_decomposition.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,9 +182,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../linear_algebra/decompositions/cholesky_decomposition.html">Cholesky decomposition</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="optimization.html">Optimization</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Optimization</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="convex_optimization.html">Convex Optimization</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Semi-definite Programming (SDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="semidefinite_programming.html">Semi-definite Programming (SDP)</a></li>
 </ul>
 </li>
 </ul>
@@ -286,7 +286,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmath/optimization/semidefinite_programming.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmath/optimization/optimization.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -316,7 +316,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/math/optimization/semidefinite_programming.ipynb" target="_blank"
+      <li><a href="../../_sources/math/optimization/optimization.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -398,7 +398,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Semi-definite Programming (SDP)</h1>
+    <h1>Optimization</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -408,8 +408,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-definite">Semi-definite</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-optimization">Mathematical Optimization</a></li>
 </ul>
             </nav>
         </div>
@@ -421,26 +420,34 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="semi-definite-programming-sdp">
-<h1>Semi-definite Programming (SDP)<a class="headerlink" href="#semi-definite-programming-sdp" title="Permalink to this heading">#</a></h1>
-<section id="semi-definite">
-<h2>Semi-definite<a class="headerlink" href="#semi-definite" title="Permalink to this heading">#</a></h2>
-<div class="proof definition admonition" id="sdp">
-<p class="admonition-title"><span class="caption-number">Definition 9 </span> (SDP)</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="optimization">
+<h1>Optimization<a class="headerlink" href="#optimization" title="Permalink to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand\realnumber{\mathbb{R}}
+\newcommand\vbx{\vb{x}}\]</div>
+<section id="mathematical-optimization">
+<h2>Mathematical Optimization<a class="headerlink" href="#mathematical-optimization" title="Permalink to this heading">#</a></h2>
+<p>An optimization problem consists of a set <span class="math notranslate nohighlight">\(D\)</span>, called the <code class="docutils literal notranslate"><span class="pre">domain</span></code>, and a real-valued function <span class="math notranslate nohighlight">\(f:D\to \realnumber\)</span>, called the <code class="docutils literal notranslate"><span class="pre">objective</span></code> fucntion.</p>
+<ul class="simple">
+<li><p>minimization problem: find an <span class="math notranslate nohighlight">\(x\in D\)</span> such that <span class="math notranslate nohighlight">\(f(x)\le f(y)\)</span> for all <span class="math notranslate nohighlight">\(y\in D\)</span>.</p></li>
+<li><p>maximization problem: find an <span class="math notranslate nohighlight">\(x\in D\)</span> such that <span class="math notranslate nohighlight">\(f(x)\ge f(y)\)</span> for all <span class="math notranslate nohighlight">\(y\in D\)</span>.</p></li>
+</ul>
+<p>a mathematical program consist of:</p>
+<ul class="simple">
+<li><p>an objective function <span class="math notranslate nohighlight">\(f_0: \realnumber^n \to \realnumber\)</span></p></li>
+<li><p>a set of <span class="math notranslate nohighlight">\(m\)</span>  constriant functions <span class="math notranslate nohighlight">\(f_i: \mathbb{R}^n \to \mathbb{R}, i=1,\dots, m\)</span>.</p></li>
+<li><p>constant variables <span class="math notranslate nohighlight">\(x\)</span></p></li>
+</ul>
+<div class="proof definition admonition" id="optimization_problem">
+<p class="admonition-title"><span class="caption-number">Definition 1 </span> (Optimization problem)</p>
 <section class="definition-content" id="proof-content">
-<p>SDP
-<span class="math notranslate nohighlight">\(
-    \forall x, xAx^T \ge 0
-\)</span></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">optimization</span> <span class="pre">problem</span></code>, has the form</p>
 </section>
-</div></section>
-<section id="algorithms">
-<h2>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this heading">#</a></h2>
-<div class="proof algorithm dropdown admonition" id="sdp">
-<p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (SDP)</p>
-<section class="algorithm-content" id="proof-content">
+</div><p>A vector <span class="math notranslate nohighlight">\(x^*\)</span> is called <code class="docutils literal notranslate"><span class="pre">optimal</span></code>, or solution to <a class="reference internal" href="#optimization_problem">Definition 1</a>,
+if it has the smallest objective value among all vectors that satisfy the constraints.</p>
 </section>
-</div></section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -475,20 +482,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="convex_optimization.html"
+       href="../linear_algebra/decompositions/cholesky_decomposition.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Convex Optimization</p>
+        <p class="prev-next-title">Cholesky decomposition</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../cs/algorithms/algorithms.html"
+       href="convex_optimization.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Algorithms</p>
+        <p class="prev-next-title">Convex Optimization</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -510,8 +517,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-definite">Semi-definite</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-optimization">Mathematical Optimization</a></li>
 </ul>
   </nav></div>
 

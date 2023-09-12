@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Semi-definite Programming (SDP)" href="semidefinite_programming.html" />
-    <link rel="prev" title="Cholesky decomposition" href="../linear_algebra/decompositions/cholesky_decomposition.html" />
+    <link rel="prev" title="Optimization" href="optimization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,7 +182,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../linear_algebra/decompositions/cholesky_decomposition.html">Cholesky decomposition</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Convex Optimization</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="optimization.html">Optimization</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Convex Optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="semidefinite_programming.html">Semi-definite Programming (SDP)</a></li>
 </ul>
 </li>
@@ -408,6 +409,15 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-definitions">Convex Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-functions">Convex functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-for-establishing-convexity-of-a-set">Methods for establishing convexity of a set</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#intersection">Intersection</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#affine-function">Affine function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perspective-function-lienar-fractional-function">Perspective function &amp; lienar-fractional function</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-programming">Linear programming</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-theorem">Min-Max theorem</a></li>
 </ul>
@@ -426,15 +436,167 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="convex-optimization">
 <h1>Convex Optimization<a class="headerlink" href="#convex-optimization" title="Permalink to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand\realnumber{\mathbb{R}}
+\newcommand\vbx{\vb{x}}\]</div>
+<blockquote>
+<div><p>The great watershed in optimization isn’t between linearity and non-linearity, but convexity and non-convexity. -R. Tyrrell Rockafellar ()</p>
+</div></blockquote>
 <section id="convex-definitions">
 <h2>Convex Definitions<a class="headerlink" href="#convex-definitions" title="Permalink to this heading">#</a></h2>
 <div class="proof definition admonition" id="convex_combination">
-<p class="admonition-title"><span class="caption-number">Definition 1 </span> (Convex)</p>
+<p class="admonition-title"><span class="caption-number">Definition 2 </span> (Convex)</p>
 <section class="definition-content" id="proof-content">
 <div class="math notranslate nohighlight">
 \[a x_1 + (1-a) x_2\]</div>
 </section>
 </div></section>
+<section id="convex-functions">
+<h2>Convex functions<a class="headerlink" href="#convex-functions" title="Permalink to this heading">#</a></h2>
+<div class="proof definition admonition" id="convex_function">
+<p class="admonition-title"><span class="caption-number">Definition 3 </span> (Convex function)</p>
+<section class="definition-content" id="proof-content">
+<p>a function <span class="math notranslate nohighlight">\(f:R^n\to R\)</span> is <code class="docutils literal notranslate"><span class="pre">convex</span></code> if dom is a convex set and
+<span class="math notranslate nohighlight">\(f(\theta x+(1-\theta) y) \le \theta f(x) + (1-\theta) f(y), \forall x, y\in D, 0\le \theta \le 1\)</span>.
+(strictly convex)</p>
+</section>
+</div><div class="proof example dropdown admonition" id="example-2">
+<p class="admonition-title"><span class="caption-number">Example 1 </span> (Convex functions)</p>
+<section class="example-content" id="proof-content">
+<p>convex:</p>
+<ul class="simple">
+<li><p>affine</p></li>
+<li><p>exponential</p></li>
+<li><p>powers: <span class="math notranslate nohighlight">\(x^\alpha\)</span> on <span class="math notranslate nohighlight">\(R_{++}\)</span>, for <span class="math notranslate nohighlight">\(\alpha\ge 1\)</span> or <span class="math notranslate nohighlight">\(\alpha\le 0\)</span></p></li>
+<li><p>powers of absolute value: <span class="math notranslate nohighlight">\(\abs{x}^P\)</span> on <span class="math notranslate nohighlight">\(R\)</span>, for <span class="math notranslate nohighlight">\(p\ge 1\)</span></p></li>
+<li><p>negative entropy: <span class="math notranslate nohighlight">\(x\log x\)</span> on <span class="math notranslate nohighlight">\(R_{++}\)</span></p></li>
+</ul>
+<p>concave:</p>
+<ul class="simple">
+<li><p>affine</p></li>
+<li><p>powers: for <span class="math notranslate nohighlight">\(0\le \alpha \le 1\)</span></p></li>
+<li><p>logarithm: <span class="math notranslate nohighlight">\(\log x\)</span> on <span class="math notranslate nohighlight">\(R_{++}\)</span></p></li>
+</ul>
+</section>
+</div><p><code class="docutils literal notranslate"><span class="pre">all</span> <span class="pre">norms</span> <span class="pre">are</span> <span class="pre">convex</span></code></p>
+<!-- ### Epigraph of a function -->
+<div class="proof definition admonition" id="epigraph_function">
+<p class="admonition-title"><span class="caption-number">Definition 4 </span> (Epigraph of a function)</p>
+<section class="definition-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(\alpha\)</span>-sublevel set of <span class="math notranslate nohighlight">\(f:R^n\to R\)</span>:
+<span class="math notranslate nohighlight">\(C_{\alpha} = \{x\in dom f \mid f(x) \le \alpha \}\)</span>
+sublevel sets of convex functiosn are convex</p>
+<p><code class="docutils literal notranslate"><span class="pre">epigraph</span></code> of <span class="math notranslate nohighlight">\(f: R^n\to R\)</span></p>
+<div class="math notranslate nohighlight">
+\[epi(f)=\{(x,t)\in R^{n+1} | x\in D, f(x)\le t\}\]</div>
+</section>
+</div><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">all</span> <span class="pre">sublevel</span> <span class="pre">sets</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">function</span> <span class="pre">are</span> <span class="pre">convex,</span> <span class="pre">is</span> <span class="pre">the</span> <span class="pre">function</span> <span class="pre">necessarily</span> <span class="pre">convex?</span></code> (butterfly like function)</p>
+<div class="proof theorem admonition" id="epigraph_convex">
+<p class="admonition-title"><span class="caption-number">Theorem 3 </span> (Epigraph convex)</p>
+<section class="theorem-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(f\)</span> is convex iff <span class="math notranslate nohighlight">\(epi(f)\)</span> is a convex set.</p>
+</section>
+</div><div class="proof admonition" id="proof">
+<p>Proof. two directions</p>
+</div>
+<div class="proof definition admonition" id="differentiable_function">
+<p class="admonition-title"><span class="caption-number">Definition 5 </span> (Differentiable functions)</p>
+<section class="definition-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(f\)</span> is <code class="docutils literal notranslate"><span class="pre">differentiable</span></code> if <span class="math notranslate nohighlight">\(D\)</span> is <code class="docutils literal notranslate"><span class="pre">open</span></code> and the gradient <span class="math notranslate nohighlight">\(\nabla f(x)\)</span> exists at each <span class="math notranslate nohighlight">\(x\in D\)</span></p>
+</section>
+</div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">(defined</span> <span class="pre">on</span> <span class="pre">an</span> <span class="pre">open</span> <span class="pre">domain)</span> <span class="pre">is</span> <span class="pre">convex,</span> <span class="pre">then</span> <span class="pre">f</span> <span class="pre">is</span> <span class="pre">continuous</span></code></p></li>
+<li><p>f is convex, then f is differentiable. (False)</p></li>
+</ul>
+<div class="proof definition admonition" id="1st_order_condition">
+<p class="admonition-title"><span class="caption-number">Definition 6 </span> (1st-order condition)</p>
+<section class="definition-content" id="proof-content">
+<p>differentiable <span class="math notranslate nohighlight">\(f\)</span> with convex domain is convex iff</p>
+<div class="math notranslate nohighlight">
+\[ f(y) \ge f(x) + \nabla f(x)^T (y-x) \; \forall x,y \in D \]</div>
+<p>first-order approximation of f is always underestimator. (first-order Taylor)</p>
+</section>
+</div><div class="proof definition admonition" id="definition-7">
+<p class="admonition-title"><span class="caption-number">Definition 7 </span> (second-order condition)</p>
+<section class="definition-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(f\)</span> is <code class="docutils literal notranslate"><span class="pre">twice</span> <span class="pre">differentiable</span></code> if <span class="math notranslate nohighlight">\(D\)</span> is <code class="docutils literal notranslate"><span class="pre">open</span></code> and the <code class="docutils literal notranslate"><span class="pre">Hessian</span></code> <span class="math notranslate nohighlight">\(\nabla^2 f(x)\)</span> exists at each <span class="math notranslate nohighlight">\(x\in D\)</span></p>
+</section>
+</div><div class="proof theorem admonition" id="theorem-8">
+<p class="admonition-title"><span class="caption-number">Theorem 4 </span></p>
+<section class="theorem-content" id="proof-content">
+<ul class="simple">
+<li><p>for twice differentiable f with convex domain,
+f is convex iff <span class="math notranslate nohighlight">\(\nabla^2 f(x) \succeq 0, \forall x \in D\)</span></p></li>
+<li><p>if <span class="math notranslate nohighlight">\(\nabla^2 f(x) \succ 0 \forall x\in D\)</span>, then <span class="math notranslate nohighlight">\(f\)</span> is strictly convex.
+(converse is not true, <span class="math notranslate nohighlight">\(f(x) = x^4\)</span>)</p></li>
+</ul>
+</section>
+</div><div class="proof example admonition" id="example-9">
+<p class="admonition-title"><span class="caption-number">Example 2 </span> (Quadratic function)</p>
+<section class="example-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(f(x) = x^2\)</span>, <span class="math notranslate nohighlight">\(f(x) = (1/2)x^T Px + q^T x +r \)</span> with <span class="math notranslate nohighlight">\(P\in S^n\)</span>,
+then <span class="math notranslate nohighlight">\(\nabla (x) = Px+q\)</span>, <span class="math notranslate nohighlight">\(\nabla^2 f(x) =P\)</span>.
+convex iff <span class="math notranslate nohighlight">\(P \succeq 0\)</span></p>
+</section>
+</div><section id="methods-for-establishing-convexity-of-a-set">
+<h3>Methods for establishing convexity of a set<a class="headerlink" href="#methods-for-establishing-convexity-of-a-set" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>apply definition</p></li>
+<li><p>show that <span class="math notranslate nohighlight">\(C\)</span> obtained from the operations:</p></li>
+</ol>
+<ul class="simple">
+<li><p>intersection</p></li>
+<li><p>affine</p></li>
+<li><p>Perspective function &amp; lienar-fractional function</p></li>
+</ul>
+<section id="intersection">
+<h4>Intersection<a class="headerlink" href="#intersection" title="Permalink to this heading">#</a></h4>
+<p>If <span class="math notranslate nohighlight">\(S_i\)</span> is (affine, convex, convex cone), for <span class="math notranslate nohighlight">\(i\in A\)</span>, then <span class="math notranslate nohighlight">\(\cap_{i\in A} S_i\)</span> is (affine, convex, convex cone)</p>
+<p>intersection need not be <code class="docutils literal notranslate"><span class="pre">finite</span></code>: e.g., a convex set is intersection of <code class="docutils literal notranslate"><span class="pre">infinite</span> <span class="pre">halfspaces</span></code>. (Union not the case)</p>
+</section>
+<section id="affine-function">
+<h4>Affine function<a class="headerlink" href="#affine-function" title="Permalink to this heading">#</a></h4>
+<p>a general form of linear function (constant term)</p>
+<div class="proof definition admonition" id="affine_function">
+<p class="admonition-title"><span class="caption-number">Definition 8 </span> (Affine function)</p>
+<section class="definition-content" id="proof-content">
+<p><code class="docutils literal notranslate"><span class="pre">Affine</span> <span class="pre">function</span></code>
+<span class="math notranslate nohighlight">\(f(x)=Ax + b, \; A\in R^{m\times n}, b\in R^{m}\)</span></p>
+</section>
+</div><p>If <span class="math notranslate nohighlight">\(S\)</span> is convex, <span class="math notranslate nohighlight">\(f(S)\)</span> is also convex;
+If <span class="math notranslate nohighlight">\(C\)</span> is convex, <span class="math notranslate nohighlight">\(f^{-1}(C)\)</span> is also convex;</p>
+<div class="proof example admonition" id="example-11">
+<p class="admonition-title"><span class="caption-number">Example 3 </span> (Affine)</p>
+<section class="example-content" id="proof-content">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The epplisoid {prf:ref} is the image of the unit ball under the affine mapping.
+It is also the inverse image of the unit ball under the affine mapping
+</pre></div>
+</div>
+</section>
+</div></section>
+<section id="perspective-function-lienar-fractional-function">
+<h4>Perspective function &amp; lienar-fractional function<a class="headerlink" href="#perspective-function-lienar-fractional-function" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">perspective</span> <span class="pre">function</span></code> <span class="math notranslate nohighlight">\(P: R^{n+1} \to R^n\)</span>:
+<span class="math notranslate nohighlight">\(P(x,t) = x/t,\; dom(P)={(x,t)|t&gt;0}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">linear-fractional</span> <span class="pre">function</span></code> <span class="math notranslate nohighlight">\(f: R^n\to R^m\)</span>
+<span class="math notranslate nohighlight">\(f(x) = \frac{Ax+b}{c^T x+d}, \; dom(f)={x|c^T x+d&gt;0}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">perspective</span> <span class="pre">functions</span> <span class="pre">preserve</span> <span class="pre">lines</span> <span class="pre">s.t.</span> <span class="pre">preserve</span> <span class="pre">convexity</span></code>
+<span class="math notranslate nohighlight">\(P(\theta x +(1-\theta)y)=\dots=\mu P(x) + (1-\mu)P(y)\)</span></p>
+<div class="proof theorem admonition" id="separating_hyperplane_theorem">
+<p class="admonition-title"><span class="caption-number">Theorem 5 </span> (Separating hyperplane theorem)</p>
+<section class="theorem-content" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(D\)</span> are two disjoint (convex?) sets, there exists</p>
+</section>
+</div><div class="proof theorem dropdown admonition" id="supporting_hyperplane_theorem">
+<p class="admonition-title"><span class="caption-number">Theorem 6 </span> (Supporting hyperplane theorem)</p>
+<section class="theorem-content" id="proof-content">
+<p><code class="docutils literal notranslate"><span class="pre">supporint</span> <span class="pre">hyperplane</span></code> to set <span class="math notranslate nohighlight">\(C\)</span> at boundary point <span class="math notranslate nohighlight">\(x_0\)</span>:
+<span class="math notranslate nohighlight">\(\{x| a^T x = a^T x_0\}\)</span> where <span class="math notranslate nohighlight">\(a\neq 0\)</span> and <span class="math notranslate nohighlight">\(a^x \le a^T x_0, \forall x\in C\)</span>.
+If <span class="math notranslate nohighlight">\(C\)</span> is convex, then there exists a supporitn hyperplane at every boundary point of <span class="math notranslate nohighlight">\(C\)</span></p>
+</section>
+</div></section>
+</section>
+</section>
 <section id="linear-programming">
 <h2>Linear programming<a class="headerlink" href="#linear-programming" title="Permalink to this heading">#</a></h2>
 <section id="min-max-theorem">
@@ -444,8 +606,6 @@ document.write(`
 <section id="integer-programming">
 <h2>Integer Programming<a class="headerlink" href="#integer-programming" title="Permalink to this heading">#</a></h2>
 </section>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -480,12 +640,12 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../linear_algebra/decompositions/cholesky_decomposition.html"
+       href="optimization.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Cholesky decomposition</p>
+        <p class="prev-next-title">Optimization</p>
       </div>
     </a>
     <a class="right-next"
@@ -516,6 +676,15 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-definitions">Convex Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-functions">Convex functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-for-establishing-convexity-of-a-set">Methods for establishing convexity of a set</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#intersection">Intersection</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#affine-function">Affine function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perspective-function-lienar-fractional-function">Perspective function &amp; lienar-fractional function</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-programming">Linear programming</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-theorem">Min-Max theorem</a></li>
 </ul>
