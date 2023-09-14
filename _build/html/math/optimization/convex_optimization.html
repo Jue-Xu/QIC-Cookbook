@@ -416,6 +416,10 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perspective-function-lienar-fractional-function">Perspective function &amp; lienar-fractional function</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operations-that-preserve-convexity">Operations that preserve convexity</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#composition-of-scalar-functions"><code class="docutils literal notranslate"><span class="pre">composition</span> <span class="pre">of</span> <span class="pre">scalar</span> <span class="pre">functions</span></code>:</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-programming">Linear programming</a><ul class="nav section-nav flex-column">
@@ -531,12 +535,46 @@ f is convex iff <span class="math notranslate nohighlight">\(\nabla^2 f(x) \succ
 (converse is not true, <span class="math notranslate nohighlight">\(f(x) = x^4\)</span>)</p></li>
 </ul>
 </section>
-</div><div class="proof example admonition" id="example-9">
+</div><!-- ````{prf:proof}
+```` -->
+<div class="proof example admonition" id="example-9">
 <p class="admonition-title"><span class="caption-number">Example 2 </span> (Quadratic function)</p>
 <section class="example-content" id="proof-content">
 <p><span class="math notranslate nohighlight">\(f(x) = x^2\)</span>, <span class="math notranslate nohighlight">\(f(x) = (1/2)x^T Px + q^T x +r \)</span> with <span class="math notranslate nohighlight">\(P\in S^n\)</span>,
 then <span class="math notranslate nohighlight">\(\nabla (x) = Px+q\)</span>, <span class="math notranslate nohighlight">\(\nabla^2 f(x) =P\)</span>.
 convex iff <span class="math notranslate nohighlight">\(P \succeq 0\)</span></p>
+</section>
+</div><div class="proof example admonition" id="example-10">
+<p class="admonition-title"><span class="caption-number">Example 3 </span> (Least-square objective)</p>
+<section class="example-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(f(x)=||Ax-b||_2^2\)</span>, <span class="math notranslate nohighlight">\(\nabla f(x)=2A^T(Ax-b)\)</span>, <span class="math notranslate nohighlight">\(\nabla^2f(x) = 2A^T A\)</span> convex (for any A)</p>
+</section>
+</div><div class="proof definition admonition" id="definition-11">
+<p class="admonition-title"><span class="caption-number">Definition 8 </span> (Global minimum)</p>
+<section class="definition-content" id="proof-content">
+<ul class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(f\)</span> is convex, differenetiable, and <span class="math notranslate nohighlight">\(\nabla f(x*)=0\)</span>,
+then <span class="math notranslate nohighlight">\(f(y)\ge f(x^*), \forall y\)</span>, i.e., <span class="math notranslate nohighlight">\(x^*\)</span> is the global minimum of <span class="math notranslate nohighlight">\(f(x)\)</span></p></li>
+<li><p>if f is twice differentiable and <span class="math notranslate nohighlight">\(\nabla f(x*)=0\)</span>, <span class="math notranslate nohighlight">\(\nabla^2 f(x*)\succeq 0\)</span>, then <span class="math notranslate nohighlight">\(f(y)\ge f(x^*) \forall\)</span>, i.e., <span class="math notranslate nohighlight">\(x^*\)</span> is a global minimum of <span class="math notranslate nohighlight">\(f(x)\)</span>.</p></li>
+</ul>
+</section>
+</div><ul class="simple">
+<li><p>a function may not have a global minimum even if it is convex, e.g., <span class="math notranslate nohighlight">\(f(x)=x\)</span>, <span class="math notranslate nohighlight">\(f(x)=e^x\)</span></p></li>
+<li><p>these properties only apply to uncontrained minimization, <span class="math notranslate nohighlight">\(f(x,y)=x^2+y^2\)</span>.
+if <span class="math notranslate nohighlight">\(D=\{(x,y)| xy\ge 1, x\ge 0, y\ge 0\}\)</span>, then you cannot find minimum at <span class="math notranslate nohighlight">\(\nabla f(x)=0\)</span></p></li>
+</ul>
+<div class="proof definition admonition" id="definition-12">
+<p class="admonition-title"><span class="caption-number">Definition 9 </span> (Local minimum)</p>
+<section class="definition-content" id="proof-content">
+<p>Local minimum: <span class="math notranslate nohighlight">\(x^*\)</span> is a local minimum of unconstrained function <span class="math notranslate nohighlight">\(f\)</span> if it is no worse than its neighbors, i.e.,
+$<span class="math notranslate nohighlight">\(
+\exists \epsilon &gt;0, s.t., f(x^*)\le f(x), \forall x, ||x-x^*||_2\le \epsilon
+\)</span>$
+property:</p>
+<ul class="simple">
+<li><p>local minimum (assume twice differentiable), then <span class="math notranslate nohighlight">\(\nabla f(x*)=0\)</span>, <span class="math notranslate nohighlight">\(\nabla^2 f(x*)\succeq 0\)</span> (converse not True, <span class="math notranslate nohighlight">\(f(x)=x^3\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\nabla f(x*)=0\)</span>, <span class="math notranslate nohighlight">\(\nabla^2 f(x*)\succ 0\)</span>, local minimum</p></li>
+</ul>
 </section>
 </div><section id="methods-for-establishing-convexity-of-a-set">
 <h3>Methods for establishing convexity of a set<a class="headerlink" href="#methods-for-establishing-convexity-of-a-set" title="Permalink to this heading">#</a></h3>
@@ -558,15 +596,15 @@ convex iff <span class="math notranslate nohighlight">\(P \succeq 0\)</span></p>
 <h4>Affine function<a class="headerlink" href="#affine-function" title="Permalink to this heading">#</a></h4>
 <p>a general form of linear function (constant term)</p>
 <div class="proof definition admonition" id="affine_function">
-<p class="admonition-title"><span class="caption-number">Definition 8 </span> (Affine function)</p>
+<p class="admonition-title"><span class="caption-number">Definition 10 </span> (Affine function)</p>
 <section class="definition-content" id="proof-content">
 <p><code class="docutils literal notranslate"><span class="pre">Affine</span> <span class="pre">function</span></code>
 <span class="math notranslate nohighlight">\(f(x)=Ax + b, \; A\in R^{m\times n}, b\in R^{m}\)</span></p>
 </section>
 </div><p>If <span class="math notranslate nohighlight">\(S\)</span> is convex, <span class="math notranslate nohighlight">\(f(S)\)</span> is also convex;
 If <span class="math notranslate nohighlight">\(C\)</span> is convex, <span class="math notranslate nohighlight">\(f^{-1}(C)\)</span> is also convex;</p>
-<div class="proof example admonition" id="example-11">
-<p class="admonition-title"><span class="caption-number">Example 3 </span> (Affine)</p>
+<div class="proof example admonition" id="example-14">
+<p class="admonition-title"><span class="caption-number">Example 4 </span> (Affine)</p>
 <section class="example-content" id="proof-content">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The epplisoid {prf:ref} is the image of the unit ball under the affine mapping.
 It is also the inverse image of the unit ball under the affine mapping
@@ -595,6 +633,40 @@ It is also the inverse image of the unit ball under the affine mapping
 If <span class="math notranslate nohighlight">\(C\)</span> is convex, then there exists a supporitn hyperplane at every boundary point of <span class="math notranslate nohighlight">\(C\)</span></p>
 </section>
 </div></section>
+</section>
+<section id="operations-that-preserve-convexity">
+<h3>Operations that preserve convexity<a class="headerlink" href="#operations-that-preserve-convexity" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>nonnegative multiple</p></li>
+<li><p>sum</p></li>
+<li><p>composition with affine function</p></li>
+</ul>
+<p>example:</p>
+<ul class="simple">
+<li><p>log barrier for linear inequalities</p></li>
+<li><p>piecewise-linear function</p></li>
+</ul>
+<p>pointwise supremum: if <span class="math notranslate nohighlight">\(f(x,y)\)</span> is convex in <span class="math notranslate nohighlight">\(x\)</span> for each <span class="math notranslate nohighlight">\(y\in A\)</span>, then <span class="math notranslate nohighlight">\(g(x)=sup_{y\in A} f(x,y)\)</span> is convex</p>
+<div class="proof remark admonition" id="remark-17">
+<p class="admonition-title"><span class="caption-number">Remark 1 </span></p>
+<section class="remark-content" id="proof-content">
+<p>The infimum of a subset S of a partially ordered set P, assuming it exists, does not necessarily belong to S. If it does, it is a minimum or least element of S.
+Similarly, if the supremum of S belongs to S, it is a maximum or greatest element of S.</p>
+</section>
+</div><p>examples:</p>
+<ul class="simple">
+<li><p>distance to farthes point in a set <span class="math notranslate nohighlight">\(C\)</span>: <span class="math notranslate nohighlight">\(f(x)=sup_{y\in C} ||x-y||\)</span></p></li>
+</ul>
+<p>minimization: if <span class="math notranslate nohighlight">\(f(x,y)\)</span> is convex in <span class="math notranslate nohighlight">\((x,y)\)</span> and <span class="math notranslate nohighlight">\(C\)</span> is a convex set, then <span class="math notranslate nohighlight">\(g(x) = inf_{y\in C} f(x,y)\)</span> is convex.</p>
+<section id="composition-of-scalar-functions">
+<h4><code class="docutils literal notranslate"><span class="pre">composition</span> <span class="pre">of</span> <span class="pre">scalar</span> <span class="pre">functions</span></code>:<a class="headerlink" href="#composition-of-scalar-functions" title="Permalink to this heading">#</a></h4>
+<p>composition of <span class="math notranslate nohighlight">\(g\)</span>: <span class="math notranslate nohighlight">\(R^n\to R\)</span> and <span class="math notranslate nohighlight">\(h: R\to R\)</span>: <span class="math notranslate nohighlight">\(f(x)=h(g(x))\)</span>
+<span class="math notranslate nohighlight">\(f\)</span> is convex if <span class="math notranslate nohighlight">\(g\)</span> convex, <span class="math notranslate nohighlight">\(h\)</span> convex, <span class="math notranslate nohighlight">\(\tilde{h}\)</span> nondecreasing</p>
+<p>discover composition rules for <span class="math notranslate nohighlight">\(n=1\)</span>, twice differentiable <span class="math notranslate nohighlight">\(g, h\)</span></p>
+<p>composition of <span class="math notranslate nohighlight">\(g\)</span>: <span class="math notranslate nohighlight">\(R^n\to R^k\)</span> and <span class="math notranslate nohighlight">\(h: R^k\to R\)</span>: <span class="math notranslate nohighlight">\(f(x)=h(g(x))\)</span>
+<span class="math notranslate nohighlight">\(f\)</span> is convex if <span class="math notranslate nohighlight">\(g_i\)</span> convex, <span class="math notranslate nohighlight">\(h\)</span> convex, <span class="math notranslate nohighlight">\(\tilde{h}\)</span> nondecreasing in each argument</p>
+<p>composition rule for <span class="math notranslate nohighlight">\(n=1\)</span>, <span class="math notranslate nohighlight">\(f''(x) =g'(x)^T\nabla^2 h(g(x))g'(x) + \nabla h(g(x))^T g''(x)\)</span></p>
+</section>
 </section>
 </section>
 <section id="linear-programming">
@@ -681,6 +753,10 @@ If <span class="math notranslate nohighlight">\(C\)</span> is convex, then there
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#intersection">Intersection</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#affine-function">Affine function</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perspective-function-lienar-fractional-function">Perspective function &amp; lienar-fractional function</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operations-that-preserve-convexity">Operations that preserve convexity</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#composition-of-scalar-functions"><code class="docutils literal notranslate"><span class="pre">composition</span> <span class="pre">of</span> <span class="pre">scalar</span> <span class="pre">functions</span></code>:</a></li>
 </ul>
 </li>
 </ul>
