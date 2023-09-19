@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,8 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -79,6 +80,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -370,10 +380,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -381,7 +391,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -427,17 +437,42 @@ document.write(`
 \newcommand\vbx{\vb{x}}\]</div>
 <section id="mathematical-optimization">
 <h2>Mathematical Optimization<a class="headerlink" href="#mathematical-optimization" title="Permalink to this heading">#</a></h2>
-<p>An optimization problem consists of a set <span class="math notranslate nohighlight">\(D\)</span>, called the <code class="docutils literal notranslate"><span class="pre">domain</span></code>, and a real-valued function <span class="math notranslate nohighlight">\(f:D\to \realnumber\)</span>, called the <code class="docutils literal notranslate"><span class="pre">objective</span></code> fucntion.</p>
+<p>An optimization problem consists of a set <span class="math notranslate nohighlight">\(D\)</span>, called the <code class="docutils literal notranslate"><span class="pre">domain</span></code>, and a real-valued function <span class="math notranslate nohighlight">\(f:D\to R\)</span>, called the <code class="docutils literal notranslate"><span class="pre">objective</span></code> fucntion.</p>
 <ul class="simple">
 <li><p>minimization problem: find an <span class="math notranslate nohighlight">\(x\in D\)</span> such that <span class="math notranslate nohighlight">\(f(x)\le f(y)\)</span> for all <span class="math notranslate nohighlight">\(y\in D\)</span>.</p></li>
 <li><p>maximization problem: find an <span class="math notranslate nohighlight">\(x\in D\)</span> such that <span class="math notranslate nohighlight">\(f(x)\ge f(y)\)</span> for all <span class="math notranslate nohighlight">\(y\in D\)</span>.</p></li>
 </ul>
 <p>a mathematical program consist of:</p>
 <ul class="simple">
-<li><p>an objective function <span class="math notranslate nohighlight">\(f_0: \realnumber^n \to \realnumber\)</span></p></li>
+<li><p>an objective function <span class="math notranslate nohighlight">\(f_0: R^n \to R\)</span></p></li>
 <li><p>a set of <span class="math notranslate nohighlight">\(m\)</span>  constriant functions <span class="math notranslate nohighlight">\(f_i: \mathbb{R}^n \to \mathbb{R}, i=1,\dots, m\)</span>.</p></li>
 <li><p>constant variables <span class="math notranslate nohighlight">\(x\)</span></p></li>
 </ul>
+<p>standard form</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\in R^n\)</span> is the optimization variable</p></li>
+<li><p><span class="math notranslate nohighlight">\(f_0:R^n\to R\)</span> is the objective or cost function</p></li>
+<li><p><span class="math notranslate nohighlight">\(f_i:R^n\to R, i=1,\dots, m\)</span> is the inequality constraint functions</p></li>
+<li><p><span class="math notranslate nohighlight">\(h_i:R^n\to R\)</span> are the equality constraint functions</p></li>
+</ul>
+<p>optimal values</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p^*\)</span></p></li>
+<li></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(x\)</span> is <code class="docutils literal notranslate"><span class="pre">feasible</span></code> if <span class="math notranslate nohighlight">\(x\in dom (f_0)\)</span> and it satisfies the constraints</p>
+<p><code class="docutils literal notranslate"><span class="pre">optimal</span> <span class="pre">point:</span></code> a feasible <span class="math notranslate nohighlight">\(x\)</span> is optimal if <span class="math notranslate nohighlight">\(f_0(x) = p^*\)</span></p>
+<p><span class="math notranslate nohighlight">\(x\)</span> is <code class="docutils literal notranslate"><span class="pre">locally</span> <span class="pre">optimal</span></code> if there is an <span class="math notranslate nohighlight">\(R&gt;0\)</span> such that <span class="math notranslate nohighlight">\(x\)</span> is optimal for …</p>
+<div class="proof example admonition" id="example-0">
+<p class="admonition-title"><span class="caption-number">Example 1 </span></p>
+<section class="example-content" id="proof-content">
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f_0(x) = 1/x\)</span>, <span class="math notranslate nohighlight">\(dom f_0 = R_{++}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f_0(x) = -\log x\)</span>, <span class="math notranslate nohighlight">\(dom f_0 = R_{++}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f_0(x) = x\log x\)</span>, <span class="math notranslate nohighlight">\(dom f_0 = R_{++}\)</span></p></li>
+</ul>
+</section>
+</div><p>feasibility is a special case i.e., <span class="math notranslate nohighlight">\(f_0(x)=0\)</span></p>
 <div class="proof definition admonition" id="optimization_problem">
 <p class="admonition-title"><span class="caption-number">Definition 1 </span> (Optimization problem)</p>
 <section class="definition-content" id="proof-content">
@@ -475,11 +510,10 @@ if it has the smallest objective value among all vectors that satisfy the constr
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../linear_algebra/decompositions/cholesky_decomposition.html"
@@ -499,10 +533,7 @@ if it has the smallest objective value among all vectors that satisfy the constr
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -565,8 +596,8 @@ By Jue Xu
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
 
   <footer class="bd-footer">
   </footer>

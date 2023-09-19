@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,8 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -79,6 +80,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -370,10 +380,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -381,7 +391,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -417,16 +427,13 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operations-that-preserve-convexity">Operations that preserve convexity</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#composition-of-scalar-functions"><code class="docutils literal notranslate"><span class="pre">composition</span> <span class="pre">of</span> <span class="pre">scalar</span> <span class="pre">functions</span></code>:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#composition-of-scalar-functions">composition of scalar functions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quasiconvex">quasiconvex</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-programming">Linear programming</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-theorem">Min-Max theorem</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-programming">Integer Programming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Convex optimization</a></li>
 </ul>
             </nav>
         </div>
@@ -465,7 +472,7 @@ document.write(`
 (strictly convex)</p>
 </section>
 </div><div class="proof example dropdown admonition" id="example-2">
-<p class="admonition-title"><span class="caption-number">Example 1 </span> (Convex functions)</p>
+<p class="admonition-title"><span class="caption-number">Example 2 </span> (Convex functions)</p>
 <section class="example-content" id="proof-content">
 <p>convex:</p>
 <ul class="simple">
@@ -538,14 +545,14 @@ f is convex iff <span class="math notranslate nohighlight">\(\nabla^2 f(x) \succ
 </div><!-- ````{prf:proof}
 ```` -->
 <div class="proof example admonition" id="example-9">
-<p class="admonition-title"><span class="caption-number">Example 2 </span> (Quadratic function)</p>
+<p class="admonition-title"><span class="caption-number">Example 3 </span> (Quadratic function)</p>
 <section class="example-content" id="proof-content">
 <p><span class="math notranslate nohighlight">\(f(x) = x^2\)</span>, <span class="math notranslate nohighlight">\(f(x) = (1/2)x^T Px + q^T x +r \)</span> with <span class="math notranslate nohighlight">\(P\in S^n\)</span>,
 then <span class="math notranslate nohighlight">\(\nabla (x) = Px+q\)</span>, <span class="math notranslate nohighlight">\(\nabla^2 f(x) =P\)</span>.
 convex iff <span class="math notranslate nohighlight">\(P \succeq 0\)</span></p>
 </section>
 </div><div class="proof example admonition" id="example-10">
-<p class="admonition-title"><span class="caption-number">Example 3 </span> (Least-square objective)</p>
+<p class="admonition-title"><span class="caption-number">Example 4 </span> (Least-square objective)</p>
 <section class="example-content" id="proof-content">
 <p><span class="math notranslate nohighlight">\(f(x)=||Ax-b||_2^2\)</span>, <span class="math notranslate nohighlight">\(\nabla f(x)=2A^T(Ax-b)\)</span>, <span class="math notranslate nohighlight">\(\nabla^2f(x) = 2A^T A\)</span> convex (for any A)</p>
 </section>
@@ -604,7 +611,7 @@ property:</p>
 </div><p>If <span class="math notranslate nohighlight">\(S\)</span> is convex, <span class="math notranslate nohighlight">\(f(S)\)</span> is also convex;
 If <span class="math notranslate nohighlight">\(C\)</span> is convex, <span class="math notranslate nohighlight">\(f^{-1}(C)\)</span> is also convex;</p>
 <div class="proof example admonition" id="example-14">
-<p class="admonition-title"><span class="caption-number">Example 4 </span> (Affine)</p>
+<p class="admonition-title"><span class="caption-number">Example 5 </span> (Affine)</p>
 <section class="example-content" id="proof-content">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The epplisoid {prf:ref} is the image of the unit ball under the affine mapping.
 It is also the inverse image of the unit ball under the affine mapping
@@ -646,7 +653,7 @@ If <span class="math notranslate nohighlight">\(C\)</span> is convex, then there
 <li><p>log barrier for linear inequalities</p></li>
 <li><p>piecewise-linear function</p></li>
 </ul>
-<p>pointwise supremum: if <span class="math notranslate nohighlight">\(f(x,y)\)</span> is convex in <span class="math notranslate nohighlight">\(x\)</span> for each <span class="math notranslate nohighlight">\(y\in A\)</span>, then <span class="math notranslate nohighlight">\(g(x)=sup_{y\in A} f(x,y)\)</span> is convex</p>
+<p>pointwise supremum: if <span class="math notranslate nohighlight">\(f(x,y)\)</span> is convex in <span class="math notranslate nohighlight">\(x\)</span> for each <span class="math notranslate nohighlight">\(y\in A\)</span>, then <span class="math notranslate nohighlight">\(g(x)=\sup_{y\in A} f(x,y)\)</span> is convex</p>
 <div class="proof remark admonition" id="remark-17">
 <p class="admonition-title"><span class="caption-number">Remark 1 </span></p>
 <section class="remark-content" id="proof-content">
@@ -655,28 +662,91 @@ Similarly, if the supremum of S belongs to S, it is a maximum or greatest elemen
 </section>
 </div><p>examples:</p>
 <ul class="simple">
-<li><p>distance to farthes point in a set <span class="math notranslate nohighlight">\(C\)</span>: <span class="math notranslate nohighlight">\(f(x)=sup_{y\in C} ||x-y||\)</span></p></li>
+<li><p>distance to farthes point in a set <span class="math notranslate nohighlight">\(C\)</span>: <span class="math notranslate nohighlight">\(f(x)=\sup_{y\in C} ||x-y||\)</span></p></li>
 </ul>
-<p>minimization: if <span class="math notranslate nohighlight">\(f(x,y)\)</span> is convex in <span class="math notranslate nohighlight">\((x,y)\)</span> and <span class="math notranslate nohighlight">\(C\)</span> is a convex set, then <span class="math notranslate nohighlight">\(g(x) = inf_{y\in C} f(x,y)\)</span> is convex.</p>
+<p>minimization: if <span class="math notranslate nohighlight">\(f(x,y)\)</span> is convex in <span class="math notranslate nohighlight">\((x,y)\)</span> and <span class="math notranslate nohighlight">\(C\)</span> is a convex set, then <span class="math notranslate nohighlight">\(g(x) = \inf_{y\in C} f(x,y)\)</span> is convex.</p>
 <section id="composition-of-scalar-functions">
-<h4><code class="docutils literal notranslate"><span class="pre">composition</span> <span class="pre">of</span> <span class="pre">scalar</span> <span class="pre">functions</span></code>:<a class="headerlink" href="#composition-of-scalar-functions" title="Permalink to this heading">#</a></h4>
+<h4>composition of scalar functions<a class="headerlink" href="#composition-of-scalar-functions" title="Permalink to this heading">#</a></h4>
 <p>composition of <span class="math notranslate nohighlight">\(g\)</span>: <span class="math notranslate nohighlight">\(R^n\to R\)</span> and <span class="math notranslate nohighlight">\(h: R\to R\)</span>: <span class="math notranslate nohighlight">\(f(x)=h(g(x))\)</span>
 <span class="math notranslate nohighlight">\(f\)</span> is convex if <span class="math notranslate nohighlight">\(g\)</span> convex, <span class="math notranslate nohighlight">\(h\)</span> convex, <span class="math notranslate nohighlight">\(\tilde{h}\)</span> nondecreasing</p>
 <p>discover composition rules for <span class="math notranslate nohighlight">\(n=1\)</span>, twice differentiable <span class="math notranslate nohighlight">\(g, h\)</span></p>
 <p>composition of <span class="math notranslate nohighlight">\(g\)</span>: <span class="math notranslate nohighlight">\(R^n\to R^k\)</span> and <span class="math notranslate nohighlight">\(h: R^k\to R\)</span>: <span class="math notranslate nohighlight">\(f(x)=h(g(x))\)</span>
 <span class="math notranslate nohighlight">\(f\)</span> is convex if <span class="math notranslate nohighlight">\(g_i\)</span> convex, <span class="math notranslate nohighlight">\(h\)</span> convex, <span class="math notranslate nohighlight">\(\tilde{h}\)</span> nondecreasing in each argument</p>
 <p>composition rule for <span class="math notranslate nohighlight">\(n=1\)</span>, <span class="math notranslate nohighlight">\(f''(x) =g'(x)^T\nabla^2 h(g(x))g'(x) + \nabla h(g(x))^T g''(x)\)</span></p>
+<p>the <code class="docutils literal notranslate"><span class="pre">perspective</span></code> of a function <span class="math notranslate nohighlight">\(f:R^n\to R\)</span> is the function <span class="math notranslate nohighlight">\(g:R^n\times R\to R\)</span>,
+$<span class="math notranslate nohighlight">\(
+g(x,t) = t f(x/t), \; dom(g) = \{ (x,t) | x/t \in dom(f), t&gt;0 \}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span>g<span class="math notranslate nohighlight">\( is convex if \)</span>f$ is convex.</p>
+<div class="proof admonition" id="proof">
+<p>Proof.     For <span class="math notranslate nohighlight">\(t&gt;0\)</span> we have <span class="math notranslate nohighlight">\((x,t,s)\in epi(g) \Leftrightarrow tf(x/t)\le s \Leftrightarrow f(x/t) \le s/t \Leftrightarrow (x/t,s/t)\in epi(f)\)</span>
+epi(g) is the inverse image of epi f under perspective mapping</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>f is convex implies epi f is convex implies epi g is convex implies g is convex.
+</pre></div>
+</div>
+</div>
+<div class="proof example admonition" id="example-18">
+<p class="admonition-title"><span class="caption-number">Example 6 </span></p>
+<section class="example-content" id="proof-content">
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(x) = x^T x\)</span> is convex; hence <span class="math notranslate nohighlight">\(g(x,t)=x^T x/t\)</span> is convex for <span class="math notranslate nohighlight">\(t&gt;0\)</span></p></li>
+<li><p>negative logarithm <span class="math notranslate nohighlight">\(f(x) = -\log x\)</span> is convex: hence relative entropy <span class="math notranslate nohighlight">\(g(x,t) = t \log t - t \log x\)</span> is convex on <span class="math notranslate nohighlight">\(R_{++}^2\)</span>.</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(f\)</span> is convex, then
+$<span class="math notranslate nohighlight">\(g()\)</span>$</p></li>
+</ul>
+</section>
+</div><p>The <code class="docutils literal notranslate"><span class="pre">conjugate</span></code> of a function <span class="math notranslate nohighlight">\(f\)</span> is
+<span class="math notranslate nohighlight">\(f^*(y) = \sup_{x\in dom(f)} (y^T x - f(x))\)</span>
+(which means <span class="math notranslate nohighlight">\(f^*(y)\)</span> is the max gap between <span class="math notranslate nohighlight">\(yx\)</span> and <span class="math notranslate nohighlight">\(f(x)\)</span>)</p>
+<p><span class="math notranslate nohighlight">\(f^*\)</span> is convex (even if <span class="math notranslate nohighlight">\(f\)</span> is not), Pointiwse supremum of a family of affine functions of y</p>
+<div class="proof example admonition" id="example-19">
+<p class="admonition-title"><span class="caption-number">Example 7 </span></p>
+<section class="example-content" id="proof-content">
+<ul class="simple">
+<li><p>Affine function. <span class="math notranslate nohighlight">\(f(x) = ax + b\)</span>. <span class="math notranslate nohighlight">\(f^*(y)=\sup_x(yx-ax-b)= -b, y=a; \infty, otherwise\)</span></p></li>
+<li><p>negative logarithm. <span class="math notranslate nohighlight">\(f^*(y)=\sup_{x&gt;0} (xy+\log x)\)</span></p></li>
+</ul>
+</section>
+</div></section>
+<section id="quasiconvex">
+<h4>quasiconvex<a class="headerlink" href="#quasiconvex" title="Permalink to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(f:R^n\to R\)</span> is <code class="docutils literal notranslate"><span class="pre">quasiconvex</span></code> if dom f is convex and the sublevel sets
+<span class="math notranslate nohighlight">\(C_\alpha = \{ x\in dom(f) | f(x) \le \alpha \}\)</span>
+is convex for all <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">quasilinear</span></code></p>
+<div class="proof example admonition" id="example-20">
+<p class="admonition-title"><span class="caption-number">Example 8 </span></p>
+<section class="example-content" id="proof-content">
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\sqrt{|x|}\)</span> is quasiconvex on R</p></li>
+<li><p><span class="math notranslate nohighlight">\(ceil(x) = \inf \{ z\in Z \mid z\ge x \}\)</span> is quasilinear</p></li>
+<li><p><span class="math notranslate nohighlight">\(\log x\)</span> is quasilinear on <span class="math notranslate nohighlight">\(R_{++}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x_1, x_2) = x_1 x_2\)</span> is quasiconcave on <span class="math notranslate nohighlight">\(R_{++}^2\)</span></p></li>
+<li><p>linear-fractional function is quasilinear</p></li>
+</ul>
+</section>
+</div><p>properties</p>
+<ul class="simple">
+<li><p>for quasiconvex <span class="math notranslate nohighlight">\(f: 0\le \theta \le 1 \implies f(\theta x + (1-\theta)y)\le \max \{ f(x), f(y) \}\)</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">first-order</span> <span class="pre">condition</span></code>: differentiable <span class="math notranslate nohighlight">\(f\)</span> with cvx domain is quasiconvex iff
+<span class="math notranslate nohighlight">\(f(y)\le f(x) \implies \nabla f(x)^T (y-x)\le 0\)</span>.</p>
+<p>a positive function f is <code class="docutils literal notranslate"><span class="pre">log-concave</span></code> if <span class="math notranslate nohighlight">\(\log f\)</span> is concave:
+<span class="math notranslate nohighlight">\(f(\theta x + (1-\theta)y)\ge f(x)^\theta f(y)^{1-\theta}\)</span> for <span class="math notranslate nohighlight">\(0\le \theta \le 1\)</span>.</p>
+<p>log-convex: f is log-convex if log f is convex.</p>
+<p><code class="docutils literal notranslate"><span class="pre">example</span></code>:
+powers: <span class="math notranslate nohighlight">\(x^a\)</span> on <span class="math notranslate nohighlight">\(R_{++}\)</span> is log-convex for <span class="math notranslate nohighlight">\(a\le 0\)</span>, log-concave for <span class="math notranslate nohighlight">\(a\ge 0\)</span>.</p>
 </section>
 </section>
 </section>
-<section id="linear-programming">
-<h2>Linear programming<a class="headerlink" href="#linear-programming" title="Permalink to this heading">#</a></h2>
-<section id="min-max-theorem">
-<h3>Min-Max theorem<a class="headerlink" href="#min-max-theorem" title="Permalink to this heading">#</a></h3>
-</section>
-</section>
-<section id="integer-programming">
-<h2>Integer Programming<a class="headerlink" href="#integer-programming" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h2>Convex optimization<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>standard form convex opt problem:
+<span class="math notranslate nohighlight">\(f_0, f_1, \dots, f_m\)</span> are convex: equality constraints are affine</p>
+<p><code class="docutils literal notranslate"><span class="pre">important</span> <span class="pre">property:</span> <span class="pre">feasible</span> <span class="pre">set</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">convex</span> <span class="pre">opt</span> <span class="pre">prob</span> <span class="pre">is</span> <span class="pre">cvx</span></code></p>
+<p>generalized inequalities are also ok</p>
+<p><span class="math notranslate nohighlight">\(\min c^T x\)</span> subject to: <span class="math notranslate nohighlight">\(A_0+A_1x_1 + A_2x_2 +\dots + A_n x_n\preceq 0\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">any</span> <span class="pre">locally</span> <span class="pre">opt</span> <span class="pre">point</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">cvx</span> <span class="pre">program</span> <span class="pre">is</span> <span class="pre">(globally)</span> <span class="pre">optimal</span></code> (proof by contradiction)</p>
 </section>
 </section>
 
@@ -705,11 +775,10 @@ Similarly, if the supremum of S belongs to S, it is a maximum or greatest elemen
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="optimization.html"
@@ -729,10 +798,7 @@ Similarly, if the supremum of S belongs to S, it is a maximum or greatest elemen
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -756,16 +822,13 @@ Similarly, if the supremum of S belongs to S, it is a maximum or greatest elemen
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operations-that-preserve-convexity">Operations that preserve convexity</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#composition-of-scalar-functions"><code class="docutils literal notranslate"><span class="pre">composition</span> <span class="pre">of</span> <span class="pre">scalar</span> <span class="pre">functions</span></code>:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#composition-of-scalar-functions">composition of scalar functions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quasiconvex">quasiconvex</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-programming">Linear programming</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-theorem">Min-Max theorem</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-programming">Integer Programming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Convex optimization</a></li>
 </ul>
   </nav></div>
 
@@ -813,8 +876,8 @@ By Jue Xu
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
 
   <footer class="bd-footer">
   </footer>
