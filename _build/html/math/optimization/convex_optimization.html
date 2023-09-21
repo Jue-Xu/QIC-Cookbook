@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'math/optimization/convex_optimization';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Semi-definite Programming (SDP)" href="semidefinite_programming.html" />
+    <link rel="next" title="Convex Program" href="convex_program.html" />
     <link rel="prev" title="Optimization" href="optimization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -184,6 +184,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="optimization.html">Optimization</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Convex Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="convex_program.html">Convex Program</a></li>
 <li class="toctree-l2"><a class="reference internal" href="semidefinite_programming.html">Semi-definite Programming (SDP)</a></li>
 </ul>
 </li>
@@ -423,7 +424,6 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Convex optimization</a></li>
 </ul>
             </nav>
         </div>
@@ -729,14 +729,6 @@ powers: <span class="math notranslate nohighlight">\(x^a\)</span> on <span class
 </section>
 </section>
 </section>
-<section id="id1">
-<h2>Convex optimization<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>standard form convex opt problem:
-<span class="math notranslate nohighlight">\(f_0, f_1, \dots, f_m\)</span> are convex: equality constraints are affine</p>
-<p><code class="docutils literal notranslate"><span class="pre">important</span> <span class="pre">property:</span> <span class="pre">feasible</span> <span class="pre">set</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">convex</span> <span class="pre">opt</span> <span class="pre">prob</span> <span class="pre">is</span> <span class="pre">cvx</span></code></p>
-<p>generalized inequalities are also ok</p>
-<p><span class="math notranslate nohighlight">\(min c^T x\)</span> subject to: <span class="math notranslate nohighlight">\(A_0+A_1x_1 + A_2x_2 +\dots + A_n x_n\preceq 0\)</span></p>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -780,11 +772,11 @@ powers: <span class="math notranslate nohighlight">\(x^a\)</span> on <span class
       </div>
     </a>
     <a class="right-next"
-       href="semidefinite_programming.html"
+       href="convex_program.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Semi-definite Programming (SDP)</p>
+        <p class="prev-next-title">Convex Program</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -821,7 +813,6 @@ powers: <span class="math notranslate nohighlight">\(x^a\)</span> on <span class
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Convex optimization</a></li>
 </ul>
   </nav></div>
 

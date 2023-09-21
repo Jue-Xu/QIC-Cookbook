@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Semi-definite Programming (SDP) &#8212; Recipe of Quantum Computing</title>
+    <title>Convex Program &#8212; Recipe of Quantum Computing</title>
   
   
   
@@ -64,10 +64,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'math/optimization/semidefinite_programming';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'math/optimization/convex_program';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Algorithms" href="../../cs/algorithms/algorithms.html" />
+    <link rel="next" title="Semi-definite Programming (SDP)" href="semidefinite_programming.html" />
     <link rel="prev" title="Convex Optimization" href="convex_optimization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -184,7 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="optimization.html">Optimization</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="convex_optimization.html">Convex Optimization</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Semi-definite Programming (SDP)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Convex Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="semidefinite_programming.html">Semi-definite Programming (SDP)</a></li>
 </ul>
 </li>
 </ul>
@@ -286,7 +287,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmath/optimization/semidefinite_programming.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmath/optimization/convex_program.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -316,7 +317,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/math/optimization/semidefinite_programming.ipynb" target="_blank"
+      <li><a href="../../_sources/math/optimization/convex_program.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -398,7 +399,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Semi-definite Programming (SDP)</h1>
+    <h1>Convex Program</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -408,8 +409,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-definite">Semi-definite</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-optimization">Convex optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimality-criteria-for-differentiable-convex-f-0">Optimality criteria for differentiable convex <span class="math notranslate nohighlight">\(f_0\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#uncontrained-problem-x-is-optimal-iff-x-in-dom-f-0-nabla-f-0-x-0">uncontrained problem: <span class="math notranslate nohighlight">\(x\)</span> is optimal iff <span class="math notranslate nohighlight">\(x\in dom f_0\)</span>, <span class="math notranslate nohighlight">\(\nabla f_0(x)=0\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#equality-constrained-problem">equality constrained problem</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#minimization-over-nonnegative-orthant">minimization over nonnegative orthant</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -421,26 +429,55 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="semi-definite-programming-sdp">
-<h1>Semi-definite Programming (SDP)<a class="headerlink" href="#semi-definite-programming-sdp" title="Permalink to this heading">#</a></h1>
-<section id="semi-definite">
-<h2>Semi-definite<a class="headerlink" href="#semi-definite" title="Permalink to this heading">#</a></h2>
-<div class="proof definition admonition" id="sdp">
-<p class="admonition-title"><span class="caption-number">Definition 12 </span> (SDP)</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="convex-program">
+<h1>Convex Program<a class="headerlink" href="#convex-program" title="Permalink to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[\newcommand\realnumber{\mathbb{R}}
+\newcommand\vbx{\vb{x}}\]</div>
+<section id="convex-optimization">
+<h2>Convex optimization<a class="headerlink" href="#convex-optimization" title="Permalink to this heading">#</a></h2>
+<p>standard form convex opt problem:
+<span class="math notranslate nohighlight">\(f_0, f_1, \dots, f_m\)</span> are convex: equality constraints are affine</p>
+<p><code class="docutils literal notranslate"><span class="pre">important</span> <span class="pre">property:</span> <span class="pre">feasible</span> <span class="pre">set</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">convex</span> <span class="pre">opt</span> <span class="pre">prob</span> <span class="pre">is</span> <span class="pre">cvx</span></code></p>
+<p>generalized inequalities are also ok</p>
+<p><span class="math notranslate nohighlight">\(\min c^T x\)</span> subject to: <span class="math notranslate nohighlight">\(A_0+A_1x_1 + A_2x_2 +\dots + A_n x_n\preceq 0\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">any</span> <span class="pre">locally</span> <span class="pre">opt</span> <span class="pre">point</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">cvx</span> <span class="pre">program</span> <span class="pre">is</span> <span class="pre">(globally)</span> <span class="pre">optimal</span></code> (proof by contradiction)</p>
+<section id="optimality-criteria-for-differentiable-convex-f-0">
+<h3>Optimality criteria for differentiable convex <span class="math notranslate nohighlight">\(f_0\)</span><a class="headerlink" href="#optimality-criteria-for-differentiable-convex-f-0" title="Permalink to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(x\)</span> is optimal if and only if it is feasible and <span class="math notranslate nohighlight">\(\nabla f_0(x)^T (y-x) \ge 0 \text{ for all feasible } y\)</span></p>
+<div class="proof admonition" id="proof">
+<p>Proof.     directional derivative
+$<span class="math notranslate nohighlight">\(
+    \frac{d}{dt} f(x+tv) \mid_{t=0} = \nabla f(x)^T v
+    \)</span>$</p>
+</div>
+<section id="uncontrained-problem-x-is-optimal-iff-x-in-dom-f-0-nabla-f-0-x-0">
+<h4>uncontrained problem: <span class="math notranslate nohighlight">\(x\)</span> is optimal iff <span class="math notranslate nohighlight">\(x\in dom f_0\)</span>, <span class="math notranslate nohighlight">\(\nabla f_0(x)=0\)</span><a class="headerlink" href="#uncontrained-problem-x-is-optimal-iff-x-in-dom-f-0-nabla-f-0-x-0" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="equality-constrained-problem">
+<h4>equality constrained problem<a class="headerlink" href="#equality-constrained-problem" title="Permalink to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(\min f_0(x)\)</span> subject to <span class="math notranslate nohighlight">\(Ax = b\)</span>
+<span class="math notranslate nohighlight">\(x\)</span> is optimal iff there exists a <span class="math notranslate nohighlight">\(\nu\)</span> such that
+<span class="math notranslate nohighlight">\(x\in dom f_0, Ax=b, \nabla f_o(x) + A^T \nu = 0\)</span></p>
+<div class="proof admonition" id="proof">
+<p>Proof.     By Null space and range  <a class="reference internal" href="#null_space">Definition 11</a></p>
+</div>
+<div class="proof definition dropdown admonition" id="null_space">
+<p class="admonition-title"><span class="caption-number">Definition 11 </span> (Null space)</p>
 <section class="definition-content" id="proof-content">
-<p>SDP
-<span class="math notranslate nohighlight">\(
-    \forall x, xAx^T \ge 0
-\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N(A) = \{ x\in R^n \mid Ax = 0 \}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R(A) = \{ v\in R^n \mid Ax = v \}\)</span></p></li>
+</ul>
 </section>
 </div></section>
-<section id="algorithms">
-<h2>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this heading">#</a></h2>
-<div class="proof algorithm dropdown admonition" id="sdp">
-<p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (SDP)</p>
-<section class="algorithm-content" id="proof-content">
+<section id="minimization-over-nonnegative-orthant">
+<h4>minimization over nonnegative orthant<a class="headerlink" href="#minimization-over-nonnegative-orthant" title="Permalink to this heading">#</a></h4>
+<p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span> subject to <span class="math notranslate nohighlight">\(x \preceq 0\)</span>,
+<span class="math notranslate nohighlight">\(x\)</span> is optimal iff <span class="math notranslate nohighlight">\(x\in dom f_0\)</span>, <span class="math notranslate nohighlight">\(x\preceq 0\)</span>, <span class="math notranslate nohighlight">\(\nabla f_0(x)_i\ge 0,x_i=0\)</span> and <span class="math notranslate nohighlight">\(\nabla f_0(x)_i=0,x_i&gt;0\)</span>.</p>
 </section>
-</div></section>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -484,11 +521,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../../cs/algorithms/algorithms.html"
+       href="semidefinite_programming.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Algorithms</p>
+        <p class="prev-next-title">Semi-definite Programming (SDP)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -510,8 +547,15 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-definite">Semi-definite</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-optimization">Convex optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimality-criteria-for-differentiable-convex-f-0">Optimality criteria for differentiable convex <span class="math notranslate nohighlight">\(f_0\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#uncontrained-problem-x-is-optimal-iff-x-in-dom-f-0-nabla-f-0-x-0">uncontrained problem: <span class="math notranslate nohighlight">\(x\)</span> is optimal iff <span class="math notranslate nohighlight">\(x\in dom f_0\)</span>, <span class="math notranslate nohighlight">\(\nabla f_0(x)=0\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#equality-constrained-problem">equality constrained problem</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#minimization-over-nonnegative-orthant">minimization over nonnegative orthant</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

@@ -29,6 +29,7 @@ parts:
     - file: math/optimization/optimization
       sections:
       - file: math/optimization/convex_optimization
+      - file: math/optimization/convex_program
       - file: math/optimization/semidefinite_programming
 
   - caption: Computer Science
