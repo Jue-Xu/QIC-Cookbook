@@ -441,6 +441,8 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-program-lp">Linear program (LP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-linear-program-ip-ilp">Integer Linear program (IP, ILP)</a></li>
 </ul>
             </nav>
         </div>
@@ -583,6 +585,117 @@ can take <span class="math notranslate nohighlight">\(\phi_t(x) = p(x) - tq(x)\)
 </section>
 </section>
 </section>
+<section id="linear-program-lp">
+<h2>Linear program (LP)<a class="headerlink" href="#linear-program-lp" title="Permalink to this heading">#</a></h2>
+<p>general form</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min c^T x \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\min c^T x + d\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(Gx\preceq h\)</span>, <span class="math notranslate nohighlight">\(Ax = b\)</span></p></li>
+<li><p>convex problem with affine objective and constraint functions</p></li>
+<li><p>feasible set is a polyhedron (affine inequality defines half hyperplane)</p></li>
+</ul>
+<p>standard form</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min c^T x \)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(Ax=b\)</span>, <span class="math notranslate nohighlight">\(x\succeq 0\)</span></p></li>
+</ul>
+<p>canonical form</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min c^T x \)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(Ax\succeq b\)</span>, <span class="math notranslate nohighlight">\(x\succeq 0\)</span></p></li>
+</ul>
+<p>convertible between (general, standard, canonical form)</p>
+<div class="proof admonition" id="proof">
+<p>Proof.     introduct slack variable <span class="math notranslate nohighlight">\(s\)</span>
+- <span class="math notranslate nohighlight">\(G(x^+ - x^-) + s = h\)</span>
+- <span class="math notranslate nohighlight">\(A(x^+-x^-) = b\)</span>
+- <span class="math notranslate nohighlight">\(x^+\succeq 0\)</span>, <span class="math notranslate nohighlight">\(x^-\succeq 0\)</span>, <span class="math notranslate nohighlight">\(s\succeq 0\)</span> (<span class="math notranslate nohighlight">\([x^+, x^-, s]\)</span>)</p>
+</div>
+<div class="proof example admonition" id="example-2">
+<p class="admonition-title"><span class="caption-number">Example 10 </span> (Piecewise-linear minimization)</p>
+<section class="example-content" id="proof-content">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- minimize $\max_{i=1,\dots, m} (a_i^T x+b_i)$
+equivalent to an LP
+- minimize $t$
+- s.t. $a_i^T x + b_i \le t$, $i=1,\dots,m$
+</pre></div>
+</div>
+</section>
+</div><div class="proof example admonition" id="example-3">
+<p class="admonition-title"><span class="caption-number">Example 11 </span> (Largest sphere inside a polyhedron)</p>
+<section class="example-content" id="proof-content">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$P=\{ x \mid a_i^T x \le b_i, i = 1, \dots, m \}$
+- Chebyshev center of a polyhedron center of the largest sphere $B=\{ x_c + u \mid ||u||_2 \le r \}$
+- hence, $x_c$, $r$ can be determined by solving the LP
+
+- max $r$
+- s.t. $x_c + u \in P$, $\forall ||u||_2 \le r$
+- $a_i^T (x_c +u) \le b_i$, $i=1,\dots,m$, $\forall ||u||_2 \le r$
+- $a_i^T x_c + a_i^T u \le b_i$, $i=1,\dots,m$, $\forall ||u||_2 \le r$
+- $a_i^T x_c + sup_{||u||_2 \le r} a_i^T u \le b_i$, $i=1,\dots,m$
+</pre></div>
+</div>
+</section>
+</div></section>
+<section id="integer-linear-program-ip-ilp">
+<h2>Integer Linear program (IP, ILP)<a class="headerlink" href="#integer-linear-program-ip-ilp" title="Permalink to this heading">#</a></h2>
+<p>form</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min c^T x + d\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(Gx\preceq h\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Ax = b\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x\in Z&amp;n\)</span></p></li>
+</ul>
+<div class="proof example admonition" id="example-4">
+<p class="admonition-title"><span class="caption-number">Example 12 </span> (Shortest path problem)</p>
+<section class="example-content" id="proof-content">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>find a path from $s$ to $t$ in directed graph $G=(V,E)$ withthe smallest total cost 
+- $\min \sum_{(i,j)\in E} c_{ij} x_{ij}$
+- subject to: 
+$\sum_{j:(i,j)\in E} x_{ij} - $\sum_{j:(j,i)\in E} x_{ji} = $
+</pre></div>
+</div>
+</section>
+</div><div class="proof example admonition" id="example-5">
+<p class="admonition-title"><span class="caption-number">Example 13 </span> (Min vertex cover)</p>
+<section class="example-content" id="proof-content">
+<p>find the smallest subset of vertices in undirected graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span> that contains at least one endpoint of every edge in the graph</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min \sum_{i\in V} x_i\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(x_i + x_j \ge 1\)</span>, <span class="math notranslate nohighlight">\(\forall (x,j) \in E\)</span></p></li>
+<li><p>x_i \in {0,1 }, <span class="math notranslate nohighlight">\(\forall \in E\)</span></p></li>
+</ul>
+</section>
+</div><div class="proof example admonition" id="example-6">
+<p class="admonition-title"><span class="caption-number">Example 14 </span> (Max independent set)</p>
+<section class="example-content" id="proof-content">
+</section>
+</div><div class="proof example admonition" id="example-7">
+<p class="admonition-title"><span class="caption-number">Example 15 </span> (Max weighted bipartite matching (perfect matching))</p>
+<section class="example-content" id="proof-content">
+</section>
+</div><p><code class="docutils literal notranslate"><span class="pre">Integer</span> <span class="pre">programming</span> <span class="pre">is</span> <span class="pre">generally</span> <span class="pre">NP-Hard</span></code>.</p>
+<p>One natural idea for solving ILPs: “relax” the integrality constraint, i.e.,
+allow <span class="math notranslate nohighlight">\(x\)</span> to take on real values</p>
+<p>problme: the LP’s optimum can be different from the optimal of the ILP to take on real values</p>
+<p>problem: the LP’s optimum can be different from the optimal of the ILP.
+<code class="docutils literal notranslate"><span class="pre">integrality</span> <span class="pre">gap</span></code>: <span class="math notranslate nohighlight">\(sup_i \frac{OPT(I)}{OPT_f(I)}\)</span></p>
+<p>solution: try to round the solution of the LP to a feasible integral point and take that as the solution to the ILP</p>
+<ul class="simple">
+<li><p>determining how to do rounding to achieve the optimum can be as hard as solving the original ILP itself</p></li>
+<li><p>develop <code class="docutils literal notranslate"><span class="pre">approximation</span> <span class="pre">algorithms</span></code> that go from the optimal point of the LP to a point that is nearby the optimal point of the ILP,
+and bound how far off it is from the true optimal point</p></li>
+</ul>
+<div class="proof example admonition" id="example-8">
+<p class="admonition-title"><span class="caption-number">Example 16 </span></p>
+<section class="example-content" id="proof-content">
+<p>solving the minimum vertex cover problem by relaxing the integer constraints to <span class="math notranslate nohighlight">\(x_i\ge 0\)</span>, <span class="math notranslate nohighlight">\(\forall i\in V\)</span>, and rounding the solution of the LP to obtain the (approximate) solution to the ILP</p>
+<p>proof: let <span class="math notranslate nohighlight">\(x_i^*\)</span> be the optimal solution of the LP, we have <span class="math notranslate nohighlight">\(x_i^* \in \{0, 1/2, 1 \}\)</span>.
+Then <span class="math notranslate nohighlight">\(\sum_{i\in V} x_i \le \sum_{i\in V} 2x_i^* = 2\text{OPT}_f(I)\le 2\text{OPT}(I)\)</span>.
+approximation ratio: <span class="math notranslate nohighlight">\(\alpha=2\)</span></p>
+</section>
+</div></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -670,6 +783,8 @@ can take <span class="math notranslate nohighlight">\(\phi_t(x) = p(x) - tq(x)\)
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-program-lp">Linear program (LP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-linear-program-ip-ilp">Integer Linear program (IP, ILP)</a></li>
 </ul>
   </nav></div>
 
