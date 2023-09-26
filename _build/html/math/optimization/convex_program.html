@@ -416,8 +416,22 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#minimization-over-nonnegative-orthant">minimization over nonnegative orthant</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-convex-programs">Equivalent convex programs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminating-equality-constraints">eliminating equality constraints</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-equality-constraints">introducing equality constraints</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-slack-variables-for-linear-inequalities">introducing slack variables for linear inequalities</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#epigraph-form">epigraph form:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#minimizing-over-some-variables">minimizing over some variables</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quasiconvex-optimization">Quasiconvex optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quasiconvex-opt-via-convex-feasibility-problems">quasiconvex opt via convex feasibility problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bisection-method-for-quasiconvex-opt">bisection method for quasiconvex opt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-program-lp">Linear program (LP)</a></li>
 </ul>
             </nav>
         </div>
@@ -477,6 +491,102 @@ $<span class="math notranslate nohighlight">\(
 <span class="math notranslate nohighlight">\(x\)</span> is optimal iff <span class="math notranslate nohighlight">\(x\in dom f_0\)</span>, <span class="math notranslate nohighlight">\(x\preceq 0\)</span>, <span class="math notranslate nohighlight">\(\nabla f_0(x)_i\ge 0,x_i=0\)</span> and <span class="math notranslate nohighlight">\(\nabla f_0(x)_i=0,x_i&gt;0\)</span>.</p>
 </section>
 </section>
+<section id="equivalent-convex-programs">
+<h3>Equivalent convex programs<a class="headerlink" href="#equivalent-convex-programs" title="Permalink to this heading">#</a></h3>
+<p>two problems are (informally) equivalent if the solution of one is readily obtained from the solution of the other, and vice-versa</p>
+<section id="eliminating-equality-constraints">
+<h4>eliminating equality constraints<a class="headerlink" href="#eliminating-equality-constraints" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
+<li><p>subject to <span class="math notranslate nohighlight">\(f_i(x)\le 0\)</span>, <span class="math notranslate nohighlight">\(Ax=b\)</span>
+find</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_0\)</span>: a particular solution of <span class="math notranslate nohighlight">\(Ax = b\)</span></p></li>
+<li><p>matrix <span class="math notranslate nohighlight">\(F\)</span>: whose range is the null space of <span class="math notranslate nohighlight">\(A\)</span>, i.e., <span class="math notranslate nohighlight">\(R(F)=N(A)\)</span>
+is equivalent to</p></li>
+<li><p>minimize (over z) <span class="math notranslate nohighlight">\(f_0(Fz+ x_0)\)</span></p></li>
+<li><p>subject to <span class="math notranslate nohighlight">\(f_i(Fz+ x_0) \le 0\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots, m\)</span></p></li>
+</ul>
+</section>
+<section id="introducing-equality-constraints">
+<h4>introducing equality constraints<a class="headerlink" href="#introducing-equality-constraints" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="introducing-slack-variables-for-linear-inequalities">
+<h4>introducing slack variables for linear inequalities<a class="headerlink" href="#introducing-slack-variables-for-linear-inequalities" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
+<li><p>subject to <span class="math notranslate nohighlight">\(a_i^T x \le b_i\)</span>
+is equivalent to</p></li>
+<li><p>…</p></li>
+<li><p>…</p></li>
+</ul>
+</section>
+<section id="epigraph-form">
+<h4>epigraph form:<a class="headerlink" href="#epigraph-form" title="Permalink to this heading">#</a></h4>
+<p>standard form cvx problem is equivalent to</p>
+</section>
+<section id="minimizing-over-some-variables">
+<h4>minimizing over some variables<a class="headerlink" href="#minimizing-over-some-variables" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">small</span> <span class="pre">perturbation</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">problem</span> <span class="pre">makes</span> <span class="pre">it</span> <span class="pre">very</span> <span class="pre">hard</span> <span class="pre">(potentially)</span></code></p>
+<ul class="simple">
+<li><p>max convex or min concave</p></li>
+<li><p>non-convex</p></li>
+<li><p>…</p></li>
+</ul>
+</section>
+</section>
+<section id="quasiconvex-optimization">
+<h3>Quasiconvex optimization<a class="headerlink" href="#quasiconvex-optimization" title="Permalink to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(f_0: \R^n \to \R\)</span> quasiconvex, <span class="math notranslate nohighlight">\(f_i\)</span> convex,
+(local) optimal, … (global) optimal</p>
+<p>such a representation always exists and not unique</p>
+<div class="proof example admonition" id="example-1">
+<p class="admonition-title"><span class="caption-number">Example 9 </span></p>
+<section class="example-content" id="proof-content">
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\phi_t(x) = 0, f_0(x) \le t; \infty , otherwise\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi_t(x) = dist(x, \{z\mid f_0(z) \le t\})\)</span></p></li>
+<li><p>convex over concave functions: <span class="math notranslate nohighlight">\(f_0(x)=\frac{p(x)}{q(x)}\)</span>
+with <span class="math notranslate nohighlight">\(p\)</span> convex, <span class="math notranslate nohighlight">\(q\)</span> concave, and <span class="math notranslate nohighlight">\(q(x)&gt;0\)</span> on <span class="math notranslate nohighlight">\(dom f_0\)</span>
+can take <span class="math notranslate nohighlight">\(\phi_t(x) = p(x) - tq(x)\)</span>:</p>
+<ul>
+<li><p>for <span class="math notranslate nohighlight">\(t\ge 0\)</span>, <span class="math notranslate nohighlight">\(\phi_t\)</span> convex in <span class="math notranslate nohighlight">\(x\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p(x)/q(x)\le t\)</span> iff <span class="math notranslate nohighlight">\(\phi_t(x)\le 0\)</span>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</div></section>
+<section id="quasiconvex-opt-via-convex-feasibility-problems">
+<h3>quasiconvex opt via convex feasibility problems<a class="headerlink" href="#quasiconvex-opt-via-convex-feasibility-problems" title="Permalink to this heading">#</a></h3>
+<p>let <span class="math notranslate nohighlight">\(p^*\)</span> denote the optimal value of the quasiconvex program</p>
+<ul class="simple">
+<li><p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(f_i(x)\le 0\)</span>, <span class="math notranslate nohighlight">\(Ax=b\)</span></p></li>
+</ul>
+<p>solve the feasibility problem:</p>
+<ul class="simple">
+<li><p>find <span class="math notranslate nohighlight">\(x\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(\phi_t(x) \le 0\)</span>, <span class="math notranslate nohighlight">\(f_i(x)\le 0\)</span>, <span class="math notranslate nohighlight">\(Ax=b\)</span></p></li>
+</ul>
+<section id="bisection-method-for-quasiconvex-opt">
+<h4>bisection method for quasiconvex opt<a class="headerlink" href="#bisection-method-for-quasiconvex-opt" title="Permalink to this heading">#</a></h4>
+<p>requires exactly <span class="math notranslate nohighlight">\(O(\log_2 ((u-l)/\epsilon)\)</span> iterations</p>
+</section>
+</section>
+</section>
+<section id="linear-program-lp">
+<h2>Linear program (LP)<a class="headerlink" href="#linear-program-lp" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min c^T x + d\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(Gx\preceq h\)</span>, <span class="math notranslate nohighlight">\(Ax = b\)</span></p></li>
+<li><p>convex problem with affine objective and constraint functions</p></li>
+<li><p>feasible set is a polyhedron (affine inequality defines half hyperplane)</p></li>
+</ul>
+<p>standard form</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min c^T x \)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(Ax=b\)</span>, <span class="math notranslate nohighlight">\(x\succeq 0\)</span></p></li>
+</ul>
 </section>
 </section>
 
@@ -554,8 +664,22 @@ $<span class="math notranslate nohighlight">\(
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#minimization-over-nonnegative-orthant">minimization over nonnegative orthant</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-convex-programs">Equivalent convex programs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminating-equality-constraints">eliminating equality constraints</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-equality-constraints">introducing equality constraints</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-slack-variables-for-linear-inequalities">introducing slack variables for linear inequalities</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#epigraph-form">epigraph form:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#minimizing-over-some-variables">minimizing over some variables</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quasiconvex-optimization">Quasiconvex optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quasiconvex-opt-via-convex-feasibility-problems">quasiconvex opt via convex feasibility problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bisection-method-for-quasiconvex-opt">bisection method for quasiconvex opt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-program-lp">Linear program (LP)</a></li>
 </ul>
   </nav></div>
 
