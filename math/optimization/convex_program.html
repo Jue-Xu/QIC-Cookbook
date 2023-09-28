@@ -442,7 +442,25 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-program-lp">Linear program (LP)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-linear-program-ip-ilp">Integer Linear program (IP, ILP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-linear-program-ip-ilp">Integer Linear program (IP, ILP)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#total-unimodularity">Total unimodularity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quadratic-program-qp">Quadratic program (QP)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#least-square">Least square</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-program-with-random-cost">Linear program with random cost</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quadratically-constrained-quadratic-program-qcqp">Quadratically constrained quadratic program (QCQP)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#second-order-cone-program-socp">Second-order cone program (SOCP)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-linear-program">Robust linear program</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deterministic-approach-via-socp">deterministic approach via SOCP</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-socp">derivation of the SOCP</a></li>
 </ul>
             </nav>
         </div>
@@ -695,7 +713,111 @@ and bound how far off it is from the true optimal point</p></li>
 Then <span class="math notranslate nohighlight">\(\sum_{i\in V} x_i \le \sum_{i\in V} 2x_i^* = 2\text{OPT}_f(I)\le 2\text{OPT}(I)\)</span>.
 approximation ratio: <span class="math notranslate nohighlight">\(\alpha=2\)</span></p>
 </section>
+</div><section id="total-unimodularity">
+<h3>Total unimodularity<a class="headerlink" href="#total-unimodularity" title="Permalink to this heading">#</a></h3>
+<p>There are special cases that the relaxation is <code class="docutils literal notranslate"><span class="pre">exact</span></code>, i.e., the relaxed LP provides an integer optimal point.</p>
+<p>An integer matrix is <code class="docutils literal notranslate"><span class="pre">totally</span> <span class="pre">unimodular</span> <span class="pre">(TUM)</span></code> if the determinant of every square submatrix of the amtrix is either -1, 0, or 1.
+e.g., incidence matrix of a directed graph;
+incidence matrix of an undirected bipartite graph</p>
+<p>If A is TUM and b is an integer vector, all vertices of the polyhedron <span class="math notranslate nohighlight">\(P=\{ x\mid Ax=b,x\succeq 0 \}\)</span> (or <span class="math notranslate nohighlight">\(P=\{ x\mid Ax\succeq b,x\succeq 0 \}\)</span>) are integer</p>
+<p><code class="docutils literal notranslate"><span class="pre">An</span> <span class="pre">LP</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">standard</span> <span class="pre">or</span> <span class="pre">canonical</span> <span class="pre">form</span> <span class="pre">where</span> <span class="pre">constraint</span> <span class="pre">matrix</span> <span class="pre">A</span> <span class="pre">is</span> <span class="pre">TUM</span> <span class="pre">and</span> <span class="pre">b</span> <span class="pre">is</span> <span class="pre">an</span> <span class="pre">integer</span> <span class="pre">vector,</span> <span class="pre">has</span> <span class="pre">an</span> <span class="pre">integer</span> <span class="pre">optimal</span> <span class="pre">point</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">So</span> <span class="pre">an</span> <span class="pre">ILP</span> <span class="pre">whose</span> <span class="pre">LP</span> <span class="pre">relation</span> <span class="pre">satisfies</span> <span class="pre">the</span> <span class="pre">above</span> <span class="pre">conditions</span> <span class="pre">can</span> <span class="pre">be</span> <span class="pre">solved</span> <span class="pre">exactly</span> <span class="pre">by</span> <span class="pre">solving</span> <span class="pre">its</span> <span class="pre">LP</span> <span class="pre">relaxation!</span></code>
+e.g. shortest path problem
+<code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">incidence</span> <span class="pre">matrix</span> <span class="pre">correspond</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">conservation</span> <span class="pre">constraint</span></code></p>
+</section>
+</section>
+<section id="quadratic-program-qp">
+<h2>Quadratic program (QP)<a class="headerlink" href="#quadratic-program-qp" title="Permalink to this heading">#</a></h2>
+<div class="proof definition admonition" id="definition-9">
+<p class="admonition-title"><span class="caption-number">Definition 12 </span> (Quadratic program)</p>
+<section class="definition-content" id="proof-content">
+<ul class="simple">
+<li><p>minimize (1/2)x^T P x + q^T x + r</p></li>
+<li><p>s.t. Gx \preceq h, Ax = b</p></li>
+</ul>
+</section>
+</div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P\in S_+^n\)</span>, so objective is convex quadratic</p></li>
+<li><p>minimize a convex quadratic function over a polyhedron</p></li>
+</ul>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h3>
+<section id="least-square">
+<h4>Least square<a class="headerlink" href="#least-square" title="Permalink to this heading">#</a></h4>
+<div class="proof example admonition" id="example-10">
+<p class="admonition-title"><span class="caption-number">Example 17 </span> (Least square)</p>
+<section class="example-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(\min || Ax - b||_2^2 = (Ax-b)^T(Ax-b) = ....\)</span>,
+set gradient to zero: <span class="math notranslate nohighlight">\(2A^T A x - 2A^T b = 0\)</span>,
+the solution <span class="math notranslate nohighlight">\(x^*=\)</span></p>
+</section>
 </div></section>
+<section id="linear-program-with-random-cost">
+<h4>Linear program with random cost<a class="headerlink" href="#linear-program-with-random-cost" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min c^T x + \gamma x^T \Sigma x = E[c^T x] + \gamma Var(c^T x\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(Gx \preceq h\)</span>, <span class="math notranslate nohighlight">\(Ax=b\)</span></p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(Var(c^T x)=x^T E[(c-\bar{c})(c-\bar{c})^T] x\)</span>
+where covariance matrix <span class="math notranslate nohighlight">\(Conv(c_i,c_j)=E[(c_i-\bar{c}_i)(c_j-\bar{c}_j)]\)</span>.
+<span class="math notranslate nohighlight">\(\gamma&gt;0\)</span> is a risk aversion parameter; contrls the trade-off between expected cost and variance (risk)</p>
+</section>
+<section id="quadratically-constrained-quadratic-program-qcqp">
+<h4>Quadratically constrained quadratic program (QCQP)<a class="headerlink" href="#quadratically-constrained-quadratic-program-qcqp" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>minimize <span class="math notranslate nohighlight">\((1/2) x^T P_0 x + q_0^T x + r_0\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\((1/2) x^T P_i x + q_i^T x + r_i \le 0\)</span>, <span class="math notranslate nohighlight">\(Ax=b\)</span></p></li>
+</ul>
+</section>
+<section id="second-order-cone-program-socp">
+<h4>Second-order cone program (SOCP)<a class="headerlink" href="#second-order-cone-program-socp" title="Permalink to this heading">#</a></h4>
+<div class="proof example admonition" id="example-11">
+<p class="admonition-title"><span class="caption-number">Example 18 </span> (Second-order cone program (SOCP))</p>
+<section class="example-content" id="proof-content">
+<ul class="simple">
+<li><p>minimize <span class="math notranslate nohighlight">\(f^T x\)</span></p></li>
+<li><p>s.t <span class="math notranslate nohighlight">\(||A_i x + b_i||_2 \le c_i^T x + d_i\)</span>, <span class="math notranslate nohighlight">\(Fx=g\)</span></p></li>
+</ul>
+</section>
+</div><p>second-order cone</p>
+<ul class="simple">
+<li><p>norm cone: <span class="math notranslate nohighlight">\(\{ (x,t) \mid ||x||\le t \}\)</span></p></li>
+<li><p>when the norm is Euclidean norm: second-order cone/quadratic cone/ice-cream cone</p></li>
+</ul>
+<p>the inequality constraints are called second-order cone (SOC) constraints</p>
+<p><code class="docutils literal notranslate"><span class="pre">More</span> <span class="pre">general</span> <span class="pre">than</span> <span class="pre">QCQP</span> <span class="pre">and</span> <span class="pre">LP</span></code></p>
+<ul class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(n_i=0\)</span>, reduces to LP</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(c_i=0\)</span>, reduces to QCQP</p></li>
+</ul>
+</section>
+</section>
+<section id="robust-linear-program">
+<h3>Robust linear program<a class="headerlink" href="#robust-linear-program" title="Permalink to this heading">#</a></h3>
+<p>The parameters in an LP can be uncertain</p>
+<ul class="simple">
+<li><p>minimize <span class="math notranslate nohighlight">\(c^T x\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(a_i^T x \le b_i\)</span>,
+there can be uncertainty in <span class="math notranslate nohighlight">\(c\)</span>, <span class="math notranslate nohighlight">\(a_i\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span></p></li>
+</ul>
+<p>Two common approaches to handle uncertainty in <span class="math notranslate nohighlight">\(a_i\)</span> (for simplicity)</p>
+<ul class="simple">
+<li><p>convert to <code class="docutils literal notranslate"><span class="pre">deterministic</span></code> model: constraints must hold for all <span class="math notranslate nohighlight">\(a_i\in E_i\)</span></p></li>
+<li><p>convert to <code class="docutils literal notranslate"><span class="pre">stochastic</span></code> model: constraints must hold with probability <span class="math notranslate nohighlight">\(\eta\)</span> (<span class="math notranslate nohighlight">\(a_i\)</span> as the random variable)</p></li>
+</ul>
+<section id="deterministic-approach-via-socp">
+<h4>deterministic approach via SOCP<a class="headerlink" href="#deterministic-approach-via-socp" title="Permalink to this heading">#</a></h4>
+<p>assume all <span class="math notranslate nohighlight">\(a_i\)</span> lie in given ellipsoids
+<span class="math notranslate nohighlight">\(a_i\in E_i = \{ \bar{a}_i + P_i u \mid ||u||_2 \le 1 \}\)</span></p>
+</section>
+</section>
+</section>
+<section id="derivation-of-the-socp">
+<h2>derivation of the SOCP<a class="headerlink" href="#derivation-of-the-socp" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>sup</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -784,7 +906,25 @@ approximation ratio: <span class="math notranslate nohighlight">\(\alpha=2\)</sp
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-program-lp">Linear program (LP)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-linear-program-ip-ilp">Integer Linear program (IP, ILP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-linear-program-ip-ilp">Integer Linear program (IP, ILP)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#total-unimodularity">Total unimodularity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quadratic-program-qp">Quadratic program (QP)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#least-square">Least square</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-program-with-random-cost">Linear program with random cost</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quadratically-constrained-quadratic-program-qcqp">Quadratically constrained quadratic program (QCQP)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#second-order-cone-program-socp">Second-order cone program (SOCP)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-linear-program">Robust linear program</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deterministic-approach-via-socp">deterministic approach via SOCP</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-socp">derivation of the SOCP</a></li>
 </ul>
   </nav></div>
 
