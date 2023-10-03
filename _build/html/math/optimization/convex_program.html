@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'math/optimization/convex_program';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Semi-definite Programming (SDP)" href="semidefinite_programming.html" />
+    <link rel="next" title="Semidefinite Programming (SDP)" href="semidefinite_programming.html" />
     <link rel="prev" title="Convex Set and Functions" href="convex_optimization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -185,7 +185,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="optimization.html">Optimization</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="convex_optimization.html">Convex Set and Functions</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Convex Program</a></li>
-<li class="toctree-l2"><a class="reference internal" href="semidefinite_programming.html">Semi-definite Programming (SDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="semidefinite_programming.html">Semidefinite Programming (SDP)</a></li>
 </ul>
 </li>
 </ul>
@@ -448,9 +448,12 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deterministic-approach-via-socp">deterministic approach via SOCP</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-programming">Geometric programming</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-program-in-convex-form">Geometric program in convex form</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-socp">derivation of the SOCP</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -803,14 +806,47 @@ there can be uncertainty in <span class="math notranslate nohighlight">\(c\)</sp
 <h4>deterministic approach via SOCP<a class="headerlink" href="#deterministic-approach-via-socp" title="Permalink to this heading">#</a></h4>
 <p>assume all <span class="math notranslate nohighlight">\(a_i\)</span> lie in given ellipsoids
 <span class="math notranslate nohighlight">\(a_i\in E_i = \{ \bar{a}_i + P_i u \mid ||u||_2 \le 1 \}\)</span></p>
-</section>
-</section>
-</section>
-<section id="derivation-of-the-socp">
-<h2>derivation of the SOCP<a class="headerlink" href="#derivation-of-the-socp" title="Permalink to this heading">#</a></h2>
+<p>derivation of the SOCP</p>
 <ul class="simple">
+<li><p>the constraint is equivalent to <span class="math notranslate nohighlight">\(prob(\frac{u-\bar{u}}{\sigma}\le \frac{b_i-\bar{u}}{\sigma})\ge \eta\)</span>
+where <span class="math notranslate nohighlight">\(\frac{u-\bar{u}}{\sigma}\)</span> is a 0-mean, unit variance Gaussian variable</p></li>
 <li><p>sup</p></li>
 </ul>
+</section>
+</section>
+<section id="geometric-programming">
+<h3>Geometric programming<a class="headerlink" href="#geometric-programming" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">monomial</span></code> function <span class="math notranslate nohighlight">\(f(x) = c x_1^{a_1} x_2^{a_2} \cdots x_n^{a_n}, dom(f) = R_{++}^n\)</span> with <span class="math notranslate nohighlight">\(c&gt;0\)</span>; exponent <span class="math notranslate nohighlight">\(\alpha_i\)</span> can be any real number.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">posynomial</span></code> function: sum of monomials <span class="math notranslate nohighlight">\(f(x) = \sum_{k=1}^K c_k x_1^{a_{1k}} x_2^{a_{2k}} \cdots x_n^{a_{nk}}, dom(f) = R_{++}^n\)</span> with <span class="math notranslate nohighlight">\(c&gt;0\)</span>; exponent <span class="math notranslate nohighlight">\(\alpha_i\)</span> can be any real number.</p></li>
+</ul>
+<p>difference with polynomial: <span class="math notranslate nohighlight">\(\alpha_i \in R\)</span> and <span class="math notranslate nohighlight">\(dom(f) = R_{++}^n\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">gemetric</span> <span class="pre">program</span></code> (GP)
+max
+s.t.</p>
+<section id="geometric-program-in-convex-form">
+<h4>Geometric program in convex form<a class="headerlink" href="#geometric-program-in-convex-form" title="Permalink to this heading">#</a></h4>
+<p>change variables to <span class="math notranslate nohighlight">\(y_i=\log x_i\)</span>, and take logarithm of objective, constraints</p>
+<ul class="simple">
+<li><p>monomial <span class="math notranslate nohighlight">\(f(x) = c x_1^{a_n} \cdots x_n^{a_n}\)</span> transforms to
+<span class="math notranslate nohighlight">\(\log f(e^{y_1},\dots, e^{y_n}) = a^T y + b, \; (b=\log c)\)</span></p></li>
+<li><p>geometric program transforms to convex problem</p>
+<ul>
+<li><p>minimize <span class="math notranslate nohighlight">\(\log (\sum \exp(a^T y + b))\)</span></p></li>
+<li><p>s.t.</p></li>
+</ul>
+</li>
+</ul>
+<div class="proof example admonition" id="example-12">
+<p class="admonition-title"><span class="caption-number">Example 23 </span> (Maximize the volume of a box-shaped structure)</p>
+<section class="example-content" id="proof-content">
+<ul class="simple">
+<li><p>optimization variables: height <span class="math notranslate nohighlight">\(h\)</span>, width <span class="math notranslate nohighlight">\(w\)</span>, depth <span class="math notranslate nohighlight">\(d\)</span></p></li>
+<li><p>constraints: a limit on the total wall area, a; a limit on the floor area, b; lower and upper bounds on the aspect ratio h/w, c and e;</p></li>
+</ul>
+</section>
+</div></section>
+</section>
 </section>
 </section>
 
@@ -859,7 +895,7 @@ there can be uncertainty in <span class="math notranslate nohighlight">\(c\)</sp
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Semi-definite Programming (SDP)</p>
+        <p class="prev-next-title">Semidefinite Programming (SDP)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -920,9 +956,12 @@ there can be uncertainty in <span class="math notranslate nohighlight">\(c\)</sp
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deterministic-approach-via-socp">deterministic approach via SOCP</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-programming">Geometric programming</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-program-in-convex-form">Geometric program in convex form</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-socp">derivation of the SOCP</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

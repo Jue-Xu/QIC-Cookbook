@@ -187,7 +187,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="math/optimization/optimization.html">Optimization</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="math/optimization/convex_optimization.html">Convex Set and Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="math/optimization/convex_program.html">Convex Program</a></li>
-<li class="toctree-l2"><a class="reference internal" href="math/optimization/semidefinite_programming.html">Semi-definite Programming (SDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/optimization/semidefinite_programming.html">Semidefinite Programming (SDP)</a></li>
 </ul>
 </li>
 </ul>
@@ -381,6 +381,7 @@ document.write(`
    <a href="#cap-definition-25"><strong>definition-25</strong></a> | 
    <a href="#cap-definition-29"><strong>definition-29</strong></a> | 
    <a href="#cap-definition-30"><strong>definition-30</strong></a> | 
+   <a href="#cap-definition-9"><strong>definition-9</strong></a> | 
    <a href="#cap-differentiable_function"><strong>differentiable_function</strong></a> | 
    <a href="#cap-ellipsoid"><strong>ellipsoid</strong></a> | 
    <a href="#cap-epigraph_convex"><strong>epigraph_convex</strong></a> | 
@@ -389,6 +390,7 @@ document.write(`
    <a href="#cap-example-0"><strong>example-0</strong></a> | 
    <a href="#cap-example-1"><strong>example-1</strong></a> | 
    <a href="#cap-example-10"><strong>example-10</strong></a> | 
+   <a href="#cap-example-11"><strong>example-11</strong></a> | 
    <a href="#cap-example-12"><strong>example-12</strong></a> | 
    <a href="#cap-example-14"><strong>example-14</strong></a> | 
    <a href="#cap-example-2"><strong>example-2</strong></a> | 
@@ -400,8 +402,10 @@ document.write(`
    <a href="#cap-example-36"><strong>example-36</strong></a> | 
    <a href="#cap-example-37"><strong>example-37</strong></a> | 
    <a href="#cap-example-38"><strong>example-38</strong></a> | 
+   <a href="#cap-example-4"><strong>example-4</strong></a> | 
    <a href="#cap-example-5"><strong>example-5</strong></a> | 
    <a href="#cap-example-6"><strong>example-6</strong></a> | 
+   <a href="#cap-example-7"><strong>example-7</strong></a> | 
    <a href="#cap-example-8"><strong>example-8</strong></a> | 
    <a href="#cap-halfspace"><strong>halfspace</strong></a> | 
    <a href="#cap-hyperplane"><strong>hyperplane</strong></a> | 
@@ -526,6 +530,14 @@ document.write(`
        <a href="math/optimization/convex_optimization.html#definition-30"><code class="xref">definition-30</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-9"><td></td><td>
+       <strong>definition-9</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="math/optimization/convex_program.html#definition-9"><code class="xref">definition-9</code></a> <em>(math/optimization/convex_program)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-differentiable_function"><td></td><td>
        <strong>differentiable_function</strong></td><td></td></tr>
      <tr>
@@ -579,7 +591,7 @@ document.write(`
      <tr>
        <td></td>
        <td>
-       <a href="math/optimization/convex_program.html#example-1"><code class="xref">example-1</code></a> <em>(math/optimization/convex_program)</em></td><td>
+       <a href="math/optimization/semidefinite_programming.html#example-1"><code class="xref">example-1</code></a> <em>(math/optimization/semidefinite_programming)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-10"><td></td><td>
@@ -590,12 +602,20 @@ document.write(`
        <a href="math/optimization/convex_program.html#example-10"><code class="xref">example-10</code></a> <em>(math/optimization/convex_program)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-11"><td></td><td>
+       <strong>example-11</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="math/optimization/convex_program.html#example-11"><code class="xref">example-11</code></a> <em>(math/optimization/convex_program)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-12"><td></td><td>
        <strong>example-12</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="math/optimization/convex_optimization.html#example-12"><code class="xref">example-12</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
+       <a href="math/optimization/convex_program.html#example-12"><code class="xref">example-12</code></a> <em>(math/optimization/convex_program)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-14"><td></td><td>
@@ -678,12 +698,20 @@ document.write(`
        <a href="math/optimization/convex_optimization.html#example-38"><code class="xref">example-38</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-4"><td></td><td>
+       <strong>example-4</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="math/optimization/convex_program.html#example-4"><code class="xref">example-4</code></a> <em>(math/optimization/convex_program)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-5"><td></td><td>
        <strong>example-5</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="math/optimization/convex_optimization.html#example-5"><code class="xref">example-5</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
+       <a href="math/optimization/convex_program.html#example-5"><code class="xref">example-5</code></a> <em>(math/optimization/convex_program)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-6"><td></td><td>
@@ -691,7 +719,15 @@ document.write(`
      <tr>
        <td></td>
        <td>
-       <a href="math/optimization/convex_optimization.html#example-6"><code class="xref">example-6</code></a> <em>(math/optimization/convex_optimization)</em></td><td>
+       <a href="math/optimization/convex_program.html#example-6"><code class="xref">example-6</code></a> <em>(math/optimization/convex_program)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-7"><td></td><td>
+       <strong>example-7</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="math/optimization/convex_program.html#example-7"><code class="xref">example-7</code></a> <em>(math/optimization/convex_program)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-8"><td></td><td>

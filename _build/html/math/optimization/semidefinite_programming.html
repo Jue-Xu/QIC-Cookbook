@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Semi-definite Programming (SDP) &#8212; Recipe of Quantum Computing</title>
+    <title>Semidefinite Programming (SDP) &#8212; Recipe of Quantum Computing</title>
   
   
   
@@ -185,7 +185,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="optimization.html">Optimization</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="convex_optimization.html">Convex Set and Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="convex_program.html">Convex Program</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Semi-definite Programming (SDP)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Semidefinite Programming (SDP)</a></li>
 </ul>
 </li>
 </ul>
@@ -399,7 +399,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Semi-definite Programming (SDP)</h1>
+    <h1>Semidefinite Programming (SDP)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -409,7 +409,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-definite">Semi-definite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-definite">Semi-definite</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-optimization">Vector optimization</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a></li>
 </ul>
             </nav>
@@ -422,19 +425,50 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="semi-definite-programming-sdp">
-<h1>Semi-definite Programming (SDP)<a class="headerlink" href="#semi-definite-programming-sdp" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="semidefinite-programming-sdp">
+<h1>Semidefinite Programming (SDP)<a class="headerlink" href="#semidefinite-programming-sdp" title="Permalink to this heading">#</a></h1>
 <section id="semi-definite">
 <h2>Semi-definite<a class="headerlink" href="#semi-definite" title="Permalink to this heading">#</a></h2>
 <div class="proof definition admonition" id="sdp">
 <p class="admonition-title"><span class="caption-number">Definition 25 </span> (SDP)</p>
 <section class="definition-content" id="proof-content">
-<p>SDP
-<span class="math notranslate nohighlight">\(
-    \forall x, xAx^T \ge 0
-\)</span></p>
+<ul class="simple">
+<li><p>minimize <span class="math notranslate nohighlight">\(c^T x\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(x_1 F_1 + \cdots + x_n F_n + G \preceq 0\)</span> with <span class="math notranslate nohighlight">\(F_i, G \in S^k\)</span></p></li>
+</ul>
 </section>
-</div></section>
+</div><ul class="simple">
+<li><p>inequality constraint is called linear matrix inequailty (LMI)</p></li>
+<li></li>
+</ul>
+<div class="proof example admonition" id="example-1">
+<p class="admonition-title"><span class="caption-number">Example 24 </span> (Minimize maximum eigenvalue)</p>
+<section class="example-content" id="proof-content">
+<p>minimize <span class="math notranslate nohighlight">\(\lambda_{\max} (A(x))\)</span> where
+<span class="math notranslate nohighlight">\(A(x) = A_0 + x_1 A_1 + \cdots + x_n A_n\)</span> (with given <span class="math notranslate nohighlight">\(A_i \in S^k\)</span>)</p>
+</section>
+</div><p><span class="math notranslate nohighlight">\(\lambda_{\max} (A) = \max_{||y||\le 1} y^T A y\)</span> where <span class="math notranslate nohighlight">\(y\)</span> is the eigenvector of <span class="math notranslate nohighlight">\(A\)</span>
+equivalent to</p>
+<ul class="simple">
+<li><p>minimize t</p></li>
+<li></li>
+</ul>
+<p>equivalent to (SDP)</p>
+<ul class="simple">
+<li><p>minimize</p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(A(x) - t I \preceq 0\)</span></p></li>
+</ul>
+<section id="vector-optimization">
+<h3>Vector optimization<a class="headerlink" href="#vector-optimization" title="Permalink to this heading">#</a></h3>
+<p>general vector optimization problem</p>
+<ul class="simple">
+<li><p>minimize (w.r.t <span class="math notranslate nohighlight">\(K\)</span>) <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(f_i(x)\le 0\)</span>, <span class="math notranslate nohighlight">\(h_i(x)=0\)</span></p></li>
+</ul>
+<p>vector-valued objective function:
+<span class="math notranslate nohighlight">\(f_0: R^n \to R^q\)</span>, minimized w.r.t proper cone <span class="math notranslate nohighlight">\(K\in R^q\)</span></p>
+</section>
+</section>
 <section id="algorithms">
 <h2>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this heading">#</a></h2>
 <div class="proof algorithm dropdown admonition" id="sdp">
@@ -511,7 +545,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-definite">Semi-definite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-definite">Semi-definite</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-optimization">Vector optimization</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a></li>
 </ul>
   </nav></div>
