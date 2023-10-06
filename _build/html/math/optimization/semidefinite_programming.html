@@ -410,10 +410,27 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-definite">Semi-definite</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-optimization">Vector optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-optimization">Vector optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-vector-optimization">Convex vector optimization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multicriterion-optimization">Multicriterion optimization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-and-pareto-optimal-points">Optimal and Pareto optimal points</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalarization">Scalarization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duality">Duality</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrangian">Lagrangian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lp-and-its-dual">LP and its dual</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-form-lp">standard form LP</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Lagrangian</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange-dual-function">Lagrange dual function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-problem">Dual problem</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange-dual-and-conjugate-function">Lagrange dual and conjugate function</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -467,15 +484,135 @@ equivalent to</p>
 </ul>
 <p>vector-valued objective function:
 <span class="math notranslate nohighlight">\(f_0: R^n \to R^q\)</span>, minimized w.r.t proper cone <span class="math notranslate nohighlight">\(K\in R^q\)</span></p>
+<section id="convex-vector-optimization">
+<h4>Convex vector optimization<a class="headerlink" href="#convex-vector-optimization" title="Permalink to this heading">#</a></h4>
+<p>K-convexity for vector-valued functions
+<span class="math notranslate nohighlight">\(....... \preceq_K ....\)</span>
+entry-wise</p>
+</section>
+<section id="multicriterion-optimization">
+<h4>Multicriterion optimization<a class="headerlink" href="#multicriterion-optimization" title="Permalink to this heading">#</a></h4>
+<p>Or multi-objective optimization</p>
+<p>vector optimization problem with <span class="math notranslate nohighlight">\(K=R_+^q\)</span>,
+<span class="math notranslate nohighlight">\(f_0(x) = (F_1(x), \dots, F_q(x))\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(q\)</span> different objectives <span class="math notranslate nohighlight">\(F_i\)</span>; roughly speaking we want all <span class="math notranslate nohighlight">\(F_i\)</span>’s to be small</p></li>
+</ul>
+</section>
+<section id="optimal-and-pareto-optimal-points">
+<h4>Optimal and Pareto optimal points<a class="headerlink" href="#optimal-and-pareto-optimal-points" title="Permalink to this heading">#</a></h4>
+<p>set of achievable objective values <span class="math notranslate nohighlight">\(O=\{ f_0(x) \mid x feasible \}\)</span></p>
+<ul class="simple">
+<li><p>feasible <span class="math notranslate nohighlight">\(x^*\)</span> is <code class="docutils literal notranslate"><span class="pre">optimal</span></code> if <span class="math notranslate nohighlight">\(f_0(x^*)\)</span> is a minimum value of <span class="math notranslate nohighlight">\(O\)</span>
+i.e., y feasible <span class="math notranslate nohighlight">\(\implies \)</span> <span class="math notranslate nohighlight">\(f_0(x^*) \preceq_K f_0(y)\)</span></p></li>
+<li><p>feasible <span class="math notranslate nohighlight">\(x\)</span> is Pareto optimal if <span class="math notranslate nohighlight">\(f_0(x)\)</span> is a minimal value of <span class="math notranslate nohighlight">\(O\)</span>
+i.e., y feasible, <span class="math notranslate nohighlight">\(f_0(y) \preceq_K f_0(x)\)</span> implies <span class="math notranslate nohighlight">\(f_0(x) = f_0(y)\)</span></p></li>
+</ul>
+<p>if there are multiple Pareto optimal values, there is a trade-off between the objectives</p>
+<div class="proof example admonition" id="example-2">
+<p class="admonition-title"><span class="caption-number">Example 25 </span> (Risk return trade-off in portfolio optimization)</p>
+<section class="example-content" id="proof-content">
+<ul class="simple">
+<li><p>minimize (w.r.t <span class="math notranslate nohighlight">\(R_+^2\)</span>) <span class="math notranslate nohighlight">\((-p^T x, x^T\Sigma x)\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(1^T x = 1, x \succeq 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x\in R^n\)</span> is investment portfolio; <span class="math notranslate nohighlight">\(x_i\)</span> is fraction invected in asset <span class="math notranslate nohighlight">\(i\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p\in R^n\)</span> is vector of asset return, modeled as a random variable with mean <span class="math notranslate nohighlight">\(\bar{p}\)</span>, covariance <span class="math notranslate nohighlight">\(\Sigma\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{p}^T x = E(p^T x)\)</span> is expected return; <span class="math notranslate nohighlight">\(x^T \Sigma x = Var[p^T x ]\)</span> is return variance</p></li>
+</ul>
+</section>
+</div><p>supporting hyperplane: <span class="math notranslate nohighlight">\(\{ z \mid \lambda^T z = \lambda^T u \}\)</span></p>
 </section>
 </section>
-<section id="algorithms">
-<h2>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="scalarization">
+<h2>Scalarization<a class="headerlink" href="#scalarization" title="Permalink to this heading">#</a></h2>
+<p>to find Pareto optimal points: choose <span class="math notranslate nohighlight">\(\lambda \succ_{K^*} 0\)</span> and solve scalar problem</p>
+<ul class="simple">
+<li><p>minimize <span class="math notranslate nohighlight">\(\lambda^T f_0(x)\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(f_i(x) \le 0\)</span>, <span class="math notranslate nohighlight">\(h_i(x) = 0\)</span></p></li>
+</ul>
+<p>for convex vector optimization problems, can find (almost) all Pareto optimal points by varying <span class="math notranslate nohighlight">\(\lambda\succ_{K^*} 0\)</span></p>
+<div class="proof example admonition" id="example-3">
+<p class="admonition-title"><span class="caption-number">Example 26 </span> (Risk return trade-off )</p>
+<section class="example-content" id="proof-content">
+<ul class="simple">
+<li><p>minimize (w.r.t <span class="math notranslate nohighlight">\(R_+^2\)</span>) <span class="math notranslate nohighlight">\((-p^T x+ \lambda x^T\Sigma x)\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(1^T x = 1, x \succeq 0\)</span></p></li>
+</ul>
+<p>for fixed <span class="math notranslate nohighlight">\(\gamma&gt;0\)</span>, a quadratic program</p>
+</section>
+</div><p>multi objective</p>
+</section>
+<section id="duality">
+<h2>Duality<a class="headerlink" href="#duality" title="Permalink to this heading">#</a></h2>
+<p>Optimization in standard form (not necessarily convex)</p>
+<ul class="simple">
+<li><p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(f_i\le 0\)</span>, <span class="math notranslate nohighlight">\(h_i(x)=0\)</span></p></li>
+</ul>
+<section id="lagrangian">
+<h3>Lagrangian<a class="headerlink" href="#lagrangian" title="Permalink to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(L: R^n\times R^m \times R^p \to R\)</span> with <span class="math notranslate nohighlight">\(dom (L) \ D \times R^m \times R^p\)</span>
+<span class="math notranslate nohighlight">\(L(x,\lambda,\nv)= f_0(x) + \sum_i^m \lambda_i f_i(x) + \sum_i^p \nu_i h_i\)</span></p>
+<ul class="simple">
+<li><p>Lagrange multipliers (Lagrangian dual variables): <span class="math notranslate nohighlight">\(\lambda_i\)</span>, <span class="math notranslate nohighlight">\(\nu_i\)</span></p></li>
+<li><p>augment <span class="math notranslate nohighlight">\(f_0(x)\)</span> by weighted sum of contraint functions (penalty functions)</p></li>
+</ul>
+<p>Lagrange dual function: <span class="math notranslate nohighlight">\(g:R^m\times R^p \to R\)</span>,
+$<span class="math notranslate nohighlight">\(
+g(\lambda,\nu) = \inf L(x,\lambda,\nu)
+\)</span>$</p>
+<p>Lagrange dual problem</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\max g(\lambda, \nu)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda \prec 0\)</span></p></li>
+</ul>
+</section>
+<section id="lp-and-its-dual">
+<h3>LP and its dual<a class="headerlink" href="#lp-and-its-dual" title="Permalink to this heading">#</a></h3>
+<section id="standard-form-lp">
+<h4>standard form LP<a class="headerlink" href="#standard-form-lp" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>minimize <span class="math notranslate nohighlight">\(c^T x\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(Ax = b\)</span>, <span class="math notranslate nohighlight">\(x \succeq 0\)</span></p></li>
+</ul>
+</section>
+<section id="id1">
+<h4>Lagrangian<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(L(x,\lambda,\nu) = c^T x + v^T (Ax-b) - \lambda^T x = -b^T v + (c+A^T v- \lambda)^T x\)</span></p>
+</section>
+<section id="lagrange-dual-function">
+<h4>Lagrange dual function<a class="headerlink" href="#lagrange-dual-function" title="Permalink to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(g(\lambda,\nu) = inf_{x} L(x,\lambda,\nu)=-b^T v, A^Tv-\lambda+c=0; -\infty, otherwise\)</span></p>
+</section>
+<section id="dual-problem">
+<h4>Dual problem<a class="headerlink" href="#dual-problem" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>maximize <span class="math notranslate nohighlight">\(-b^T v\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(A^T v + c \preceq 0\)</span></p></li>
+</ul>
+</section>
+</section>
+<section id="lagrange-dual-and-conjugate-function">
+<h3>Lagrange dual and conjugate function<a class="headerlink" href="#lagrange-dual-and-conjugate-function" title="Permalink to this heading">#</a></h3>
+<p>optimization with affine inequality and equality constraints</p>
+<ul class="simple">
+<li><p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(Ax \preceq b\)</span>, <span class="math notranslate nohighlight">\(C x = d\)</span></p></li>
+</ul>
+<p>Lagrange dual function
+<span class="math notranslate nohighlight">\(g(\lambda,v) = inf_x f_0(x) + (A^T \lambda + C^T v)^T x - b^T \lambda -d^T v=-f_0^*(-A^T \lambda - C^T v) - b^T \lambda -d^T v\)</span></p>
+<ul class="simple">
+<li><p>recall definition of conjugate <span class="math notranslate nohighlight">\(f^*(y)=sup_x (y^T x - f(x))\)</span></p></li>
+<li><p>simplifies derivation of dual if conjugate of <span class="math notranslate nohighlight">\(f_0\)</span> is known
+<span class="math notranslate nohighlight">\(f_0(x) = \sum_i^n x_i \log x_i\)</span>, <span class="math notranslate nohighlight">\(f_0^*(y) = \sum_i^n e^{y_i-1}\)</span></p></li>
+</ul>
 <div class="proof algorithm dropdown admonition" id="sdp">
 <p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (SDP)</p>
 <section class="algorithm-content" id="proof-content">
 </section>
 </div></section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -546,10 +683,27 @@ equivalent to</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-definite">Semi-definite</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-optimization">Vector optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-optimization">Vector optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-vector-optimization">Convex vector optimization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multicriterion-optimization">Multicriterion optimization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-and-pareto-optimal-points">Optimal and Pareto optimal points</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalarization">Scalarization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duality">Duality</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrangian">Lagrangian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lp-and-its-dual">LP and its dual</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-form-lp">standard form LP</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Lagrangian</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange-dual-function">Lagrange dual function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-problem">Dual problem</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange-dual-and-conjugate-function">Lagrange dual and conjugate function</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
