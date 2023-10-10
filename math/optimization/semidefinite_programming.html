@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,9 +39,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'math/optimization/semidefinite_programming';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Algorithms" href="../../cs/algorithms/algorithms.html" />
+    <link rel="next" title="SDP and Duality" href="duality.html" />
     <link rel="prev" title="Convex Program" href="convex_program.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -80,15 +79,6 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -196,6 +186,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="convex_optimization.html">Convex Set and Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="convex_program.html">Convex Program</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Semidefinite Programming (SDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="duality.html">SDP and Duality</a></li>
 </ul>
 </li>
 </ul>
@@ -381,10 +372,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
@@ -392,7 +383,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -429,18 +420,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalarization">Scalarization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duality">Duality</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrangian">Lagrangian</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lp-and-its-dual">LP and its dual</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-form-lp">standard form LP</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Lagrangian</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange-dual-function">Lagrange dual function</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-problem">Dual problem</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange-dual-and-conjugate-function">Lagrange dual and conjugate function</a></li>
-</ul>
-</li>
 </ul>
             </nav>
         </div>
@@ -553,76 +532,6 @@ i.e., y feasible, <span class="math notranslate nohighlight">\(f_0(y) \preceq_K 
 </section>
 </div><p>multi objective</p>
 </section>
-<section id="duality">
-<h2>Duality<a class="headerlink" href="#duality" title="Permalink to this heading">#</a></h2>
-<p>Optimization in standard form (not necessarily convex)</p>
-<ul class="simple">
-<li><p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
-<li><p>s.t. <span class="math notranslate nohighlight">\(f_i\le 0\)</span>, <span class="math notranslate nohighlight">\(h_i(x)=0\)</span></p></li>
-</ul>
-<section id="lagrangian">
-<h3>Lagrangian<a class="headerlink" href="#lagrangian" title="Permalink to this heading">#</a></h3>
-<p><span class="math notranslate nohighlight">\(L: R^n\times R^m \times R^p \to R\)</span> with <span class="math notranslate nohighlight">\(dom (L) \ D \times R^m \times R^p\)</span>
-<span class="math notranslate nohighlight">\(L(x,\lambda,\nv)= f_0(x) + \sum_i^m \lambda_i f_i(x) + \sum_i^p \nu_i h_i\)</span></p>
-<ul class="simple">
-<li><p>Lagrange multipliers (Lagrangian dual variables): <span class="math notranslate nohighlight">\(\lambda_i\)</span>, <span class="math notranslate nohighlight">\(\nu_i\)</span></p></li>
-<li><p>augment <span class="math notranslate nohighlight">\(f_0(x)\)</span> by weighted sum of contraint functions (penalty functions)</p></li>
-</ul>
-<p>Lagrange dual function: <span class="math notranslate nohighlight">\(g:R^m\times R^p \to R\)</span>,
-$<span class="math notranslate nohighlight">\(
-g(\lambda,\nu) = \inf L(x,\lambda,\nu)
-\)</span>$</p>
-<p>Lagrange dual problem</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\max g(\lambda, \nu)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\lambda \prec 0\)</span></p></li>
-</ul>
-</section>
-<section id="lp-and-its-dual">
-<h3>LP and its dual<a class="headerlink" href="#lp-and-its-dual" title="Permalink to this heading">#</a></h3>
-<section id="standard-form-lp">
-<h4>standard form LP<a class="headerlink" href="#standard-form-lp" title="Permalink to this heading">#</a></h4>
-<ul class="simple">
-<li><p>minimize <span class="math notranslate nohighlight">\(c^T x\)</span></p></li>
-<li><p>s.t. <span class="math notranslate nohighlight">\(Ax = b\)</span>, <span class="math notranslate nohighlight">\(x \succeq 0\)</span></p></li>
-</ul>
-</section>
-<section id="id1">
-<h4>Lagrangian<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
-<p><span class="math notranslate nohighlight">\(L(x,\lambda,\nu) = c^T x + v^T (Ax-b) - \lambda^T x = -b^T v + (c+A^T v- \lambda)^T x\)</span></p>
-</section>
-<section id="lagrange-dual-function">
-<h4>Lagrange dual function<a class="headerlink" href="#lagrange-dual-function" title="Permalink to this heading">#</a></h4>
-<p><span class="math notranslate nohighlight">\(g(\lambda,\nu) = inf_{x} L(x,\lambda,\nu)=-b^T v, A^Tv-\lambda+c=0; -\infty, otherwise\)</span></p>
-</section>
-<section id="dual-problem">
-<h4>Dual problem<a class="headerlink" href="#dual-problem" title="Permalink to this heading">#</a></h4>
-<ul class="simple">
-<li><p>maximize <span class="math notranslate nohighlight">\(-b^T v\)</span></p></li>
-<li><p>s.t. <span class="math notranslate nohighlight">\(A^T v + c \preceq 0\)</span></p></li>
-</ul>
-</section>
-</section>
-<section id="lagrange-dual-and-conjugate-function">
-<h3>Lagrange dual and conjugate function<a class="headerlink" href="#lagrange-dual-and-conjugate-function" title="Permalink to this heading">#</a></h3>
-<p>optimization with affine inequality and equality constraints</p>
-<ul class="simple">
-<li><p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
-<li><p>s.t. <span class="math notranslate nohighlight">\(Ax \preceq b\)</span>, <span class="math notranslate nohighlight">\(C x = d\)</span></p></li>
-</ul>
-<p>Lagrange dual function
-<span class="math notranslate nohighlight">\(g(\lambda,v) = inf_x f_0(x) + (A^T \lambda + C^T v)^T x - b^T \lambda -d^T v=-f_0^*(-A^T \lambda - C^T v) - b^T \lambda -d^T v\)</span></p>
-<ul class="simple">
-<li><p>recall definition of conjugate <span class="math notranslate nohighlight">\(f^*(y)=sup_x (y^T x - f(x))\)</span></p></li>
-<li><p>simplifies derivation of dual if conjugate of <span class="math notranslate nohighlight">\(f_0\)</span> is known
-<span class="math notranslate nohighlight">\(f_0(x) = \sum_i^n x_i \log x_i\)</span>, <span class="math notranslate nohighlight">\(f_0^*(y) = \sum_i^n e^{y_i-1}\)</span></p></li>
-</ul>
-<div class="proof algorithm dropdown admonition" id="sdp">
-<p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (SDP)</p>
-<section class="algorithm-content" id="proof-content">
-</section>
-</div></section>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -650,10 +559,11 @@ g(\lambda,\nu) = \inf L(x,\lambda,\nu)
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="convex_program.html"
@@ -665,15 +575,18 @@ g(\lambda,\nu) = \inf L(x,\lambda,\nu)
       </div>
     </a>
     <a class="right-next"
-       href="../../cs/algorithms/algorithms.html"
+       href="duality.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Algorithms</p>
+        <p class="prev-next-title">SDP and Duality</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -698,18 +611,6 @@ g(\lambda,\nu) = \inf L(x,\lambda,\nu)
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalarization">Scalarization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duality">Duality</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrangian">Lagrangian</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lp-and-its-dual">LP and its dual</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-form-lp">standard form LP</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Lagrangian</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange-dual-function">Lagrange dual function</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-problem">Dual problem</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange-dual-and-conjugate-function">Lagrange dual and conjugate function</a></li>
-</ul>
-</li>
 </ul>
   </nav></div>
 
@@ -757,8 +658,8 @@ By Jue Xu
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>
