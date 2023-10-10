@@ -30,7 +30,9 @@ parts:
       sections:
       - file: math/optimization/convex_optimization
       - file: math/optimization/convex_program
-      - file: math/optimization/semidefinite_programming
+      - file: math/optimization/integer_program
+      - file: math/optimization/semidefinite_program
+      - file: math/optimization/duality
 
   - caption: Computer Science
     chapters:
