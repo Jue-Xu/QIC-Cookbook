@@ -433,11 +433,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange-dual-and-conjugate-function">Lagrange dual and conjugate function</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primal-and-lagrange-dual-problems">Primal and Lagrange dual problems</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strong-duality">strong duality</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#slater-s-constraint-qualification">Slater’s constraint qualification</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primal-and-lagrange-dual-problems">Primal and Lagrange dual problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strong-duality">Strong duality</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slater-s-constraint-qualification">Slater’s constraint qualification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-interpretation">Geometric interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensitivity-interpretation">Sensitivity interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saddle-point-interpretation">Saddle-point interpretation</a></li>
 </ul>
 </li>
 </ul>
@@ -493,7 +494,7 @@ g(\lambda,\nu) = \inf L(x,\lambda,\nu)
 </section>
 <section id="lagrange-dual-function">
 <h4>Lagrange dual function<a class="headerlink" href="#lagrange-dual-function" title="Permalink to this heading">#</a></h4>
-<p><span class="math notranslate nohighlight">\(g(\lambda,\nu) = inf_{x} L(x,\lambda,\nu)=-b^T v, A^Tv-\lambda+c=0; -\infty, otherwise\)</span></p>
+<p><span class="math notranslate nohighlight">\(g(\lambda,\nu) = \inf_{x} L(x,\lambda,\nu)=-b^T v, A^Tv-\lambda+c=0; -\infty, otherwise\)</span></p>
 </section>
 <section id="dual-problem">
 <h4>Dual problem<a class="headerlink" href="#dual-problem" title="Permalink to this heading">#</a></h4>
@@ -511,9 +512,9 @@ g(\lambda,\nu) = \inf L(x,\lambda,\nu)
 <li><p>s.t. <span class="math notranslate nohighlight">\(Ax \preceq b\)</span>, <span class="math notranslate nohighlight">\(C x = d\)</span></p></li>
 </ul>
 <p>Lagrange dual function
-<span class="math notranslate nohighlight">\(g(\lambda,v) = inf_x f_0(x) + (A^T \lambda + C^T v)^T x - b^T \lambda -d^T v=-f_0^*(-A^T \lambda - C^T v) - b^T \lambda -d^T v\)</span></p>
+<span class="math notranslate nohighlight">\(g(\lambda,v) = \inf_x f_0(x) + (A^T \lambda + C^T v)^T x - b^T \lambda -d^T v=-f_0^*(-A^T \lambda - C^T v) - b^T \lambda -d^T v\)</span></p>
 <ul class="simple">
-<li><p>recall definition of conjugate <span class="math notranslate nohighlight">\(f^*(y)=sup_x (y^T x - f(x))\)</span></p></li>
+<li><p>recall definition of conjugate <span class="math notranslate nohighlight">\(f^*(y)=\sup_x (y^T x - f(x))\)</span></p></li>
 <li><p>simplifies derivation of dual if conjugate of <span class="math notranslate nohighlight">\(f_0\)</span> is known
 <span class="math notranslate nohighlight">\(f_0(x) = \sum_i^n x_i \log x_i\)</span>, <span class="math notranslate nohighlight">\(f_0^*(y) = \sum_i^n e^{y_i-1}\)</span></p></li>
 </ul>
@@ -575,8 +576,9 @@ for any optimization problem: convex or not can be used to find a non-trivial lo
 <p>any dual feaisble solution gives a <code class="docutils literal notranslate"><span class="pre">lower</span> <span class="pre">bound</span></code> on primal objective value:
 for any feasible <span class="math notranslate nohighlight">\(x\)</span>
 <span class="math notranslate nohighlight">\(x^T Qx \ge x^T \Lambda x = \sum_i \Lambda_{ii} x_i^2 = Tr(\Lambda)\)</span></p>
+</section>
 <section id="strong-duality">
-<h3>strong duality<a class="headerlink" href="#strong-duality" title="Permalink to this heading">#</a></h3>
+<h2>Strong duality<a class="headerlink" href="#strong-duality" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">strong</span> <span class="pre">duality:</span></code> <span class="math notranslate nohighlight">\(d^* = p^*\)</span></p>
 <ul class="simple">
 <li><p>does not hold in general</p></li>
@@ -584,7 +586,7 @@ for any feasible <span class="math notranslate nohighlight">\(x\)</span>
 <li><p>conditions that guarantee strong duality in convex problems are called constraint qualifications</p></li>
 </ul>
 <section id="slater-s-constraint-qualification">
-<h4>Slater’s constraint qualification<a class="headerlink" href="#slater-s-constraint-qualification" title="Permalink to this heading">#</a></h4>
+<h3>Slater’s constraint qualification<a class="headerlink" href="#slater-s-constraint-qualification" title="Permalink to this heading">#</a></h3>
 <p>strong duality holds for a convex problem</p>
 <ul class="simple">
 <li><p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
@@ -595,6 +597,54 @@ for any feasible <span class="math notranslate nohighlight">\(x\)</span>
 <p>Can be refined: linear inequalities do not need to hold with strict inequality</p>
 <p>If an LP (in any form) has an optimal solution <span class="math notranslate nohighlight">\(x^*\)</span>, then the dual also has an optimal solution <span class="math notranslate nohighlight">\(y^*\)</span> and <span class="math notranslate nohighlight">\(C^T x^* = b^T y^*\)</span></p>
 </section>
+<section id="geometric-interpretation">
+<h3>Geometric interpretation<a class="headerlink" href="#geometric-interpretation" title="Permalink to this heading">#</a></h3>
+<p>interpretation of dual function: <span class="math notranslate nohighlight">\(g(\lambda) = \inf_{(u,t)\in\mathcal{G}} (t + \lambda u)\)</span>, where <span class="math notranslate nohighlight">\(\mathcal{G}=\{(f_1(x), f_0(x)) \}\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lambda u + t = g(\lambda)\)</span> is (non-vertical) supporting hyperplane to <span class="math notranslate nohighlight">\(\mathcal{G}\)</span> which intersects t-axis at <span class="math notranslate nohighlight">\(t=g(\lambda)\)</span></p></li>
+</ul>
+<p>epigraph variation: same interpretation if <span class="math notranslate nohighlight">\(\mathcal{G}\)</span> is replaced with <span class="math notranslate nohighlight">\(\mathcal{A}=\{ (u,t) \mid f_1(x)\le u, f_0(x)\le t \text{ for some } x\in D \}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">strong</span> <span class="pre">duality</span></code></p>
+<ul class="simple">
+<li><p>holds if there is a non-vertical suporting hyperplane to <span class="math notranslate nohighlight">\(\mathcal{A}\)</span> at <span class="math notranslate nohighlight">\((0,p^*)\)</span></p></li>
+<li><p>for convex problem, <span class="math notranslate nohighlight">\(\mathcal{A}\)</span> is convex, hence has supp. hyperplane at <span class="math notranslate nohighlight">\((0,p^*)\)</span></p></li>
+<li><p>Salter’s condition: if there exist <span class="math notranslate nohighlight">\((\tilde{u},\tilde{t})\in\mathcal{A}\)</span> with <span class="math notranslate nohighlight">\(\tilde{u}&lt;0\)</span>, then supporting hyperplanes at <span class="math notranslate nohighlight">\((0,p^*)\)</span> must be non-vertical</p></li>
+</ul>
+</section>
+<section id="sensitivity-interpretation">
+<h3>Sensitivity interpretation<a class="headerlink" href="#sensitivity-interpretation" title="Permalink to this heading">#</a></h3>
+<p>(<code class="docutils literal notranslate"><span class="pre">unperturbed</span></code>) optimization problem and its dual</p>
+<ul class="simple">
+<li><p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(f_i(x)\le 0\)</span>, <span class="math notranslate nohighlight">\(h_i(x)=0\)</span></p></li>
+<li><p>dual: <span class="math notranslate nohighlight">\(\max g(\lambda,\nu)\)</span> s.t. <span class="math notranslate nohighlight">\(\lambda \succeq 0\)</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">perturbed</span></code> problem and its dual</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min f_0(x)\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(f_i(x)\le u_i\)</span>, <span class="math notranslate nohighlight">\(h_i(x) = v_i\)</span></p></li>
+<li><p>dual: <span class="math notranslate nohighlight">\(\max g(\lambda, \nu) - u^T\lambda - v^T \nu\)</span> s.t. <span class="math notranslate nohighlight">\(\lambda \succeq 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p^*(u,v)\)</span> is optimal value as a function of <span class="math notranslate nohighlight">\(u\)</span>, <span class="math notranslate nohighlight">\(v\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">sensitivity</span></code>: if strong duality holds and <span class="math notranslate nohighlight">\(p^*(u,v)\)</span> is differentiable at <span class="math notranslate nohighlight">\((0,0)\)</span>
+<span class="math notranslate nohighlight">\(\lambda^*_i = - \frac{\partial p^*(0,0)}{\partial u_i}\)</span>, <span class="math notranslate nohighlight">\(\nu^*_i = - \frac{\partial p^*(0,0)}{\partial v_i}\)</span></p></li>
+</ul>
+</section>
+<section id="saddle-point-interpretation">
+<h3>Saddle-point interpretation<a class="headerlink" href="#saddle-point-interpretation" title="Permalink to this heading">#</a></h3>
+<p>Assume no equality constraints (results can be easily extended)
+<span class="math notranslate nohighlight">\(p^*=\inf_x \sup_{\lambda\succeq 0} L(x,\lambda)\)</span>,
+<span class="math notranslate nohighlight">\(d^*=\sup_{\lambda\succeq 0} \inf_x L(x,\lambda)\)</span></p>
+<ul class="simple">
+<li><p>weak duality: <span class="math notranslate nohighlight">\(\sup_{\lambda\succeq 0} \inf_x L(x,\lambda) \le \inf_x \sup_{\lambda\succeq 0} L(x,\lambda)\)</span></p></li>
+<li><p>strong duality: <span class="math notranslate nohighlight">\(\sup_{\lambda\succeq 0} \inf_x L(x,\lambda) = \inf_x \sup_{\lambda\succeq 0} L(x,\lambda)\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Max-min</span> <span class="pre">inequality</span></code> generally holds: <span class="math notranslate nohighlight">\(\sup_{z\in Z} \inf_{w\in W} f(w,z) \le \inf_{w\in W} \sup_{z\in Z} f(w,z) \forall f,W,Z\)</span></p></li>
+<li><p>Strong max-min property (<code class="docutils literal notranslate"><span class="pre">saddle</span> <span class="pre">point</span></code>)</p></li>
+</ul>
+<p>saddle-pint for <span class="math notranslate nohighlight">\(f\)</span>: a pair <span class="math notranslate nohighlight">\(\tilde{w} \in W\)</span>, <span class="math notranslate nohighlight">\(\tilde{z}\in Z\)</span> that satisfy
+<span class="math notranslate nohighlight">\(f(\tilde{w},z) \le f(\tilde{w},\tilde{z})\le f(w, \tilde{z}), \forall w\in W, z\in Z\)</span>
+<span class="math notranslate nohighlight">\(\Longleftrightarrow f(\tilde{w},\tilde{z}) = \inf_{w\in W} f(w,\tilde{z}), f(\tilde{w},\tilde{z}) = \sup_{z\in Z} f(\tilde{w}, z)\)</span>
+<span class="math notranslate nohighlight">\(\Longleftrightarrow strong max-min property holds\)</span></p>
+<p><span class="math notranslate nohighlight">\(x^*, \lambda^*\)</span> are primal and dual optimal points and strong duality holds iff <span class="math notranslate nohighlight">\((x^*,\lambda^*)\)</span> form a saddle-point for the Lagrangian</p>
 </section>
 </section>
 </section>
@@ -674,11 +724,12 @@ for any feasible <span class="math notranslate nohighlight">\(x\)</span>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lagrange-dual-and-conjugate-function">Lagrange dual and conjugate function</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primal-and-lagrange-dual-problems">Primal and Lagrange dual problems</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strong-duality">strong duality</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#slater-s-constraint-qualification">Slater’s constraint qualification</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primal-and-lagrange-dual-problems">Primal and Lagrange dual problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strong-duality">Strong duality</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slater-s-constraint-qualification">Slater’s constraint qualification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-interpretation">Geometric interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensitivity-interpretation">Sensitivity interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saddle-point-interpretation">Saddle-point interpretation</a></li>
 </ul>
 </li>
 </ul>
