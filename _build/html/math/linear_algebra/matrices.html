@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Semidefinite Programming (SDP) &#8212; Recipe of Quantum Computing</title>
+    <title>Matrices &#8212; Recipe of Quantum Computing</title>
   
   
   
@@ -64,11 +64,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'math/optimization/semidefinite_program';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'math/linear_algebra/matrices';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="SDP and Duality" href="duality.html" />
-    <link rel="prev" title="Integer Programming" href="integer_program.html" />
+    <link rel="next" title="Decomposition" href="decompositions.html" />
+    <link rel="prev" title="Complex matrix multiplication" href="complex_matrix_multiplication.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,21 +174,21 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../linear_algebra/linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../linear_algebra/complex_matrix_multiplication.html">Complex matrix multiplication</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="complex_matrix_multiplication.html">Complex matrix multiplication</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../linear_algebra/matrices.html">Matrices</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../linear_algebra/decompositions.html">Decomposition</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../linear_algebra/decompositions/cholesky_decomposition.html">Cholesky decomposition</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Matrices</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="decompositions.html">Decomposition</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="decompositions/cholesky_decomposition.html">Cholesky decomposition</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="optimization.html">Optimization</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="convex_optimization.html">Convex Set and Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="convex_program.html">Convex Program</a></li>
-<li class="toctree-l2"><a class="reference internal" href="integer_program.html">Integer Programming</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Semidefinite Programming (SDP)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="duality.html">SDP and Duality</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../optimization/optimization.html">Optimization</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../optimization/convex_optimization.html">Convex Set and Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization/convex_program.html">Convex Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization/integer_program.html">Integer Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization/semidefinite_program.html">Semidefinite Programming (SDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization/duality.html">SDP and Duality</a></li>
 </ul>
 </li>
 </ul>
@@ -290,7 +290,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmath/optimization/semidefinite_program.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmath/linear_algebra/matrices.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -320,7 +320,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/math/optimization/semidefinite_program.ipynb" target="_blank"
+      <li><a href="../../_sources/math/linear_algebra/matrices.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -402,7 +402,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Semidefinite Programming (SDP)</h1>
+    <h1>Matrices</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -412,16 +412,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-definite">Semi-definite</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-optimization">Vector optimization</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-vector-optimization">Convex vector optimization</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multicriterion-optimization">Multicriterion optimization</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-and-pareto-optimal-points">Optimal and Pareto optimal points</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalarization">Scalarization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#real-symmetric-matrix">Real symmetric matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-matrix">Orthogonal matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symplectic-matrix">Symplectic matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unitary-matrix">Unitary matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermitian-matrix">Hermitian matrix</a></li>
 </ul>
             </nav>
         </div>
@@ -433,106 +428,41 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="semidefinite-programming-sdp">
-<h1>Semidefinite Programming (SDP)<a class="headerlink" href="#semidefinite-programming-sdp" title="Permalink to this heading">#</a></h1>
-<section id="semi-definite">
-<h2>Semi-definite<a class="headerlink" href="#semi-definite" title="Permalink to this heading">#</a></h2>
-<div class="proof definition admonition" id="sdp">
-<p class="admonition-title"><span class="caption-number">Definition 26 </span> (SDP)</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="matrices">
+<h1>Matrices<a class="headerlink" href="#matrices" title="Permalink to this heading">#</a></h1>
+<section id="real-symmetric-matrix">
+<h2>Real symmetric matrix<a class="headerlink" href="#real-symmetric-matrix" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="orthogonal-matrix">
+<h2>Orthogonal matrix<a class="headerlink" href="#orthogonal-matrix" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="symplectic-matrix">
+<h2>Symplectic matrix<a class="headerlink" href="#symplectic-matrix" title="Permalink to this heading">#</a></h2>
+<div class="proof definition admonition" id="symplectic_matrix">
+<p class="admonition-title"><span class="caption-number">Definition 1 </span> (Symplectic matrix)</p>
 <section class="definition-content" id="proof-content">
-<ul class="simple">
-<li><p>minimize <span class="math notranslate nohighlight">\(c^T x\)</span></p></li>
-<li><p>s.t. <span class="math notranslate nohighlight">\(x_1 F_1 + \cdots + x_n F_n + G \preceq 0\)</span> with <span class="math notranslate nohighlight">\(F_i, G \in S^k\)</span></p></li>
-</ul>
+<p>A <code class="docutils literal notranslate"><span class="pre">symplectic</span> <span class="pre">matrix</span></code> is a <span class="math notranslate nohighlight">\(2n\times 2n\)</span> matrix <span class="math notranslate nohighlight">\(M\)</span> with real entries that satisfies the condition</p>
+<div class="math notranslate nohighlight">
+\[M^T \Omega M = \Omega,\]</div>
+<p>where <span class="math notranslate nohighlight">\(M^T\)</span> denotes the transpose of <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(\Omega\)</span> is a fixed <span class="math notranslate nohighlight">\(2n\times 2n\)</span> nonsingular, skew-symemtric matrix.</p>
 </section>
-</div><ul class="simple">
-<li><p>inequality constraint is called linear matrix inequailty (LMI)</p></li>
-<li></li>
-</ul>
-<div class="proof example admonition" id="example-1">
-<p class="admonition-title"><span class="caption-number">Example 24 </span> (Minimize maximum eigenvalue)</p>
-<section class="example-content" id="proof-content">
-<p>minimize <span class="math notranslate nohighlight">\(\lambda_{\max} (A(x))\)</span> where
-<span class="math notranslate nohighlight">\(A(x) = A_0 + x_1 A_1 + \cdots + x_n A_n\)</span> (with given <span class="math notranslate nohighlight">\(A_i \in S^k\)</span>)</p>
+</div><p>Typically <span class="math notranslate nohighlight">\(\Omega\)</span> chosen to be the block matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\Omega = 0, I_n \\ -I_n, 0\end{split}\]</div>
+<div class="proof remark dropdown admonition" id="remark-1">
+<p class="admonition-title"><span class="caption-number">Remark 1 </span></p>
+<section class="remark-content" id="proof-content">
+<p>If instead M is a 2n × 2n matrix with complex entries, the definition is not standard throughout the literature. Many authors adjust the definition above to</p>
+<div class="math notranslate nohighlight">
+\[M^* \Omega M = \Omega\,.\]</div>
+<p>where M* denotes the conjugate transpose of M. In this case, the determinant may not be 1, but will have absolute value 1. In the 2×2 case (n=1), M will be the product of a real symplectic matrix and a complex number of absolute value 1.</p>
 </section>
-</div><p><span class="math notranslate nohighlight">\(\lambda_{\max} (A) = \max_{||y||\le 1} y^T A y\)</span> where <span class="math notranslate nohighlight">\(y\)</span> is the eigenvector of <span class="math notranslate nohighlight">\(A\)</span>
-equivalent to</p>
-<ul class="simple">
-<li><p>minimize t</p></li>
-<li></li>
-</ul>
-<p>equivalent to (SDP)</p>
-<ul class="simple">
-<li><p>minimize</p></li>
-<li><p>s.t. <span class="math notranslate nohighlight">\(A(x) - t I \preceq 0\)</span></p></li>
-</ul>
-<section id="vector-optimization">
-<h3>Vector optimization<a class="headerlink" href="#vector-optimization" title="Permalink to this heading">#</a></h3>
-<p>general vector optimization problem</p>
-<ul class="simple">
-<li><p>minimize (w.r.t <span class="math notranslate nohighlight">\(K\)</span>) <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
-<li><p>s.t. <span class="math notranslate nohighlight">\(f_i(x)\le 0\)</span>, <span class="math notranslate nohighlight">\(h_i(x)=0\)</span></p></li>
-</ul>
-<p>vector-valued objective function:
-<span class="math notranslate nohighlight">\(f_0: R^n \to R^q\)</span>, minimized w.r.t proper cone <span class="math notranslate nohighlight">\(K\in R^q\)</span></p>
-<section id="convex-vector-optimization">
-<h4>Convex vector optimization<a class="headerlink" href="#convex-vector-optimization" title="Permalink to this heading">#</a></h4>
-<p>K-convexity for vector-valued functions
-<span class="math notranslate nohighlight">\(....... \preceq_K ....\)</span>
-entry-wise</p>
+</div></section>
+<section id="unitary-matrix">
+<h2>Unitary matrix<a class="headerlink" href="#unitary-matrix" title="Permalink to this heading">#</a></h2>
 </section>
-<section id="multicriterion-optimization">
-<h4>Multicriterion optimization<a class="headerlink" href="#multicriterion-optimization" title="Permalink to this heading">#</a></h4>
-<p>Or multi-objective optimization</p>
-<p>vector optimization problem with <span class="math notranslate nohighlight">\(K=R_+^q\)</span>,
-<span class="math notranslate nohighlight">\(f_0(x) = (F_1(x), \dots, F_q(x))\)</span></p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(q\)</span> different objectives <span class="math notranslate nohighlight">\(F_i\)</span>; roughly speaking we want all <span class="math notranslate nohighlight">\(F_i\)</span>’s to be small</p></li>
-</ul>
-</section>
-<section id="optimal-and-pareto-optimal-points">
-<h4>Optimal and Pareto optimal points<a class="headerlink" href="#optimal-and-pareto-optimal-points" title="Permalink to this heading">#</a></h4>
-<p>set of achievable objective values <span class="math notranslate nohighlight">\(O=\{ f_0(x) \mid x feasible \}\)</span></p>
-<ul class="simple">
-<li><p>feasible <span class="math notranslate nohighlight">\(x^*\)</span> is <code class="docutils literal notranslate"><span class="pre">optimal</span></code> if <span class="math notranslate nohighlight">\(f_0(x^*)\)</span> is a minimum value of <span class="math notranslate nohighlight">\(O\)</span>
-i.e., y feasible <span class="math notranslate nohighlight">\(\implies \)</span> <span class="math notranslate nohighlight">\(f_0(x^*) \preceq_K f_0(y)\)</span></p></li>
-<li><p>feasible <span class="math notranslate nohighlight">\(x\)</span> is Pareto optimal if <span class="math notranslate nohighlight">\(f_0(x)\)</span> is a minimal value of <span class="math notranslate nohighlight">\(O\)</span>
-i.e., y feasible, <span class="math notranslate nohighlight">\(f_0(y) \preceq_K f_0(x)\)</span> implies <span class="math notranslate nohighlight">\(f_0(x) = f_0(y)\)</span></p></li>
-</ul>
-<p>if there are multiple Pareto optimal values, there is a trade-off between the objectives</p>
-<div class="proof example admonition" id="example-2">
-<p class="admonition-title"><span class="caption-number">Example 25 </span> (Risk return trade-off in portfolio optimization)</p>
-<section class="example-content" id="proof-content">
-<ul class="simple">
-<li><p>minimize (w.r.t <span class="math notranslate nohighlight">\(R_+^2\)</span>) <span class="math notranslate nohighlight">\((-p^T x, x^T\Sigma x)\)</span></p></li>
-<li><p>s.t. <span class="math notranslate nohighlight">\(1^T x = 1, x \succeq 0\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(x\in R^n\)</span> is investment portfolio; <span class="math notranslate nohighlight">\(x_i\)</span> is fraction invected in asset <span class="math notranslate nohighlight">\(i\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(p\in R^n\)</span> is vector of asset return, modeled as a random variable with mean <span class="math notranslate nohighlight">\(\bar{p}\)</span>, covariance <span class="math notranslate nohighlight">\(\Sigma\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\bar{p}^T x = E(p^T x)\)</span> is expected return; <span class="math notranslate nohighlight">\(x^T \Sigma x = Var[p^T x ]\)</span> is return variance</p></li>
-</ul>
-</section>
-</div><p>supporting hyperplane: <span class="math notranslate nohighlight">\(\{ z \mid \lambda^T z = \lambda^T u \}\)</span></p>
-</section>
-</section>
-</section>
-<section id="scalarization">
-<h2>Scalarization<a class="headerlink" href="#scalarization" title="Permalink to this heading">#</a></h2>
-<p>to find Pareto optimal points: choose <span class="math notranslate nohighlight">\(\lambda \succ_{K^*} 0\)</span> and solve scalar problem</p>
-<ul class="simple">
-<li><p>minimize <span class="math notranslate nohighlight">\(\lambda^T f_0(x)\)</span></p></li>
-<li><p>s.t. <span class="math notranslate nohighlight">\(f_i(x) \le 0\)</span>, <span class="math notranslate nohighlight">\(h_i(x) = 0\)</span></p></li>
-</ul>
-<p>for convex vector optimization problems, can find (almost) all Pareto optimal points by varying <span class="math notranslate nohighlight">\(\lambda\succ_{K^*} 0\)</span></p>
-<div class="proof example admonition" id="example-3">
-<p class="admonition-title"><span class="caption-number">Example 26 </span> (Risk return trade-off )</p>
-<section class="example-content" id="proof-content">
-<ul class="simple">
-<li><p>minimize (w.r.t <span class="math notranslate nohighlight">\(R_+^2\)</span>) <span class="math notranslate nohighlight">\((-p^T x+ \lambda x^T\Sigma x)\)</span></p></li>
-<li><p>s.t. <span class="math notranslate nohighlight">\(1^T x = 1, x \succeq 0\)</span></p></li>
-</ul>
-<p>for fixed <span class="math notranslate nohighlight">\(\gamma&gt;0\)</span>, a quadratic program</p>
-</section>
-</div><p>multi objective</p>
+<section id="hermitian-matrix">
+<h2>Hermitian matrix<a class="headerlink" href="#hermitian-matrix" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -549,7 +479,7 @@ i.e., y feasible, <span class="math notranslate nohighlight">\(f_0(y) \preceq_K 
         },
         kernelOptions: {
             name: "python3",
-            path: "./math/optimization"
+            path: "./math/linear_algebra"
         },
         predefinedOutput: true
     }
@@ -568,20 +498,20 @@ i.e., y feasible, <span class="math notranslate nohighlight">\(f_0(y) \preceq_K 
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="integer_program.html"
+       href="complex_matrix_multiplication.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Integer Programming</p>
+        <p class="prev-next-title">Complex matrix multiplication</p>
       </div>
     </a>
     <a class="right-next"
-       href="duality.html"
+       href="decompositions.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">SDP and Duality</p>
+        <p class="prev-next-title">Decomposition</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -603,16 +533,11 @@ i.e., y feasible, <span class="math notranslate nohighlight">\(f_0(y) \preceq_K 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-definite">Semi-definite</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-optimization">Vector optimization</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-vector-optimization">Convex vector optimization</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multicriterion-optimization">Multicriterion optimization</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-and-pareto-optimal-points">Optimal and Pareto optimal points</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalarization">Scalarization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#real-symmetric-matrix">Real symmetric matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-matrix">Orthogonal matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symplectic-matrix">Symplectic matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unitary-matrix">Unitary matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermitian-matrix">Hermitian matrix</a></li>
 </ul>
   </nav></div>
 

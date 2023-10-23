@@ -23,6 +23,7 @@ parts:
   #   - file: path/to/part1/chapter2
       sections:
       - file: math/linear_algebra/complex_matrix_multiplication
+    - file: math/linear_algebra/matrices
     - file: math/linear_algebra/decompositions
       sections:
       - file: math/linear_algebra/decompositions/cholesky_decomposition
