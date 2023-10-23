@@ -188,6 +188,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../linear_algebra/complex_matrix_multiplication.html">Complex matrix multiplication</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../linear_algebra/matrices.html">Matrices</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../linear_algebra/decompositions.html">Decomposition</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../linear_algebra/decompositions/cholesky_decomposition.html">Cholesky decomposition</a></li>
 </ul>
@@ -512,10 +513,10 @@ $<span class="math notranslate nohighlight">\(
 <span class="math notranslate nohighlight">\(x\)</span> is optimal iff there exists a <span class="math notranslate nohighlight">\(\nu\)</span> such that
 <span class="math notranslate nohighlight">\(x\in dom f_0, Ax=b, \nabla f_o(x) + A^T \nu = 0\)</span></p>
 <div class="proof admonition" id="proof">
-<p>Proof.     By Null space and range  <a class="reference internal" href="#null_space">Definition 23</a></p>
+<p>Proof.     By Null space and range  <a class="reference internal" href="#null_space">Definition 24</a></p>
 </div>
 <div class="proof definition dropdown admonition" id="null_space">
-<p class="admonition-title"><span class="caption-number">Definition 23 </span> (Null space)</p>
+<p class="admonition-title"><span class="caption-number">Definition 24 </span> (Null space)</p>
 <section class="definition-content" id="proof-content">
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(N(A) = \{ x\in R^n \mid Ax = 0 \}\)</span></p></li>
@@ -634,35 +635,36 @@ can take <span class="math notranslate nohighlight">\(\phi_t(x) = p(x) - tq(x)\)
 </ul>
 <p>convertible between (general, standard, canonical form)</p>
 <div class="proof admonition" id="proof">
-<p>Proof.     introduct slack variable <span class="math notranslate nohighlight">\(s\)</span>
-- <span class="math notranslate nohighlight">\(G(x^+ - x^-) + s = h\)</span>
-- <span class="math notranslate nohighlight">\(A(x^+-x^-) = b\)</span>
-- <span class="math notranslate nohighlight">\(x^+\succeq 0\)</span>, <span class="math notranslate nohighlight">\(x^-\succeq 0\)</span>, <span class="math notranslate nohighlight">\(s\succeq 0\)</span> (<span class="math notranslate nohighlight">\([x^+, x^-, s]\)</span>)</p>
+<p>Proof. introduct slack variable <span class="math notranslate nohighlight">\(s\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(G(x^+ - x^-) + s = h\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A(x^+-x^-) = b\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x^+\succeq 0\)</span>, <span class="math notranslate nohighlight">\(x^-\succeq 0\)</span>, <span class="math notranslate nohighlight">\(s\succeq 0\)</span> (<span class="math notranslate nohighlight">\([x^+, x^-, s]\)</span>)</p></li>
+</ul>
 </div>
 <div class="proof example admonition" id="example-2">
 <p class="admonition-title"><span class="caption-number">Example 14 </span> (Piecewise-linear minimization)</p>
 <section class="example-content" id="proof-content">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- minimize $\max_{i=1,\dots, m} (a_i^T x+b_i)$
-equivalent to an LP
-- minimize $t$
-- s.t. $a_i^T x + b_i \le t$, $i=1,\dots,m$
-</pre></div>
-</div>
+<ul class="simple">
+<li><p>minimize <span class="math notranslate nohighlight">\(\max_{i=1,\dots, m} (a_i^T x+b_i)\)</span>
+equivalent to an LP</p></li>
+<li><p>minimize <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(a_i^T x + b_i \le t\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots,m\)</span></p></li>
+</ul>
 </section>
-</div><div class="proof example admonition" id="example-3">
+</div><div class="proof example dropdown admonition" id="example-3">
 <p class="admonition-title"><span class="caption-number">Example 15 </span> (Largest sphere inside a polyhedron)</p>
 <section class="example-content" id="proof-content">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$P=\{ x \mid a_i^T x \le b_i, i = 1, \dots, m \}$
-- Chebyshev center of a polyhedron center of the largest sphere $B=\{ x_c + u \mid ||u||_2 \le r \}$
-- hence, $x_c$, $r$ can be determined by solving the LP
-
-- max $r$
-- s.t. $x_c + u \in P$, $\forall ||u||_2 \le r$
-- $a_i^T (x_c +u) \le b_i$, $i=1,\dots,m$, $\forall ||u||_2 \le r$
-- $a_i^T x_c + a_i^T u \le b_i$, $i=1,\dots,m$, $\forall ||u||_2 \le r$
-- $a_i^T x_c + sup_{||u||_2 \le r} a_i^T u \le b_i$, $i=1,\dots,m$
-</pre></div>
-</div>
+<p><span class="math notranslate nohighlight">\(P=\{ x \mid a_i^T x \le b_i, i = 1, \dots, m \}\)</span></p>
+<ul class="simple">
+<li><p>Chebyshev center of a polyhedron center of the largest sphere <span class="math notranslate nohighlight">\(B=\{ x_c + u \mid ||u||_2 \le r \}\)</span></p></li>
+<li><p>hence, <span class="math notranslate nohighlight">\(x_c\)</span>, <span class="math notranslate nohighlight">\(r\)</span> can be determined by solving the LP</p></li>
+<li><p>max <span class="math notranslate nohighlight">\(r\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(x_c + u \in P\)</span>, <span class="math notranslate nohighlight">\(\forall ||u||_2 \le r\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a_i^T (x_c +u) \le b_i\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots,m\)</span>, <span class="math notranslate nohighlight">\(\forall ||u||_2 \le r\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a_i^T x_c + a_i^T u \le b_i\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots,m\)</span>, <span class="math notranslate nohighlight">\(\forall ||u||_2 \le r\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a_i^T x_c + sup_{||u||_2 \le r} a_i^T u \le b_i\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots,m\)</span></p></li>
+</ul>
 </section>
 </div></section>
 <section id="integer-linear-program-ip-ilp">
@@ -672,17 +674,17 @@ equivalent to an LP
 <li><p><span class="math notranslate nohighlight">\(\min c^T x + d\)</span></p></li>
 <li><p>s.t. <span class="math notranslate nohighlight">\(Gx\preceq h\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(Ax = b\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(x\in Z&amp;n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x\in Z_n\)</span></p></li>
 </ul>
 <div class="proof example admonition" id="example-4">
 <p class="admonition-title"><span class="caption-number">Example 16 </span> (Shortest path problem)</p>
 <section class="example-content" id="proof-content">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>find a path from $s$ to $t$ in directed graph $G=(V,E)$ withthe smallest total cost 
-- $\min \sum_{(i,j)\in E} c_{ij} x_{ij}$
-- subject to: 
-$\sum_{j:(i,j)\in E} x_{ij} - $\sum_{j:(j,i)\in E} x_{ji} = $
-</pre></div>
-</div>
+<p>find a path from <span class="math notranslate nohighlight">\(s\)</span> to <span class="math notranslate nohighlight">\(t\)</span> in directed graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span> withthe smallest total cost</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min \sum_{(i,j)\in E} c_{ij} x_{ij}\)</span></p></li>
+<li><p>subject to:
+<span class="math notranslate nohighlight">\(\sum_{j:(i,j)\in E} x_{ij} - \sum_{j:(j,i)\in E} x_{ji} = \)</span></p></li>
+</ul>
 </section>
 </div><div class="proof example admonition" id="example-5">
 <p class="admonition-title"><span class="caption-number">Example 17 </span> (Min vertex cover)</p>
@@ -738,7 +740,7 @@ e.g. shortest path problem
 <section id="quadratic-program-qp">
 <h2>Quadratic program (QP)<a class="headerlink" href="#quadratic-program-qp" title="Permalink to this heading">#</a></h2>
 <div class="proof definition admonition" id="definition-9">
-<p class="admonition-title"><span class="caption-number">Definition 24 </span> (Quadratic program)</p>
+<p class="admonition-title"><span class="caption-number">Definition 25 </span> (Quadratic program)</p>
 <section class="definition-content" id="proof-content">
 <ul class="simple">
 <li><p>minimize (1/2)x^T P x + q^T x + r</p></li>
