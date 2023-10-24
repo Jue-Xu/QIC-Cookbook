@@ -440,6 +440,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-interpretation">Geometric interpretation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensitivity-interpretation">Sensitivity interpretation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saddle-point-interpretation">Saddle-point interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#game-interpretation">Game interpretation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-example-of-duality">Usage example of duality</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-convex-problem-with-strong-duality">Non-convex problem with strong duality</a></li>
 </ul>
 </li>
 </ul>
@@ -647,6 +652,89 @@ for any feasible <span class="math notranslate nohighlight">\(x\)</span>
 <span class="math notranslate nohighlight">\(\Longleftrightarrow strong max-min property holds\)</span></p>
 <p><span class="math notranslate nohighlight">\(x^*, \lambda^*\)</span> are primal and dual optimal points and strong duality holds iff <span class="math notranslate nohighlight">\((x^*,\lambda^*)\)</span> form a saddle-point for the Lagrangian</p>
 </section>
+<section id="game-interpretation">
+<h3>Game interpretation<a class="headerlink" href="#game-interpretation" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>player x choose strategy from <span class="math notranslate nohighlight">\(1,2,\dots, n\)</span></p></li>
+<li><p>player y choose strategy from <span class="math notranslate nohighlight">\(1,2,\dots, n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P_{ij}\)</span> is the amount x pays to y (payoff) when <span class="math notranslate nohighlight">\(x\)</span> plays strategy i, y plays startegy <span class="math notranslate nohighlight">\(j\)</span></p></li>
+</ul>
+<p>mixed strategy:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(u_i\)</span>: prob (player x chooses strategy <span class="math notranslate nohighlight">\(i\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(y_i\)</span>: prob (player y chooses strategy <span class="math notranslate nohighlight">\(i\)</span>)</p></li>
+</ul>
+<p>expected payoff: <span class="math notranslate nohighlight">\(u^T P v\)</span></p>
+<p>Suppose <span class="math notranslate nohighlight">\(x\)</span> fixes strategy <span class="math notranslate nohighlight">\(u\)</span>, then <span class="math notranslate nohighlight">\(y\)</span> plays (decides <span class="math notranslate nohighlight">\(v\)</span>) to maximize expected payoff:</p>
+<div class="math notranslate nohighlight">
+\[\max u^T P v s.t. \sum_{i=1}^m v_i= 1, v \succeeq 0\]</div>
+<p>so x must choose u to minimize <span class="math notranslate nohighlight">\(\max_i (P^T u)_i\)</span>:
+<span class="math notranslate nohighlight">\(\min_u \max_i (P^T u)_i\)</span> s.t. <span class="math notranslate nohighlight">\(\sum_i^n u_i = 1\)</span> and <span class="math notranslate nohighlight">\(u\succeq 0\)</span>
+equivalent to?
+<span class="math notranslate nohighlight">\(\min t\)</span> s.t. <span class="math notranslate nohighlight">\(P^T u \preceq t 1\)</span>, <span class="math notranslate nohighlight">\(u^T 1 = 1\)</span> and <span class="math notranslate nohighlight">\(u\preceq 0\)</span></p>
+<p>LP(1) with optimal value: <span class="math notranslate nohighlight">\(p_1^*\)</span></p>
+<p>Suppose <span class="math notranslate nohighlight">\(y\)</span> plays first (v given), then x choose u to minimize expected payoff:
+<span class="math notranslate nohighlight">\(\min u^T P v\)</span>, s.t. <span class="math notranslate nohighlight">\(\sum_i^n u_i =1\)</span> and <span class="math notranslate nohighlight">\(u \preceq 0\)</span></p>
+<p>LP(2) with optimal value: <span class="math notranslate nohighlight">\(p_2^*\)</span></p>
+<p>LP(1) and LP(2) are duals of each other and thus have the same optimal values: <span class="math notranslate nohighlight">\(p_1^* = p_2^*\)</span></p>
+<p>Therefore, there is no advantage to play second …</p>
+<p>Consider payoff function <span class="math notranslate nohighlight">\(f(u,v) = u^T P v\)</span>, the optimum <span class="math notranslate nohighlight">\(u^*\)</span> for LP(1) and the optimum <span class="math notranslate nohighlight">\(v^*\)</span> for LP(2) form a saddle-point for <span class="math notranslate nohighlight">\(f(u,v)\)</span>
+<span class="math notranslate nohighlight">\(f(u^*,v) \le f(u^*,v^*) \le f(u,v^*)\)</span> equivalent to
+<span class="math notranslate nohighlight">\(f(u^*,v^*)=\inf_u f(u,v^*)\)</span> and <span class="math notranslate nohighlight">\(f(u^*,v^*) = \sup_v f(u^*,v)\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">Nash</span> <span class="pre">equilibrium</span></code> of the game: <span class="math notranslate nohighlight">\((u^*,v^*)\)</span> such that</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(u^*\)</span> is the best response of player x with respect to <span class="math notranslate nohighlight">\(v^*\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(v^*\)</span> is the best response of player y with respect to <span class="math notranslate nohighlight">\(u^*\)</span></p></li>
+</ul>
+<section id="usage-example-of-duality">
+<h4>Usage example of duality<a class="headerlink" href="#usage-example-of-duality" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Duality</span> <span class="pre">gives</span> <span class="pre">a</span> <span class="pre">way</span> <span class="pre">to</span> <span class="pre">analytically</span> <span class="pre">solve</span> <span class="pre">an</span> <span class="pre">optimization</span> <span class="pre">problem</span></code></p>
+<div class="proof example admonition" id="example-2">
+<p class="admonition-title"><span class="caption-number">Example 29 </span></p>
+<section class="example-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(\min ||x||_2^2\)</span> s.t. <span class="math notranslate nohighlight">\(Ax = b\)</span></p>
+<p>Lagrangian: <span class="math notranslate nohighlight">\(L(x,\nu)=x^T x + \nu^T (Ax - b)\)</span>
+Lagrange dual function: <span class="math notranslate nohighlight">\(g(v)=\min x^T x + \nu^T A x - \nu^T b\)</span></p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial (x^T x + \nu^T A x)}{\partial x} = 2 x^T + \nu^T A = 0
+\implies x = -\frac{A^T \nu}{x}\]</div>
+<p>then <span class="math notranslate nohighlight">\(g(\nu)=-\frac{1}{4} \nu^T A A^T \nu - \nu^T b\)</span></p>
+<p>Dual problem: <span class="math notranslate nohighlight">\(\max_\nu - \frac{1}{4} \nu^T A A^T \nu - \nu^T b\)</span>
+<span class="math notranslate nohighlight">\(\mu = -2 (AA^T)^{-1} b\)</span> and <span class="math notranslate nohighlight">\(x=A^T ...\)</span></p>
+</section>
+</div><p><code class="docutils literal notranslate"><span class="pre">derivative</span> <span class="pre">is</span> <span class="pre">the</span> <span class="pre">transpose</span> <span class="pre">of</span> <span class="pre">gradient</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Duality</span> <span class="pre">is</span> <span class="pre">useful</span> <span class="pre">to</span> <span class="pre">find</span> <span class="pre">non-trivial</span> <span class="pre">lower</span> <span class="pre">bounds</span> <span class="pre">to</span> <span class="pre">non-convex</span> <span class="pre">minimization</span> <span class="pre">problems</span></code></p>
+<div class="proof example admonition" id="example-3">
+<p class="admonition-title"><span class="caption-number">Example 30 </span></p>
+<section class="example-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(\min x^T W x, W \succeq\)</span> s.t. <span class="math notranslate nohighlight">\(x_i \in \{ -1, 1 \}\)</span>.</p>
+<p>Relaxation: <span class="math notranslate nohighlight">\(\min x^T W x\)</span> s.t. <span class="math notranslate nohighlight">\(-1 \le x_i \le 1\)</span></p>
+<p>use duality t oobtain better lower bound (as on page15 of )</p>
+</section>
+</div></section>
+</section>
+<section id="non-convex-problem-with-strong-duality">
+<h3>Non-convex problem with strong duality<a class="headerlink" href="#non-convex-problem-with-strong-duality" title="Permalink to this heading">#</a></h3>
+<p>strong duality not implies convex problem</p>
+<div class="proof example admonition" id="example-4">
+<p class="admonition-title"><span class="caption-number">Example 31 </span> (Non-convex problem with strong duality)</p>
+<section class="example-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(\min x^T A x\)</span>, <span class="math notranslate nohighlight">\(A \in S^n\)</span>, s.t. <span class="math notranslate nohighlight">\(x^T x = 1\)</span>.</p>
+<p>solution: <span class="math notranslate nohighlight">\(\min_{||x||_2 = 1} x^T A x = \text{min eigval of } A \)</span></p>
+<p>let <span class="math notranslate nohighlight">\(x=\sum_i^n \alpha_i v_i\)</span> (linear combination of orthogonal eigenvectors of <span class="math notranslate nohighlight">\(A\)</span>)
+<span class="math notranslate nohighlight">\(v_i\)</span> is an eigenvector corresponding to eigenvalue <span class="math notranslate nohighlight">\(\lambda_i\)</span>: <span class="math notranslate nohighlight">\(A v_i = \lambda_i v_i, ||v_i||_2 = 1\)</span>.
+we have <span class="math notranslate nohighlight">\(x^T A x = (\sum_i \alpha_i v_i)^T A (\sum_i \alpha_i v_i) = \sum_i \alpha_i^2 \lambda_i ||v_i||_2^2 = \sum_i^n \alpha_i^2 \lambda_i \)</span>
+since <span class="math notranslate nohighlight">\(x^T x = 1\)</span>, we know <span class="math notranslate nohighlight">\(\sum_i \alpha_i^2 = 1\)</span>.</p>
+<p>Therefore, <span class="math notranslate nohighlight">\(x^T A x\)</span> is minimized when <span class="math notranslate nohighlight">\(\alpha_j =1\)</span> for <span class="math notranslate nohighlight">\(\lambda_j = \min(\lambda_1,\dots,\lambda_j)= ...\)</span></p>
+<p>Derive the dual problem</p>
+<ul class="simple">
+<li><p>Lagrangian: <span class="math notranslate nohighlight">\(L(x,\nu)=x^T A x + \nu (x^T x - 1)\)</span></p></li>
+<li><p>Lagrangian dual function: <span class="math notranslate nohighlight">\(g(\nu) = \min_x L(x,\nu)= \min_x x^T (A+\nu I) x - \nu = -\nu, \text{if } A+\nu I \succeq 0; -\infty, \text{ otherwise } \)</span></p></li>
+<li><p>dual problem: <span class="math notranslate nohighlight">\(\max -\nu\)</span> s.t. <span class="math notranslate nohighlight">\(A + \nu I \succeq 0\)</span></p></li>
+</ul>
+<p>Therefore, the largest <span class="math notranslate nohighlight">\(-\nu\)</span> to make <span class="math notranslate nohighlight">\(A + \nu I \succeq 0\)</span> is <span class="math notranslate nohighlight">\(\min\{\lambda_1, \dots, \lambda_n\}\)</span></p>
+</section>
+</div></section>
 </section>
 </section>
 
@@ -731,6 +819,11 @@ for any feasible <span class="math notranslate nohighlight">\(x\)</span>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-interpretation">Geometric interpretation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensitivity-interpretation">Sensitivity interpretation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saddle-point-interpretation">Saddle-point interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#game-interpretation">Game interpretation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-example-of-duality">Usage example of duality</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-convex-problem-with-strong-duality">Non-convex problem with strong duality</a></li>
 </ul>
 </li>
 </ul>
