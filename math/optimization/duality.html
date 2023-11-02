@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -149,13 +149,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     
     
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Recipe of Quantum Computing - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Recipe of Quantum Computing - Home"/>`);</script>
   
   
 </a></div>
@@ -445,6 +446,19 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-convex-problem-with-strong-duality">Non-convex problem with strong duality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complementary-slackness-for-lp">Complementary slackness for LP</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#karush-kuhn-tucker-kkt-conditions">Karush_Kuhn-Tucker (KKT) conditions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kkt-conditions-for-convex-programs">KKT conditions for convex programs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#partial-lagrangian-relaxation">Partial Lagrangian relaxation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generalized-inequality">Generalized inequality</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uncontraied-optimization">Uncontraied optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">Newton’s method</a></li>
 </ul>
 </li>
 </ul>
@@ -735,6 +749,227 @@ since <span class="math notranslate nohighlight">\(x^T x = 1\)</span>, we know <
 <p>Therefore, the largest <span class="math notranslate nohighlight">\(-\nu\)</span> to make <span class="math notranslate nohighlight">\(A + \nu I \succeq 0\)</span> is <span class="math notranslate nohighlight">\(\min\{\lambda_1, \dots, \lambda_n\}\)</span></p>
 </section>
 </div></section>
+<section id="complementary-slackness-for-lp">
+<h3>Complementary slackness for LP<a class="headerlink" href="#complementary-slackness-for-lp" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Primal</span></code>: <span class="math notranslate nohighlight">\(\min c^T x\)</span> s.t. <span class="math notranslate nohighlight">\(Ax \succeq b\)</span>, <span class="math notranslate nohighlight">\(x\succeq 0\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">Dual</span></code>: <span class="math notranslate nohighlight">\(\max b^T y\)</span> s.t. <span class="math notranslate nohighlight">\(A^T y \preceq c\)</span>, <span class="math notranslate nohighlight">\(y \preceq 0\)</span></p>
+<div class="proof theorem admonition" id="theorem-5">
+<p class="admonition-title"><span class="caption-number">Theorem 9 </span> (Complementary slackness theorem for LP)</p>
+<section class="theorem-content" id="proof-content">
+<p>A pair of feasible solutions <span class="math notranslate nohighlight">\(x\in R^n\)</span> and <span class="math notranslate nohighlight">\(y\in R^m\)</span> for primal and dual LP problems is optimal iff
+<span class="math notranslate nohighlight">\(y_i (b_i - (Ax)_i)=0, \forall i = 1, \dots, m\)</span>
+<span class="math notranslate nohighlight">\(x_i (c_j - (A^T y)_j)=0, \forall j = 1, \dots, m\)</span></p>
+</section>
+</div><p>Proof of sufficiency:
+Given <span class="math notranslate nohighlight">\(x, y\)</span> satisfy complementary slackness</p>
+</section>
+</section>
+<section id="karush-kuhn-tucker-kkt-conditions">
+<h2>Karush_Kuhn-Tucker (KKT) conditions<a class="headerlink" href="#karush-kuhn-tucker-kkt-conditions" title="Permalink to this heading">#</a></h2>
+<p>the following four conditions are called KKT conditions (for a problem with differentiable <span class="math notranslate nohighlight">\(f_i\)</span>, <span class="math notranslate nohighlight">\(h_i\)</span>):
+<span class="math notranslate nohighlight">\(\min f_0(x)\)</span> s.t. <span class="math notranslate nohighlight">\(f_i(0)\)</span></p>
+<ul class="simple">
+<li><p>primal constraints:</p></li>
+<li><p>dual constraints:</p></li>
+<li><p>complementary slackness: <span class="math notranslate nohighlight">\(\lambda_i f_i(x)=0\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots,m\)</span></p></li>
+<li><p>gradient of Lagrangian with respect to <span class="math notranslate nohighlight">\(x\)</span> vanishes:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\nabla f_0(x) + \sum_i^m \lambda_i \nabla f_i(x) + \sum_i^p \nu_i \nabla h_i(x) = 0\]</div>
+<p>For any optimization problem with differentiable objective and constraint functions, if strong duality holds, any pair of primal and dual optimal points <span class="math notranslate nohighlight">\(x^*, \lambda^*, \nu^*\)</span> must satisfy the KKT conditions
+<span class="math notranslate nohighlight">\(g(\lambda^*, \nu^*) = \inf_x L(x,\lambda^*,\nu^*) = \inf_x f_0(x) + \sum_i^m \lambda_i^* f_i(x) + \sum_i^p \nu_i^* h_i(x) = f_0(x^*)\)</span></p>
+<section id="kkt-conditions-for-convex-programs">
+<h3>KKT conditions for convex programs<a class="headerlink" href="#kkt-conditions-for-convex-programs" title="Permalink to this heading">#</a></h3>
+<p>For a convex program, any points <span class="math notranslate nohighlight">\(\tilde{x}\)</span>, <span class="math notranslate nohighlight">\(\tilde{\lambda}\)</span>, <span class="math notranslate nohighlight">\(\tilde{\nu}\)</span> that satisfy the KKT conditions are primal and dual optimal, and have zero duality gap
+<span class="math notranslate nohighlight">\(\tilde{\lambda_i} \ge 0\)</span>, <span class="math notranslate nohighlight">\(\forall i \to L(x,\tilde{\lambda},\tilde{\nu})\)</span> is convex in <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>gradient of Lagrangian with respect to <span class="math notranslate nohighlight">\(\tilde{x}\)</span> vanishes <span class="math notranslate nohighlight">\(\implies\)</span> <span class="math notranslate nohighlight">\(\tilde{x}\)</span> minimizes <span class="math notranslate nohighlight">\(L(x,\tilde{\lambda}, \tilde{\nu})\)</span>,
+then <span class="math notranslate nohighlight">\(g(\tilde{\nu},\tilde{\nu})=\inf_x L(x,\tilde{\lambda},\tilde{\nu}=...\)</span>
+since <span class="math notranslate nohighlight">\(g(\tilde{\lambda},\)</span></p>
+<p>If a convex program with differentiable objective and constraint functions satisfies Salter’s conditions, then KKT condition is necessary and sufficient for optimality</p>
+<ul class="simple">
+<li><p>recall that Slater implies strong duality</p></li>
+</ul>
+<p>Significance of KKT</p>
+<ul class="simple">
+<li><p>solve KKT to derive</p></li>
+</ul>
+<div class="proof example admonition" id="example-6">
+<p class="admonition-title"><span class="caption-number">Example 32 </span></p>
+<section class="example-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(\min x_1^2 + 2x_2^2\)</span> s.t. <span class="math notranslate nohighlight">\(x_1 + x_2 \ge 3\)</span></p>
+<p>To solve this, try to find <span class="math notranslate nohighlight">\((x^*,\lambda^*)\)</span> that satisfy the KKT conditions</p>
+</section>
+</div><div class="proof example admonition" id="example-7">
+<p class="admonition-title"><span class="caption-number">Example 33 </span> (Water-filling)</p>
+<section class="example-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(\min \min - \sum_i^k \log (1 + p_i/N_i)\)</span> s.t. <span class="math notranslate nohighlight">\(\sum_i^k p_i \le P\)</span>, <span class="math notranslate nohighlight">\(p_i\ge 0, \forall i = 1,\dots, k\)</span></p>
+<p>the algorithm takes the intuition from KKT</p>
+<p>Generalization:
+maxmimally allocate resource to pi with the current smallest marginal utility, until all resource P is used up.</p>
+</section>
+</div><ul class="simple">
+<li><p>equivalent formulation of a problem can lead to very different duals</p></li>
+<li><p>reformulating</p></li>
+<li><p>dual</p></li>
+<li><p>dual</p></li>
+</ul>
+<div class="proof example admonition" id="example-8">
+<p class="admonition-title"><span class="caption-number">Example 34 </span></p>
+<section class="example-content" id="proof-content">
+<p><code class="docutils literal notranslate"><span class="pre">Introducing</span> <span class="pre">new</span> <span class="pre">variables</span> <span class="pre">and</span> <span class="pre">equality</span> <span class="pre">constraints</span></code></p>
+<p>minimize <span class="math notranslate nohighlight">\(f_0(Ax + b)\)</span></p>
+<ul class="simple">
+<li><p>dual function is constant: <span class="math notranslate nohighlight">\(g=\inf_x L(x) = \inf_x f_0(Ax_b) = p^*\)</span></p></li>
+<li><p>we have strong duality, but dual is quire useless</p></li>
+</ul>
+<p>reformulated problem and its dual</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min f_0(y)\)</span> s.t. <span class="math notranslate nohighlight">\(Ax + b - y = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(b^T \nu - f_0^*(\nu)\)</span> s.t. <span class="math notranslate nohighlight">\(\ge\)</span></p></li>
+</ul>
+</section>
+</div><div class="proof example admonition" id="example-9">
+<p class="admonition-title"><span class="caption-number">Example 35 </span></p>
+<section class="example-content" id="proof-content">
+<p><code class="docutils literal notranslate"><span class="pre">Making</span> <span class="pre">explicit</span> <span class="pre">constraint</span> <span class="pre">implicit</span></code></p>
+<p>LP with box constraints: primal and dual problem:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min c^T x\)</span> s.t. <span class="math notranslate nohighlight">\(Ax=b, -1\preceq x \preceq 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\max -b^T \nu - 1^T \lambda_1 - 1^T \lambda_2\)</span> s.t. <span class="math notranslate nohighlight">\(c+A^T \nu + \lambda_1 - \lambda_2 =0, \lambda_1 \succeq 0\)</span>, <span class="math notranslate nohighlight">\(\lambda_2 \succeq 0\)</span></p></li>
+</ul>
+<p>reformulation with box constraints made implicit:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\minimize f_0(x) = c^Tx; \infty\)</span> s.t.</p></li>
+</ul>
+<p>dual function
+<span class="math notranslate nohighlight">\(g(\nu) = \inf_{-1\preceq x \preceq 1} (c^T x + \nu^T(Ax - b))=-b^T\nu - \norm{A^T \nu + c}_1\)</span></p>
+</section>
+</div><section id="partial-lagrangian-relaxation">
+<h4>Partial Lagrangian relaxation<a class="headerlink" href="#partial-lagrangian-relaxation" title="Permalink to this heading">#</a></h4>
+<p>One can take Lagrangian with respect to only a subset of the constraints, e.g.,</p>
+<p>If convex problem and Slater’s conditino is satisfied:
+<span class="math notranslate nohighlight">\(\max_{\lambda \succeq 0} \tilde{g}(\lambda) = \min_{f_i(x)\le 0} f_0(x)\)</span>
+let <span class="math notranslate nohighlight">\(x^*\)</span> be the primal optimal point, <span class="math notranslate nohighlight">\((\lambda^*_1, \lambda^*_2)\)</span> be dual optimal point for <span class="math notranslate nohighlight">\(g(\lambda_1,\lambda_2)\)</span> and <span class="math notranslate nohighlight">\(\lambda_1'\)</span> be dual optimal point for <span class="math notranslate nohighlight">\(\tilde{g}(\lambda)\)</span></p>
+<div class="math notranslate nohighlight">
+\[f_0(x^*) \ge \tilde{g}(\lambda_1') \ge \tilde{g} (\lambda_1^*) = \min f_0 (x) + \lambda_1^* f_1 (x) \le \min f_0(x) + \lambda_1^* f_1(x) + \lambda_2^* f_2(x) = g(\lambda_1^*, \lambda_2^*) = f_0(x^*)\]</div>
+<p>The aobve property extensible to general case, when the partial Lagrangian is derived by relaxing</p>
+<div class="proof example admonition" id="example-10">
+<p class="admonition-title"><span class="caption-number">Example 36 </span></p>
+<section class="example-content" id="proof-content">
+<p><code class="docutils literal notranslate"><span class="pre">Transform</span> <span class="pre">objective</span> <span class="pre">function</span></code></p>
+<p><span class="math notranslate nohighlight">\(\min ||Ax-b||\)</span></p>
+<p>reformulation <span class="math notranslate nohighlight">\(\min 1/2 ||y||^2\)</span> s.t. <span class="math notranslate nohighlight">\(y=Ax-b\)</span> dual problem on page 257, textbook</p>
+</section>
+</div></section>
+<section id="generalized-inequality">
+<h4>Generalized inequality<a class="headerlink" href="#generalized-inequality" title="Permalink to this heading">#</a></h4>
+<p>dual problem</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\max g(\lambda_1, \dots. \lambda_m, \nu)\)</span> s.t. <span class="math notranslate nohighlight">\(\lambda_i \succeq_{K_i^*} 0, i=1,\dots,m\)</span></p></li>
+</ul>
+<p>Properties:</p>
+<ul class="simple">
+<li><p>lower bound property: if <span class="math notranslate nohighlight">\(\lambda_i \succeq_{K_i^*} 0\)</span>, then <span class="math notranslate nohighlight">\(g\)</span></p></li>
+<li><p>weak duality …</p></li>
+<li><p>strong duality …</p></li>
+<li><p>KKT</p></li>
+</ul>
+<div class="proof example admonition" id="example-11">
+<p class="admonition-title"><span class="caption-number">Example 37 </span> (Semidefinite program)</p>
+<section class="example-content" id="proof-content">
+<p><code class="docutils literal notranslate"><span class="pre">primal</span> <span class="pre">SDP</span></code> <span class="math notranslate nohighlight">\((F_i,G\in S^k)\)</span>:
+<span class="math notranslate nohighlight">\(\min c^T x\)</span> s.t. <span class="math notranslate nohighlight">\(x_1 F_1 + \cdots + x_n F_n \preceq G\)</span></p>
+<ul class="simple">
+<li><p>Lagrange multiplier is matrix <span class="math notranslate nohighlight">\(Z\in S^k\)</span>, define <span class="math notranslate nohighlight">\(&lt;A,B&gt;=tr(AB)\)</span></p></li>
+<li><p>Lagrangian <span class="math notranslate nohighlight">\(L(x,Z) = c^T x + Tr(Z(x_1 F_1 + \cdots + x_n F_n -G) )\)</span></p></li>
+<li><p>dual function <span class="math notranslate nohighlight">\(g(Z)=\inf_x L(x,Z)=-tr(GZ), tr(F_i Z) + c_i = 0, \; i=1, \dots ,n; -\infty, otherwise\)</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">dual</span> <span class="pre">problem</span></code>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\max -tr(GZ)\)</span> s.t <span class="math notranslate nohighlight">\(Z\succeq 0\)</span>, <span class="math notranslate nohighlight">\(tr(F_i Z) + c_i = 0\)</span></p></li>
+</ul>
+</section>
+</div></section>
+</section>
+</section>
+<section id="uncontraied-optimization">
+<h2>Uncontraied optimization<a class="headerlink" href="#uncontraied-optimization" title="Permalink to this heading">#</a></h2>
+<p>minimize <span class="math notranslate nohighlight">\(f(x)\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f\)</span> convex, twice continuously differentiable (hence <span class="math notranslate nohighlight">\(\dom f\)</span> open)</p></li>
+<li><p>we assume optimal value <span class="math notranslate nohighlight">\(p^*=\inf_x f(x)\)</span> is attained (and finite)
+solving the uncontrained optimization = find the solution to:
+<span class="math notranslate nohighlight">\(\nabla f(x^*)=0\)</span> $(n equations)</p></li>
+</ul>
+<p>usually need iterative algorithms:</p>
+<ul class="simple">
+<li><p>produce a sequence of <span class="math notranslate nohighlight">\(x^{(k)}\in dom(f), k=1,2,\dots\)</span> with <span class="math notranslate nohighlight">\(f(x^{(k)}) \to \min f(x)\)</span> (i.e., <span class="math notranslate nohighlight">\(\nabla f(x^{(k)}) \)</span>)</p></li>
+<li></li>
+</ul>
+<p>Descent methods</p>
+<ul class="simple">
+<li><p>start with <span class="math notranslate nohighlight">\(x^{(0)}\)</span></p></li>
+<li><p>update <span class="math notranslate nohighlight">\(x^{(k+1)} = x^{(k)} + t^{(k)} \Delta x^{(k)}\)</span> s.t <span class="math notranslate nohighlight">\(f(x^{(k+1)}&lt; f(x^{(k)})\)</span></p></li>
+<li><p>other notations: <span class="math notranslate nohighlight">\(x^+=x+ t \Delta x\)</span>, <span class="math notranslate nohighlight">\(x:=x+t\Delta x\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta x\)</span> is the step, or search direction; <span class="math notranslate nohighlight">\(t\)</span> is the step size, or step length</p></li>
+<li><p>from convexity, <span class="math notranslate nohighlight">\(f(x^+) &lt; f(x)\)</span> implies <span class="math notranslate nohighlight">\(\nabla f(x)^T \Delta x &lt; 0\)</span> (i.e., <span class="math notranslate nohighlight">\(\Delta x\)</span> is a descent direction)</p></li>
+</ul>
+<p>General descent method.</p>
+<ul class="simple">
+<li><p>given a starting point <span class="math notranslate nohighlight">\(x\in dom(f)\)</span>.</p></li>
+<li><p>repeat</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>determie a descent direction <span class="math notranslate nohighlight">\(\Delta x\)</span>.</p></li>
+<li><p>line search</p></li>
+<li><p>Update: <span class="math notranslate nohighlight">\(x:=x+t \Delta \)</span></p></li>
+</ol>
+<p>Determine a descent direction</p>
+<ul class="simple">
+<li><p>one approach is gradient descent <span class="math notranslate nohighlight">\(\Delta x = -\nabla f(x)\)</span></p></li>
+<li><p>choose a step size</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>line search methods: exact line search <span class="math notranslate nohighlight">\(t=argmin_{t&gt;0} f(x+t \Delta x)\)</span></p></li>
+<li><p>backtracking</p></li>
+</ol>
+<p>find the steepest descent direction - steepest descent method
+normalized steepest descent direction
+<span class="math notranslate nohighlight">\(\Delta x_{nsd} = argmin \{ \nabla f(x)^T v \mid ||v|| = 1 \}\)</span>
+<span class="math notranslate nohighlight">\(\Delta x = -\nabla f(x)\)</span> is the steepest descent direction with respect to Euclidean norm</p>
+<p>so performance of steepest descent similar to graident descent</p>
+<section id="newton-s-method">
+<h3>Newton’s method<a class="headerlink" href="#newton-s-method" title="Permalink to this heading">#</a></h3>
+<p>Newton’s direction <span class="math notranslate nohighlight">\(\Delta x_{nt} = - \nabla^2 f(x)^{-1} \nabla f(x)\)</span></p>
+<p>One interpretation</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x+\Delta x_{nt}\)</span> minimizes second order approximation
+<span class="math notranslate nohighlight">\(f(x+v)=f(x) + \nabla f(x)^T v + \frac{1}{2} v^T \nabla^2 f(x) v\)</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">intuition</span></code>: <span class="math notranslate nohighlight">\(f\)</span> twice differentiable, so this quadratic model is very accurate when <span class="math notranslate nohighlight">\(x\)</span> is near <span class="math notranslate nohighlight">\(x^*\)</span>.</p>
+<p>Newton’s descrement (stopping criteria):
+<span class="math notranslate nohighlight">\(\lambda(x) = (\nabla f(x)^T \nabla^2 f(x)^{(-1)} \nabla f(x))^{1/2}\)</span> a measure of the proximity of <span class="math notranslate nohighlight">\(x\)</span> to <span class="math notranslate nohighlight">\(x^*\)</span></p>
+<ul class="simple">
+<li><p>gives an estimate of <span class="math notranslate nohighlight">\(f(x) - p^*\)</span>, using quadratic approximation <span class="math notranslate nohighlight">\(\hat{f}\)</span>:
+<span class="math notranslate nohighlight">\(f(x) - \inf_v \hat{f} (x+v) = \frac{1}{2} \lambda(x)^2\)</span></p></li>
+<li><p>directional derivative in the Newton direction: <span class="math notranslate nohighlight">\(\nabla f(x)^T \Delta x_{nt} = -\lambda(x)^2\)</span></p></li>
+</ul>
+<p>(damped or guarded) Newton’s method:</p>
+<p>given a starting point , tolerance <span class="math notranslate nohighlight">\(\epsilon\)</span>
+repeat</p>
+<ol class="arabic simple">
+<li><p>computer the Newton step and decrement.</p></li>
+<li><p>stopping criterion.</p></li>
+<li><p>linea search</p></li>
+<li><p>update</p></li>
+</ol>
+<ul class="simple">
+<li><p>damped Newton phase: <span class="math notranslate nohighlight">\(t&lt;1\)</span></p></li>
+<li><p>quadratically convergent phase: <span class="math notranslate nohighlight">\(t=1\)</span></p></li>
+<li><p>pros: convergence is rapid in general and quadratic near <span class="math notranslate nohighlight">\(x^*\)</span></p></li>
+<li><p>cons: compute and store <span class="math notranslate nohighlight">\(\nabla^2 f(x)\)</span> and <span class="math notranslate nohighlight">\(\nabla^2f(x)^{-1}\)</span> (cost)</p></li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -824,6 +1059,19 @@ since <span class="math notranslate nohighlight">\(x^T x = 1\)</span>, we know <
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-convex-problem-with-strong-duality">Non-convex problem with strong duality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complementary-slackness-for-lp">Complementary slackness for LP</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#karush-kuhn-tucker-kkt-conditions">Karush_Kuhn-Tucker (KKT) conditions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kkt-conditions-for-convex-programs">KKT conditions for convex programs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#partial-lagrangian-relaxation">Partial Lagrangian relaxation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generalized-inequality">Generalized inequality</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uncontraied-optimization">Uncontraied optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">Newton’s method</a></li>
 </ul>
 </li>
 </ul>
@@ -873,8 +1121,8 @@ By Jue Xu
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
   <footer class="bd-footer">
   </footer>
