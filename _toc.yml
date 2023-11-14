@@ -34,6 +34,7 @@ parts:
       - file: math/optimization/integer_program
       - file: math/optimization/semidefinite_program
       - file: math/optimization/duality
+      - file: math/optimization/unconstrained
 
   - caption: Computer Science
     chapters:

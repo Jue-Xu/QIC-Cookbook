@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'math/optimization/duality';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Algorithms" href="../../cs/algorithms/algorithms.html" />
+    <link rel="next" title="Uncontraied optimization" href="unconstrained.html" />
     <link rel="prev" title="Semidefinite Programming (SDP)" href="semidefinite_program.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -189,6 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="integer_program.html">Integer Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="semidefinite_program.html">Semidefinite Programming (SDP)</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">SDP and Duality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unconstrained.html">Uncontraied optimization</a></li>
 </ul>
 </li>
 </ul>
@@ -439,7 +440,11 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#karush-kuhn-tucker-kkt-conditions">Karush_Kuhn-Tucker (KKT) conditions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kkt-conditions-for-convex-programs">KKT conditions for convex programs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kkt-conditions-for-convex-programs">KKT conditions for convex programs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#partial-lagrangian-relaxation">Partial Lagrangian relaxation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generalized-inequality">Generalized inequality</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -763,8 +768,8 @@ Given <span class="math notranslate nohighlight">\(x, y\)</span> satisfy complem
 <h3>KKT conditions for convex programs<a class="headerlink" href="#kkt-conditions-for-convex-programs" title="Permalink to this heading">#</a></h3>
 <p>For a convex program, any points <span class="math notranslate nohighlight">\(\tilde{x}\)</span>, <span class="math notranslate nohighlight">\(\tilde{\lambda}\)</span>, <span class="math notranslate nohighlight">\(\tilde{\nu}\)</span> that satisfy the KKT conditions are primal and dual optimal, and have zero duality gap
 <span class="math notranslate nohighlight">\(\tilde{\lambda_i} \ge 0\)</span>, <span class="math notranslate nohighlight">\(\forall i \to L(x,\tilde{\lambda},\tilde{\nu})\)</span> is convex in <span class="math notranslate nohighlight">\(x\)</span>.</p>
-<p>gradient of Lagrangian with respect to <span class="math notranslate nohighlight">\(\tilde{x}\)</span> vanishes <span class="math notranslate nohighlight">\(\imples\)</span> <span class="math notranslate nohighlight">\(\tilde{x}\)</span> minimizes <span class="math notranslate nohighlight">\(L(x,\tilde{\lambda}, \tilde{\nu})\)</span>,
-then <span class="math notranslate nohighlight">\(g(\tilde{\nu},\tilde{\nu})=\inf_x L(x,\tilde{\lambda},\tilde{\nv}=...\)</span>
+<p>gradient of Lagrangian with respect to <span class="math notranslate nohighlight">\(\tilde{x}\)</span> vanishes <span class="math notranslate nohighlight">\(\implies\)</span> <span class="math notranslate nohighlight">\(\tilde{x}\)</span> minimizes <span class="math notranslate nohighlight">\(L(x,\tilde{\lambda}, \tilde{\nu})\)</span>,
+then <span class="math notranslate nohighlight">\(g(\tilde{\nu},\tilde{\nu})=\inf_x L(x,\tilde{\lambda},\tilde{\nu}=...\)</span>
 since <span class="math notranslate nohighlight">\(g(\tilde{\lambda},\)</span></p>
 <p>If a convex program with differentiable objective and constraint functions satisfies Salter’s conditions, then KKT condition is necessary and sufficient for optimality</p>
 <ul class="simple">
@@ -785,8 +790,93 @@ since <span class="math notranslate nohighlight">\(g(\tilde{\lambda},\)</span></
 <section class="example-content" id="proof-content">
 <p><span class="math notranslate nohighlight">\(\min \min - \sum_i^k \log (1 + p_i/N_i)\)</span> s.t. <span class="math notranslate nohighlight">\(\sum_i^k p_i \le P\)</span>, <span class="math notranslate nohighlight">\(p_i\ge 0, \forall i = 1,\dots, k\)</span></p>
 <p>the algorithm takes the intuition from KKT</p>
+<p>Generalization:
+maxmimally allocate resource to pi with the current smallest marginal utility, until all resource P is used up.</p>
+</section>
+</div><ul class="simple">
+<li><p>equivalent formulation of a problem can lead to very different duals</p></li>
+<li><p>reformulating</p></li>
+<li><p>dual</p></li>
+<li><p>dual</p></li>
+</ul>
+<div class="proof example admonition" id="example-8">
+<p class="admonition-title"><span class="caption-number">Example 34 </span></p>
+<section class="example-content" id="proof-content">
+<p><code class="docutils literal notranslate"><span class="pre">Introducing</span> <span class="pre">new</span> <span class="pre">variables</span> <span class="pre">and</span> <span class="pre">equality</span> <span class="pre">constraints</span></code></p>
+<p>minimize <span class="math notranslate nohighlight">\(f_0(Ax + b)\)</span></p>
+<ul class="simple">
+<li><p>dual function is constant: <span class="math notranslate nohighlight">\(g=\inf_x L(x) = \inf_x f_0(Ax_b) = p^*\)</span></p></li>
+<li><p>we have strong duality, but dual is quire useless</p></li>
+</ul>
+<p>reformulated problem and its dual</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min f_0(y)\)</span> s.t. <span class="math notranslate nohighlight">\(Ax + b - y = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(b^T \nu - f_0^*(\nu)\)</span> s.t. <span class="math notranslate nohighlight">\(\ge\)</span></p></li>
+</ul>
+</section>
+</div><div class="proof example admonition" id="example-9">
+<p class="admonition-title"><span class="caption-number">Example 35 </span></p>
+<section class="example-content" id="proof-content">
+<p><code class="docutils literal notranslate"><span class="pre">Making</span> <span class="pre">explicit</span> <span class="pre">constraint</span> <span class="pre">implicit</span></code></p>
+<p>LP with box constraints: primal and dual problem:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min c^T x\)</span> s.t. <span class="math notranslate nohighlight">\(Ax=b, -1\preceq x \preceq 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\max -b^T \nu - 1^T \lambda_1 - 1^T \lambda_2\)</span> s.t. <span class="math notranslate nohighlight">\(c+A^T \nu + \lambda_1 - \lambda_2 =0, \lambda_1 \succeq 0\)</span>, <span class="math notranslate nohighlight">\(\lambda_2 \succeq 0\)</span></p></li>
+</ul>
+<p>reformulation with box constraints made implicit:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\minimize f_0(x) = c^Tx; \infty\)</span> s.t.</p></li>
+</ul>
+<p>dual function
+<span class="math notranslate nohighlight">\(g(\nu) = \inf_{-1\preceq x \preceq 1} (c^T x + \nu^T(Ax - b))=-b^T\nu - \norm{A^T \nu + c}_1\)</span></p>
+</section>
+</div><section id="partial-lagrangian-relaxation">
+<h4>Partial Lagrangian relaxation<a class="headerlink" href="#partial-lagrangian-relaxation" title="Permalink to this heading">#</a></h4>
+<p>One can take Lagrangian with respect to only a subset of the constraints, e.g.,</p>
+<p>If convex problem and Slater’s conditino is satisfied:
+<span class="math notranslate nohighlight">\(\max_{\lambda \succeq 0} \tilde{g}(\lambda) = \min_{f_i(x)\le 0} f_0(x)\)</span>
+let <span class="math notranslate nohighlight">\(x^*\)</span> be the primal optimal point, <span class="math notranslate nohighlight">\((\lambda^*_1, \lambda^*_2)\)</span> be dual optimal point for <span class="math notranslate nohighlight">\(g(\lambda_1,\lambda_2)\)</span> and <span class="math notranslate nohighlight">\(\lambda_1'\)</span> be dual optimal point for <span class="math notranslate nohighlight">\(\tilde{g}(\lambda)\)</span></p>
+<div class="math notranslate nohighlight">
+\[f_0(x^*) \ge \tilde{g}(\lambda_1') \ge \tilde{g} (\lambda_1^*) = \min f_0 (x) + \lambda_1^* f_1 (x) \le \min f_0(x) + \lambda_1^* f_1(x) + \lambda_2^* f_2(x) = g(\lambda_1^*, \lambda_2^*) = f_0(x^*)\]</div>
+<p>The aobve property extensible to general case, when the partial Lagrangian is derived by relaxing</p>
+<div class="proof example admonition" id="example-10">
+<p class="admonition-title"><span class="caption-number">Example 36 </span></p>
+<section class="example-content" id="proof-content">
+<p><code class="docutils literal notranslate"><span class="pre">Transform</span> <span class="pre">objective</span> <span class="pre">function</span></code></p>
+<p><span class="math notranslate nohighlight">\(\min ||Ax-b||\)</span></p>
+<p>reformulation <span class="math notranslate nohighlight">\(\min 1/2 ||y||^2\)</span> s.t. <span class="math notranslate nohighlight">\(y=Ax-b\)</span> dual problem on page 257, textbook</p>
 </section>
 </div></section>
+<section id="generalized-inequality">
+<h4>Generalized inequality<a class="headerlink" href="#generalized-inequality" title="Permalink to this heading">#</a></h4>
+<p>dual problem</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\max g(\lambda_1, \dots. \lambda_m, \nu)\)</span> s.t. <span class="math notranslate nohighlight">\(\lambda_i \succeq_{K_i^*} 0, i=1,\dots,m\)</span></p></li>
+</ul>
+<p>Properties:</p>
+<ul class="simple">
+<li><p>lower bound property: if <span class="math notranslate nohighlight">\(\lambda_i \succeq_{K_i^*} 0\)</span>, then <span class="math notranslate nohighlight">\(g\)</span></p></li>
+<li><p>weak duality …</p></li>
+<li><p>strong duality …</p></li>
+<li><p>KKT</p></li>
+</ul>
+<div class="proof example admonition" id="example-11">
+<p class="admonition-title"><span class="caption-number">Example 37 </span> (Semidefinite program)</p>
+<section class="example-content" id="proof-content">
+<p><code class="docutils literal notranslate"><span class="pre">primal</span> <span class="pre">SDP</span></code> <span class="math notranslate nohighlight">\((F_i,G\in S^k)\)</span>:
+<span class="math notranslate nohighlight">\(\min c^T x\)</span> s.t. <span class="math notranslate nohighlight">\(x_1 F_1 + \cdots + x_n F_n \preceq G\)</span></p>
+<ul class="simple">
+<li><p>Lagrange multiplier is matrix <span class="math notranslate nohighlight">\(Z\in S^k\)</span>, define <span class="math notranslate nohighlight">\(&lt;A,B&gt;=tr(AB)\)</span></p></li>
+<li><p>Lagrangian <span class="math notranslate nohighlight">\(L(x,Z) = c^T x + Tr(Z(x_1 F_1 + \cdots + x_n F_n -G) )\)</span></p></li>
+<li><p>dual function <span class="math notranslate nohighlight">\(g(Z)=\inf_x L(x,Z)=-tr(GZ), tr(F_i Z) + c_i = 0, \; i=1, \dots ,n; -\infty, otherwise\)</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">dual</span> <span class="pre">problem</span></code>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\max -tr(GZ)\)</span> s.t <span class="math notranslate nohighlight">\(Z\succeq 0\)</span>, <span class="math notranslate nohighlight">\(tr(F_i Z) + c_i = 0\)</span></p></li>
+</ul>
+</section>
+</div></section>
+</section>
 </section>
 </section>
 
@@ -831,11 +921,11 @@ since <span class="math notranslate nohighlight">\(g(\tilde{\lambda},\)</span></
       </div>
     </a>
     <a class="right-next"
-       href="../../cs/algorithms/algorithms.html"
+       href="unconstrained.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Algorithms</p>
+        <p class="prev-next-title">Uncontraied optimization</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -884,7 +974,11 @@ since <span class="math notranslate nohighlight">\(g(\tilde{\lambda},\)</span></
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#karush-kuhn-tucker-kkt-conditions">Karush_Kuhn-Tucker (KKT) conditions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kkt-conditions-for-convex-programs">KKT conditions for convex programs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kkt-conditions-for-convex-programs">KKT conditions for convex programs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#partial-lagrangian-relaxation">Partial Lagrangian relaxation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generalized-inequality">Generalized inequality</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
