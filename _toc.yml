@@ -35,6 +35,7 @@ parts:
       - file: math/optimization/semidefinite_program
       - file: math/optimization/duality
       - file: math/optimization/unconstrained
+      - file: math/optimization/interior_point
 
   - caption: Computer Science
     chapters:
