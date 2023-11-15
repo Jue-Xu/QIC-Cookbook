@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'math/optimization/unconstrained';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Algorithms" href="../../cs/algorithms/algorithms.html" />
+    <link rel="next" title="Interior-Point methods" href="interior_point.html" />
     <link rel="prev" title="SDP and Duality" href="duality.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -201,6 +201,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="semidefinite_program.html">Semidefinite Programming (SDP)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="duality.html">SDP and Duality</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Uncontraied optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interior_point.html">Interior-Point methods</a></li>
 </ul>
 </li>
 </ul>
@@ -430,20 +431,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms-for-equality-constrained-optimization">Algorithms for Equality Constrained Optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interior-point-methods">Interior-Point methods</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-ideas">basic ideas</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#logarithmic-barrier-function">Logarithmic barrier function</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#central-path">Central path</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#barrier-method-one-interior-point-method">Barrier method (one interior-point method)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-points-from-central-path">dual points from central path</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-via-kkt-condition">Interpretation via KKT condition</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#convergnce">Convergnce</a></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
             </nav>
         </div>
@@ -573,122 +560,6 @@ while <span class="math notranslate nohighlight">\(||r(x+t\Delta x_{nt}, v+t \De
 <section id="algorithms-for-equality-constrained-optimization">
 <h2>Algorithms for Equality Constrained Optimization<a class="headerlink" href="#algorithms-for-equality-constrained-optimization" title="Permalink to this heading">#</a></h2>
 </section>
-<section id="interior-point-methods">
-<h2>Interior-Point methods<a class="headerlink" href="#interior-point-methods" title="Permalink to this heading">#</a></h2>
-<section id="basic-ideas">
-<h3>basic ideas<a class="headerlink" href="#basic-ideas" title="Permalink to this heading">#</a></h3>
-<p>move inequality constraint to objective function via <code class="docutils literal notranslate"><span class="pre">indicator</span> <span class="pre">functions</span></code></p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\min f_0(x) + \sum_{i=1}^m I_- (f_i(x))\)</span></p></li>
-<li><p>s.t. <span class="math notranslate nohighlight">\(Ax=b\)</span></p></li>
-</ul>
-<p>where <span class="math notranslate nohighlight">\(I_-(u)=0\)</span> if <span class="math notranslate nohighlight">\(u\le 0\)</span>, <span class="math notranslate nohighlight">\(I_-(u)=\infty\)</span> otherwise (indicator function of <span class="math notranslate nohighlight">\(R_-\)</span>).</p>
-<section id="logarithmic-barrier-function">
-<h4>Logarithmic barrier function<a class="headerlink" href="#logarithmic-barrier-function" title="Permalink to this heading">#</a></h4>
-<p>approximation via <code class="docutils literal notranslate"><span class="pre">logarithmic</span> <span class="pre">barrier</span></code>: fix some <span class="math notranslate nohighlight">\(t&gt;0\)</span></p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\min f_0(x) - (1/t) \sum_{i=1}^m \log (-f_i(x))\)</span></p></li>
-<li><p>s.t. <span class="math notranslate nohighlight">\(Ax=b\)</span></p></li>
-</ul>
-<p><span class="math notranslate nohighlight">\(\phi(x)=-\sum_{i=1}^m \log(-f_i(x))\)</span>, <span class="math notranslate nohighlight">\(dom \phi = \{x\mid f_1(x) \le 0, \dots, f_m(x)&lt;0 \}\)</span></p>
-<ul class="simple">
-<li><p>convex (follows from composition rules)</p></li>
-<li><p>twice continuously differentiable, with <code class="docutils literal notranslate"><span class="pre">gradient</span> <span class="pre">Hessian</span></code></p></li>
-</ul>
-<p>becomes</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\min f_0(x) - (1/t)\sum \log(-f_i(x))\)</span></p></li>
-<li><p>s.t. <span class="math notranslate nohighlight">\(Ax=b\)</span></p></li>
-<li><p>difficult to minimize using Newton’s method (from a random starting point) when t is large</p></li>
-</ul>
-<p>because Hessian varies rapidly near boundary of feasibility set</p>
-<ul class="simple">
-<li><p>can be circumvented by solving a sequence of problems with increasing <span class="math notranslate nohighlight">\(t\)</span></p></li>
-</ul>
-<p>startnig each Newton minmization from the solution to the problem with previous <span class="math notranslate nohighlight">\(t\)</span></p>
-</section>
-<section id="central-path">
-<h4>Central path<a class="headerlink" href="#central-path" title="Permalink to this heading">#</a></h4>
-<ul class="simple">
-<li><p>central paths: <span class="math notranslate nohighlight">\(\{ x^*(t) \mid t&gt;0 \}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(x^*(t)\)</span>: central points</p></li>
-</ul>
-<p>example: central path for an LP</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\min c^T x\)</span></p></li>
-<li><p>s.t. <span class="math notranslate nohighlight">\(a_i^T x \le b_i\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots,6\)</span></p></li>
-</ul>
-<p>hyperplane <span class="math notranslate nohighlight">\(c^T x = c^T x^*(t)\)</span> is tangent to level curve of <span class="math notranslate nohighlight">\(\phi\)</span> through <span class="math notranslate nohighlight">\(x^*(t)\)</span></p>
-<ul class="simple">
-<li><p>take the central path through interior of the feasible set</p></li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">analytic</span> <span class="pre">center</span></code> of a set of convex inequalities and linear equations
-<span class="math notranslate nohighlight">\(f_i(x) \le 0\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots,m\)</span>, <span class="math notranslate nohighlight">\(Fx=g\)</span>
-is defined as the optimal point of</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\min -\sum_i^m \log(-f_i(x))\)</span></p></li>
-<li><p>s.t. <span class="math notranslate nohighlight">\(Fx=g\)</span>
-analytic center of linear inequalities <span class="math notranslate nohighlight">\(a_i^T x\le b_i\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots,m\)</span></p></li>
-</ul>
-<p><span class="math notranslate nohighlight">\(x_{ac}\)</span> is minimizer of <span class="math notranslate nohighlight">\(\phi(x) = -\sum_i^m \log(b_i-a_i^T x)\)</span></p>
-</section>
-</section>
-<section id="barrier-method-one-interior-point-method">
-<h3>Barrier method (one interior-point method)<a class="headerlink" href="#barrier-method-one-interior-point-method" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>given strictly feasible <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(t:=t^{(0)}&gt;0\)</span>, <span class="math notranslate nohighlight">\(\mu&gt;1\)</span>, tolerance <span class="math notranslate nohighlight">\(\epsilon &gt; 0\)</span>.
-repeat</p></li>
-</ul>
-<ol class="arabic simple">
-<li><p>Centering step. Compute <span class="math notranslate nohighlight">\(x^*(t)\)</span> by minimizing <span class="math notranslate nohighlight">\(t f_0 + \phi\)</span>, subject to <span class="math notranslate nohighlight">\(Ax=b\)</span></p></li>
-<li><p>Update <span class="math notranslate nohighlight">\(x:=x^*(t)\)</span></p></li>
-<li><p>Stopping criterion. quit if</p></li>
-<li><p>increase <span class="math notranslate nohighlight">\(t\)</span>. <span class="math notranslate nohighlight">\(t:=\mu t\)</span></p></li>
-</ol>
-<p>choice of <span class="math notranslate nohighlight">\(\mu\)</span> involves a trade-off: large <span class="math notranslate nohighlight">\(\mu\)</span> means fewer outer interations, more inner (Newton) iterations; typical values: <span class="math notranslate nohighlight">\(\mu=10-20\)</span>
-(for more practical choices of parameters, pp.570, textbook)</p>
-<section id="dual-points-from-central-path">
-<h4>dual points from central path<a class="headerlink" href="#dual-points-from-central-path" title="Permalink to this heading">#</a></h4>
-<p>every <span class="math notranslate nohighlight">\(x^*(t)\)</span> corresponds to a dual feasible point (<code class="docutils literal notranslate"><span class="pre">of</span> <span class="pre">the</span> <span class="pre">original</span> <span class="pre">inequality</span> <span class="pre">constrained</span> <span class="pre">problem</span></code>)
-<span class="math notranslate nohighlight">\(\lambda_i^*(t) = 1/(-tf_i(x^*(t)))\)</span> and <span class="math notranslate nohighlight">\(\nu^*(t) = w/t\)</span></p>
-<p>verification:
-<span class="math notranslate nohighlight">\(x^*(t)\)</span> solves</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\min t f_0(x) + \phi(x)\)</span></p></li>
-<li><p>s.t. <span class="math notranslate nohighlight">\(Ax=b\)</span></p></li>
-</ul>
-<p>implies</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(Ax^* = b\)</span>, <span class="math notranslate nohighlight">\(f_i(x^*) &lt; 0\)</span>, <span class="math notranslate nohighlight">\(i=1, \dots, m\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\exists w\)</span>, <span class="math notranslate nohighlight">\(t\nabla f_0(x^*) + \sum \frac{1}{-f_i(x^*)} \nabla f_i(x^*) + A^T w=0\)</span></p></li>
-</ul>
-<p>implies</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(x^*(t)\)</span> minimizes the Lagrangian (of the <code class="docutils literal notranslate"><span class="pre">original</span> <span class="pre">problem</span></code>)</p></li>
-<li><p><span class="math notranslate nohighlight">\(L(x,\lambda^*(t), \nu^*(t))=f_0(x) + \sum \lambda_i^*(t) f_i(x) + \nu^*(t)^T (Ax-b)\)</span></p></li>
-<li><p>at: <span class="math notranslate nohighlight">\(\lambda_i^*(t) = 1/(-t f_i(x^*(t)))\)</span> and <span class="math notranslate nohighlight">\(\nu^*(t) = w/t\)</span></p></li>
-</ul>
-<p>Duality gap <span class="math notranslate nohighlight">\(m/t\)</span>:
-<span class="math notranslate nohighlight">\(f_0(x^*(t)) \ge p^* \ge d^* \ge g(\lambda^*(t), \nu^*(t)) = L(x^*(t), \lambda^*(t),\nu^*(t))=f_0(x^*(t))-m/t\)</span></p>
-</section>
-<section id="interpretation-via-kkt-condition">
-<h4>Interpretation via KKT condition<a class="headerlink" href="#interpretation-via-kkt-condition" title="Permalink to this heading">#</a></h4>
-<p><span class="math notranslate nohighlight">\(x=x^*(t)\)</span>, <span class="math notranslate nohighlight">\(\lambda=\lambda^*(t)\)</span>, <span class="math notranslate nohighlight">\(\nu=\nu^*(t)\)</span> satsify</p>
-<ol class="arabic simple">
-<li><p>primal constraints: <span class="math notranslate nohighlight">\(f_i(x)\le 0\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots,m\)</span>, <span class="math notranslate nohighlight">\(Ax=b\)</span></p></li>
-<li><p>dual constraints: <span class="math notranslate nohighlight">\(\lambda\succeq 0\)</span></p></li>
-<li><p>approximate complementary slackness:</p></li>
-<li></li>
-</ol>
-</section>
-<section id="convergnce">
-<h4>Convergnce<a class="headerlink" href="#convergnce" title="Permalink to this heading">#</a></h4>
-<p>The number of steps to converge within tolerance <span class="math notranslate nohighlight">\(\epsilon\)</span>:</p>
-<p>plus the initial centering step (to compute <span class="math notranslate nohighlight">\(x^*(t^{(0)})\)</span>)</p>
-<p>Example: geometric program</p>
-</section>
-</section>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -731,11 +602,11 @@ repeat</p></li>
       </div>
     </a>
     <a class="right-next"
-       href="../../cs/algorithms/algorithms.html"
+       href="interior_point.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Algorithms</p>
+        <p class="prev-next-title">Interior-Point methods</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -760,20 +631,6 @@ repeat</p></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms-for-equality-constrained-optimization">Algorithms for Equality Constrained Optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interior-point-methods">Interior-Point methods</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-ideas">basic ideas</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#logarithmic-barrier-function">Logarithmic barrier function</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#central-path">Central path</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#barrier-method-one-interior-point-method">Barrier method (one interior-point method)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-points-from-central-path">dual points from central path</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-via-kkt-condition">Interpretation via KKT condition</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#convergnce">Convergnce</a></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
   </nav></div>
 
