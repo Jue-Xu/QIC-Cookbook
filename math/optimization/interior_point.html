@@ -434,6 +434,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-points-from-central-path">dual points from central path</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-via-kkt-condition">Interpretation via KKT condition</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convergnce">Convergnce</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-phase-i-method">Basic phase I method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-i-via-newton-method">Phase I via Newton method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primal-dual-interior-point-method">Primal-dual interior-point method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backtracking-line-search">backtracking line search</a></li>
 </ul>
 </li>
 </ul>
@@ -561,6 +565,48 @@ repeat</p></li>
 <p>plus the initial centering step (to compute <span class="math notranslate nohighlight">\(x^*(t^{(0)})\)</span>)</p>
 <p>Example: geometric program</p>
 </section>
+<section id="basic-phase-i-method">
+<h3>Basic phase I method<a class="headerlink" href="#basic-phase-i-method" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min (over x,s) s\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(f_i(x)\le s, i=1,\dots,m\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Ax=b\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(s\)</span> feasible, with <span class="math notranslate nohighlight">\(s&lt;0\)</span>, then <span class="math notranslate nohighlight">\(x\)</span> is strictly feasible for (1)</p></li>
+<li><p>if optimal value <span class="math notranslate nohighlight">\(p^*\)</span> of (2) is positive, then problem (1) is feasible</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(p^* =0\)</span>  and attained, then problem (1) is feasible (but not strictly);
+if <span class="math notranslate nohighlight">\(p^* =0\)</span> and not attained, then problem (1) is infeasible</p></li>
+</ul>
+<p>Sum of infeasibilities phase I method</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min 1^T s\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(s\succeq 0\)</span>, <span class="math notranslate nohighlight">\(f_i(x)\le s_i\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots,m\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Ax=b\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>The optimal value of (3) is zero and achieved iff problem (1) is feasible</p></li>
+</ul>
+</section>
+<section id="phase-i-via-newton-method">
+<h3>Phase I via Newton method<a class="headerlink" href="#phase-i-via-newton-method" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="primal-dual-interior-point-method">
+<h3>Primal-dual interior-point method<a class="headerlink" href="#primal-dual-interior-point-method" title="Permalink to this heading">#</a></h3>
+<p>Update both primal and dual variables in the Newton method
+to solve the modified KKT conditions</p>
+<ul class="simple">
+<li><p>no distinction between inner and outer iterations</p></li>
+<li><p>the primal iterates are not necessarily feasible</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{\eta}(x,\lambda) = -f(x)^T \lambda\)</span>: surrogate duality gap</p></li>
+<li><p>backtracking line search based on the norm of the residuals</p></li>
+</ul>
+</section>
+<section id="backtracking-line-search">
+<h3>backtracking line search<a class="headerlink" href="#backtracking-line-search" title="Permalink to this heading">#</a></h3>
+<p>based on the norm of the residuals, modified to ensure <span class="math notranslate nohighlight">\(f(x)\prec 0\)</span>, <span class="math notranslate nohighlight">\(\lambda \succeq 0\)</span>.</p>
+<p>compute the largest positive step length that does not exceed one and gives <span class="math notranslate nohighlight">\(\lambda^+\succeq 0\)</span>:</p>
+</section>
 </section>
 </section>
 
@@ -636,6 +682,10 @@ repeat</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-points-from-central-path">dual points from central path</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-via-kkt-condition">Interpretation via KKT condition</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convergnce">Convergnce</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-phase-i-method">Basic phase I method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-i-via-newton-method">Phase I via Newton method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primal-dual-interior-point-method">Primal-dual interior-point method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backtracking-line-search">backtracking line search</a></li>
 </ul>
 </li>
 </ul>
