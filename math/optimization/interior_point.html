@@ -202,6 +202,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="duality.html">SDP and Duality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unconstrained.html">Uncontraied optimization</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Interior-Point methods</a></li>
+
 </ul>
 </li>
 </ul>
@@ -425,6 +426,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Interior-Point methods</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-ideas">basic ideas</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logarithmic-barrier-function">Logarithmic barrier function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#central-path">Central path</a></li>
@@ -441,6 +443,22 @@ document.write(`
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subgradient">Subgradient</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subdifferential">Subdifferential</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimality-condition-for-unconstrained-problem">Optimality condition for unconstrained problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-size">Step size</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence">Convergence</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subgradient-method-for-constrained-problems">Subgradient method for constrained problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projection">Projection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -609,6 +627,113 @@ to solve the modified KKT conditions</p>
 </section>
 </section>
 </section>
+<section id="subgradient">
+<h1>Subgradient<a class="headerlink" href="#subgradient" title="Permalink to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\(g\)</span> is a subgradient of <span class="math notranslate nohighlight">\(f\)</span> (not necessarily convex) at <span class="math notranslate nohighlight">\(x\)</span> if
+<span class="math notranslate nohighlight">\(f(y)\ge f(x) + g^T (y-x) \forall y\)</span></p>
+<ul class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(f\)</span> is convex and differentiable, <span class="math notranslate nohighlight">\(\nabla f(x)\)</span></p></li>
+<li></li>
+<li></li>
+</ul>
+<div class="proof example admonition" id="subgradient">
+<p class="admonition-title"><span class="caption-number">Example 38 </span> (subgradient)</p>
+<section class="example-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(f=\max\{f_1,f_2\}\)</span> with <span class="math notranslate nohighlight">\(f_1\)</span>, <span class="math notranslate nohighlight">\(f_2\)</span> convex and differentiable</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f_1(x_0)&gt; f_2(x_0)\)</span>: unique subgradient <span class="math notranslate nohighlight">\(g=\nabla f_1(x_0)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f_2(x_0)&gt; f_1(x_0)\)</span>: unique subgradient <span class="math notranslate nohighlight">\(g=\nabla f_2(x_0)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f_1(x_0) = f_2(x_0)\)</span>: subgradient form a line segment <span class="math notranslate nohighlight">\([\nablaf_1(x_0),\nabla f_2(x_0)]\)</span></p></li>
+</ul>
+</section>
+</div><section id="subdifferential">
+<h2>Subdifferential<a class="headerlink" href="#subdifferential" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>set of all subgradients of <span class="math notranslate nohighlight">\(f\)</span> at <span class="math notranslate nohighlight">\(x\)</span> is called the subdifferential of <span class="math notranslate nohighlight">\(f\)</span> at <span class="math notranslate nohighlight">\(x\)</span>, denoted <span class="math notranslate nohighlight">\(\partial f(x)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\partial f(x)\)</span> is a closed convex set (can be empty)</p></li>
+</ul>
+<p>if <span class="math notranslate nohighlight">\(f\)</span> is convex,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\partial f(x)\)</span> is nonempty, for <span class="math notranslate nohighlight">\(x\in dom f\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\partial f(x) = \{ \nabla f(x) \}\)</span>, if <span class="math notranslate nohighlight">\(f\)</span> is differentiable at <span class="math notranslate nohighlight">\(x\)</span></p></li>
+<li><p>if <span class="math notranslate nohighlight">\(\partial f(x) = \{ g \}\)</span>, …</p></li>
+</ul>
+<p>recall for <span class="math notranslate nohighlight">\(f\)</span> convex, differentiable <span class="math notranslate nohighlight">\(f(x^*)=\inf_x f(x) \Longleftrightarrow 0 = \nabla f(x^*)\)</span></p>
+</section>
+<section id="optimality-condition-for-unconstrained-problem">
+<h2>Optimality condition for unconstrained problem<a class="headerlink" href="#optimality-condition-for-unconstrained-problem" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min f_0(x)\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(f_i(x) \le 0, i\in [m\)</span></p></li>
+</ul>
+<p>we assume</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f_i\)</span> convex, defined on <span class="math notranslate nohighlight">\(R^n\)</span> (hence subdiffereentiable)</p></li>
+<li><p>strict feaisbility (Slater’s condition)</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(x^*\)</span> is primal optimal (<span class="math notranslate nohighlight">\(\lambda^*\)</span> is dual optimal) iff</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f_i(x^*)\le 0\)</span>, <span class="math notranslate nohighlight">\(\lambda^*_1 \le 0\)</span></p></li>
+<li><p>..</p></li>
+<li><p>..</p></li>
+</ul>
+<p>the algorithm is similar to …</p>
+<section id="step-size">
+<h3>Step size<a class="headerlink" href="#step-size" title="Permalink to this heading">#</a></h3>
+<p>step size rules (step sizes are fixed before algorithm execution)</p>
+<ul class="simple">
+<li><p>constant stetp size</p></li>
+<li><p>constant step length</p></li>
+<li><p>square summable</p></li>
+<li></li>
+</ul>
+</section>
+<section id="convergence">
+<h3>Convergence<a class="headerlink" href="#convergence" title="Permalink to this heading">#</a></h3>
+<p>assumption</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f^*= \inf_x f(x) &gt; -\infty\)</span> , with <span class="math notranslate nohighlight">\(f(x^*)=f^*\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(||g||_2 \le G \forall g\in \partial f\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R\ge ||x^{(1)} - x^*||_2\)</span></p></li>
+</ul>
+<p>convergence results: define <span class="math notranslate nohighlight">\(\bar{f}=\lim_{k\to \infty} f_{best}^{(k)}\)</span></p>
+<ul class="simple">
+<li><p>constant step size: <span class="math notranslate nohighlight">\(\bar{h} - f^* \le G^2 \alpha/2\)</span>, i.e., converges to <span class="math notranslate nohighlight">\(G^2\alpha/2\)</span>-suboptimal (converges to <span class="math notranslate nohighlight">\(f^*\)</span> if <span class="math notranslate nohighlight">\(\alpha\)</span> small enough)</p></li>
+<li><p>constant step length: <span class="math notranslate nohighlight">\(G\gamma /2\)</span>-suboptimal</p></li>
+</ul>
+<div class="proof example admonition" id="example-1">
+<p class="admonition-title"><span class="caption-number">Example 39 </span></p>
+<section class="example-content" id="proof-content">
+<p>minimize <span class="math notranslate nohighlight">\(f(x) = \max_{i=1,\dots,m} (a_i^T x + b_i)\)</span></p>
+</section>
+</div></section>
+</section>
+<section id="subgradient-method-for-constrained-problems">
+<h2>Subgradient method for constrained problems<a class="headerlink" href="#subgradient-method-for-constrained-problems" title="Permalink to this heading">#</a></h2>
+<section id="projection">
+<h3>Projection<a class="headerlink" href="#projection" title="Permalink to this heading">#</a></h3>
+<p>projection: <span class="math notranslate nohighlight">\(s=argmin_{s\in C} ||x-s||_s\)</span></p>
+<p>example: linear equality constrained problem</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min f(x)\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(Ax=b\)</span></p></li>
+</ul>
+<p>projection of <span class="math notranslate nohighlight">\(z\)</span> onto <span class="math notranslate nohighlight">\(\{ x\mid Ax=b \}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[P(z) = z- A^T(AA^T)^{-1} (Az-b) 
+= (I - A^T (AA^T)^{-1} A) z + A^T(AA^T)^{-1}b)\]</div>
+<div class="proof example admonition" id="example-2">
+<p class="admonition-title"><span class="caption-number">Example 40 </span> (Linear equality constrained problem)</p>
+<section class="example-content" id="proof-content">
+<ul class="simple">
+<li><p>minimize <span class="math notranslate nohighlight">\(||x||_1\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(Ax = b\)</span></p></li>
+</ul>
+<p>subgradient of objective is <span class="math notranslate nohighlight">\(g= sign(x)\)</span></p>
+</section>
+</div></section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -673,6 +798,7 @@ to solve the modified KKT conditions</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Interior-Point methods</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-ideas">basic ideas</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logarithmic-barrier-function">Logarithmic barrier function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#central-path">Central path</a></li>
@@ -689,6 +815,22 @@ to solve the modified KKT conditions</p>
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subgradient">Subgradient</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subdifferential">Subdifferential</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimality-condition-for-unconstrained-problem">Optimality condition for unconstrained problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-size">Step size</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence">Convergence</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subgradient-method-for-constrained-problems">Subgradient method for constrained problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projection">Projection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
