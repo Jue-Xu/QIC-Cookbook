@@ -444,7 +444,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subgradient">Subgradient</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subgradient-method">Subgradient Method</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subdifferential">Subdifferential</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimality-condition-for-unconstrained-problem">Optimality condition for unconstrained problem</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-size">Step size</a></li>
@@ -453,6 +453,13 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subgradient-method-for-constrained-problems">Subgradient method for constrained problems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projection">Projection</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projected-subgradient-method-for-dual-problem">Projected subgradient method for dual problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cutting-plane-oracle">Cutting plane oracle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inequality-constrained-optimization">inequality constrained optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-center-point-specific-localization-methods">choosing the center point (specific localization methods)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bisection-method-on-r">Bisection method on R</a></li>
 </ul>
 </li>
 </ul>
@@ -627,8 +634,8 @@ to solve the modified KKT conditions</p>
 </section>
 </section>
 </section>
-<section id="subgradient">
-<h1>Subgradient<a class="headerlink" href="#subgradient" title="Permalink to this heading">#</a></h1>
+<section id="subgradient-method">
+<h1>Subgradient Method<a class="headerlink" href="#subgradient-method" title="Permalink to this heading">#</a></h1>
 <p><span class="math notranslate nohighlight">\(g\)</span> is a subgradient of <span class="math notranslate nohighlight">\(f\)</span> (not necessarily convex) at <span class="math notranslate nohighlight">\(x\)</span> if
 <span class="math notranslate nohighlight">\(f(y)\ge f(x) + g^T (y-x) \forall y\)</span></p>
 <ul class="simple">
@@ -733,6 +740,99 @@ to solve the modified KKT conditions</p>
 </section>
 </div></section>
 </section>
+<section id="projected-subgradient-method-for-dual-problem">
+<h2>Projected subgradient method for dual problem<a class="headerlink" href="#projected-subgradient-method-for-dual-problem" title="Permalink to this heading">#</a></h2>
+<p>(convex) primal: (Slater’s condition holds)</p>
+<ul class="simple">
+<li><p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(f_i(x) \le 0 \)</span></p></li>
+</ul>
+<p>solve dual problem</p>
+<ul class="simple">
+<li><p>maximize <span class="math notranslate nohighlight">\(g(\lambda)\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(\lambda \succeq 0\)</span></p></li>
+</ul>
+<p>via projected subgradient method:
+<span class="math notranslate nohighlight">\(\lambda^{(k+1)} =... \)</span></p>
+<p>Given a starting point <span class="math notranslate nohighlight">\(\lambda\)</span>….
+Repeat</p>
+<p>iterpretation:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lambda_i\)</span> is price for resource <span class="math notranslate nohighlight">\(f_i(x)\)</span></p></li>
+<li><p>price update <span class="math notranslate nohighlight">\(\lambda_i^{(k+1)}=\qty(\lambda_i^{(k)}+\alpha_k f_i(x^{(k)}))_+\)</span></p></li>
+<li><p>increase price <span class="math notranslate nohighlight">\(\lambda_i\)</span> if resource <span class="math notranslate nohighlight">\(i\)</span> is over-utilized (i.e., <span class="math notranslate nohighlight">\(f_i(x) &gt;0\)</span>)</p></li>
+<li><p>decrease price <span class="math notranslate nohighlight">\(\lambda_i\)</span> if … is under-utilizedo</p></li>
+<li><p>not negative</p></li>
+</ul>
+<div class="proof example admonition" id="example-3">
+<p class="admonition-title"><span class="caption-number">Example 41 </span></p>
+<section class="example-content" id="proof-content">
+<p>minimize strictly convex quadratic <span class="math notranslate nohighlight">\((P\succ 0)\)</span> over unit box:</p>
+<ul class="simple">
+<li><p>minimize <span class="math notranslate nohighlight">\((1/2)x^T P x -q^T x\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(x_i^2 \le 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(L(x,\lambda) = (1/2)x^T (P+diag(2\lambda))x - q^T x - 1^T \lambda\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x^*(\lambda) = (P+diag(2\lambda))^{-1} q\)</span></p></li>
+<li><p>projected</p></li>
+</ul>
+</section>
+</div><section id="cutting-plane-oracle">
+<h3>Cutting plane oracle<a class="headerlink" href="#cutting-plane-oracle" title="Permalink to this heading">#</a></h3>
+<p>Oracle: a device that can answer question for us; we make no assumption on how an answer is found by the device</p>
+<p>Cutting plane oracle (also called separation oracle), once queried at <span class="math notranslate nohighlight">\(x\)</span>, either</p>
+<ul class="simple">
+<li><p>asserts <span class="math notranslate nohighlight">\(x\in X\)</span> (<span class="math notranslate nohighlight">\(X\subseteq R^n\)</span>)</p></li>
+<li><p>or return a separating hyperplane between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(X\)</span>: <span class="math notranslate nohighlight">\(a\neq 0\)</span>,
+<span class="math notranslate nohighlight">\(a^T z \le b\)</span> for <span class="math notranslate nohighlight">\(z\in X\)</span>, <span class="math notranslate nohighlight">\(a^T x \ge b\)</span>
+<span class="math notranslate nohighlight">\((a,b)\)</span> called a cutting-plane, or cut, since it eliminates the halfspace <span class="math notranslate nohighlight">\(\{ z\mid a^T z &gt; b \}\)</span> from our search for a point in <span class="math notranslate nohighlight">\(X\)</span></p></li>
+<li><p>neutral cut</p></li>
+<li><p>deep cut</p></li>
+</ul>
+<p>unconstrained optimization</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f_0:R^n\to R\)</span>, convex; <span class="math notranslate nohighlight">\(x^*\)</span> is the optimal solution; <span class="math notranslate nohighlight">\(X\)</span> is the set of optimal points</p></li>
+<li><p>Given <span class="math notranslate nohighlight">\(x\)</span>, find <span class="math notranslate nohighlight">\(g\in \partial f_0 (x)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x^*\)</span> belongs to the halfspace: <span class="math notranslate nohighlight">\(\{ z\midg^T(z-x) \le 0 \},\forall x\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(g^T(z-x)\le 0\)</span> defines a <code class="docutils literal notranslate"><span class="pre">cutting</span> <span class="pre">plane</span></code> at <span class="math notranslate nohighlight">\(x (a=g,b=g^Tx)\)</span></p></li>
+</ul>
+</section>
+<section id="inequality-constrained-optimization">
+<h3>inequality constrained optimization<a class="headerlink" href="#inequality-constrained-optimization" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(x\)</span> is feasible, we have a (neural) objective cut
+<span class="math notranslate nohighlight">\(g_0^T(z-x)\le 0\)</span>, <span class="math notranslate nohighlight">\(g_0\in\partial f_0(x)\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(x\)</span> is not feasible, e.g., <span class="math notranslate nohighlight">\(f_j(x)&gt;0\)</span>, we have a (deep) feasibility cut
+<span class="math notranslate nohighlight">\(f_j(x) + g_j^T (z-x) \le 0\)</span>, <span class="math notranslate nohighlight">\(g_j \in \partiaal f_j(x)\)</span></p></li>
+</ul>
+<p>basic (conceptual) cutting-plane/localzation algorithm</p>
+</section>
+<section id="choosing-the-center-point-specific-localization-methods">
+<h3>choosing the center point (specific localization methods)<a class="headerlink" href="#choosing-the-center-point-specific-localization-methods" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>center of gravity</p></li>
+<li><p>analytic centering</p></li>
+<li><p>Chebyshev center</p></li>
+<li><p>Center of the maximum volume epplisoid (MVE)</p></li>
+</ul>
+</section>
+<section id="bisection-method-on-r">
+<h3>Bisection method on R<a class="headerlink" href="#bisection-method-on-r" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>minimize convex <span class="math notranslate nohighlight">\(f:R\to R\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P_k\)</span> is an interval</p></li>
+<li><p>obvious choice for query point: <span class="math notranslate nohighlight">\(x^{(k+1)}:=midpoint(P_k)\)</span></p></li>
+</ul>
+<p>Bisection algorithm for one-dimensional search</p>
+<p>given an initial interval <span class="math notranslate nohighlight">\([l,u]\)</span> known to contain <span class="math notranslate nohighlight">\(x^*\)</span>; a required tolerance <span class="math notranslate nohighlight">\(r&gt;0\)</span>
+repeat
+- <span class="math notranslate nohighlight">\(x:=(l+u)/2\)</span>.
+- query the oracle at <span class="math notranslate nohighlight">\(x\)</span>.
+- if the oracle determines that <span class="math notranslate nohighlight">\(x^*\le x, u:=x\)</span>
+- if the oracle determines that <span class="math notranslate nohighlight">\(x^*\ge x, l:=x\)</span>
+until <span class="math notranslate nohighlight">\(u-l\e 2r\)</span></p>
+<p>for differentiable <span class="math notranslate nohighlight">\(f\)</span>: evaluate <span class="math notranslate nohighlight">\(f'(x)\)</span> if <span class="math notranslate nohighlight">\(f'(x)&lt;0\)</span>, <span class="math notranslate nohighlight">\(l:=x\)</span>; else <span class="math notranslate nohighlight">\(u:=x\)</span></p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -816,7 +916,7 @@ to solve the modified KKT conditions</p>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subgradient">Subgradient</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subgradient-method">Subgradient Method</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subdifferential">Subdifferential</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimality-condition-for-unconstrained-problem">Optimality condition for unconstrained problem</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-size">Step size</a></li>
@@ -825,6 +925,13 @@ to solve the modified KKT conditions</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subgradient-method-for-constrained-problems">Subgradient method for constrained problems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projection">Projection</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projected-subgradient-method-for-dual-problem">Projected subgradient method for dual problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cutting-plane-oracle">Cutting plane oracle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inequality-constrained-optimization">inequality constrained optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-center-point-specific-localization-methods">choosing the center point (specific localization methods)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bisection-method-on-r">Bisection method on R</a></li>
 </ul>
 </li>
 </ul>
