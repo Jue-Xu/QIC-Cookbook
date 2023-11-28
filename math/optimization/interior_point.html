@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -142,6 +142,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -202,6 +203,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="duality.html">SDP and Duality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unconstrained.html">Uncontraied optimization</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Interior-Point methods</a></li>
+
 
 </ul>
 </li>
@@ -386,6 +388,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -395,6 +398,7 @@ document.write(`
   </button>
 `);
 </script>
+
 
 <script>
 document.write(`
@@ -462,6 +466,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bisection-method-on-r">Bisection method on R</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ellipsoid-method-for-unconstrained-convex-problems">Ellipsoid method (for unconstrained convex problems)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-methods">Decomposition methods</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separable-problems">Separable problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primal-decomposition-method">Primal decomposition method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-decomposition-method">Dual decomposition method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems-with-complicating-constraints">Problems with complicating constraints</a></li>
 </ul>
 </li>
 </ul>
@@ -792,7 +804,7 @@ Repeat</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(f_0:R^n\to R\)</span>, convex; <span class="math notranslate nohighlight">\(x^*\)</span> is the optimal solution; <span class="math notranslate nohighlight">\(X\)</span> is the set of optimal points</p></li>
 <li><p>Given <span class="math notranslate nohighlight">\(x\)</span>, find <span class="math notranslate nohighlight">\(g\in \partial f_0 (x)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(x^*\)</span> belongs to the halfspace: <span class="math notranslate nohighlight">\(\{ z\midg^T(z-x) \le 0 \},\forall x\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x^*\)</span> belongs to the halfspace: <span class="math notranslate nohighlight">\(\{ z\mid g^T(z-x) \le 0 \},\forall x\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(g^T(z-x)\le 0\)</span> defines a <code class="docutils literal notranslate"><span class="pre">cutting</span> <span class="pre">plane</span></code> at <span class="math notranslate nohighlight">\(x (a=g,b=g^Tx)\)</span></p></li>
 </ul>
 </section>
@@ -802,7 +814,7 @@ Repeat</p>
 <li><p>If <span class="math notranslate nohighlight">\(x\)</span> is feasible, we have a (neural) objective cut
 <span class="math notranslate nohighlight">\(g_0^T(z-x)\le 0\)</span>, <span class="math notranslate nohighlight">\(g_0\in\partial f_0(x)\)</span></p></li>
 <li><p>If <span class="math notranslate nohighlight">\(x\)</span> is not feasible, e.g., <span class="math notranslate nohighlight">\(f_j(x)&gt;0\)</span>, we have a (deep) feasibility cut
-<span class="math notranslate nohighlight">\(f_j(x) + g_j^T (z-x) \le 0\)</span>, <span class="math notranslate nohighlight">\(g_j \in \partiaal f_j(x)\)</span></p></li>
+<span class="math notranslate nohighlight">\(f_j(x) + g_j^T (z-x) \le 0\)</span>, <span class="math notranslate nohighlight">\(g_j \in \partial f_j(x)\)</span></p></li>
 </ul>
 <p>basic (conceptual) cutting-plane/localzation algorithm</p>
 </section>
@@ -832,6 +844,137 @@ repeat
 until <span class="math notranslate nohighlight">\(u-l\e 2r\)</span></p>
 <p>for differentiable <span class="math notranslate nohighlight">\(f\)</span>: evaluate <span class="math notranslate nohighlight">\(f'(x)\)</span> if <span class="math notranslate nohighlight">\(f'(x)&lt;0\)</span>, <span class="math notranslate nohighlight">\(l:=x\)</span>; else <span class="math notranslate nohighlight">\(u:=x\)</span></p>
 </section>
+</section>
+<section id="ellipsoid-method-for-unconstrained-convex-problems">
+<h2>Ellipsoid method (for unconstrained convex problems)<a class="headerlink" href="#ellipsoid-method-for-unconstrained-convex-problems" title="Permalink to this heading">#</a></h2>
+<p>Idea: Use ellipsoids to approximate polyhedron, find <span class="math notranslate nohighlight">\(x^*\)</span> in an ellipsoid instead of a polyhedron</p>
+<p>Algorithm sketch:</p>
+<ol class="arabic simple">
+<li><p>at iteration <span class="math notranslate nohighlight">\(k\)</span> we know</p></li>
+<li><p>set</p></li>
+<li><p>hence we know</p></li>
+</ol>
+<p>Basic ellipsoid algorithm (for unconstrained convex problems)</p>
+<ul class="simple">
+<li><p>given ellipsoid <span class="math notranslate nohighlight">\(E(x,P)\)</span> containing</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sqrt{g^T P g}\)</span></p></li>
+</ul>
+<p>For inequaltiy constrained problems</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(x^{(k)}\)</span> feasible, update ellipsoid with <code class="docutils literal notranslate"><span class="pre">objective</span></code> cut</p></li>
+</ul>
+<p>a (deep) cut</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(x^{(k)}\)</span> infeasible, update ellipsoid with <code class="docutils literal notranslate"><span class="pre">feasible</span></code> cut</p></li>
+</ul>
+<p>minimum volume ellipsoid containing ellipsoid intersected with halfspace</p>
+<p>where <span class="math notranslate nohighlight">\(\tilde{g} = \frac{g}{\sqrt{g^T P g}}\)</span>.</p>
+<p>Stopping criteria</p>
+<ul class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(x^{(k)}\)</span> is feasible and <span class="math notranslate nohighlight">\(\sqrt{g_0^{(k)T} P^{(k)} g_0^{(k)} }\le \epsilon\)</span></p></li>
+<li><p>if <span class="math notranslate nohighlight">\(f_j(x^{(k)}) - \sqrt{g_j^{(k)T} P^{(k)} g_j^{(k)} } &gt; 0\)</span></p></li>
+</ul>
+</section>
+</section>
+<section id="decomposition-methods">
+<h1>Decomposition methods<a class="headerlink" href="#decomposition-methods" title="Permalink to this heading">#</a></h1>
+<p>Break a problem into smaller ones and solve each of the smaller ones separably, either in parallel or sequentially</p>
+<section id="separable-problems">
+<h2>Separable problems<a class="headerlink" href="#separable-problems" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>minimize <span class="math notranslate nohighlight">\(f_1(x_1)+ f_2(x_2)\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(x_1\in C_1\)</span>, <span class="math notranslate nohighlight">\(x_2\in C_2\)</span></p></li>
+</ul>
+<p>we can solve for <span class="math notranslate nohighlight">\(x_1 and \)</span>x_2$ separately (in parallel)</p>
+<p>consider uncontrained problem,</p>
+<ul class="simple">
+<li><p>minimize <span class="math notranslate nohighlight">\(f(x) = f_1(x_1,y) + f_2(x_2,y)\)</span>, <span class="math notranslate nohighlight">\(x=(x_1,x_2,y)\)</span></p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(y\)</span> is the <code class="docutils literal notranslate"><span class="pre">complicating</span> <span class="pre">variable</span></code> or <code class="docutils literal notranslate"><span class="pre">coupling</span> <span class="pre">variable</span></code>; when it is fixed the problem is separable in <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span></p>
+</section>
+<section id="primal-decomposition-method">
+<h2>Primal decomposition method<a class="headerlink" href="#primal-decomposition-method" title="Permalink to this heading">#</a></h2>
+<p>fix <span class="math notranslate nohighlight">\(y\)</span> and define</p>
+<ul class="simple">
+<li><p>subproblem1: <span class="math notranslate nohighlight">\(\min_{x_1} f_1(x_1,y)\)</span></p></li>
+<li><p>subproblem2: <span class="math notranslate nohighlight">\(\min_{x_2} f_1(x_2,y)\)</span></p></li>
+</ul>
+<p>with optimal values <span class="math notranslate nohighlight">\(\phi_1(y)\)</span> and <span class="math notranslate nohighlight">\(\phi_2(y)\)</span></p>
+<p>master problme <span class="math notranslate nohighlight">\(\min_{y} \phi_1(y) + \phi_2(y)\)</span></p>
+<ul class="simple">
+<li><p>can solve master problem using</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>bisection (if <span class="math notranslate nohighlight">\(y\)</span> is scalar)
+2 gradient or Newton method (if <span class="math notranslate nohighlight">\(\phi_i\)</span> differentiable)
+3 subgradient, cutting-plane, or ellipsoid method</p></li>
+</ol>
+<ul class="simple">
+<li><p>each</p></li>
+</ul>
+<p>Algorithm sketch</p>
+<ul class="simple">
+<li><p>Given <span class="math notranslate nohighlight">\(y^{(0)}\)</span>, <span class="math notranslate nohighlight">\(k=0\)</span>;</p></li>
+<li><p>Repeat</p></li>
+<li><p>solve two subproblems to derive <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span></p></li>
+<li><p>update <span class="math notranslate nohighlight">\(y^{(k)}\)</span> to <span class="math notranslate nohighlight">\(y^{(k+1)}\)</span> based on the algorithm to solve the master problem</p></li>
+</ul>
+</section>
+<section id="dual-decomposition-method">
+<h2>Dual decomposition method<a class="headerlink" href="#dual-decomposition-method" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Step 1:</p></li>
+<li><p>Step 2: form dual problem</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}L(x_1, y_1, x_2, y_2) = f_1(x_1,y_1) + f_2(x_2,y_2) + \nu^T (y_1 - y_2)\\separable; can minimize over $(x_1,y_1)$ and $(x_2,y_2)$ separately
+- $g_1(\mu) = \inf_{x_1,y_1} (f_1(x_1,y_1)+\nu^T y_1) = -f_1^*(0,-\nu)$
+- $g_2(\mu) = \inf_{x_2,y_2} (f_2(x_2,y_2)-\nu^T y_2) = -f_2^*(0,\nu)$\\dual problem is: maximize $g(\nu) = g_1(\nu) + g_2(\nu)$\\- compuing $g_i(\nu)$ are the dual subproblems
+- can be done in parallel
+- a subgradient of $-g$ is $y_2-y_1$ (from solutions of sub)\end{aligned}\end{align} \]</div>
+<p>Dual decomposition algorithm</p>
+<p>(using subgradient algorithm for master)</p>
+<ul class="simple">
+<li><p>repeat</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>solve the dual subproblems (in parallel)
+find</p></li>
+<li><p>Update dual variables (prices).
+<span class="math notranslate nohighlight">\(\nu:=\nu - \alpha_k(y_2-y_1)\)</span></p></li>
+</ol>
+<ul class="simple">
+<li><p>step lenght <span class="math notranslate nohighlight">\(\alpha_k\)</span> can be chosen in standard ways</p></li>
+<li><p>at each step we have a lowe bound <span class="math notranslate nohighlight">\(g(\nu)\)</span> on <span class="math notranslate nohighlight">\(p^*\)</span></p></li>
+<li><p>iterates are generally infeasible, i.e., <span class="math notranslate nohighlight">\(y_1\neq y_2\)</span></p></li>
+</ul>
+<p>Finding feasible iterate</p>
+<ul class="simple">
+<li><p>reasonable guess of feasible point from <span class="math notranslate nohighlight">\((x_1,y_1)\)</span>, <span class="math notranslate nohighlight">\((x_2,y_2)\)</span>:</p></li>
+<li><p>a better feasible point:</p></li>
+</ul>
+</section>
+<section id="problems-with-complicating-constraints">
+<h2>Problems with complicating constraints<a class="headerlink" href="#problems-with-complicating-constraints" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\min f_1(x_1) + f_2(x_2)\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(x_1\in C_1\)</span>, <span class="math notranslate nohighlight">\(x_2\in C_2\)</span>, <span class="math notranslate nohighlight">\(h_1(x_1)+h_2(x_2)\preceq 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f_i, h_i, C_i\)</span> convex</p></li>
+<li></li>
+<li><p>can interpret coupling constaints as <code class="docutils literal notranslate"><span class="pre">limits</span> <span class="pre">on</span> <span class="pre">resources</span></code> shared between two subproblems</p></li>
+</ul>
+<p>fix <span class="math notranslate nohighlight">\(t\in R^p\)</span> and define</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(t\)</span> is the quantity of resources allocated to first subproblem (<span class="math notranslate nohighlight">\(-t\)</span> is allocated to second subproblem)</p></li>
+<li><p>master problem: minimize <span class="math notranslate nohighlight">\(\phi_1(t) + \phi_2(t)\)</span> (optimal values of subproblems) over <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p>subproblems can be solve separately (in parallel) when <span class="math notranslate nohighlight">\(t\)</span> is fixed</p></li>
+</ul>
+<p>Lagrangian relaxation and subgradient method</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha_k\)</span> is an appropriate step size</p></li>
+<li><p>iterates need not be feasible</p></li>
+<li><p>can again construct feasible primal variables using projection</p></li>
+</ul>
 </section>
 </section>
 
@@ -863,7 +1006,7 @@ until <span class="math notranslate nohighlight">\(u-l\e 2r\)</span></p>
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="unconstrained.html"
@@ -934,6 +1077,14 @@ until <span class="math notranslate nohighlight">\(u-l\e 2r\)</span></p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bisection-method-on-r">Bisection method on R</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ellipsoid-method-for-unconstrained-convex-problems">Ellipsoid method (for unconstrained convex problems)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-methods">Decomposition methods</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separable-problems">Separable problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primal-decomposition-method">Primal decomposition method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-decomposition-method">Dual decomposition method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems-with-complicating-constraints">Problems with complicating constraints</a></li>
 </ul>
 </li>
 </ul>
@@ -958,6 +1109,7 @@ By Jue Xu
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -984,8 +1136,8 @@ By Jue Xu
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>
