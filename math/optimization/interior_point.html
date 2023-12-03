@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Interior-Point methods &#8212; Recipe of Quantum Computing</title>
+    <title>Algorithms &#8212; Recipe of Quantum Computing</title>
   
   
   
@@ -202,9 +202,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="semidefinite_program.html">Semidefinite Programming (SDP)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="duality.html">SDP and Duality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unconstrained.html">Uncontraied optimization</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Interior-Point methods</a></li>
-
-
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Algorithms</a></li>
 </ul>
 </li>
 </ul>
@@ -420,7 +418,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Interior-Point methods</h1>
+    <h1>Algorithms</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -430,54 +428,60 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Interior-Point methods</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-ideas">basic ideas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logarithmic-barrier-function">Logarithmic barrier function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#central-path">Central path</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interior-point-methods">Interior-Point methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-ideas">basic ideas</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#logarithmic-barrier-function">Logarithmic barrier function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#central-path">Central path</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#barrier-method-one-interior-point-method">Barrier method (one interior-point method)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-points-from-central-path">dual points from central path</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-via-kkt-condition">Interpretation via KKT condition</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convergnce">Convergnce</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-phase-i-method">Basic phase I method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-i-via-newton-method">Phase I via Newton method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primal-dual-interior-point-method">Primal-dual interior-point method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backtracking-line-search">backtracking line search</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subgradient-method">Subgradient Method</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subdifferential">Subdifferential</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimality-condition-for-unconstrained-problem">Optimality condition for unconstrained problem</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-size">Step size</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence">Convergence</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subgradient-method-for-constrained-problems">Subgradient method for constrained problems</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projection">Projection</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projected-subgradient-method-for-dual-problem">Projected subgradient method for dual problem</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cutting-plane-oracle">Cutting plane oracle</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inequality-constrained-optimization">inequality constrained optimization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-center-point-specific-localization-methods">choosing the center point (specific localization methods)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bisection-method-on-r">Bisection method on R</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ellipsoid-method-for-unconstrained-convex-problems">Ellipsoid method (for unconstrained convex problems)</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-methods">Decomposition methods</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separable-problems">Separable problems</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primal-decomposition-method">Primal decomposition method</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-decomposition-method">Dual decomposition method</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems-with-complicating-constraints">Problems with complicating constraints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#barrier-method-one-interior-point-method">Barrier method (one interior-point method)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-points-from-central-path">dual points from central path</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-via-kkt-condition">Interpretation via KKT condition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#convergnce">Convergnce</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-phase-i-method">Basic phase I method</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-i-via-newton-method">Phase I via Newton method</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#primal-dual-interior-point-method">Primal-dual interior-point method</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#backtracking-line-search">backtracking line search</a></li>
 </ul>
 </li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subgradient-method">Subgradient Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subdifferential">Subdifferential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimality-condition-for-unconstrained-problem">Optimality condition for unconstrained problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-size">Step size</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence">Convergence</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subgradient-method-for-constrained-problems">Subgradient method for constrained problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#projection">Projection</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projected-subgradient-method-for-dual-problem">Projected subgradient method for dual problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cutting-plane-oracle">Cutting plane oracle</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inequality-constrained-optimization">inequality constrained optimization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-center-point-specific-localization-methods">choosing the center point (specific localization methods)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bisection-method-on-r">Bisection method on R</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ellipsoid-method-for-unconstrained-convex-problems">Ellipsoid method (for unconstrained convex problems)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-methods">Decomposition methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#separable-problems">Separable problems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primal-decomposition-method">Primal decomposition method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-decomposition-method">Dual decomposition method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problems-with-complicating-constraints">Problems with complicating constraints</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-for-nonconvex-optimization-problems">Methods for nonconvex optimization problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branch-and-bounds">Branch and bounds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-search">Local search</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-convex-programming-scp">Sequential convex programming (SCP)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#affine-and-convex-approximation">Affine and convex approximation</a></li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
@@ -488,10 +492,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="interior-point-methods">
-<h1>Interior-Point methods<a class="headerlink" href="#interior-point-methods" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="algorithms">
+<h1>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this heading">#</a></h1>
+<section id="interior-point-methods">
+<h2>Interior-Point methods<a class="headerlink" href="#interior-point-methods" title="Permalink to this heading">#</a></h2>
 <section id="basic-ideas">
-<h2>basic ideas<a class="headerlink" href="#basic-ideas" title="Permalink to this heading">#</a></h2>
+<h3>basic ideas<a class="headerlink" href="#basic-ideas" title="Permalink to this heading">#</a></h3>
 <p>move inequality constraint to objective function via <code class="docutils literal notranslate"><span class="pre">indicator</span> <span class="pre">functions</span></code></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\min f_0(x) + \sum_{i=1}^m I_- (f_i(x))\)</span></p></li>
@@ -499,7 +505,7 @@ document.write(`
 </ul>
 <p>where <span class="math notranslate nohighlight">\(I_-(u)=0\)</span> if <span class="math notranslate nohighlight">\(u\le 0\)</span>, <span class="math notranslate nohighlight">\(I_-(u)=\infty\)</span> otherwise (indicator function of <span class="math notranslate nohighlight">\(R_-\)</span>).</p>
 <section id="logarithmic-barrier-function">
-<h3>Logarithmic barrier function<a class="headerlink" href="#logarithmic-barrier-function" title="Permalink to this heading">#</a></h3>
+<h4>Logarithmic barrier function<a class="headerlink" href="#logarithmic-barrier-function" title="Permalink to this heading">#</a></h4>
 <p>approximation via <code class="docutils literal notranslate"><span class="pre">logarithmic</span> <span class="pre">barrier</span></code>: fix some <span class="math notranslate nohighlight">\(t&gt;0\)</span></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\min f_0(x) - (1/t) \sum_{i=1}^m \log (-f_i(x))\)</span></p></li>
@@ -523,7 +529,7 @@ document.write(`
 <p>startnig each Newton minmization from the solution to the problem with previous <span class="math notranslate nohighlight">\(t\)</span></p>
 </section>
 <section id="central-path">
-<h3>Central path<a class="headerlink" href="#central-path" title="Permalink to this heading">#</a></h3>
+<h4>Central path<a class="headerlink" href="#central-path" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>central paths: <span class="math notranslate nohighlight">\(\{ x^*(t) \mid t&gt;0 \}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(x^*(t)\)</span>: central points</p></li>
@@ -549,7 +555,7 @@ analytic center of linear inequalities <span class="math notranslate nohighlight
 </section>
 </section>
 <section id="barrier-method-one-interior-point-method">
-<h2>Barrier method (one interior-point method)<a class="headerlink" href="#barrier-method-one-interior-point-method" title="Permalink to this heading">#</a></h2>
+<h3>Barrier method (one interior-point method)<a class="headerlink" href="#barrier-method-one-interior-point-method" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>given strictly feasible <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(t:=t^{(0)}&gt;0\)</span>, <span class="math notranslate nohighlight">\(\mu&gt;1\)</span>, tolerance <span class="math notranslate nohighlight">\(\epsilon &gt; 0\)</span>.
 repeat</p></li>
@@ -563,7 +569,7 @@ repeat</p></li>
 <p>choice of <span class="math notranslate nohighlight">\(\mu\)</span> involves a trade-off: large <span class="math notranslate nohighlight">\(\mu\)</span> means fewer outer interations, more inner (Newton) iterations; typical values: <span class="math notranslate nohighlight">\(\mu=10-20\)</span>
 (for more practical choices of parameters, pp.570, textbook)</p>
 <section id="dual-points-from-central-path">
-<h3>dual points from central path<a class="headerlink" href="#dual-points-from-central-path" title="Permalink to this heading">#</a></h3>
+<h4>dual points from central path<a class="headerlink" href="#dual-points-from-central-path" title="Permalink to this heading">#</a></h4>
 <p>every <span class="math notranslate nohighlight">\(x^*(t)\)</span> corresponds to a dual feasible point (<code class="docutils literal notranslate"><span class="pre">of</span> <span class="pre">the</span> <span class="pre">original</span> <span class="pre">inequality</span> <span class="pre">constrained</span> <span class="pre">problem</span></code>)
 <span class="math notranslate nohighlight">\(\lambda_i^*(t) = 1/(-tf_i(x^*(t)))\)</span> and <span class="math notranslate nohighlight">\(\nu^*(t) = w/t\)</span></p>
 <p>verification:
@@ -587,7 +593,7 @@ repeat</p></li>
 <span class="math notranslate nohighlight">\(f_0(x^*(t)) \ge p^* \ge d^* \ge g(\lambda^*(t), \nu^*(t)) = L(x^*(t), \lambda^*(t),\nu^*(t))=f_0(x^*(t))-m/t\)</span></p>
 </section>
 <section id="interpretation-via-kkt-condition">
-<h3>Interpretation via KKT condition<a class="headerlink" href="#interpretation-via-kkt-condition" title="Permalink to this heading">#</a></h3>
+<h4>Interpretation via KKT condition<a class="headerlink" href="#interpretation-via-kkt-condition" title="Permalink to this heading">#</a></h4>
 <p><span class="math notranslate nohighlight">\(x=x^*(t)\)</span>, <span class="math notranslate nohighlight">\(\lambda=\lambda^*(t)\)</span>, <span class="math notranslate nohighlight">\(\nu=\nu^*(t)\)</span> satsify</p>
 <ol class="arabic simple">
 <li><p>primal constraints: <span class="math notranslate nohighlight">\(f_i(x)\le 0\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots,m\)</span>, <span class="math notranslate nohighlight">\(Ax=b\)</span></p></li>
@@ -597,13 +603,13 @@ repeat</p></li>
 </ol>
 </section>
 <section id="convergnce">
-<h3>Convergnce<a class="headerlink" href="#convergnce" title="Permalink to this heading">#</a></h3>
+<h4>Convergnce<a class="headerlink" href="#convergnce" title="Permalink to this heading">#</a></h4>
 <p>The number of steps to converge within tolerance <span class="math notranslate nohighlight">\(\epsilon\)</span>:</p>
 <p>plus the initial centering step (to compute <span class="math notranslate nohighlight">\(x^*(t^{(0)})\)</span>)</p>
 <p>Example: geometric program</p>
 </section>
 <section id="basic-phase-i-method">
-<h3>Basic phase I method<a class="headerlink" href="#basic-phase-i-method" title="Permalink to this heading">#</a></h3>
+<h4>Basic phase I method<a class="headerlink" href="#basic-phase-i-method" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\min (over x,s) s\)</span></p></li>
 <li><p>s.t. <span class="math notranslate nohighlight">\(f_i(x)\le s, i=1,\dots,m\)</span></p></li>
@@ -626,10 +632,10 @@ if <span class="math notranslate nohighlight">\(p^* =0\)</span> and not attained
 </ul>
 </section>
 <section id="phase-i-via-newton-method">
-<h3>Phase I via Newton method<a class="headerlink" href="#phase-i-via-newton-method" title="Permalink to this heading">#</a></h3>
+<h4>Phase I via Newton method<a class="headerlink" href="#phase-i-via-newton-method" title="Permalink to this heading">#</a></h4>
 </section>
 <section id="primal-dual-interior-point-method">
-<h3>Primal-dual interior-point method<a class="headerlink" href="#primal-dual-interior-point-method" title="Permalink to this heading">#</a></h3>
+<h4>Primal-dual interior-point method<a class="headerlink" href="#primal-dual-interior-point-method" title="Permalink to this heading">#</a></h4>
 <p>Update both primal and dual variables in the Newton method
 to solve the modified KKT conditions</p>
 <ul class="simple">
@@ -640,14 +646,14 @@ to solve the modified KKT conditions</p>
 </ul>
 </section>
 <section id="backtracking-line-search">
-<h3>backtracking line search<a class="headerlink" href="#backtracking-line-search" title="Permalink to this heading">#</a></h3>
+<h4>backtracking line search<a class="headerlink" href="#backtracking-line-search" title="Permalink to this heading">#</a></h4>
 <p>based on the norm of the residuals, modified to ensure <span class="math notranslate nohighlight">\(f(x)\prec 0\)</span>, <span class="math notranslate nohighlight">\(\lambda \succeq 0\)</span>.</p>
 <p>compute the largest positive step length that does not exceed one and gives <span class="math notranslate nohighlight">\(\lambda^+\succeq 0\)</span>:</p>
 </section>
 </section>
 </section>
 <section id="subgradient-method">
-<h1>Subgradient Method<a class="headerlink" href="#subgradient-method" title="Permalink to this heading">#</a></h1>
+<h2>Subgradient Method<a class="headerlink" href="#subgradient-method" title="Permalink to this heading">#</a></h2>
 <p><span class="math notranslate nohighlight">\(g\)</span> is a subgradient of <span class="math notranslate nohighlight">\(f\)</span> (not necessarily convex) at <span class="math notranslate nohighlight">\(x\)</span> if
 <span class="math notranslate nohighlight">\(f(y)\ge f(x) + g^T (y-x) \forall y\)</span></p>
 <ul class="simple">
@@ -666,7 +672,7 @@ to solve the modified KKT conditions</p>
 </ul>
 </section>
 </div><section id="subdifferential">
-<h2>Subdifferential<a class="headerlink" href="#subdifferential" title="Permalink to this heading">#</a></h2>
+<h3>Subdifferential<a class="headerlink" href="#subdifferential" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>set of all subgradients of <span class="math notranslate nohighlight">\(f\)</span> at <span class="math notranslate nohighlight">\(x\)</span> is called the subdifferential of <span class="math notranslate nohighlight">\(f\)</span> at <span class="math notranslate nohighlight">\(x\)</span>, denoted <span class="math notranslate nohighlight">\(\partial f(x)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\partial f(x)\)</span> is a closed convex set (can be empty)</p></li>
@@ -680,7 +686,7 @@ to solve the modified KKT conditions</p>
 <p>recall for <span class="math notranslate nohighlight">\(f\)</span> convex, differentiable <span class="math notranslate nohighlight">\(f(x^*)=\inf_x f(x) \Longleftrightarrow 0 = \nabla f(x^*)\)</span></p>
 </section>
 <section id="optimality-condition-for-unconstrained-problem">
-<h2>Optimality condition for unconstrained problem<a class="headerlink" href="#optimality-condition-for-unconstrained-problem" title="Permalink to this heading">#</a></h2>
+<h3>Optimality condition for unconstrained problem<a class="headerlink" href="#optimality-condition-for-unconstrained-problem" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\min f_0(x)\)</span></p></li>
 <li><p>s.t. <span class="math notranslate nohighlight">\(f_i(x) \le 0, i\in [m\)</span></p></li>
@@ -698,7 +704,7 @@ to solve the modified KKT conditions</p>
 </ul>
 <p>the algorithm is similar to …</p>
 <section id="step-size">
-<h3>Step size<a class="headerlink" href="#step-size" title="Permalink to this heading">#</a></h3>
+<h4>Step size<a class="headerlink" href="#step-size" title="Permalink to this heading">#</a></h4>
 <p>step size rules (step sizes are fixed before algorithm execution)</p>
 <ul class="simple">
 <li><p>constant stetp size</p></li>
@@ -708,7 +714,7 @@ to solve the modified KKT conditions</p>
 </ul>
 </section>
 <section id="convergence">
-<h3>Convergence<a class="headerlink" href="#convergence" title="Permalink to this heading">#</a></h3>
+<h4>Convergence<a class="headerlink" href="#convergence" title="Permalink to this heading">#</a></h4>
 <p>assumption</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(f^*= \inf_x f(x) &gt; -\infty\)</span> , with <span class="math notranslate nohighlight">\(f(x^*)=f^*\)</span></p></li>
@@ -728,9 +734,9 @@ to solve the modified KKT conditions</p>
 </div></section>
 </section>
 <section id="subgradient-method-for-constrained-problems">
-<h2>Subgradient method for constrained problems<a class="headerlink" href="#subgradient-method-for-constrained-problems" title="Permalink to this heading">#</a></h2>
+<h3>Subgradient method for constrained problems<a class="headerlink" href="#subgradient-method-for-constrained-problems" title="Permalink to this heading">#</a></h3>
 <section id="projection">
-<h3>Projection<a class="headerlink" href="#projection" title="Permalink to this heading">#</a></h3>
+<h4>Projection<a class="headerlink" href="#projection" title="Permalink to this heading">#</a></h4>
 <p>projection: <span class="math notranslate nohighlight">\(s=argmin_{s\in C} ||x-s||_s\)</span></p>
 <p>example: linear equality constrained problem</p>
 <ul class="simple">
@@ -753,7 +759,7 @@ to solve the modified KKT conditions</p>
 </div></section>
 </section>
 <section id="projected-subgradient-method-for-dual-problem">
-<h2>Projected subgradient method for dual problem<a class="headerlink" href="#projected-subgradient-method-for-dual-problem" title="Permalink to this heading">#</a></h2>
+<h3>Projected subgradient method for dual problem<a class="headerlink" href="#projected-subgradient-method-for-dual-problem" title="Permalink to this heading">#</a></h3>
 <p>(convex) primal: (Slater’s condition holds)</p>
 <ul class="simple">
 <li><p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
@@ -789,7 +795,7 @@ Repeat</p>
 </ul>
 </section>
 </div><section id="cutting-plane-oracle">
-<h3>Cutting plane oracle<a class="headerlink" href="#cutting-plane-oracle" title="Permalink to this heading">#</a></h3>
+<h4>Cutting plane oracle<a class="headerlink" href="#cutting-plane-oracle" title="Permalink to this heading">#</a></h4>
 <p>Oracle: a device that can answer question for us; we make no assumption on how an answer is found by the device</p>
 <p>Cutting plane oracle (also called separation oracle), once queried at <span class="math notranslate nohighlight">\(x\)</span>, either</p>
 <ul class="simple">
@@ -809,7 +815,7 @@ Repeat</p>
 </ul>
 </section>
 <section id="inequality-constrained-optimization">
-<h3>inequality constrained optimization<a class="headerlink" href="#inequality-constrained-optimization" title="Permalink to this heading">#</a></h3>
+<h4>inequality constrained optimization<a class="headerlink" href="#inequality-constrained-optimization" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>If <span class="math notranslate nohighlight">\(x\)</span> is feasible, we have a (neural) objective cut
 <span class="math notranslate nohighlight">\(g_0^T(z-x)\le 0\)</span>, <span class="math notranslate nohighlight">\(g_0\in\partial f_0(x)\)</span></p></li>
@@ -819,7 +825,7 @@ Repeat</p>
 <p>basic (conceptual) cutting-plane/localzation algorithm</p>
 </section>
 <section id="choosing-the-center-point-specific-localization-methods">
-<h3>choosing the center point (specific localization methods)<a class="headerlink" href="#choosing-the-center-point-specific-localization-methods" title="Permalink to this heading">#</a></h3>
+<h4>choosing the center point (specific localization methods)<a class="headerlink" href="#choosing-the-center-point-specific-localization-methods" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>center of gravity</p></li>
 <li><p>analytic centering</p></li>
@@ -828,7 +834,7 @@ Repeat</p>
 </ul>
 </section>
 <section id="bisection-method-on-r">
-<h3>Bisection method on R<a class="headerlink" href="#bisection-method-on-r" title="Permalink to this heading">#</a></h3>
+<h4>Bisection method on R<a class="headerlink" href="#bisection-method-on-r" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>minimize convex <span class="math notranslate nohighlight">\(f:R\to R\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(P_k\)</span> is an interval</p></li>
@@ -846,7 +852,7 @@ until <span class="math notranslate nohighlight">\(u-l\e 2r\)</span></p>
 </section>
 </section>
 <section id="ellipsoid-method-for-unconstrained-convex-problems">
-<h2>Ellipsoid method (for unconstrained convex problems)<a class="headerlink" href="#ellipsoid-method-for-unconstrained-convex-problems" title="Permalink to this heading">#</a></h2>
+<h3>Ellipsoid method (for unconstrained convex problems)<a class="headerlink" href="#ellipsoid-method-for-unconstrained-convex-problems" title="Permalink to this heading">#</a></h3>
 <p>Idea: Use ellipsoids to approximate polyhedron, find <span class="math notranslate nohighlight">\(x^*\)</span> in an ellipsoid instead of a polyhedron</p>
 <p>Algorithm sketch:</p>
 <ol class="arabic simple">
@@ -877,10 +883,10 @@ until <span class="math notranslate nohighlight">\(u-l\e 2r\)</span></p>
 </section>
 </section>
 <section id="decomposition-methods">
-<h1>Decomposition methods<a class="headerlink" href="#decomposition-methods" title="Permalink to this heading">#</a></h1>
+<h2>Decomposition methods<a class="headerlink" href="#decomposition-methods" title="Permalink to this heading">#</a></h2>
 <p>Break a problem into smaller ones and solve each of the smaller ones separably, either in parallel or sequentially</p>
 <section id="separable-problems">
-<h2>Separable problems<a class="headerlink" href="#separable-problems" title="Permalink to this heading">#</a></h2>
+<h3>Separable problems<a class="headerlink" href="#separable-problems" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>minimize <span class="math notranslate nohighlight">\(f_1(x_1)+ f_2(x_2)\)</span></p></li>
 <li><p>s.t. <span class="math notranslate nohighlight">\(x_1\in C_1\)</span>, <span class="math notranslate nohighlight">\(x_2\in C_2\)</span></p></li>
@@ -893,7 +899,7 @@ until <span class="math notranslate nohighlight">\(u-l\e 2r\)</span></p>
 <p><span class="math notranslate nohighlight">\(y\)</span> is the <code class="docutils literal notranslate"><span class="pre">complicating</span> <span class="pre">variable</span></code> or <code class="docutils literal notranslate"><span class="pre">coupling</span> <span class="pre">variable</span></code>; when it is fixed the problem is separable in <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span></p>
 </section>
 <section id="primal-decomposition-method">
-<h2>Primal decomposition method<a class="headerlink" href="#primal-decomposition-method" title="Permalink to this heading">#</a></h2>
+<h3>Primal decomposition method<a class="headerlink" href="#primal-decomposition-method" title="Permalink to this heading">#</a></h3>
 <p>fix <span class="math notranslate nohighlight">\(y\)</span> and define</p>
 <ul class="simple">
 <li><p>subproblem1: <span class="math notranslate nohighlight">\(\min_{x_1} f_1(x_1,y)\)</span></p></li>
@@ -921,7 +927,7 @@ until <span class="math notranslate nohighlight">\(u-l\e 2r\)</span></p>
 </ul>
 </section>
 <section id="dual-decomposition-method">
-<h2>Dual decomposition method<a class="headerlink" href="#dual-decomposition-method" title="Permalink to this heading">#</a></h2>
+<h3>Dual decomposition method<a class="headerlink" href="#dual-decomposition-method" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Step 1:</p></li>
 <li><p>Step 2: form dual problem</p></li>
@@ -955,7 +961,7 @@ find</p></li>
 </ul>
 </section>
 <section id="problems-with-complicating-constraints">
-<h2>Problems with complicating constraints<a class="headerlink" href="#problems-with-complicating-constraints" title="Permalink to this heading">#</a></h2>
+<h3>Problems with complicating constraints<a class="headerlink" href="#problems-with-complicating-constraints" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\min f_1(x_1) + f_2(x_2)\)</span></p></li>
 <li><p>s.t. <span class="math notranslate nohighlight">\(x_1\in C_1\)</span>, <span class="math notranslate nohighlight">\(x_2\in C_2\)</span>, <span class="math notranslate nohighlight">\(h_1(x_1)+h_2(x_2)\preceq 0\)</span></p></li>
@@ -975,6 +981,149 @@ find</p></li>
 <li><p>iterates need not be feasible</p></li>
 <li><p>can again construct feasible primal variables using projection</p></li>
 </ul>
+<div class="proof example admonition" id="example-4">
+<p class="admonition-title"><span class="caption-number">Example 42 </span></p>
+<section class="example-content" id="proof-content">
+<p>Problem setup</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n\)</span> flows, with fixed routes, in a network with <span class="math notranslate nohighlight">\(m\)</span> links</p></li>
+<li><p>variable <span class="math notranslate nohighlight">\(f_i\ge 0 \)</span> denotes the rate of flow <span class="math notranslate nohighlight">\(j\)</span></p></li>
+<li><p>flow utility is <span class="math notranslate nohighlight">\(U_j: R\to R\)</span>, strictly concave, increasing</p></li>
+<li><p>traffic <span class="math notranslate nohighlight">\(t_i\)</span> on link <span class="math notranslate nohighlight">\(i\)</span> is the sum of flows passing through it</p></li>
+<li><p><span class="math notranslate nohighlight">\(t=Rf\)</span>, where <span class="math notranslate nohighlight">\(R\)</span> is the routing matrix
+<span class="math notranslate nohighlight">\(R_{ij} = 1\)</span> flow j passes over link <span class="math notranslate nohighlight">\(i\)</span>, 0 otherwise</p></li>
+<li><p>link capacity constraint: <span class="math notranslate nohighlight">\(t\preceq c\)</span></p></li>
+</ul>
+<p>Rate control problem:</p>
+<ul class="simple">
+<li><p>maximize <span class="math notranslate nohighlight">\(U(f) = \sum_j^n U_j(f_j)\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(Rf \preceq c\)</span></p></li>
+<li><p>convex problem</p></li>
+<li><p>dual decomposition gives decentralized method</p></li>
+</ul>
+<p>Lagrangian: <span class="math notranslate nohighlight">\(L(f,\lambda) = -\sum_j^n U_j(f_j) + \lambda^T (Rf - c)\)</span></p>
+<p>Lagrangian dual</p>
+<div class="math notranslate nohighlight">
+\[g(\lambda) 
+= \inf_f(\sum_j^n -U_j(f_j) + \lambda^T (Rf-c))
+= -\lambda^T c + \sum_j^n \inf_{f_j} (-U_j(f_j)+(r_j^T \lambda) f_j) 
+= -\lambda&amp;^T c - \sum_j^n(-U_j)^* (-r_j^T \lambda)\]</div>
+</section>
+</div><ul class="simple">
+<li><p>dual problem:  <span class="math notranslate nohighlight">\(\max -\lambda^T c - \sum_{j=1}^n (-U_j)^* (-r_j^T \lambda)\)</span></p></li>
+<li><p>s.t. <span class="math notranslate nohighlight">\(\lambda \succeq 0\)</span></p></li>
+</ul>
+<p>a subgradient of <span class="math notranslate nohighlight">\(-g\)</span> is given by <span class="math notranslate nohighlight">\(c-R\bar{f}\)</span>, where <span class="math notranslate nohighlight">\(\bar{f}_j\)</span> is a solution of the subproblem
+<span class="math notranslate nohighlight">\(\min_{f_j} -U_j(f_j)+(r_j^T \lambda) f_j\)</span></p>
+<p>algorithm</p>
+<ul class="simple">
+<li><p>given</p></li>
+<li><p>repeat</p></li>
+<li><p>Sum link prices along each route. Calculate <span class="math notranslate nohighlight">\(\Lambda_j = r_j^T \lambda\)</span>.</p></li>
+<li><p>Optimize flows (separately) using flow prices. <span class="math notranslate nohighlight">\(f_j=argmax(U_j(f_j)-\Lambda_j f_j)\)</span></p></li>
+<li><p>Calculate link capacity margins: <span class="math notranslate nohighlight">\(s:=c- Rf\)</span></p></li>
+<li><p>update link prices <span class="math notranslate nohighlight">\(\lambda: = (\lambda - \alpha_k s)_+\)</span></p></li>
+</ul>
+<p>decentralized:</p>
+<ul class="simple">
+<li><p>links only need to know the flows that pass through them</p></li>
+<li><p>flows only need to know prices on link they pass through</p></li>
+</ul>
+<p>Generating feasible flow rates:</p>
+<ul class="simple">
+<li><p>iterates can be (and often are) infeasible, i.e., <span class="math notranslate nohighlight">\(Rf not \preceq c\)</span> (but we do have <span class="math notranslate nohighlight">\(Rf \preceq c\)</span> in the limit)</p></li>
+<li><p>define <span class="math notranslate nohighlight">\(\eta_i = t_i/c_i = (Rf)_i /c_j\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\eta_i &lt; 1\)</span> means link <span class="math notranslate nohighlight">\(i\)</span> is under capacity</p></li>
+<li><p><span class="math notranslate nohighlight">\(\eta_i &gt; 1\)</span> means link <span class="math notranslate nohighlight">\(i\)</span> is over capcacity</p></li>
+<li><p>define <span class="math notranslate nohighlight">\(f^{feas}\)</span> as</p></li>
+</ul>
+<p>Convergence</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n=10\)</span> flows, <span class="math notranslate nohighlight">\(m=12\)</span> links: 3 or 4 links per flow</p></li>
+<li><p>link capacities chosen randomly, uniform on [0,1, 1]</p></li>
+<li><p><span class="math notranslate nohighlight">\(U_j(f_j) = \log f_j\)</span></p></li>
+<li><p>optimal flow as a function of price: <span class="math notranslate nohighlight">\(\bar{f}_j=argmax ...\)</span></p></li>
+<li><p>initial prices: <span class="math notranslate nohighlight">\(\lambda = 1\)</span></p></li>
+<li><p>constant stepsize <span class="math notranslate nohighlight">\(\alpha_k = 3\)</span></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="methods-for-nonconvex-optimization-problems">
+<h2>Methods for nonconvex optimization problems<a class="headerlink" href="#methods-for-nonconvex-optimization-problems" title="Permalink to this heading">#</a></h2>
+<p>Convex optimization algorithms are in general</p>
+<ul class="simple">
+<li><p>global (find global minimum)</p></li>
+<li><p>fast (run in polynomial-time)</p></li>
+</ul>
+<p>For general nonconvex problems, we have to give up one</p>
+<ul class="simple">
+<li><p>local optimization methods are fast, but may not find global minimum (and even when they do, cannot  certify it)</p></li>
+<li><p>global optimization methods find global minimum (and certify it), but are often</p></li>
+</ul>
+<section id="branch-and-bounds">
+<h3>Branch and bounds<a class="headerlink" href="#branch-and-bounds" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>methods for global optimization for nonconvex problems</p></li>
+<li><p>basic idea</p></li>
+<li><p>partition feasible set into convex sets, and find lower/upper bounds for each</p></li>
+<li><p>maintain global lower and upper bounds: quit if they are close enough to each other</p></li>
+<li><p>else, refine partitino and repeat</p></li>
+<li><p>Often slow; exponential</p></li>
+</ul>
+<p>find global minimum of function <span class="math notranslate nohighlight">\(f: R^m \to R\)</span> over a <span class="math notranslate nohighlight">\(m\)</span>-dimensional rectangle <span class="math notranslate nohighlight">\(Q_{init}\)</span>, to within some preset accuracy <span class="math notranslate nohighlight">\(\epsilon\)</span></p>
+<p>algorithm sketch:</p>
+<ul class="simple">
+<li><p>computer lower and upper bounds on <span class="math notranslate nohighlight">\(f^*\)</span></p></li>
+<li><p>partition (split) <span class="math notranslate nohighlight">\(Q_{init}\)</span> into two rectangles <span class="math notranslate nohighlight">\(Q_{init}=Q_1\cup Q_2\)</span></p></li>
+<li><p>compute</p></li>
+<li><p>update lower and upper bounds on <span class="math notranslate nohighlight">\(f^*\)</span> ….</p></li>
+<li><p>refine partition, by splitting <span class="math notranslate nohighlight">\(Q_1\)</span> or <span class="math notranslate nohighlight">\(Q_2\)</span>, and repeat step 3 and 4</p></li>
+</ul>
+</section>
+<section id="local-search">
+<h3>Local search<a class="headerlink" href="#local-search" title="Permalink to this heading">#</a></h3>
+<p>A heuristic method to solve computationally hard problems</p>
+<ul class="simple">
+<li><p>moves from solution to solution in the space of candidate solutions (i.e., search space) by applying local changes, until a solution deemed optimal is found or a bound on the number of steps /time taken is reached</p></li>
+</ul>
+<p>Problems that local search has been applied for</p>
+<ul class="simple">
+<li><p>minimum vertex cover problem</p></li>
+<li><p>TSP</p></li>
+<li><p>Boolean SAT problem</p></li>
+</ul>
+<p>how to choose a good neighbourhoood for the problem</p>
+<ul class="simple">
+<li><p>guided by intuition</p></li>
+<li><p>very little theory avaiable as a guide</p></li>
+</ul>
+<p>which solution in the neighborhood to move to</p>
+<ul class="simple">
+<li><p>decided using only information in the neighborhood</p></li>
+<li><p>can get stuck in a local optimal point</p></li>
+</ul>
+</section>
+<section id="sequential-convex-programming-scp">
+<h3>Sequential convex programming (SCP)<a class="headerlink" href="#sequential-convex-programming-scp" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A local optimization method for nonconvex problems based on solving a sequence of convex problems</p></li>
+<li><p>SCP is a heuristic</p></li>
+<li><p>SCP often works well, i.e., finds a feasible point with good, if not optimal, objective value</p></li>
+</ul>
+<p>Basic idea:
+<code class="docutils literal notranslate"><span class="pre">trust</span> <span class="pre">region</span></code></p>
+<p>For differentiable functions</p>
+<ul class="simple">
+<li><p>Use first-order Taylor expansion for the affine approximation</p></li>
+<li><p>Use (convex part of) second-order Taylor expansion for the convex approximation</p></li>
+</ul>
+</section>
+<section id="affine-and-convex-approximation">
+<h3>Affine and convex approximation<a class="headerlink" href="#affine-and-convex-approximation" title="Permalink to this heading">#</a></h3>
+</section>
 </section>
 </section>
 
@@ -1041,54 +1190,60 @@ find</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Interior-Point methods</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-ideas">basic ideas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logarithmic-barrier-function">Logarithmic barrier function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#central-path">Central path</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interior-point-methods">Interior-Point methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-ideas">basic ideas</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#logarithmic-barrier-function">Logarithmic barrier function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#central-path">Central path</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#barrier-method-one-interior-point-method">Barrier method (one interior-point method)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-points-from-central-path">dual points from central path</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-via-kkt-condition">Interpretation via KKT condition</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convergnce">Convergnce</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-phase-i-method">Basic phase I method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-i-via-newton-method">Phase I via Newton method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primal-dual-interior-point-method">Primal-dual interior-point method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backtracking-line-search">backtracking line search</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subgradient-method">Subgradient Method</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subdifferential">Subdifferential</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimality-condition-for-unconstrained-problem">Optimality condition for unconstrained problem</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-size">Step size</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence">Convergence</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subgradient-method-for-constrained-problems">Subgradient method for constrained problems</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projection">Projection</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projected-subgradient-method-for-dual-problem">Projected subgradient method for dual problem</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cutting-plane-oracle">Cutting plane oracle</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inequality-constrained-optimization">inequality constrained optimization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-center-point-specific-localization-methods">choosing the center point (specific localization methods)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bisection-method-on-r">Bisection method on R</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ellipsoid-method-for-unconstrained-convex-problems">Ellipsoid method (for unconstrained convex problems)</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-methods">Decomposition methods</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separable-problems">Separable problems</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primal-decomposition-method">Primal decomposition method</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-decomposition-method">Dual decomposition method</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems-with-complicating-constraints">Problems with complicating constraints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#barrier-method-one-interior-point-method">Barrier method (one interior-point method)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-points-from-central-path">dual points from central path</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-via-kkt-condition">Interpretation via KKT condition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#convergnce">Convergnce</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-phase-i-method">Basic phase I method</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-i-via-newton-method">Phase I via Newton method</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#primal-dual-interior-point-method">Primal-dual interior-point method</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#backtracking-line-search">backtracking line search</a></li>
 </ul>
 </li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subgradient-method">Subgradient Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subdifferential">Subdifferential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimality-condition-for-unconstrained-problem">Optimality condition for unconstrained problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-size">Step size</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence">Convergence</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subgradient-method-for-constrained-problems">Subgradient method for constrained problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#projection">Projection</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projected-subgradient-method-for-dual-problem">Projected subgradient method for dual problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cutting-plane-oracle">Cutting plane oracle</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inequality-constrained-optimization">inequality constrained optimization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-center-point-specific-localization-methods">choosing the center point (specific localization methods)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bisection-method-on-r">Bisection method on R</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ellipsoid-method-for-unconstrained-convex-problems">Ellipsoid method (for unconstrained convex problems)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-methods">Decomposition methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#separable-problems">Separable problems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primal-decomposition-method">Primal decomposition method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-decomposition-method">Dual decomposition method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problems-with-complicating-constraints">Problems with complicating constraints</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-for-nonconvex-optimization-problems">Methods for nonconvex optimization problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branch-and-bounds">Branch and bounds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-search">Local search</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-convex-programming-scp">Sequential convex programming (SCP)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#affine-and-convex-approximation">Affine and convex approximation</a></li>
+</ul>
+</li>
+</ul>
   </nav></div>
 
 </div></div>
