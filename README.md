@@ -1,6 +1,9 @@
 # About Jupyter-Book
 
+Deploy at https://jue-xu.github.io/QIC-Cookbook/
+
 ## Usage
+
 ### theorem, definition environments
 ```
 pip install sphinx-proof

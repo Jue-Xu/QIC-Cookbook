@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Iterative Quantum Phase Estimation Algorithm &#8212; Recipe of Quantum Computing</title>
   
@@ -19,49 +18,46 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script type="application/vnd.jupyter.widget-state+json">{"state": {"087335b5d2f0496094132ccf927d7b65": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_78c9d4c5f1f74827b2ad2a46fee300b8", "placeholder": "\u200b", "style": "IPY_MODEL_9b1406ef2f4c4a25a63ab0bf30ddddce", "tabbable": null, "tooltip": null, "value": "<h5>Queue</h5>"}}, "0b545c6e1cb84953996275929b145021": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": "\n                                       \". . . . right \"\n                                        ", "grid_template_columns": "20% 20% 20% 20% 20%", "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "26ba411c17564c0aaecb752ca4264538": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "26d8f5810c2e4327ba83fd28b48b804c": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "145px"}}, "2874027eb4ed4fefbe97961bc8414b90": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "2eea015ebb1a44179c1488b427119d75": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "GridBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "GridBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "GridBoxView", "box_style": "", "children": ["IPY_MODEL_ecd9fc340a104cd8a35f7e1ff2787a6f"], "layout": "IPY_MODEL_0b545c6e1cb84953996275929b145021", "tabbable": null, "tooltip": null}}, "3ec48d39711947498e13c77dbd06d7b7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_8ad011c7ad914916a93fd72c9ff67507", "IPY_MODEL_972e372c7cf442ceb6eb4d0580b7a531", "IPY_MODEL_6fd34cddc5884f94a42edb7f4ba33856", "IPY_MODEL_087335b5d2f0496094132ccf927d7b65", "IPY_MODEL_4f29dc5f036c42bc9e7cd996f3f0f3f6"], "layout": "IPY_MODEL_7ef18e4f401c4229b6092a5a443aca78", "tabbable": null, "tooltip": null}}, "4aecfa89dfe64705ac7e93237ec50bd8": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4f29dc5f036c42bc9e7cd996f3f0f3f6": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_4aecfa89dfe64705ac7e93237ec50bd8", "placeholder": "\u200b", "style": "IPY_MODEL_b325109ce9524adba0aee8f7826d3930", "tabbable": null, "tooltip": null, "value": "<h5>Message</h5>"}}, "62a047e02b8c421a8420f7b7415c2038": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "95px"}}, "68e1caf1fdae4cc8ac5e8cd553180964": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": "right", "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": "0px 0px 0px 0px", "right": null, "top": null, "visibility": null, "width": "70px"}}, "6fd34cddc5884f94a42edb7f4ba33856": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_62a047e02b8c421a8420f7b7415c2038", "placeholder": "\u200b", "style": "IPY_MODEL_ed5b54d6c8884b8b807c9dc856bfb0e4", "tabbable": null, "tooltip": null, "value": "<h5>Status</h5>"}}, "78c9d4c5f1f74827b2ad2a46fee300b8": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "70px"}}, "7ef18e4f401c4229b6092a5a443aca78": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 0px 37px", "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "600px"}}, "8ad011c7ad914916a93fd72c9ff67507": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_dde3458b9d8243078e05c481400e2bf6", "placeholder": "\u200b", "style": "IPY_MODEL_2874027eb4ed4fefbe97961bc8414b90", "tabbable": null, "tooltip": null, "value": "<h5>Job ID</h5>"}}, "967338c835df4a7db87ebbfcdc47ff46": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_f1d9a9ca411e413c90f0e2be40469834", "placeholder": "\u200b", "style": "IPY_MODEL_abe9c4bc76994354869fdc32a972f428", "tabbable": null, "tooltip": null, "value": "<p style='font-family: IBM Plex Sans, Arial, Helvetica, sans-serif; font-size: 20px; font-weight: medium;'>Circuit Properties</p>"}}, "972e372c7cf442ceb6eb4d0580b7a531": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_26d8f5810c2e4327ba83fd28b48b804c", "placeholder": "\u200b", "style": "IPY_MODEL_c553ba2d1ca14d7da03a6f131ad94828", "tabbable": null, "tooltip": null, "value": "<h5>Backend</h5>"}}, "9b1406ef2f4c4a25a63ab0bf30ddddce": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "abe9c4bc76994354869fdc32a972f428": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "b325109ce9524adba0aee8f7826d3930": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "c553ba2d1ca14d7da03a6f131ad94828": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "dde3458b9d8243078e05c481400e2bf6": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "190px"}}, "ecd9fc340a104cd8a35f7e1ff2787a6f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "primary", "description": "Clear", "disabled": false, "icon": "", "layout": "IPY_MODEL_68e1caf1fdae4cc8ac5e8cd553180964", "style": "IPY_MODEL_26ba411c17564c0aaecb752ca4264538", "tabbable": null, "tooltip": null}}, "ed5b54d6c8884b8b807c9dc856bfb0e4": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "f1d9a9ca411e413c90f0e2be40469834": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 10px 0px", "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}}, "version_major": 2, "version_minor": 0}</script>
@@ -81,7 +77,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -116,11 +120,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -135,9 +142,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../intro.html">
+  
   
   
   
@@ -147,12 +156,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Recipe of Quantum Computing - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Recipe of Quantum Computing - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -181,6 +201,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../math/linear_algebra/complex_matrix_multiplication.html">Complex matrix multiplication</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../math/linear_algebra/matrices.html">Matrices</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../math/linear_algebra/decompositions.html">Decomposition</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../math/linear_algebra/decompositions/cholesky_decomposition.html">Cholesky decomposition</a></li>
 </ul>
@@ -188,8 +209,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../math/optimization/optimization.html">Optimization</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../math/optimization/convex_optimization.html">Convex Set and Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../math/optimization/convex_program.html">Convex Program</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../math/optimization/semidefinite_programming.html">Semidefinite Programming (SDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../math/optimization/integer_program.html">Integer Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../math/optimization/semidefinite_program.html">Semidefinite Programming (SDP)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../math/optimization/duality.html">SDP and Duality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../math/optimization/unconstrained.html">Uncontraied optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../math/optimization/interior_point.html">Algorithms</a></li>
 </ul>
 </li>
 </ul>
@@ -373,20 +397,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -457,10 +483,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="iterative-quantum-phase-estimation-algorithm">
-<h1>Iterative Quantum Phase Estimation Algorithm<a class="headerlink" href="#iterative-quantum-phase-estimation-algorithm" title="Permalink to this heading">#</a></h1>
+<h1>Iterative Quantum Phase Estimation Algorithm<a class="headerlink" href="#iterative-quantum-phase-estimation-algorithm" title="Link to this heading">#</a></h1>
 <p>The goal of this tutorial is to understand how the Iterative Phase Estimation (IPE) algorithm works, why would we use the IPE algorithm instead of the QPE (Quantum Phase Estimation) algorithm and how to build it with Qiskit using the same circuit exploiting reset gate and the <code class="docutils literal notranslate"><span class="pre">c_if</span></code> method that allows to apply gates conditioned by the values stored in a classical register, resulting from previous measurements.</p>
 <p><strong>References</strong></p>
 <ul class="simple">
@@ -478,7 +504,7 @@ document.write(`
 </div>
 </div>
 <section id="conditioned-gates-the-c-if-method">
-<h2>Conditioned gates: the c_if method<a class="headerlink" href="#conditioned-gates-the-c-if-method" title="Permalink to this heading">#</a></h2>
+<h2>Conditioned gates: the c_if method<a class="headerlink" href="#conditioned-gates-the-c-if-method" title="Link to this heading">#</a></h2>
 <p>Before starting the IPE algorithm, we will give a brief tutorial about the Qiskit conditional method, c_if, as it goes into building the IPE circuit.</p>
 <p><code class="docutils literal notranslate"><span class="pre">c_if</span></code> is a function (actually a method of the gate class) to perform conditioned operations based on the value stored previously in a classical register. With this feature you can apply gates after a measurement in the same circuit conditioned by the measurement outcome.</p>
 <p>For example, the following code will execute the <span class="math notranslate nohighlight">\(X\)</span> gate if the value of the classical register is <span class="math notranslate nohighlight">\(0\)</span>.</p>
@@ -495,7 +521,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8b99a988c057f0c819f805d08511f0d62ab9492f113d4b70f6e5be2f95f6c378.png" src="../../_images/8b99a988c057f0c819f805d08511f0d62ab9492f113d4b70f6e5be2f95f6c378.png" />
+<a class="reference internal image-reference" href="../../_images/8b99a988c057f0c819f805d08511f0d62ab9492f113d4b70f6e5be2f95f6c378.png"><img alt="../../_images/8b99a988c057f0c819f805d08511f0d62ab9492f113d4b70f6e5be2f95f6c378.png" src="../../_images/8b99a988c057f0c819f805d08511f0d62ab9492f113d4b70f6e5be2f95f6c378.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 <p>We highlight that the method c_if expects as the first argument a whole classical register, not a single classical bit (or a list of classical bits), and as the second argument a value in decimal representation (a non-negative integer), not the value of a single bit, 0, or 1 (or a list/string of binary digits).</p>
@@ -515,7 +541,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1cebc432e4857688efafb22479574fc7c632669e8e76bd658cb1ea0fe15dda8e.png" src="../../_images/1cebc432e4857688efafb22479574fc7c632669e8e76bd658cb1ea0fe15dda8e.png" />
+<a class="reference internal image-reference" href="../../_images/1cebc432e4857688efafb22479574fc7c632669e8e76bd658cb1ea0fe15dda8e.png"><img alt="../../_images/1cebc432e4857688efafb22479574fc7c632669e8e76bd658cb1ea0fe15dda8e.png" src="../../_images/1cebc432e4857688efafb22479574fc7c632669e8e76bd658cb1ea0fe15dda8e.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 <p>We want to apply the <span class="math notranslate nohighlight">\(X\)</span> gate, only if both the results of the measurement of <span class="math notranslate nohighlight">\(q_0\)</span> and <span class="math notranslate nohighlight">\(q_1\)</span> are <span class="math notranslate nohighlight">\(1\)</span>. We can do this using the c_if method, conditioning the application of <span class="math notranslate nohighlight">\(X\)</span> depending on the value passed as argument to c_if.</p>
@@ -557,16 +583,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/02c617cf15fee29d1d27a83f05234e8eebf8c7b988df7f949ff737da40f7a17e.png" src="../../_images/02c617cf15fee29d1d27a83f05234e8eebf8c7b988df7f949ff737da40f7a17e.png" />
+<a class="reference internal image-reference" href="../../_images/02c617cf15fee29d1d27a83f05234e8eebf8c7b988df7f949ff737da40f7a17e.png"><img alt="../../_images/02c617cf15fee29d1d27a83f05234e8eebf8c7b988df7f949ff737da40f7a17e.png" src="../../_images/02c617cf15fee29d1d27a83f05234e8eebf8c7b988df7f949ff737da40f7a17e.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 </section>
 <section id="ipe">
-<h2>IPE<a class="headerlink" href="#ipe" title="Permalink to this heading">#</a></h2>
+<h2>IPE<a class="headerlink" href="#ipe" title="Link to this heading">#</a></h2>
 <p>The motivation for using the IPE algorithm is that QPE algorithm works fine for short depth circuits but when the circuit starts to grow, it doesn’t work properly due to gate noise and decoherence times.</p>
 <p>The detailed explanation of how the algorithm works can be found in <a class="reference external" href="https://qiskit.org/textbook/ch-labs/Lab04_IterativePhaseEstimation.html#2-iterative-phase-estimation-ipe-algorithm">Iterative Phase Estimation (IPE) Algorithm</a>. To understand QPE in depth, you can see also <a class="reference external" href="https://qiskit.org/textbook/ch-algorithms/quantum-phase-estimation.html">Ch.3.6 Quantum Phase Estimation</a>.</p>
 <section id="ipe-example-with-a-1-qubit-gate-for-u">
-<h3>IPE example with a 1-qubit gate for <span class="math notranslate nohighlight">\(U\)</span><a class="headerlink" href="#ipe-example-with-a-1-qubit-gate-for-u" title="Permalink to this heading">#</a></h3>
+<h3>IPE example with a 1-qubit gate for <span class="math notranslate nohighlight">\(U\)</span><a class="headerlink" href="#ipe-example-with-a-1-qubit-gate-for-u" title="Link to this heading">#</a></h3>
 <p>We want to apply the IPE algorithm to estimate the phase for a 1-qubit operator <span class="math notranslate nohighlight">\(U\)</span>.  For example, here we use the <span class="math notranslate nohighlight">\(S\)</span>-gate.</p>
 <p>Let’s apply the IPE algorithm to estimate the phase for <span class="math notranslate nohighlight">\(S\)</span>-gate.
 Its matrix is
@@ -595,7 +621,7 @@ $<span class="math notranslate nohighlight">\( S =
 </div>
 </div>
 <section id="first-step">
-<h4>First step<a class="headerlink" href="#first-step" title="Permalink to this heading">#</a></h4>
+<h4>First step<a class="headerlink" href="#first-step" title="Link to this heading">#</a></h4>
 <p>Now we build the quantum circuit for the first step, that is, the first iteration of the algorithm, to estimate the least significant phase bit <span class="math notranslate nohighlight">\(\varphi_m\)</span>, in this case <span class="math notranslate nohighlight">\(\varphi_2\)</span>. For the first step we have 3 sub-steps:</p>
 <ul class="simple">
 <li><p>initialization</p></li>
@@ -603,7 +629,7 @@ $<span class="math notranslate nohighlight">\( S =
 <li><p>measure of the auxiliary qubit in x-basis</p></li>
 </ul>
 <section id="initialization">
-<h5>Initialization<a class="headerlink" href="#initialization" title="Permalink to this heading">#</a></h5>
+<h5>Initialization<a class="headerlink" href="#initialization" title="Link to this heading">#</a></h5>
 <p>The initialization consists of application the Hadamard gate to the auxiliary qubit and the preparation of the eigenstate <span class="math notranslate nohighlight">\(|1\rangle\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -614,13 +640,13 @@ $<span class="math notranslate nohighlight">\( S =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/72ada89bd2cca353d8b020e5df61c9f8c2e64efb859513e6e16e0b36c23e9683.png" src="../../_images/72ada89bd2cca353d8b020e5df61c9f8c2e64efb859513e6e16e0b36c23e9683.png" />
+<a class="reference internal image-reference" href="../../_images/72ada89bd2cca353d8b020e5df61c9f8c2e64efb859513e6e16e0b36c23e9683.png"><img alt="../../_images/72ada89bd2cca353d8b020e5df61c9f8c2e64efb859513e6e16e0b36c23e9683.png" src="../../_images/72ada89bd2cca353d8b020e5df61c9f8c2e64efb859513e6e16e0b36c23e9683.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 </section>
 </section>
 <section id="application-of-the-controlled-u-gates">
-<h4>Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates<a class="headerlink" href="#application-of-the-controlled-u-gates" title="Permalink to this heading">#</a></h4>
+<h4>Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates<a class="headerlink" href="#application-of-the-controlled-u-gates" title="Link to this heading">#</a></h4>
 <p>Then we have to apply <span class="math notranslate nohighlight">\(2^t\)</span> times the Controlled-<span class="math notranslate nohighlight">\(U\)</span> operators (see also in the docs <a class="reference external" href="https://qiskit.org/documentation/tutorials/circuits/3_summary_of_quantum_operations.html#Two-qubit-gates">Two qubit gates</a>), that, in this example, is the Controlled-<span class="math notranslate nohighlight">\(S\)</span> gate (<span class="math notranslate nohighlight">\(CS\)</span> for short).</p>
 <p>To implement <span class="math notranslate nohighlight">\(CS\)</span> in the circuit, since <span class="math notranslate nohighlight">\(S\)</span> is a phase gate, we can use the controlled phase gate <span class="math notranslate nohighlight">\(\text{CP}(\theta)\)</span>, with <span class="math notranslate nohighlight">\(\theta=\pi/2\)</span>.</p>
 <div class="cell docutils container">
@@ -632,7 +658,7 @@ $<span class="math notranslate nohighlight">\( S =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a57d99d3b521dc87d3a8ff0964e2cf33c4a43731b2598055075fbb2a76e60ff7.png" src="../../_images/a57d99d3b521dc87d3a8ff0964e2cf33c4a43731b2598055075fbb2a76e60ff7.png" />
+<a class="reference internal image-reference" href="../../_images/a57d99d3b521dc87d3a8ff0964e2cf33c4a43731b2598055075fbb2a76e60ff7.png"><img alt="../../_images/a57d99d3b521dc87d3a8ff0964e2cf33c4a43731b2598055075fbb2a76e60ff7.png" src="../../_images/a57d99d3b521dc87d3a8ff0964e2cf33c4a43731b2598055075fbb2a76e60ff7.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 <p>Let’s apply <span class="math notranslate nohighlight">\(2^t\)</span> times <span class="math notranslate nohighlight">\(\text{CP}(\pi/2)\)</span>. Since for the first step <span class="math notranslate nohighlight">\(t=m-1\)</span>, and <span class="math notranslate nohighlight">\(m=2\)</span>, we have <span class="math notranslate nohighlight">\(2^t=2\)</span>.</p>
@@ -645,12 +671,12 @@ $<span class="math notranslate nohighlight">\( S =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/066c45ea4ebc4af549d533e1e70ac9d75de2c954d0d64ffae6c1ac60abc32fc8.png" src="../../_images/066c45ea4ebc4af549d533e1e70ac9d75de2c954d0d64ffae6c1ac60abc32fc8.png" />
+<a class="reference internal image-reference" href="../../_images/066c45ea4ebc4af549d533e1e70ac9d75de2c954d0d64ffae6c1ac60abc32fc8.png"><img alt="../../_images/066c45ea4ebc4af549d533e1e70ac9d75de2c954d0d64ffae6c1ac60abc32fc8.png" src="../../_images/066c45ea4ebc4af549d533e1e70ac9d75de2c954d0d64ffae6c1ac60abc32fc8.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 </section>
 <section id="measure-in-x-basis">
-<h4>Measure in x-basis<a class="headerlink" href="#measure-in-x-basis" title="Permalink to this heading">#</a></h4>
+<h4>Measure in x-basis<a class="headerlink" href="#measure-in-x-basis" title="Link to this heading">#</a></h4>
 <p>Finally, we perform the measurement of the auxiliary qubit in x-basis. So we will define a function to perform the x_measure and then apply it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -671,13 +697,13 @@ $<span class="math notranslate nohighlight">\( S =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/33de941c1fca7608ea26de00cc2145d361dcf6366bd205ea00d86c3ce63ccf30.png" src="../../_images/33de941c1fca7608ea26de00cc2145d361dcf6366bd205ea00d86c3ce63ccf30.png" />
+<a class="reference internal image-reference" href="../../_images/33de941c1fca7608ea26de00cc2145d361dcf6366bd205ea00d86c3ce63ccf30.png"><img alt="../../_images/33de941c1fca7608ea26de00cc2145d361dcf6366bd205ea00d86c3ce63ccf30.png" src="../../_images/33de941c1fca7608ea26de00cc2145d361dcf6366bd205ea00d86c3ce63ccf30.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 </section>
 </section>
 <section id="subsequent-steps-2nd-step">
-<h3>Subsequent steps (2nd step)<a class="headerlink" href="#subsequent-steps-2nd-step" title="Permalink to this heading">#</a></h3>
+<h3>Subsequent steps (2nd step)<a class="headerlink" href="#subsequent-steps-2nd-step" title="Link to this heading">#</a></h3>
 <p>Now we build the quantum circuit for the other remaining steps, in this example, only the second one.
 In these steps we have 4 sub-steps: the 3 sub-steps as in the first step and, in the middle, the additional step of the phase correction</p>
 <ul class="simple">
@@ -687,7 +713,7 @@ In these steps we have 4 sub-steps: the 3 sub-steps as in the first step and, in
 <li><p>measure of the auxiliary qubit in x-basis</p></li>
 </ul>
 <section id="initialization-with-reset">
-<h4>Initialization with reset<a class="headerlink" href="#initialization-with-reset" title="Permalink to this heading">#</a></h4>
+<h4>Initialization with reset<a class="headerlink" href="#initialization-with-reset" title="Link to this heading">#</a></h4>
 <p>As we want to perform an iterative algorithm in the same circuit, we need to reset the auxiliary qubit <span class="math notranslate nohighlight">\(q0\)</span> after the measument gate and initialize it again as before to recycle the qubit.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -698,12 +724,12 @@ In these steps we have 4 sub-steps: the 3 sub-steps as in the first step and, in
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/aa28a093a1260480886efa2a5685d8c5a1d63d0289257899644d9235937f5f81.png" src="../../_images/aa28a093a1260480886efa2a5685d8c5a1d63d0289257899644d9235937f5f81.png" />
+<a class="reference internal image-reference" href="../../_images/aa28a093a1260480886efa2a5685d8c5a1d63d0289257899644d9235937f5f81.png"><img alt="../../_images/aa28a093a1260480886efa2a5685d8c5a1d63d0289257899644d9235937f5f81.png" src="../../_images/aa28a093a1260480886efa2a5685d8c5a1d63d0289257899644d9235937f5f81.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 </section>
 <section id="phase-correction-for-step-2">
-<h4>Phase correction (for step 2)<a class="headerlink" href="#phase-correction-for-step-2" title="Permalink to this heading">#</a></h4>
+<h4>Phase correction (for step 2)<a class="headerlink" href="#phase-correction-for-step-2" title="Link to this heading">#</a></h4>
 <p>As seen in the theory, in order to extract the phase bit <span class="math notranslate nohighlight">\(\varphi_{1}\)</span>, we perform a phase correction of <span class="math notranslate nohighlight">\(-\pi\varphi_2/2\)</span>.
 Of course, we need to apply the phase correction in the circuit only if the phase bit <span class="math notranslate nohighlight">\(\varphi_2=1\)</span>, i.e. we have to apply the phase correction of <span class="math notranslate nohighlight">\(-\pi/2\)</span> only if the classical bit <span class="math notranslate nohighlight">\(c_0\)</span> is 1.</p>
 <p>So, after the reset we apply the phase gate <span class="math notranslate nohighlight">\(P(\theta)\)</span> with phase <span class="math notranslate nohighlight">\(\theta=-\pi/2\)</span> conditioned by the classical bit <span class="math notranslate nohighlight">\(c_0\)</span> (<span class="math notranslate nohighlight">\(=\varphi_2\)</span>) using the <code class="docutils literal notranslate"><span class="pre">c_if</span></code> method.
@@ -716,12 +742,12 @@ So as we saw in the first part of this tutorial, we have to use the <code class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f654f5308e382e7ff6d241df2c99628161909ad69771a390db82324305750c4d.png" src="../../_images/f654f5308e382e7ff6d241df2c99628161909ad69771a390db82324305750c4d.png" />
+<a class="reference internal image-reference" href="../../_images/f654f5308e382e7ff6d241df2c99628161909ad69771a390db82324305750c4d.png"><img alt="../../_images/f654f5308e382e7ff6d241df2c99628161909ad69771a390db82324305750c4d.png" src="../../_images/f654f5308e382e7ff6d241df2c99628161909ad69771a390db82324305750c4d.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 </section>
 <section id="application-of-the-controlled-u-gates-and-x-measurement-for-step-2">
-<h4>Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates and x-measurement (for step 2)<a class="headerlink" href="#application-of-the-controlled-u-gates-and-x-measurement-for-step-2" title="Permalink to this heading">#</a></h4>
+<h4>Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates and x-measurement (for step 2)<a class="headerlink" href="#application-of-the-controlled-u-gates-and-x-measurement-for-step-2" title="Link to this heading">#</a></h4>
 <p>We apply the <span class="math notranslate nohighlight">\(CU\)</span> operations as we did in the first step. For the second step we have <span class="math notranslate nohighlight">\(t=m-2\)</span>, hence <span class="math notranslate nohighlight">\(2^t=1\)</span>. So we apply <span class="math notranslate nohighlight">\(\text{CP}(\pi/2)\)</span> once. And then we perform the x-measurement of the qubit <span class="math notranslate nohighlight">\(q_0\)</span>, storing the result, the phase bit <span class="math notranslate nohighlight">\(\varphi_1\)</span>, in the bit <span class="math notranslate nohighlight">\(c_1\)</span> of classical register.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -742,7 +768,7 @@ So as we saw in the first part of this tutorial, we have to use the <code class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9281618e5d744fc31e2fba4e0d06530c28f578fbf6fe329f7b854a627038fc01.png" src="../../_images/9281618e5d744fc31e2fba4e0d06530c28f578fbf6fe329f7b854a627038fc01.png" />
+<a class="reference internal image-reference" href="../../_images/9281618e5d744fc31e2fba4e0d06530c28f578fbf6fe329f7b854a627038fc01.png"><img alt="../../_images/9281618e5d744fc31e2fba4e0d06530c28f578fbf6fe329f7b854a627038fc01.png" src="../../_images/9281618e5d744fc31e2fba4e0d06530c28f578fbf6fe329f7b854a627038fc01.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 <p>Let’s execute the circuit with the <code class="docutils literal notranslate"><span class="pre">qasm_simulator</span></code>, the simulator without noise that run locally.</p>
@@ -762,7 +788,7 @@ So as we saw in the first part of this tutorial, we have to use the <code class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6a8f855d0321f9614c3e9a4890431ea5dedd183cfa9ab99547e2b1bc2d093e6a.png" src="../../_images/6a8f855d0321f9614c3e9a4890431ea5dedd183cfa9ab99547e2b1bc2d093e6a.png" />
+<a class="reference internal image-reference" href="../../_images/6a8f855d0321f9614c3e9a4890431ea5dedd183cfa9ab99547e2b1bc2d093e6a.png"><img alt="../../_images/6a8f855d0321f9614c3e9a4890431ea5dedd183cfa9ab99547e2b1bc2d093e6a.png" src="../../_images/6a8f855d0321f9614c3e9a4890431ea5dedd183cfa9ab99547e2b1bc2d093e6a.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 <p>In the picture we have the same histograms but on the left we have on the x-axis the string with phase bits <span class="math notranslate nohighlight">\(\varphi_1\)</span>, <span class="math notranslate nohighlight">\(\varphi_2\)</span> and on the right the actual phase <span class="math notranslate nohighlight">\(\varphi\)</span> in decimal representation.</p>
@@ -771,7 +797,7 @@ So as we saw in the first part of this tutorial, we have to use the <code class=
 </section>
 </section>
 <section id="ipe-example-with-a-2-qubit-gate">
-<h2>IPE example with a 2-qubit gate<a class="headerlink" href="#ipe-example-with-a-2-qubit-gate" title="Permalink to this heading">#</a></h2>
+<h2>IPE example with a 2-qubit gate<a class="headerlink" href="#ipe-example-with-a-2-qubit-gate" title="Link to this heading">#</a></h2>
 <p>Now, we want to apply the IPE algorithm to estimate the phase for a 2-qubit gate <span class="math notranslate nohighlight">\(U\)</span>. For this example, let’s consider the controlled version of the <span class="math notranslate nohighlight">\(T\)</span> gate, i.e. the gate <span class="math notranslate nohighlight">\(U=\textrm{Controlled-}T\)</span> (that from now we will express more compactly with <span class="math notranslate nohighlight">\(CT\)</span>). Its matrix is
 $<span class="math notranslate nohighlight">\( CT = 
 \begin{bmatrix}
@@ -797,10 +823,10 @@ That is, the \)</span>CT<span class="math notranslate nohighlight">\( gate adds 
 </div>
 </div>
 <section id="id1">
-<h3>First step<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>First step<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Now we build the quantum circuit for the first step, to estimate the least significant phase bit <span class="math notranslate nohighlight">\(\varphi_m=\varphi_3\)</span>.</p>
 <section id="id2">
-<h4>Initialization<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<h4>Initialization<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <p>We initialize the auxiliary qubit and the other qubits with the eigenstate <span class="math notranslate nohighlight">\(|11\rangle\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -811,12 +837,12 @@ That is, the \)</span>CT<span class="math notranslate nohighlight">\( gate adds 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/eaeefdefa162a2950598e3f2a88a7fdd6c8fadb223c47131b6a8dfa054da4e7f.png" src="../../_images/eaeefdefa162a2950598e3f2a88a7fdd6c8fadb223c47131b6a8dfa054da4e7f.png" />
+<a class="reference internal image-reference" href="../../_images/eaeefdefa162a2950598e3f2a88a7fdd6c8fadb223c47131b6a8dfa054da4e7f.png"><img alt="../../_images/eaeefdefa162a2950598e3f2a88a7fdd6c8fadb223c47131b6a8dfa054da4e7f.png" src="../../_images/eaeefdefa162a2950598e3f2a88a7fdd6c8fadb223c47131b6a8dfa054da4e7f.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 </section>
 <section id="id3">
-<h4>Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<h4>Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
 <p>Then we have to apply multiple times the <span class="math notranslate nohighlight">\(CU\)</span> operator, that, in this example, is the Controlled-<span class="math notranslate nohighlight">\(CT\)</span> gate (<span class="math notranslate nohighlight">\(CCT\)</span> for short).</p>
 <p>To implement <span class="math notranslate nohighlight">\(CCT\)</span> in the circuit, since <span class="math notranslate nohighlight">\(T\)</span> is a phase gate, we can use the multi-controlled phase gate <span class="math notranslate nohighlight">\(\text{MCP}(\theta)\)</span>, with <span class="math notranslate nohighlight">\(\theta=\pi/4\)</span>.</p>
 <div class="cell docutils container">
@@ -828,7 +854,7 @@ That is, the \)</span>CT<span class="math notranslate nohighlight">\( gate adds 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0415bfc4a175bd07f9222b25522aeae7e79a6baa73dd8ae4c9ec36eacc4f85c1.png" src="../../_images/0415bfc4a175bd07f9222b25522aeae7e79a6baa73dd8ae4c9ec36eacc4f85c1.png" />
+<a class="reference internal image-reference" href="../../_images/0415bfc4a175bd07f9222b25522aeae7e79a6baa73dd8ae4c9ec36eacc4f85c1.png"><img alt="../../_images/0415bfc4a175bd07f9222b25522aeae7e79a6baa73dd8ae4c9ec36eacc4f85c1.png" src="../../_images/0415bfc4a175bd07f9222b25522aeae7e79a6baa73dd8ae4c9ec36eacc4f85c1.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 <p>Let’s apply <span class="math notranslate nohighlight">\(2^t\)</span> times <span class="math notranslate nohighlight">\(\text{MCP}(\pi/4)\)</span>. Since for the first step <span class="math notranslate nohighlight">\(t=m-1\)</span> and <span class="math notranslate nohighlight">\(m=3\)</span>, we have <span class="math notranslate nohighlight">\(2^t=4\)</span>.</p>
@@ -841,12 +867,12 @@ That is, the \)</span>CT<span class="math notranslate nohighlight">\( gate adds 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0e1bb7249c0d69de4b7bd2ce62bd1f39a4698b7310b8102ddb29c555cc85c683.png" src="../../_images/0e1bb7249c0d69de4b7bd2ce62bd1f39a4698b7310b8102ddb29c555cc85c683.png" />
+<a class="reference internal image-reference" href="../../_images/0e1bb7249c0d69de4b7bd2ce62bd1f39a4698b7310b8102ddb29c555cc85c683.png"><img alt="../../_images/0e1bb7249c0d69de4b7bd2ce62bd1f39a4698b7310b8102ddb29c555cc85c683.png" src="../../_images/0e1bb7249c0d69de4b7bd2ce62bd1f39a4698b7310b8102ddb29c555cc85c683.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 </section>
 <section id="id4">
-<h4>Measure in x-basis<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
+<h4>Measure in x-basis<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
 <p>Finally, we perform the measurement of the auxiliary qubit in x-basis.
 We can use the <code class="docutils literal notranslate"><span class="pre">x_measurement</span></code> function defined above in the example for 1-qubit gate. In this way we have obtained the phase bit <span class="math notranslate nohighlight">\(\varphi_3\)</span> and stored it in the classical bit <span class="math notranslate nohighlight">\(c_0\)</span>.</p>
 <div class="cell docutils container">
@@ -857,17 +883,17 @@ We can use the <code class="docutils literal notranslate"><span class="pre">x_me
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/439046fb3ebdc9a41e29204d86d579f8af3f4a38a9bc7cc73f6902acaa3c63e4.png" src="../../_images/439046fb3ebdc9a41e29204d86d579f8af3f4a38a9bc7cc73f6902acaa3c63e4.png" />
+<a class="reference internal image-reference" href="../../_images/439046fb3ebdc9a41e29204d86d579f8af3f4a38a9bc7cc73f6902acaa3c63e4.png"><img alt="../../_images/439046fb3ebdc9a41e29204d86d579f8af3f4a38a9bc7cc73f6902acaa3c63e4.png" src="../../_images/439046fb3ebdc9a41e29204d86d579f8af3f4a38a9bc7cc73f6902acaa3c63e4.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 </section>
 </section>
 <section id="subsequent-steps-2nd-3rd">
-<h3>Subsequent steps (2nd, 3rd)<a class="headerlink" href="#subsequent-steps-2nd-3rd" title="Permalink to this heading">#</a></h3>
+<h3>Subsequent steps (2nd, 3rd)<a class="headerlink" href="#subsequent-steps-2nd-3rd" title="Link to this heading">#</a></h3>
 <p>Now we build the quantum circuit for the other remaining steps, the second and the third ones.
 As said in the first example, in these steps we have the additional sub-step of the phase correction.</p>
 <section id="id5">
-<h4>Initialization with reset<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<h4>Initialization with reset<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -877,12 +903,12 @@ As said in the first example, in these steps we have the additional sub-step of 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a787999fa4f3131dad726d587ab12b66f77795dccf814e42abf1116d9e411c82.png" src="../../_images/a787999fa4f3131dad726d587ab12b66f77795dccf814e42abf1116d9e411c82.png" />
+<a class="reference internal image-reference" href="../../_images/a787999fa4f3131dad726d587ab12b66f77795dccf814e42abf1116d9e411c82.png"><img alt="../../_images/a787999fa4f3131dad726d587ab12b66f77795dccf814e42abf1116d9e411c82.png" src="../../_images/a787999fa4f3131dad726d587ab12b66f77795dccf814e42abf1116d9e411c82.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 </section>
 <section id="id6">
-<h4>Phase correction (for step 2)<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
+<h4>Phase correction (for step 2)<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
 <p>In order to extract the phase bit <span class="math notranslate nohighlight">\(\varphi_{2}\)</span>, we perform a phase correction of <span class="math notranslate nohighlight">\(-\pi\varphi_3/2\)</span>.</p>
 <p>So, after the reset we apply the phase gate <span class="math notranslate nohighlight">\(P(\theta)\)</span> with phase <span class="math notranslate nohighlight">\(\theta=-\pi/2\)</span> conditioned by the classical bit <span class="math notranslate nohighlight">\(c_0\)</span> (<span class="math notranslate nohighlight">\(=\varphi_3\)</span>).</p>
 <div class="cell docutils container">
@@ -893,12 +919,12 @@ As said in the first example, in these steps we have the additional sub-step of 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/dc1d6a7fa71fde9dba4a133690cb86eac71f1578d682cc84b066201fc7306790.png" src="../../_images/dc1d6a7fa71fde9dba4a133690cb86eac71f1578d682cc84b066201fc7306790.png" />
+<a class="reference internal image-reference" href="../../_images/dc1d6a7fa71fde9dba4a133690cb86eac71f1578d682cc84b066201fc7306790.png"><img alt="../../_images/dc1d6a7fa71fde9dba4a133690cb86eac71f1578d682cc84b066201fc7306790.png" src="../../_images/dc1d6a7fa71fde9dba4a133690cb86eac71f1578d682cc84b066201fc7306790.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 </section>
 <section id="id7">
-<h4>Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates and x-measurement (for step 2)<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
+<h4>Application of the Controlled-<span class="math notranslate nohighlight">\(U\)</span> gates and x-measurement (for step 2)<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
 <p>We apply the <span class="math notranslate nohighlight">\(CU\)</span> operations as we did in the first step. For the second step we have <span class="math notranslate nohighlight">\(t=m-2\)</span>, hence <span class="math notranslate nohighlight">\(2^t=2\)</span>. So we apply <span class="math notranslate nohighlight">\(\text{MCP}(\pi/4)\)</span> <span class="math notranslate nohighlight">\(2\)</span> times. And then we perform the x-measurement of the qubit <span class="math notranslate nohighlight">\(q_0\)</span>, storing the phase bit <span class="math notranslate nohighlight">\(\varphi_2\)</span> in the bit <span class="math notranslate nohighlight">\(c_1\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -910,12 +936,12 @@ As said in the first example, in these steps we have the additional sub-step of 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c56e59ba2957ac94d87cdc8582dd0766cf85302d6e660f9f399682e2dd0f29d6.png" src="../../_images/c56e59ba2957ac94d87cdc8582dd0766cf85302d6e660f9f399682e2dd0f29d6.png" />
+<a class="reference internal image-reference" href="../../_images/c56e59ba2957ac94d87cdc8582dd0766cf85302d6e660f9f399682e2dd0f29d6.png"><img alt="../../_images/c56e59ba2957ac94d87cdc8582dd0766cf85302d6e660f9f399682e2dd0f29d6.png" src="../../_images/c56e59ba2957ac94d87cdc8582dd0766cf85302d6e660f9f399682e2dd0f29d6.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 </section>
 <section id="all-substeps-of-the-3rd-step">
-<h4>All substeps of the 3rd step<a class="headerlink" href="#all-substeps-of-the-3rd-step" title="Permalink to this heading">#</a></h4>
+<h4>All substeps of the 3rd step<a class="headerlink" href="#all-substeps-of-the-3rd-step" title="Link to this heading">#</a></h4>
 <p>For the 3rd and last step, we perform the reset and initialization of the auxiliary qubit as done in the second step.</p>
 <p>Then at the 3rd step we have to perform the phase correction of <span class="math notranslate nohighlight">\(-2\pi 0.0\varphi_{2}\varphi_{3}= -2\pi \left(\frac{\varphi_2}{4}+\frac{\varphi_3}{8}\right)=-\frac{\varphi_2\pi}{2}-\frac{ \varphi_3\pi}{4}\)</span>, thus we have to apply 2 conditioned  phase corrections, one conditioned by <span class="math notranslate nohighlight">\(\varphi_3\)</span> (<span class="math notranslate nohighlight">\(=c_0\)</span>) and the other by <span class="math notranslate nohighlight">\(\varphi_2\)</span>(<span class="math notranslate nohighlight">\(=c_1\)</span>). To do this we have to apply the following:</p>
 <ul class="simple">
@@ -949,7 +975,7 @@ As said in the first example, in these steps we have the additional sub-step of 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ac5b29fd9005616c3f93d21255c2bf59bfae13370ec97e9e260e974aeeaa2ca6.png" src="../../_images/ac5b29fd9005616c3f93d21255c2bf59bfae13370ec97e9e260e974aeeaa2ca6.png" />
+<a class="reference internal image-reference" href="../../_images/ac5b29fd9005616c3f93d21255c2bf59bfae13370ec97e9e260e974aeeaa2ca6.png"><img alt="../../_images/ac5b29fd9005616c3f93d21255c2bf59bfae13370ec97e9e260e974aeeaa2ca6.png" src="../../_images/ac5b29fd9005616c3f93d21255c2bf59bfae13370ec97e9e260e974aeeaa2ca6.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 <p>Now, we execute the circuit with the simulator without noise.</p>
@@ -968,7 +994,7 @@ As said in the first example, in these steps we have the additional sub-step of 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/92ca76e0599cbd7c9615a4da95947e55dfb2364631be51b45bf7b9efc83d8122.png" src="../../_images/92ca76e0599cbd7c9615a4da95947e55dfb2364631be51b45bf7b9efc83d8122.png" />
+<a class="reference internal image-reference" href="../../_images/92ca76e0599cbd7c9615a4da95947e55dfb2364631be51b45bf7b9efc83d8122.png"><img alt="../../_images/92ca76e0599cbd7c9615a4da95947e55dfb2364631be51b45bf7b9efc83d8122.png" src="../../_images/92ca76e0599cbd7c9615a4da95947e55dfb2364631be51b45bf7b9efc83d8122.png" style="width: 863px; height: 378px;" /></a>
 </div>
 </div>
 <p>We have obtained <span class="math notranslate nohighlight">\(100\%\)</span> probability to find <span class="math notranslate nohighlight">\(\varphi=0.125\)</span>, that is, <span class="math notranslate nohighlight">\(1/8\)</span>, as expected.</p>
@@ -1013,11 +1039,10 @@ As said in the first example, in these steps we have the additional sub-step of 
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../quantum_simulation.html"
@@ -1037,10 +1062,7 @@ As said in the first example, in these steps we have the additional sub-step of 
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1048,6 +1070,7 @@ As said in the first example, in these steps we have the additional sub-step of 
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1111,9 +1134,10 @@ By Jue Xu
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1137,8 +1161,8 @@ By Jue Xu
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

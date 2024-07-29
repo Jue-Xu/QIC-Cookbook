@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>SDP and Duality &#8212; Recipe of Quantum Computing</title>
   
@@ -19,49 +18,46 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'math/optimization/duality';</script>
@@ -78,7 +74,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,11 +117,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -132,9 +139,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../intro.html">
+  
   
   
   
@@ -144,12 +153,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Recipe of Quantum Computing - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Recipe of Quantum Computing - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -190,7 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="semidefinite_program.html">Semidefinite Programming (SDP)</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">SDP and Duality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unconstrained.html">Uncontraied optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="interior_point.html">Interior-Point methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interior_point.html">Algorithms</a></li>
 </ul>
 </li>
 </ul>
@@ -374,20 +394,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -457,19 +479,19 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sdp-and-duality">
-<h1>SDP and Duality<a class="headerlink" href="#sdp-and-duality" title="Permalink to this heading">#</a></h1>
+<h1>SDP and Duality<a class="headerlink" href="#sdp-and-duality" title="Link to this heading">#</a></h1>
 <section id="duality">
-<h2>Duality<a class="headerlink" href="#duality" title="Permalink to this heading">#</a></h2>
+<h2>Duality<a class="headerlink" href="#duality" title="Link to this heading">#</a></h2>
 <p>Optimization in standard form (not necessarily convex)</p>
 <ul class="simple">
 <li><p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
 <li><p>s.t. <span class="math notranslate nohighlight">\(f_i\le 0\)</span>, <span class="math notranslate nohighlight">\(h_i(x)=0\)</span></p></li>
 </ul>
 <section id="lagrangian">
-<h3>Lagrangian<a class="headerlink" href="#lagrangian" title="Permalink to this heading">#</a></h3>
+<h3>Lagrangian<a class="headerlink" href="#lagrangian" title="Link to this heading">#</a></h3>
 <p><span class="math notranslate nohighlight">\(L: R^n\times R^m \times R^p \to R\)</span> with <span class="math notranslate nohighlight">\(dom (L) \ D \times R^m \times R^p\)</span>
 <span class="math notranslate nohighlight">\(L(x,\lambda,\nu)= f_0(x) + \sum_i^m \lambda_i f_i(x) + \sum_i^p \nu_i h_i\)</span></p>
 <ul class="simple">
@@ -487,24 +509,24 @@ g(\lambda,\nu) = \inf L(x,\lambda,\nu)
 </ul>
 </section>
 <section id="lp-and-its-dual">
-<h3>LP and its dual<a class="headerlink" href="#lp-and-its-dual" title="Permalink to this heading">#</a></h3>
+<h3>LP and its dual<a class="headerlink" href="#lp-and-its-dual" title="Link to this heading">#</a></h3>
 <section id="standard-form-lp">
-<h4>standard form LP<a class="headerlink" href="#standard-form-lp" title="Permalink to this heading">#</a></h4>
+<h4>standard form LP<a class="headerlink" href="#standard-form-lp" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>minimize <span class="math notranslate nohighlight">\(c^T x\)</span></p></li>
 <li><p>s.t. <span class="math notranslate nohighlight">\(Ax = b\)</span>, <span class="math notranslate nohighlight">\(x \succeq 0\)</span></p></li>
 </ul>
 </section>
 <section id="id1">
-<h4>Lagrangian<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<h4>Lagrangian<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <p><span class="math notranslate nohighlight">\(L(x,\lambda,\nu) = c^T x + v^T (Ax-b) - \lambda^T x = -b^T v + (c+A^T v- \lambda)^T x\)</span></p>
 </section>
 <section id="lagrange-dual-function">
-<h4>Lagrange dual function<a class="headerlink" href="#lagrange-dual-function" title="Permalink to this heading">#</a></h4>
+<h4>Lagrange dual function<a class="headerlink" href="#lagrange-dual-function" title="Link to this heading">#</a></h4>
 <p><span class="math notranslate nohighlight">\(g(\lambda,\nu) = \inf_{x} L(x,\lambda,\nu)=-b^T v, A^Tv-\lambda+c=0; -\infty, otherwise\)</span></p>
 </section>
 <section id="dual-problem">
-<h4>Dual problem<a class="headerlink" href="#dual-problem" title="Permalink to this heading">#</a></h4>
+<h4>Dual problem<a class="headerlink" href="#dual-problem" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>maximize <span class="math notranslate nohighlight">\(-b^T v\)</span></p></li>
 <li><p>s.t. <span class="math notranslate nohighlight">\(A^T v + c \preceq 0\)</span></p></li>
@@ -512,7 +534,7 @@ g(\lambda,\nu) = \inf L(x,\lambda,\nu)
 </section>
 </section>
 <section id="lagrange-dual-and-conjugate-function">
-<h3>Lagrange dual and conjugate function<a class="headerlink" href="#lagrange-dual-and-conjugate-function" title="Permalink to this heading">#</a></h3>
+<h3>Lagrange dual and conjugate function<a class="headerlink" href="#lagrange-dual-and-conjugate-function" title="Link to this heading">#</a></h3>
 <p>optimization with affine inequality and equality constraints</p>
 <ul class="simple">
 <li><p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
@@ -540,7 +562,7 @@ g(\lambda,\nu) = \inf L(x,\lambda,\nu)
 </div></section>
 </section>
 <section id="primal-and-lagrange-dual-problems">
-<h2>Primal and Lagrange dual problems<a class="headerlink" href="#primal-and-lagrange-dual-problems" title="Permalink to this heading">#</a></h2>
+<h2>Primal and Lagrange dual problems<a class="headerlink" href="#primal-and-lagrange-dual-problems" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Primal problem (convex or non-convex)</p></li>
 <li><p>Lagrange dual problem (is a <code class="docutils literal notranslate"><span class="pre">convex</span></code> optimization problem)</p></li>
@@ -585,7 +607,7 @@ for any feasible <span class="math notranslate nohighlight">\(x\)</span>
 <span class="math notranslate nohighlight">\(x^T Qx \ge x^T \Lambda x = \sum_i \Lambda_{ii} x_i^2 = Tr(\Lambda)\)</span></p>
 </section>
 <section id="strong-duality">
-<h2>Strong duality<a class="headerlink" href="#strong-duality" title="Permalink to this heading">#</a></h2>
+<h2>Strong duality<a class="headerlink" href="#strong-duality" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">strong</span> <span class="pre">duality:</span></code> <span class="math notranslate nohighlight">\(d^* = p^*\)</span></p>
 <ul class="simple">
 <li><p>does not hold in general</p></li>
@@ -593,7 +615,7 @@ for any feasible <span class="math notranslate nohighlight">\(x\)</span>
 <li><p>conditions that guarantee strong duality in convex problems are called constraint qualifications</p></li>
 </ul>
 <section id="slater-s-constraint-qualification">
-<h3>Slater’s constraint qualification<a class="headerlink" href="#slater-s-constraint-qualification" title="Permalink to this heading">#</a></h3>
+<h3>Slater’s constraint qualification<a class="headerlink" href="#slater-s-constraint-qualification" title="Link to this heading">#</a></h3>
 <p>strong duality holds for a convex problem</p>
 <ul class="simple">
 <li><p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
@@ -605,7 +627,7 @@ for any feasible <span class="math notranslate nohighlight">\(x\)</span>
 <p>If an LP (in any form) has an optimal solution <span class="math notranslate nohighlight">\(x^*\)</span>, then the dual also has an optimal solution <span class="math notranslate nohighlight">\(y^*\)</span> and <span class="math notranslate nohighlight">\(C^T x^* = b^T y^*\)</span></p>
 </section>
 <section id="geometric-interpretation">
-<h3>Geometric interpretation<a class="headerlink" href="#geometric-interpretation" title="Permalink to this heading">#</a></h3>
+<h3>Geometric interpretation<a class="headerlink" href="#geometric-interpretation" title="Link to this heading">#</a></h3>
 <p>interpretation of dual function: <span class="math notranslate nohighlight">\(g(\lambda) = \inf_{(u,t)\in\mathcal{G}} (t + \lambda u)\)</span>, where <span class="math notranslate nohighlight">\(\mathcal{G}=\{(f_1(x), f_0(x)) \}\)</span></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\lambda u + t = g(\lambda)\)</span> is (non-vertical) supporting hyperplane to <span class="math notranslate nohighlight">\(\mathcal{G}\)</span> which intersects t-axis at <span class="math notranslate nohighlight">\(t=g(\lambda)\)</span></p></li>
@@ -619,7 +641,7 @@ for any feasible <span class="math notranslate nohighlight">\(x\)</span>
 </ul>
 </section>
 <section id="sensitivity-interpretation">
-<h3>Sensitivity interpretation<a class="headerlink" href="#sensitivity-interpretation" title="Permalink to this heading">#</a></h3>
+<h3>Sensitivity interpretation<a class="headerlink" href="#sensitivity-interpretation" title="Link to this heading">#</a></h3>
 <p>(<code class="docutils literal notranslate"><span class="pre">unperturbed</span></code>) optimization problem and its dual</p>
 <ul class="simple">
 <li><p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
@@ -637,7 +659,7 @@ for any feasible <span class="math notranslate nohighlight">\(x\)</span>
 </ul>
 </section>
 <section id="saddle-point-interpretation">
-<h3>Saddle-point interpretation<a class="headerlink" href="#saddle-point-interpretation" title="Permalink to this heading">#</a></h3>
+<h3>Saddle-point interpretation<a class="headerlink" href="#saddle-point-interpretation" title="Link to this heading">#</a></h3>
 <p>Assume no equality constraints (results can be easily extended)
 <span class="math notranslate nohighlight">\(p^*=\inf_x \sup_{\lambda\succeq 0} L(x,\lambda)\)</span>,
 <span class="math notranslate nohighlight">\(d^*=\sup_{\lambda\succeq 0} \inf_x L(x,\lambda)\)</span></p>
@@ -654,7 +676,7 @@ for any feasible <span class="math notranslate nohighlight">\(x\)</span>
 <p><span class="math notranslate nohighlight">\(x^*, \lambda^*\)</span> are primal and dual optimal points and strong duality holds iff <span class="math notranslate nohighlight">\((x^*,\lambda^*)\)</span> form a saddle-point for the Lagrangian</p>
 </section>
 <section id="game-interpretation">
-<h3>Game interpretation<a class="headerlink" href="#game-interpretation" title="Permalink to this heading">#</a></h3>
+<h3>Game interpretation<a class="headerlink" href="#game-interpretation" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>player x choose strategy from <span class="math notranslate nohighlight">\(1,2,\dots, n\)</span></p></li>
 <li><p>player y choose strategy from <span class="math notranslate nohighlight">\(1,2,\dots, n\)</span></p></li>
@@ -688,7 +710,7 @@ equivalent to?
 <li><p><span class="math notranslate nohighlight">\(v^*\)</span> is the best response of player y with respect to <span class="math notranslate nohighlight">\(u^*\)</span></p></li>
 </ul>
 <section id="usage-example-of-duality">
-<h4>Usage example of duality<a class="headerlink" href="#usage-example-of-duality" title="Permalink to this heading">#</a></h4>
+<h4>Usage example of duality<a class="headerlink" href="#usage-example-of-duality" title="Link to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">Duality</span> <span class="pre">gives</span> <span class="pre">a</span> <span class="pre">way</span> <span class="pre">to</span> <span class="pre">analytically</span> <span class="pre">solve</span> <span class="pre">an</span> <span class="pre">optimization</span> <span class="pre">problem</span></code></p>
 <div class="proof example admonition" id="example-2">
 <p class="admonition-title"><span class="caption-number">Example 29 </span></p>
@@ -715,7 +737,7 @@ Lagrange dual function: <span class="math notranslate nohighlight">\(g(v)=\min x
 </div></section>
 </section>
 <section id="non-convex-problem-with-strong-duality">
-<h3>Non-convex problem with strong duality<a class="headerlink" href="#non-convex-problem-with-strong-duality" title="Permalink to this heading">#</a></h3>
+<h3>Non-convex problem with strong duality<a class="headerlink" href="#non-convex-problem-with-strong-duality" title="Link to this heading">#</a></h3>
 <p>strong duality not implies convex problem</p>
 <div class="proof example admonition" id="example-4">
 <p class="admonition-title"><span class="caption-number">Example 31 </span> (Non-convex problem with strong duality)</p>
@@ -737,7 +759,7 @@ since <span class="math notranslate nohighlight">\(x^T x = 1\)</span>, we know <
 </section>
 </div></section>
 <section id="complementary-slackness-for-lp">
-<h3>Complementary slackness for LP<a class="headerlink" href="#complementary-slackness-for-lp" title="Permalink to this heading">#</a></h3>
+<h3>Complementary slackness for LP<a class="headerlink" href="#complementary-slackness-for-lp" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Primal</span></code>: <span class="math notranslate nohighlight">\(\min c^T x\)</span> s.t. <span class="math notranslate nohighlight">\(Ax \succeq b\)</span>, <span class="math notranslate nohighlight">\(x\succeq 0\)</span></p>
 <p><code class="docutils literal notranslate"><span class="pre">Dual</span></code>: <span class="math notranslate nohighlight">\(\max b^T y\)</span> s.t. <span class="math notranslate nohighlight">\(A^T y \preceq c\)</span>, <span class="math notranslate nohighlight">\(y \preceq 0\)</span></p>
 <div class="proof theorem admonition" id="theorem-5">
@@ -752,7 +774,7 @@ Given <span class="math notranslate nohighlight">\(x, y\)</span> satisfy complem
 </section>
 </section>
 <section id="karush-kuhn-tucker-kkt-conditions">
-<h2>Karush_Kuhn-Tucker (KKT) conditions<a class="headerlink" href="#karush-kuhn-tucker-kkt-conditions" title="Permalink to this heading">#</a></h2>
+<h2>Karush_Kuhn-Tucker (KKT) conditions<a class="headerlink" href="#karush-kuhn-tucker-kkt-conditions" title="Link to this heading">#</a></h2>
 <p>the following four conditions are called KKT conditions (for a problem with differentiable <span class="math notranslate nohighlight">\(f_i\)</span>, <span class="math notranslate nohighlight">\(h_i\)</span>):
 <span class="math notranslate nohighlight">\(\min f_0(x)\)</span> s.t. <span class="math notranslate nohighlight">\(f_i(0)\)</span></p>
 <ul class="simple">
@@ -766,7 +788,7 @@ Given <span class="math notranslate nohighlight">\(x, y\)</span> satisfy complem
 <p>For any optimization problem with differentiable objective and constraint functions, if strong duality holds, any pair of primal and dual optimal points <span class="math notranslate nohighlight">\(x^*, \lambda^*, \nu^*\)</span> must satisfy the KKT conditions
 <span class="math notranslate nohighlight">\(g(\lambda^*, \nu^*) = \inf_x L(x,\lambda^*,\nu^*) = \inf_x f_0(x) + \sum_i^m \lambda_i^* f_i(x) + \sum_i^p \nu_i^* h_i(x) = f_0(x^*)\)</span></p>
 <section id="kkt-conditions-for-convex-programs">
-<h3>KKT conditions for convex programs<a class="headerlink" href="#kkt-conditions-for-convex-programs" title="Permalink to this heading">#</a></h3>
+<h3>KKT conditions for convex programs<a class="headerlink" href="#kkt-conditions-for-convex-programs" title="Link to this heading">#</a></h3>
 <p>For a convex program, any points <span class="math notranslate nohighlight">\(\tilde{x}\)</span>, <span class="math notranslate nohighlight">\(\tilde{\lambda}\)</span>, <span class="math notranslate nohighlight">\(\tilde{\nu}\)</span> that satisfy the KKT conditions are primal and dual optimal, and have zero duality gap
 <span class="math notranslate nohighlight">\(\tilde{\lambda_i} \ge 0\)</span>, <span class="math notranslate nohighlight">\(\forall i \to L(x,\tilde{\lambda},\tilde{\nu})\)</span> is convex in <span class="math notranslate nohighlight">\(x\)</span>.</p>
 <p>gradient of Lagrangian with respect to <span class="math notranslate nohighlight">\(\tilde{x}\)</span> vanishes <span class="math notranslate nohighlight">\(\implies\)</span> <span class="math notranslate nohighlight">\(\tilde{x}\)</span> minimizes <span class="math notranslate nohighlight">\(L(x,\tilde{\lambda}, \tilde{\nu})\)</span>,
@@ -832,7 +854,7 @@ maxmimally allocate resource to pi with the current smallest marginal utility, u
 <span class="math notranslate nohighlight">\(g(\nu) = \inf_{-1\preceq x \preceq 1} (c^T x + \nu^T(Ax - b))=-b^T\nu - \norm{A^T \nu + c}_1\)</span></p>
 </section>
 </div><section id="partial-lagrangian-relaxation">
-<h4>Partial Lagrangian relaxation<a class="headerlink" href="#partial-lagrangian-relaxation" title="Permalink to this heading">#</a></h4>
+<h4>Partial Lagrangian relaxation<a class="headerlink" href="#partial-lagrangian-relaxation" title="Link to this heading">#</a></h4>
 <p>One can take Lagrangian with respect to only a subset of the constraints, e.g.,</p>
 <p>If convex problem and Slater’s conditino is satisfied:
 <span class="math notranslate nohighlight">\(\max_{\lambda \succeq 0} \tilde{g}(\lambda) = \min_{f_i(x)\le 0} f_0(x)\)</span>
@@ -849,7 +871,7 @@ let <span class="math notranslate nohighlight">\(x^*\)</span> be the primal opti
 </section>
 </div></section>
 <section id="generalized-inequality">
-<h4>Generalized inequality<a class="headerlink" href="#generalized-inequality" title="Permalink to this heading">#</a></h4>
+<h4>Generalized inequality<a class="headerlink" href="#generalized-inequality" title="Link to this heading">#</a></h4>
 <p>dual problem</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\max g(\lambda_1, \dots. \lambda_m, \nu)\)</span> s.t. <span class="math notranslate nohighlight">\(\lambda_i \succeq_{K_i^*} 0, i=1,\dots,m\)</span></p></li>
@@ -906,11 +928,10 @@ let <span class="math notranslate nohighlight">\(x^*\)</span> be the primal opti
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="semidefinite_program.html"
@@ -930,10 +951,7 @@ let <span class="math notranslate nohighlight">\(x^*\)</span> be the primal opti
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -941,6 +959,7 @@ let <span class="math notranslate nohighlight">\(x^*\)</span> be the primal opti
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1003,9 +1022,10 @@ By Jue Xu
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1029,8 +1049,8 @@ By Jue Xu
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

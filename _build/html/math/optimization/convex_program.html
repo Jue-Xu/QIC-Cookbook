@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Convex Program &#8212; Recipe of Quantum Computing</title>
   
@@ -19,49 +18,46 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'math/optimization/convex_program';</script>
@@ -78,7 +74,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -113,11 +117,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -132,9 +139,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../intro.html">
+  
   
   
   
@@ -144,12 +153,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Recipe of Quantum Computing - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Recipe of Quantum Computing - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -189,6 +209,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="integer_program.html">Integer Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="semidefinite_program.html">Semidefinite Programming (SDP)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="duality.html">SDP and Duality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unconstrained.html">Uncontraied optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interior_point.html">Algorithms</a></li>
 </ul>
 </li>
 </ul>
@@ -372,20 +394,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -466,15 +490,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="convex-program">
-<h1>Convex Program<a class="headerlink" href="#convex-program" title="Permalink to this heading">#</a></h1>
+<h1>Convex Program<a class="headerlink" href="#convex-program" title="Link to this heading">#</a></h1>
 <div class="math notranslate nohighlight">
 \[\newcommand\realnumber{\mathbb{R}}
 \newcommand\vbx{\vb{x}}\]</div>
 <section id="convex-optimization">
-<h2>Convex optimization<a class="headerlink" href="#convex-optimization" title="Permalink to this heading">#</a></h2>
+<h2>Convex optimization<a class="headerlink" href="#convex-optimization" title="Link to this heading">#</a></h2>
 <p>convex program: objective and constraint functions are convex</p>
 <p><span class="math notranslate nohighlight">\(f_i(x)\)</span> is convex if its domain is convex set and <span class="math notranslate nohighlight">\(f_i(\alpha x + \beta y) \le \alpha f_i(x) + \beta f_i(y)\)</span> if <span class="math notranslate nohighlight">\(\alpha + \beta = 1\)</span>, <span class="math notranslate nohighlight">\(\alpha\ge 0\)</span>, <span class="math notranslate nohighlight">\(\beta \ge 0\)</span>.</p>
 <p>Examples: linear, quadratic functions</p>
@@ -486,7 +510,7 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(\min c^T x\)</span> subject to: <span class="math notranslate nohighlight">\(A_0+A_1x_1 + A_2x_2 +\dots + A_n x_n\preceq 0\)</span></p>
 <p><code class="docutils literal notranslate"><span class="pre">any</span> <span class="pre">locally</span> <span class="pre">opt</span> <span class="pre">point</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">cvx</span> <span class="pre">program</span> <span class="pre">is</span> <span class="pre">(globally)</span> <span class="pre">optimal</span></code> (proof by contradiction)</p>
 <section id="optimality-criteria-for-differentiable-convex-f-0">
-<h3>Optimality criteria for differentiable convex <span class="math notranslate nohighlight">\(f_0\)</span><a class="headerlink" href="#optimality-criteria-for-differentiable-convex-f-0" title="Permalink to this heading">#</a></h3>
+<h3>Optimality criteria for differentiable convex <span class="math notranslate nohighlight">\(f_0\)</span><a class="headerlink" href="#optimality-criteria-for-differentiable-convex-f-0" title="Link to this heading">#</a></h3>
 <p><span class="math notranslate nohighlight">\(x\)</span> is optimal if and only if it is feasible and <span class="math notranslate nohighlight">\(\nabla f_0(x)^T (y-x) \ge 0 \text{ for all feasible } y\)</span></p>
 <div class="proof admonition" id="proof">
 <p>Proof.     directional derivative
@@ -495,10 +519,10 @@ $<span class="math notranslate nohighlight">\(
     \)</span>$</p>
 </div>
 <section id="uncontrained-problem-x-is-optimal-iff-x-in-dom-f-0-nabla-f-0-x-0">
-<h4>uncontrained problem: <span class="math notranslate nohighlight">\(x\)</span> is optimal iff <span class="math notranslate nohighlight">\(x\in dom f_0\)</span>, <span class="math notranslate nohighlight">\(\nabla f_0(x)=0\)</span><a class="headerlink" href="#uncontrained-problem-x-is-optimal-iff-x-in-dom-f-0-nabla-f-0-x-0" title="Permalink to this heading">#</a></h4>
+<h4>uncontrained problem: <span class="math notranslate nohighlight">\(x\)</span> is optimal iff <span class="math notranslate nohighlight">\(x\in dom f_0\)</span>, <span class="math notranslate nohighlight">\(\nabla f_0(x)=0\)</span><a class="headerlink" href="#uncontrained-problem-x-is-optimal-iff-x-in-dom-f-0-nabla-f-0-x-0" title="Link to this heading">#</a></h4>
 </section>
 <section id="equality-constrained-problem">
-<h4>equality constrained problem<a class="headerlink" href="#equality-constrained-problem" title="Permalink to this heading">#</a></h4>
+<h4>equality constrained problem<a class="headerlink" href="#equality-constrained-problem" title="Link to this heading">#</a></h4>
 <p><span class="math notranslate nohighlight">\(\min f_0(x)\)</span> subject to <span class="math notranslate nohighlight">\(Ax = b\)</span>
 <span class="math notranslate nohighlight">\(x\)</span> is optimal iff there exists a <span class="math notranslate nohighlight">\(\nu\)</span> such that
 <span class="math notranslate nohighlight">\(x\in dom f_0, Ax=b, \nabla f_o(x) + A^T \nu = 0\)</span></p>
@@ -515,16 +539,16 @@ $<span class="math notranslate nohighlight">\(
 </section>
 </div></section>
 <section id="minimization-over-nonnegative-orthant">
-<h4>minimization over nonnegative orthant<a class="headerlink" href="#minimization-over-nonnegative-orthant" title="Permalink to this heading">#</a></h4>
+<h4>minimization over nonnegative orthant<a class="headerlink" href="#minimization-over-nonnegative-orthant" title="Link to this heading">#</a></h4>
 <p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span> subject to <span class="math notranslate nohighlight">\(x \preceq 0\)</span>,
 <span class="math notranslate nohighlight">\(x\)</span> is optimal iff <span class="math notranslate nohighlight">\(x\in dom f_0\)</span>, <span class="math notranslate nohighlight">\(x\preceq 0\)</span>, <span class="math notranslate nohighlight">\(\nabla f_0(x)_i\ge 0,x_i=0\)</span> and <span class="math notranslate nohighlight">\(\nabla f_0(x)_i=0,x_i&gt;0\)</span>.</p>
 </section>
 </section>
 <section id="equivalent-convex-programs">
-<h3>Equivalent convex programs<a class="headerlink" href="#equivalent-convex-programs" title="Permalink to this heading">#</a></h3>
+<h3>Equivalent convex programs<a class="headerlink" href="#equivalent-convex-programs" title="Link to this heading">#</a></h3>
 <p>two problems are (informally) equivalent if the solution of one is readily obtained from the solution of the other, and vice-versa</p>
 <section id="eliminating-equality-constraints">
-<h4>eliminating equality constraints<a class="headerlink" href="#eliminating-equality-constraints" title="Permalink to this heading">#</a></h4>
+<h4>eliminating equality constraints<a class="headerlink" href="#eliminating-equality-constraints" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
 <li><p>subject to <span class="math notranslate nohighlight">\(f_i(x)\le 0\)</span>, <span class="math notranslate nohighlight">\(Ax=b\)</span>
@@ -537,10 +561,10 @@ is equivalent to</p></li>
 </ul>
 </section>
 <section id="introducing-equality-constraints">
-<h4>introducing equality constraints<a class="headerlink" href="#introducing-equality-constraints" title="Permalink to this heading">#</a></h4>
+<h4>introducing equality constraints<a class="headerlink" href="#introducing-equality-constraints" title="Link to this heading">#</a></h4>
 </section>
 <section id="introducing-slack-variables-for-linear-inequalities">
-<h4>introducing slack variables for linear inequalities<a class="headerlink" href="#introducing-slack-variables-for-linear-inequalities" title="Permalink to this heading">#</a></h4>
+<h4>introducing slack variables for linear inequalities<a class="headerlink" href="#introducing-slack-variables-for-linear-inequalities" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
 <li><p>subject to <span class="math notranslate nohighlight">\(a_i^T x \le b_i\)</span>
@@ -550,11 +574,11 @@ is equivalent to</p></li>
 </ul>
 </section>
 <section id="epigraph-form">
-<h4>epigraph form:<a class="headerlink" href="#epigraph-form" title="Permalink to this heading">#</a></h4>
+<h4>epigraph form:<a class="headerlink" href="#epigraph-form" title="Link to this heading">#</a></h4>
 <p>standard form cvx problem is equivalent to</p>
 </section>
 <section id="minimizing-over-some-variables">
-<h4>minimizing over some variables<a class="headerlink" href="#minimizing-over-some-variables" title="Permalink to this heading">#</a></h4>
+<h4>minimizing over some variables<a class="headerlink" href="#minimizing-over-some-variables" title="Link to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">small</span> <span class="pre">perturbation</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">problem</span> <span class="pre">makes</span> <span class="pre">it</span> <span class="pre">very</span> <span class="pre">hard</span> <span class="pre">(potentially)</span></code></p>
 <ul class="simple">
 <li><p>max convex or min concave</p></li>
@@ -564,7 +588,7 @@ is equivalent to</p></li>
 </section>
 </section>
 <section id="quasiconvex-optimization">
-<h3>Quasiconvex optimization<a class="headerlink" href="#quasiconvex-optimization" title="Permalink to this heading">#</a></h3>
+<h3>Quasiconvex optimization<a class="headerlink" href="#quasiconvex-optimization" title="Link to this heading">#</a></h3>
 <p><span class="math notranslate nohighlight">\(f_0: \R^n \to \R\)</span> quasiconvex, <span class="math notranslate nohighlight">\(f_i\)</span> convex,
 (local) optimal, … (global) optimal</p>
 <p>such a representation always exists and not unique</p>
@@ -586,7 +610,7 @@ can take <span class="math notranslate nohighlight">\(\phi_t(x) = p(x) - tq(x)\)
 </section>
 </div></section>
 <section id="quasiconvex-opt-via-convex-feasibility-problems">
-<h3>quasiconvex opt via convex feasibility problems<a class="headerlink" href="#quasiconvex-opt-via-convex-feasibility-problems" title="Permalink to this heading">#</a></h3>
+<h3>quasiconvex opt via convex feasibility problems<a class="headerlink" href="#quasiconvex-opt-via-convex-feasibility-problems" title="Link to this heading">#</a></h3>
 <p>let <span class="math notranslate nohighlight">\(p^*\)</span> denote the optimal value of the quasiconvex program</p>
 <ul class="simple">
 <li><p>minimize <span class="math notranslate nohighlight">\(f_0(x)\)</span></p></li>
@@ -598,13 +622,13 @@ can take <span class="math notranslate nohighlight">\(\phi_t(x) = p(x) - tq(x)\)
 <li><p>s.t. <span class="math notranslate nohighlight">\(\phi_t(x) \le 0\)</span>, <span class="math notranslate nohighlight">\(f_i(x)\le 0\)</span>, <span class="math notranslate nohighlight">\(Ax=b\)</span></p></li>
 </ul>
 <section id="bisection-method-for-quasiconvex-opt">
-<h4>bisection method for quasiconvex opt<a class="headerlink" href="#bisection-method-for-quasiconvex-opt" title="Permalink to this heading">#</a></h4>
+<h4>bisection method for quasiconvex opt<a class="headerlink" href="#bisection-method-for-quasiconvex-opt" title="Link to this heading">#</a></h4>
 <p>requires exactly <span class="math notranslate nohighlight">\(O(\log_2 ((u-l)/\epsilon)\)</span> iterations</p>
 </section>
 </section>
 </section>
 <section id="linear-program-lp">
-<h2>Linear program (LP)<a class="headerlink" href="#linear-program-lp" title="Permalink to this heading">#</a></h2>
+<h2>Linear program (LP)<a class="headerlink" href="#linear-program-lp" title="Link to this heading">#</a></h2>
 <p>general form</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\min c^T x \)</span></p></li>
@@ -658,7 +682,7 @@ equivalent to an LP</p></li>
 </section>
 </div></section>
 <section id="integer-linear-program-ip-ilp">
-<h2>Integer Linear program (IP, ILP)<a class="headerlink" href="#integer-linear-program-ip-ilp" title="Permalink to this heading">#</a></h2>
+<h2>Integer Linear program (IP, ILP)<a class="headerlink" href="#integer-linear-program-ip-ilp" title="Link to this heading">#</a></h2>
 <p>form</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\min c^T x + d\)</span></p></li>
@@ -715,7 +739,7 @@ Then <span class="math notranslate nohighlight">\(\sum_{i\in V} x_i \le \sum_{i\
 approximation ratio: <span class="math notranslate nohighlight">\(\alpha=2\)</span></p>
 </section>
 </div><section id="total-unimodularity">
-<h3>Total unimodularity<a class="headerlink" href="#total-unimodularity" title="Permalink to this heading">#</a></h3>
+<h3>Total unimodularity<a class="headerlink" href="#total-unimodularity" title="Link to this heading">#</a></h3>
 <p>There are special cases that the relaxation is <code class="docutils literal notranslate"><span class="pre">exact</span></code>, i.e., the relaxed LP provides an integer optimal point.</p>
 <p>An integer matrix is <code class="docutils literal notranslate"><span class="pre">totally</span> <span class="pre">unimodular</span> <span class="pre">(TUM)</span></code> if the determinant of every square submatrix of the amtrix is either -1, 0, or 1.
 e.g., incidence matrix of a directed graph;
@@ -728,7 +752,7 @@ e.g. shortest path problem
 </section>
 </section>
 <section id="quadratic-program-qp">
-<h2>Quadratic program (QP)<a class="headerlink" href="#quadratic-program-qp" title="Permalink to this heading">#</a></h2>
+<h2>Quadratic program (QP)<a class="headerlink" href="#quadratic-program-qp" title="Link to this heading">#</a></h2>
 <div class="proof definition admonition" id="definition-9">
 <p class="admonition-title"><span class="caption-number">Definition 25 </span> (Quadratic program)</p>
 <section class="definition-content" id="proof-content">
@@ -742,9 +766,9 @@ e.g. shortest path problem
 <li><p>minimize a convex quadratic function over a polyhedron</p></li>
 </ul>
 <section id="examples">
-<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h3>
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
 <section id="least-square">
-<h4>Least square<a class="headerlink" href="#least-square" title="Permalink to this heading">#</a></h4>
+<h4>Least square<a class="headerlink" href="#least-square" title="Link to this heading">#</a></h4>
 <div class="proof example admonition" id="example-10">
 <p class="admonition-title"><span class="caption-number">Example 21 </span> (Least square)</p>
 <section class="example-content" id="proof-content">
@@ -754,7 +778,7 @@ the solution <span class="math notranslate nohighlight">\(x^*=\)</span></p>
 </section>
 </div></section>
 <section id="linear-program-with-random-cost">
-<h4>Linear program with random cost<a class="headerlink" href="#linear-program-with-random-cost" title="Permalink to this heading">#</a></h4>
+<h4>Linear program with random cost<a class="headerlink" href="#linear-program-with-random-cost" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\min c^T x + \gamma x^T \Sigma x = E[c^T x] + \gamma Var(c^T x\)</span></p></li>
 <li><p>s.t. <span class="math notranslate nohighlight">\(Gx \preceq h\)</span>, <span class="math notranslate nohighlight">\(Ax=b\)</span></p></li>
@@ -764,14 +788,14 @@ where covariance matrix <span class="math notranslate nohighlight">\(Conv(c_i,c_
 <span class="math notranslate nohighlight">\(\gamma&gt;0\)</span> is a risk aversion parameter; contrls the trade-off between expected cost and variance (risk)</p>
 </section>
 <section id="quadratically-constrained-quadratic-program-qcqp">
-<h4>Quadratically constrained quadratic program (QCQP)<a class="headerlink" href="#quadratically-constrained-quadratic-program-qcqp" title="Permalink to this heading">#</a></h4>
+<h4>Quadratically constrained quadratic program (QCQP)<a class="headerlink" href="#quadratically-constrained-quadratic-program-qcqp" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>minimize <span class="math notranslate nohighlight">\((1/2) x^T P_0 x + q_0^T x + r_0\)</span></p></li>
 <li><p>s.t. <span class="math notranslate nohighlight">\((1/2) x^T P_i x + q_i^T x + r_i \le 0\)</span>, <span class="math notranslate nohighlight">\(Ax=b\)</span></p></li>
 </ul>
 </section>
 <section id="second-order-cone-program-socp">
-<h4>Second-order cone program (SOCP)<a class="headerlink" href="#second-order-cone-program-socp" title="Permalink to this heading">#</a></h4>
+<h4>Second-order cone program (SOCP)<a class="headerlink" href="#second-order-cone-program-socp" title="Link to this heading">#</a></h4>
 <div class="proof example admonition" id="example-11">
 <p class="admonition-title"><span class="caption-number">Example 22 </span> (Second-order cone program (SOCP))</p>
 <section class="example-content" id="proof-content">
@@ -794,7 +818,7 @@ where covariance matrix <span class="math notranslate nohighlight">\(Conv(c_i,c_
 </section>
 </section>
 <section id="robust-linear-program">
-<h3>Robust linear program<a class="headerlink" href="#robust-linear-program" title="Permalink to this heading">#</a></h3>
+<h3>Robust linear program<a class="headerlink" href="#robust-linear-program" title="Link to this heading">#</a></h3>
 <p>The parameters in an LP can be uncertain</p>
 <ul class="simple">
 <li><p>minimize <span class="math notranslate nohighlight">\(c^T x\)</span></p></li>
@@ -807,7 +831,7 @@ there can be uncertainty in <span class="math notranslate nohighlight">\(c\)</sp
 <li><p>convert to <code class="docutils literal notranslate"><span class="pre">stochastic</span></code> model: constraints must hold with probability <span class="math notranslate nohighlight">\(\eta\)</span> (<span class="math notranslate nohighlight">\(a_i\)</span> as the random variable)</p></li>
 </ul>
 <section id="deterministic-approach-via-socp">
-<h4>deterministic approach via SOCP<a class="headerlink" href="#deterministic-approach-via-socp" title="Permalink to this heading">#</a></h4>
+<h4>deterministic approach via SOCP<a class="headerlink" href="#deterministic-approach-via-socp" title="Link to this heading">#</a></h4>
 <p>assume all <span class="math notranslate nohighlight">\(a_i\)</span> lie in given ellipsoids
 <span class="math notranslate nohighlight">\(a_i\in E_i = \{ \bar{a}_i + P_i u \mid ||u||_2 \le 1 \}\)</span></p>
 <p>derivation of the SOCP</p>
@@ -819,7 +843,7 @@ where <span class="math notranslate nohighlight">\(\frac{u-\bar{u}}{\sigma}\)</s
 </section>
 </section>
 <section id="geometric-programming">
-<h3>Geometric programming<a class="headerlink" href="#geometric-programming" title="Permalink to this heading">#</a></h3>
+<h3>Geometric programming<a class="headerlink" href="#geometric-programming" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">monomial</span></code> function <span class="math notranslate nohighlight">\(f(x) = c x_1^{a_1} x_2^{a_2} \cdots x_n^{a_n}, dom(f) = R_{++}^n\)</span> with <span class="math notranslate nohighlight">\(c&gt;0\)</span>; exponent <span class="math notranslate nohighlight">\(\alpha_i\)</span> can be any real number.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">posynomial</span></code> function: sum of monomials <span class="math notranslate nohighlight">\(f(x) = \sum_{k=1}^K c_k x_1^{a_{1k}} x_2^{a_{2k}} \cdots x_n^{a_{nk}}, dom(f) = R_{++}^n\)</span> with <span class="math notranslate nohighlight">\(c&gt;0\)</span>; exponent <span class="math notranslate nohighlight">\(\alpha_i\)</span> can be any real number.</p></li>
@@ -829,7 +853,7 @@ where <span class="math notranslate nohighlight">\(\frac{u-\bar{u}}{\sigma}\)</s
 max
 s.t.</p>
 <section id="geometric-program-in-convex-form">
-<h4>Geometric program in convex form<a class="headerlink" href="#geometric-program-in-convex-form" title="Permalink to this heading">#</a></h4>
+<h4>Geometric program in convex form<a class="headerlink" href="#geometric-program-in-convex-form" title="Link to this heading">#</a></h4>
 <p>change variables to <span class="math notranslate nohighlight">\(y_i=\log x_i\)</span>, and take logarithm of objective, constraints</p>
 <ul class="simple">
 <li><p>monomial <span class="math notranslate nohighlight">\(f(x) = c x_1^{a_n} \cdots x_n^{a_n}\)</span> transforms to
@@ -879,11 +903,10 @@ s.t.</p>
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="convex_optimization.html"
@@ -903,10 +926,7 @@ s.t.</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -914,6 +934,7 @@ s.t.</p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -987,9 +1008,10 @@ By Jue Xu
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1013,8 +1035,8 @@ By Jue Xu
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

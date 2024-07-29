@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Matplotlib Samples &#8212; Recipe of Quantum Computing</title>
   
@@ -19,49 +18,46 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'preface/samples/matplotlib_samples';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -76,7 +72,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -111,11 +115,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -130,9 +137,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../intro.html">
+  
   
   
   
@@ -142,12 +151,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Recipe of Quantum Computing - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Recipe of Quantum Computing - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -176,6 +196,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../math/linear_algebra/complex_matrix_multiplication.html">Complex matrix multiplication</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../math/linear_algebra/matrices.html">Matrices</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../math/linear_algebra/decompositions.html">Decomposition</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../math/linear_algebra/decompositions/cholesky_decomposition.html">Cholesky decomposition</a></li>
 </ul>
@@ -183,8 +204,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../math/optimization/optimization.html">Optimization</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../math/optimization/convex_optimization.html">Convex Set and Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../math/optimization/convex_program.html">Convex Program</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../math/optimization/semidefinite_programming.html">Semidefinite Programming (SDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../math/optimization/integer_program.html">Integer Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../math/optimization/semidefinite_program.html">Semidefinite Programming (SDP)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../math/optimization/duality.html">SDP and Duality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../math/optimization/unconstrained.html">Uncontraied optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../math/optimization/interior_point.html">Algorithms</a></li>
 </ul>
 </li>
 </ul>
@@ -368,20 +392,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -433,12 +459,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="matplotlib-samples">
-<h1>Matplotlib Samples<a class="headerlink" href="#matplotlib-samples" title="Permalink to this heading">#</a></h1>
+<h1>Matplotlib Samples<a class="headerlink" href="#matplotlib-samples" title="Link to this heading">#</a></h1>
 <section id="d-plot-functions-multiple-lines">
-<h2>2D Plot functions (multiple lines)<a class="headerlink" href="#d-plot-functions-multiple-lines" title="Permalink to this heading">#</a></h2>
+<h2>2D Plot functions (multiple lines)<a class="headerlink" href="#d-plot-functions-multiple-lines" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -471,11 +497,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/256b5ff41c46234ce67563323243089fba41d65f9eb02e4b77699881e3a7109f.png" src="../../_images/256b5ff41c46234ce67563323243089fba41d65f9eb02e4b77699881e3a7109f.png" />
+<a class="reference internal image-reference" href="../../_images/256b5ff41c46234ce67563323243089fba41d65f9eb02e4b77699881e3a7109f.png"><img alt="../../_images/256b5ff41c46234ce67563323243089fba41d65f9eb02e4b77699881e3a7109f.png" src="../../_images/256b5ff41c46234ce67563323243089fba41d65f9eb02e4b77699881e3a7109f.png" style="width: 2189px; height: 1566px;" /></a>
 </div>
 </div>
 <section id="subplot">
-<h3>subplot<a class="headerlink" href="#subplot" title="Permalink to this heading">#</a></h3>
+<h3>subplot<a class="headerlink" href="#subplot" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -507,7 +533,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7adaed6f639207c66e1595259096c8872463902dd3e4d3d0c2b8ca15c41d3618.png" src="../../_images/7adaed6f639207c66e1595259096c8872463902dd3e4d3d0c2b8ca15c41d3618.png" />
+<a class="reference internal image-reference" href="../../_images/7adaed6f639207c66e1595259096c8872463902dd3e4d3d0c2b8ca15c41d3618.png"><img alt="../../_images/7adaed6f639207c66e1595259096c8872463902dd3e4d3d0c2b8ca15c41d3618.png" src="../../_images/7adaed6f639207c66e1595259096c8872463902dd3e4d3d0c2b8ca15c41d3618.png" style="width: 2313px; height: 1810px;" /></a>
 </div>
 </div>
 <div class="cell docutils container">
@@ -539,12 +565,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/81086e5f81ac1e72f3c8141f95ac05bdc60812884ba6a3da75f8fae5c33ee5b4.png" src="../../_images/81086e5f81ac1e72f3c8141f95ac05bdc60812884ba6a3da75f8fae5c33ee5b4.png" />
+<a class="reference internal image-reference" href="../../_images/81086e5f81ac1e72f3c8141f95ac05bdc60812884ba6a3da75f8fae5c33ee5b4.png"><img alt="../../_images/81086e5f81ac1e72f3c8141f95ac05bdc60812884ba6a3da75f8fae5c33ee5b4.png" src="../../_images/81086e5f81ac1e72f3c8141f95ac05bdc60812884ba6a3da75f8fae5c33ee5b4.png" style="width: 2253px; height: 1727px;" /></a>
 </div>
 </div>
 </section>
 <section id="log-plot">
-<h3>log plot<a class="headerlink" href="#log-plot" title="Permalink to this heading">#</a></h3>
+<h3>log plot<a class="headerlink" href="#log-plot" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -573,13 +599,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/99dcf3c536205c0cd03fbd4a71bbd352676117378fe7162679fff7a8d4e6021f.png" src="../../_images/99dcf3c536205c0cd03fbd4a71bbd352676117378fe7162679fff7a8d4e6021f.png" />
+<a class="reference internal image-reference" href="../../_images/99dcf3c536205c0cd03fbd4a71bbd352676117378fe7162679fff7a8d4e6021f.png"><img alt="../../_images/99dcf3c536205c0cd03fbd4a71bbd352676117378fe7162679fff7a8d4e6021f.png" src="../../_images/99dcf3c536205c0cd03fbd4a71bbd352676117378fe7162679fff7a8d4e6021f.png" style="width: 3958px; height: 1585px;" /></a>
 </div>
 </div>
 </section>
 </section>
 <section id="animation">
-<h2>Animation<a class="headerlink" href="#animation" title="Permalink to this heading">#</a></h2>
+<h2>Animation<a class="headerlink" href="#animation" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -614,7 +640,7 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 0
 </pre></div>
 </div>
-<img alt="../../_images/cedbabe74a2349e44daa41459f04640038ab3383d8c545905c94f8eba522a058.png" src="../../_images/cedbabe74a2349e44daa41459f04640038ab3383d8c545905c94f8eba522a058.png" />
+<a class="reference internal image-reference" href="../../_images/cedbabe74a2349e44daa41459f04640038ab3383d8c545905c94f8eba522a058.png"><img alt="../../_images/cedbabe74a2349e44daa41459f04640038ab3383d8c545905c94f8eba522a058.png" src="../../_images/cedbabe74a2349e44daa41459f04640038ab3383d8c545905c94f8eba522a058.png" style="width: 1928px; height: 1735px;" /></a>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 1
 step 2
 </pre></div>
@@ -2584,7 +2610,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </section>
 <section id="histogram-plot">
-<h2>Histogram plot<a class="headerlink" href="#histogram-plot" title="Permalink to this heading">#</a></h2>
+<h2>Histogram plot<a class="headerlink" href="#histogram-plot" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -5549,7 +5575,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </section>
 <section id="d-plot">
-<h2>3D plot<a class="headerlink" href="#d-plot" title="Permalink to this heading">#</a></h2>
+<h2>3D plot<a class="headerlink" href="#d-plot" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -5579,11 +5605,11 @@ if (IPython.notebook.kernel !== null) {
   ax = fig.gca(projection=&#39;3d&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/d1660cffe431d172558e454e0726a6e8436dd2fcfe962a50bb9f09b89cb4c5ef.png" src="../../_images/d1660cffe431d172558e454e0726a6e8436dd2fcfe962a50bb9f09b89cb4c5ef.png" />
+<a class="reference internal image-reference" href="../../_images/d1660cffe431d172558e454e0726a6e8436dd2fcfe962a50bb9f09b89cb4c5ef.png"><img alt="../../_images/d1660cffe431d172558e454e0726a6e8436dd2fcfe962a50bb9f09b89cb4c5ef.png" src="../../_images/d1660cffe431d172558e454e0726a6e8436dd2fcfe962a50bb9f09b89cb4c5ef.png" style="width: 1732px; height: 1592px;" /></a>
 </div>
 </div>
 <section id="lorenz-attractor">
-<h3>Lorenz Attractor<a class="headerlink" href="#lorenz-attractor" title="Permalink to this heading">#</a></h3>
+<h3>Lorenz Attractor<a class="headerlink" href="#lorenz-attractor" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -5639,12 +5665,12 @@ if (IPython.notebook.kernel !== null) {
   ax = fig.gca(projection=&#39;3d&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/a99f7fa88ab5d188d92187018c45968b8d68445fb80f138102966098b9b189bc.png" src="../../_images/a99f7fa88ab5d188d92187018c45968b8d68445fb80f138102966098b9b189bc.png" />
+<a class="reference internal image-reference" href="../../_images/a99f7fa88ab5d188d92187018c45968b8d68445fb80f138102966098b9b189bc.png"><img alt="../../_images/a99f7fa88ab5d188d92187018c45968b8d68445fb80f138102966098b9b189bc.png" src="../../_images/a99f7fa88ab5d188d92187018c45968b8d68445fb80f138102966098b9b189bc.png" style="width: 1299px; height: 1251px;" /></a>
 </div>
 </div>
 </section>
 <section id="plot-a-3d-surface-with-a-triangular-mesh">
-<h3>Plot a 3D surface with a triangular mesh<a class="headerlink" href="#plot-a-3d-surface-with-a-triangular-mesh" title="Permalink to this heading">#</a></h3>
+<h3>Plot a 3D surface with a triangular mesh<a class="headerlink" href="#plot-a-3d-surface-with-a-triangular-mesh" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
@@ -5693,12 +5719,12 @@ if (IPython.notebook.kernel !== null) {
   ax = fig.gca(projection=&#39;3d&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/de4387e45dc611a27b2e07ef1bce84d253b23cef43f89686fcd206d04834a2f0.png" src="../../_images/de4387e45dc611a27b2e07ef1bce84d253b23cef43f89686fcd206d04834a2f0.png" />
+<a class="reference internal image-reference" href="../../_images/de4387e45dc611a27b2e07ef1bce84d253b23cef43f89686fcd206d04834a2f0.png"><img alt="../../_images/de4387e45dc611a27b2e07ef1bce84d253b23cef43f89686fcd206d04834a2f0.png" src="../../_images/de4387e45dc611a27b2e07ef1bce84d253b23cef43f89686fcd206d04834a2f0.png" style="width: 1231px; height: 1194px;" /></a>
 </div>
 </div>
 </section>
 <section id="d-surface-with-polar-coordinates">
-<h3>3D surface with polar coordinates<a class="headerlink" href="#d-surface-with-polar-coordinates" title="Permalink to this heading">#</a></h3>
+<h3>3D surface with polar coordinates<a class="headerlink" href="#d-surface-with-polar-coordinates" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
@@ -5744,11 +5770,11 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/caadc76a61f8d2e9e8d8b1befbedde813f08de8f9abcc00a96757406477dc324.png" src="../../_images/caadc76a61f8d2e9e8d8b1befbedde813f08de8f9abcc00a96757406477dc324.png" />
+<a class="reference internal image-reference" href="../../_images/caadc76a61f8d2e9e8d8b1befbedde813f08de8f9abcc00a96757406477dc324.png"><img alt="../../_images/caadc76a61f8d2e9e8d8b1befbedde813f08de8f9abcc00a96757406477dc324.png" src="../../_images/caadc76a61f8d2e9e8d8b1befbedde813f08de8f9abcc00a96757406477dc324.png" style="width: 1299px; height: 1176px;" /></a>
 </div>
 </div>
 <section id="test-h4-title">
-<h4>test h4 title<a class="headerlink" href="#test-h4-title" title="Permalink to this heading">#</a></h4>
+<h4>test h4 title<a class="headerlink" href="#test-h4-title" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
@@ -5784,7 +5810,7 @@ if (IPython.notebook.kernel !== null) {
   ax = fig.gca(projection=&#39;3d&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/ca7f11614ddb09aed4847a5fd92ce3d7c0a2f97763f341401df2c2bca69d3a43.png" src="../../_images/ca7f11614ddb09aed4847a5fd92ce3d7c0a2f97763f341401df2c2bca69d3a43.png" />
+<a class="reference internal image-reference" href="../../_images/ca7f11614ddb09aed4847a5fd92ce3d7c0a2f97763f341401df2c2bca69d3a43.png"><img alt="../../_images/ca7f11614ddb09aed4847a5fd92ce3d7c0a2f97763f341401df2c2bca69d3a43.png" src="../../_images/ca7f11614ddb09aed4847a5fd92ce3d7c0a2f97763f341401df2c2bca69d3a43.png" style="width: 1299px; height: 1184px;" /></a>
 </div>
 </div>
 </section>
@@ -5817,11 +5843,10 @@ if (IPython.notebook.kernel !== null) {
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="notebooks.html"
@@ -5841,10 +5866,7 @@ if (IPython.notebook.kernel !== null) {
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -5852,6 +5874,7 @@ if (IPython.notebook.kernel !== null) {
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -5896,9 +5919,10 @@ By Jue Xu
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -5922,8 +5946,8 @@ By Jue Xu
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
